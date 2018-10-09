@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
+import home from './components/home/Home';
 import './App.css';
-import Footer from './components/footer/Footer';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import reduceFooter from './components/footer/reduceFooter';
-import FooterTest from "./components/footer/FooterTest";
-
-const store = createStore(reduceFooter);
+import {Router, Route, browserHistory} from 'react-router';
 
 class App extends Component {
-  render() {
-    return (
-        <div>
-            <Provider store={store}>
-                <Footer />
-            </Provider>
-            <Provider store={store}>
-                <FooterTest />
-            </Provider>
-        </div>
-    );
-  }
-}
-
+    render() {
+        return (
+            <div className="App">
+                <Router history={browserHistory}>
+                    <Route path="/" component={home}/>
+                    {/*<Route path="/cidades" component={cities}/>*/}
+                    {/*<Route path="/clientes" component={customers}/>*/}
+                </Router>
+            </div>
+        )
+    }
 }
 export default App;
