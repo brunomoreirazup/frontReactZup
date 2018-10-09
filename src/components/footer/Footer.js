@@ -5,9 +5,15 @@ class Footer extends Component {
 
     constructor(props) {
         super(props);
+        this.init();
+
+    }
+    init()
+    {
+
+        this.clearPages();
 
         this.printPagination = this.printPagination.bind(this);
-
         this.printPrevPageButton = this.printPrevPageButton.bind(this);
         this.printPrevPageNumberSpace = this.printPrevPageNumberSpace.bind(this);
         this.printPrevPageNumber = this.printPrevPageNumber.bind(this);
@@ -17,6 +23,10 @@ class Footer extends Component {
         this.printNextPageButton = this.printNextPageButton.bind(this);
         this.printLastPageNumber = this.printLastPageNumber.bind(this);
         this.printHomePageNumber = this.printHomePageNumber.bind(this);
+    }
+    clearPages()
+    {
+        this.props.dispatch({ type: 'PAGES' ,pages: null });
     }
 
     printPagination()

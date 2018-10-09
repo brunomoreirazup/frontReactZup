@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import Provider from "react-redux/es/components/Provider";
 import FooterTest from "../footer/FooterTest";
 import Table from "../table/Table";
-import TableTest from "../table/TableTest";
+import TableTest from "../table/TableCitiesTest";
 
 export default class Home extends Component{
 
@@ -12,7 +11,10 @@ export default class Home extends Component{
     constructor(props)
     {
         super(props);
-
+        this.init();
+    }
+    init()
+    {
 
     }
 

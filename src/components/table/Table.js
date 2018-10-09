@@ -6,17 +6,29 @@ class Table extends Component {
     constructor(props)
     {
         super(props);
+
+        this.init();
+
+    }
+    init()
+    {
         this.printThead = this.printThead.bind(this);
+        this.clearTable_Body();
+    }
+    clearTable_Body()
+    {
+
+        this.props.dispatch({ type: 'TABLE_BODY' ,table_body:null});
     }
     printThead()
     {
         return (
-            <thead>
+            <thead className="thead-dark">
                 <tr>
                     <th> # </th>
-                    {this.props.thead.map(item =>
+                    {this.props.thead.map((item,i)=>
                         {
-                            return <th>{item}</th>;
+                            return <th key={i}>{item}</th>;
                         }
                     )}
                 </tr>
@@ -28,16 +40,18 @@ class Table extends Component {
     {
         console.log("printTbody");
         if(this.props.table_body == undefined)
-            return "";
+            return <tbody></tbody>;
         return(
              <tbody>
                 {this.props.table_body.map( (data , i) => {
                         return (
                             <tr key={data.id}>
                                 <td>{i}</td>
-                                {data.data.map(dataItem => {
-                                    return <td>{dataItem}</td>
+                                {data.data.map( (dataItem,i)=> {
+                                    return <td key={data.id+i}>{dataItem}</td>
                                 })}
+                                <td>Editar</td>
+                                <td>Excluir</td>
                             </tr>
                         )
                     }
@@ -52,7 +66,7 @@ class Table extends Component {
     {
         console.log("TableReader");
         return(
-                <table className="table">
+                <table className="table table-striped table-bordered">
                     {this.printThead()}
                     {this.printTbody()}
                 </table>
