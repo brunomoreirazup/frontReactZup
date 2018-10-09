@@ -5,6 +5,7 @@ import Footer from "../footer/Footer";
 import FooterTest from "../footer/FooterTest";
 import {createStore} from "redux";
 import reduceFooter from "../footer/reduceFooter";
+import Header from "../header/Header";
 
 const store = createStore(reduceFooter);
 export default class Home extends Component{
@@ -20,6 +21,7 @@ export default class Home extends Component{
                 <Provider store={store}>
                     <FooterTest />
                 </Provider>
+                <Header title="HOME"/>
             </div>
 
         )
