@@ -1,9 +1,25 @@
-export default function reduce(state, action) {
-    switch (action.type) {
-        case "PAGES":
-            return(
-                action.pages
-            )
+export default function reduce(state={}, action) {
+    console.log("ReduceFoot:");
+    console.log(state);
+    console.log(action);
+    if(action.type ===  "PAGES")
+    {
+
+        let newState = Object.assign({},state);
+        newState.pages = action.pages;
+        console.log(newState);
+        return newState;
+
     }
-    return {};
+    if(action.type === "TABLE_BODY")
+    {
+        let newState = Object.assign({},state);
+        newState.table_body = action.table_body;
+        console.log(newState);
+        return newState;
+
+    }
+
+    return state;
+
 }

@@ -84,7 +84,7 @@ class FooterTest extends Component{
     {
         return(
             <div>
-                <input type="button" onClick={this.changePage.bind(this)} value="TEST"/>
+                <input type="button" onClick={this.changePage.bind(this)} value="TEST_Footer"/>
             </div>
         )
     }
