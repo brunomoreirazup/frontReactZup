@@ -15,13 +15,13 @@ export default class Home extends Component{
         return(
             <div>
                 <Navbar/>
+                <Header title="HOME" />
                 <Provider store={store}>
                     <Footer />
                 </Provider>
                 <Provider store={store}>
                     <FooterTest />
                 </Provider>
-                <Header title="HOME"/>
             </div>
 
         )
