@@ -50,8 +50,8 @@ class Table extends Component {
                                 {data.data.map( (dataItem,i)=> {
                                     return <td key={data.id+i}>{dataItem}</td>
                                 })}
-                                <td>Editar</td>
-                                <td>Excluir</td>
+                                <td><button type='button' className='btn btn-dark'>Editar</button></td>
+                                <td><button type='button' className='btn btn-dark'>Remover</button></td>
                             </tr>
                         )
                     }
