@@ -1,0 +1,27 @@
+.SearchBox {
+    width: 90%;
+}
+
+.SearchBox-input {
+    width: 80% !important;
+    height: 40px;
+
+}
+
+.MainTitle {
+    padding-right: 30%;
+}
+
+.bottomline {
+    margin-bottom: 5%;
+    padding-right: 10px;
+}
+
+.SearchIcon {
+    background-image: url("../img/search.png");
+    background-size: 30px ;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40px;
+    width: 40px;
+}

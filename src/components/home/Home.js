@@ -16,12 +16,12 @@ export default class Home extends Component{
             <div>
                 <Navbar/>
                 <Header title="HOME" />
-                <Provider store={store}>
-                    <Footer />
-                </Provider>
-                <Provider store={store}>
-                    <FooterTest />
-                </Provider>
+                {/*<Provider store={store}>*/}
+                    {/*<Footer />*/}
+                {/*</Provider>*/}
+                {/*<Provider store={store}>*/}
+                    {/*<FooterTest />*/}
+                {/*</Provider>*/}
             </div>
 
         )
