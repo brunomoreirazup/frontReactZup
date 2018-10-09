@@ -1,0 +1,31 @@
+cidade:
+{
+	exibirModallAdd()
+	{
+		criarModal
+		(
+			Title:"Adicionar Cidade",
+			Body: {CreateFormCidade},
+			Footer:{btAdicionarModal onclick=criarCity()}
+		)
+	}
+	exibirModallEditar(id)
+	{
+		criarModal
+		(
+			Title:"Editar Cidade",
+			Body: {CreateFormCidade id={id}},
+			Footer:{btEditarModal onclick=editCity(id)}
+		)
+	}
+	exibirModallDeletar(id)
+	{
+		criarModal
+		(
+			Title:"Excluir Cidade",
+			Body: "Realmente deseja excluir a cidade ?",
+			Footer:{btDeleteCity onclick=deleteCity(id)}
+		)
+	}
+}
+
