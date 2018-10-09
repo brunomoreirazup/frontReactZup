@@ -22,7 +22,7 @@ export default class Home extends Component{
     render(){
         return(
             <div>
-                <Navbar/>
+                <Navbar currentPage={0} />
 
                 <h1>Cities</h1>
                 <h2>Header</h2>

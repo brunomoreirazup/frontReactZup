@@ -69,13 +69,23 @@ class FooterTest extends Component{
 
         this.i = 0;
     }
-    changePage()
+    changeToNextPage()
     {
-
+        if(this.i < 7)
+            this.i = ( this.i + 1 );
         this.props.dispatch({ type: 'PAGES' ,pages:this.pages[this.i]});
-        this.i = ( this.i + 1 ) % 8;
+
 
     }
+    changeToPrevPage()
+    {
+        if(this.i > 0)
+            this.i = this.i - 1 ;
+        this.props.dispatch({ type: 'PAGES' ,pages:this.pages[this.i]});
+
+
+    }
+
 
 
 
@@ -84,8 +94,11 @@ class FooterTest extends Component{
     {
         return(
             <div>
-                <input type="button" onClick={this.changePage.bind(this)} value="TEST_Footer"/>
+
+                <input type="button" onClick={this.changeToPrevPage.bind(this)} value="TEST_Footer <--"/>
+                <input type="button" onClick={this.changeToNextPage.bind(this)} value="TEST_Footer -->"/>
             </div>
+
         )
     }
 

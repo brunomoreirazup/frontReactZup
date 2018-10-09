@@ -11,7 +11,7 @@ export default class Home extends Component{
     render(){
         return(
             <div>
-                <Navbar/>
+                <Navbar currentPage={1} />
 
                 <h1>Customers</h1>
 
