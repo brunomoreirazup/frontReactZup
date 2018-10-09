@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-export default class Footer extends Component {
+class Footer extends Component {
 
     constructor(props) {
         super(props);
-        this.homePage = 1;
-        this.lastPage = 8;
-        this.nextPage = 7;
-        this.prevPage = 5;
-        this.currentPage = 6;
+
         this.printPrevPageButton = this.printPrevPageButton.bind(this);
         this.printPrevPageNumberSpace = this.printPrevPageNumberSpace.bind(this);
         this.printPrevPageNumber = this.printPrevPageNumber.bind(this);
@@ -24,7 +20,7 @@ export default class Footer extends Component {
 
     render() {
         return (
-            <nav aria-label="...">
+            <nav>
                 <ul className="pagination">
                     {this.printPrevPageButton()}
                     {this.printHomePageNumber()}
@@ -37,6 +33,8 @@ export default class Footer extends Component {
                     {this.printNextPageButton()}
                 </ul>
             </nav>
+
+
         );
     }
 
@@ -44,32 +42,32 @@ export default class Footer extends Component {
 
     printPrevPageButton()
     {
-        if(this.currentPage!=this.homePage)
+        if(this.props.currentPage !== this.props.homePage)
             return (
                 <li className="page-item">
                     <a className="page-link" href="#" tabIndex="-1">Previous</a>
                 </li>
-            )
+            );
         else
             return(
                 <li className="page-item disabled" >
                     <a className="page-link" href="#" tabIndex="-1" >Previous</a>
                 </li>
-            )
+            );
     }
     printHomePageNumber()
     {
-        if(this.currentPage - 1 > this.homePage)
+        if(this.props.currentPage - 1 > this.props.homePage)
             return (
                 <li className="page-item">
-                    <a className="page-link" href="#">{this.homePage}</a>
+                    <a className="page-link" href="#">{this.props.homePage}</a>
                 </li>
 
             )
     }
     printPrevPageNumberSpace()
     {
-        if(this.currentPage - 2 > this.homePage)
+        if(this.props.currentPage - 2 > this.props.homePage)
             return(
                 "..."
             );
@@ -77,10 +75,10 @@ export default class Footer extends Component {
     }
     printPrevPageNumber()
     {
-        if(this.currentPage!=this.homePage)
+        if(this.props.currentPage !== this.props.homePage)
             return (
                 <li className="page-item">
-                    <a className="page-link" href="#">{this.prevPage}</a>
+                    <a className="page-link" href="#">{this.props.prevPage}</a>
                 </li>
 
             )
@@ -90,41 +88,41 @@ export default class Footer extends Component {
         return(
             <li className="page-item active">
                 <a className="page-link" href="#">
-                    {this.currentPage} <span className="sr-only">(current)</span>
+                    {this.props.currentPage} <span className="sr-only">(current)</span>
                 </a>
             </li>
         );
 
     }
     printNextPageNumber() {
-        if (this.currentPage != this.lastPage)
+        if (this.props.currentPage !== this.props.lastPage)
             return (
                 <li className="page-item">
-                    <a className="page-link" href="#">{this.nextPage}</a>
+                    <a className="page-link" href="#">{this.props.nextPage}</a>
                 </li>
             )
 
     }
     printNextPageNumberSpace()
     {
-        if(this.currentPage + 2 < this.lastPage)
+        if(this.props.currentPage + 2 < this.props.lastPage)
         return(
             "..."
         );
     }
     printLastPageNumber()
     {
-        if (this.currentPage + 1 < this.lastPage)
+        if (this.props.currentPage + 1 < this.props.lastPage)
             return (
                 <li className="page-item">
-                    <a className="page-link" href="#">{this.lastPage}</a>
+                    <a className="page-link" href="#">{this.props.lastPage}</a>
                 </li>
             )
 
     }
     printNextPageButton()
     {
-        if(this.currentPage!=this.lastPage)
+        if(this.props.currentPage !== this.props.lastPage)
             return(
                 <li className="page-item">
                     <a className="page-link" href="#">Next</a>
@@ -140,4 +138,20 @@ export default class Footer extends Component {
     }
 
 
+
+
 }
+
+function mapStateToProps(state) {
+    return{
+        homePage : state.homePage,
+        lastPage : state.lastPage,
+        nextPage : state.nextPage,
+        prevPage : state.prevPage,
+        currentPage : state.currentPage
+
+    };
+
+}
+
+export default connect(mapStateToProps)(Footer);
