@@ -5,9 +5,9 @@ export default class ContentInfo extends Component{
     render(){
         return(
             <div>
-                <span>
+                <span className='form-inline'>
                     Exibindo 1 a
-                        <select>
+                        <select className='form-control'>
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>

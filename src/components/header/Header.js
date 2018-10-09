@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainTitle from "./MainTitle";
-import SearchBox from "./SearchBox";
+import SearchBox from "./searchBox/SearchBox";
 import BtnAdd from "./BtnAdd";
 import ContentInfo from "./ContentInfo";
 
