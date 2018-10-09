@@ -92,16 +92,5 @@ class FooterTest extends Component{
 }
 
 
-function mapStateToProps(state) {
-    return{
-        homePage : state.homePage,
-        lastPage : state.lastPage,
-        nextPage : state.nextPage,
-        prevPage : state.prevPage,
-        currentPage : state.currentPage
 
-    };
-
-}
-
-export default connect(mapStateToProps)(FooterTest);
+export default connect()(FooterTest);
