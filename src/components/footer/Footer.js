@@ -130,7 +130,7 @@ class Footer extends Component {
             );
         else
             return(
-                <li className="page-item">
+                <li className="page-item disabled">
                     <a className="page-link" href="#" disabled>Next</a>
                 </li>
 
