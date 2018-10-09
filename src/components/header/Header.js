@@ -2,8 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import MainTitle from "./MainTitle";
 import SearchBox from "./SearchBox";
-// import BtnAdd from "BtnAdd";
-// import ContentInfo from "ContentInfo";
+import BtnAdd from "./BtnAdd";
+import ContentInfo from "./ContentInfo";
 
 
 export default class Header extends Component{
@@ -13,8 +13,8 @@ export default class Header extends Component{
             <div>
                 <MainTitle title={this.props.title} />
                 <SearchBox/>
-                {/*<BtnAdd/>*/}
-                {/*<ContentInfo/>*/}
+                <BtnAdd title={this.props.title} type="Adicionar"/>
+                <ContentInfo/>
             </div>
         );
     }}
