@@ -25,7 +25,7 @@ class SearchBox extends Component{
 
 function mapStateToProps(state){
     return{
-        store: state.pages
+        store: state.lista
     };
 }
 export default connect(mapStateToProps)(SearchBox);
