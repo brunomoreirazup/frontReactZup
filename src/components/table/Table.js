@@ -6,6 +6,7 @@ export default class Table extends Component {
     {
         super(props);
         this.init();
+        console.log("constructor table");
 
     }
     init()

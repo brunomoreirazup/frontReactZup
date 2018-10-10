@@ -14,19 +14,39 @@ export default class Home extends Component{
     {
         this.title = "Cidades";
         this.tHead = ["Nome","",""];
-        this.form = "";
+        this.form = this.Createbody();
+        this.footer = this.Createfooter();
     }
     render(){
         return(
             <div>
                 <Navbar currentPage={0} />
-                <Dashboard title={this.title} tHead = {this.tHead}/>
+                <Dashboard title={this.title} tHead = {this.tHead} form={this.form} footer={this.footer}/>
                 <TableTest/>
 
             </div>
 
         )
     }
+
+    Createbody = () =>{
+        return(
+            <form className="form-inline form-group">
+                <label>Cidade:</label>
+                <input className="form-control" type="text" placeholder="Insira uma cidade"/>
+            </form>
+        );
+    }
+
+    Createfooter = () =>{
+        return(
+            <button type="button" className="btn btn-dark">Salvar</button>
+        );
+    }
+
+
+
+
     addCity(){}
     editCity(id){}
     deleteCity(id){}
