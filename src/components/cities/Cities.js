@@ -20,12 +20,12 @@ export default class Home extends Component{
     }
 
 
+
     render(){
         return(
             <div>
                 <Navbar currentPage={0} />
-
-                <Header title={"Cidades"}/>
+                <Header title={"Cidades"    }/>
                 <Table thead={["Nome","",""]}/>
                 <TableTest />
                 <Footer />
