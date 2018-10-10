@@ -8,10 +8,11 @@ import reduceFooter from "./components/footer/reduceFooter";
 import reduceTable from "./components/table/reduceTable";
 import {Provider} from 'react-redux';
 import Copyright from "./components/copyright/Copyright";
+import devToolsEnhancer from 'remote-redux-devtools';
 
 const reducers = combineReducers({reduceFooter,reduceTable});
 
-const store = createStore(reduceFooter);
+const store = createStore(reduceFooter,devToolsEnhancer());
 
 class App extends Component {
     render() {
