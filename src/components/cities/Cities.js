@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
-import FooterTest from "../footer/FooterTest";
-import Table from "../table/Table";
+import Dashboard from "../dashboard/DashBoard";
 import TableTest from "../table/TableCitiesTest";
-import Header from "../header/Header";
-
 export default class Home extends Component{
 
 
@@ -16,23 +12,52 @@ export default class Home extends Component{
     }
     init()
     {
-
+        this.title = "Cidades";
+        this.tHead = ["Nome","",""];
+        this.form = "";
     }
-
-
     render(){
         return(
             <div>
                 <Navbar currentPage={0} />
-
-                <Header title={"Cidades"}/>
-                <Table thead={["Nome","",""]}/>
-                <TableTest />
-                <Footer />
-                <FooterTest />
+                <Dashboard title={this.title} tHead = {this.tHead}/>
+                <TableTest/>
 
             </div>
 
         )
     }
+    addCity()
+    {
+
+    }
+    editCity(id)
+    {
+
+    }
+    deleteCity(id)
+    {
+
+    }
+    searchCity(name)
+    {
+
+    }
+    changeCurrentPage(currentPage)
+    {
+
+    }
+    changePageSize(size)
+    {
+
+    }
+    listCity()
+    {
+
+    }
+    loadForm()
+    {
+
+    }
+
 }
