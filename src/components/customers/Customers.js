@@ -4,6 +4,7 @@ import Footer from "../footer/Footer";
 import FooterTest from "../footer/FooterTest";
 import Table from "../table/Table";
 import TableCustomersTest from "../table/TableCustomersTest";
+import Header from "../header/Header";
 
 export default class Home extends Component{
 
@@ -13,9 +14,8 @@ export default class Home extends Component{
             <div>
                 <Navbar currentPage={1} />
 
-                <h1>Customers</h1>
 
-                <h2>Header</h2>
+                <Header title={"Clientes"}/>
 
                 <Table thead={["Nome","Cidade","",""]}/>
                 <TableCustomersTest/>

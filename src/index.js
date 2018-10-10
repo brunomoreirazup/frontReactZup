@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min";
 import "jquery/dist/jquery.min";
 import "popper.js/dist/popper.min";
+import "./css/header.css";
+import "./css/navbar.css";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

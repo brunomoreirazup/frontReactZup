@@ -4,6 +4,7 @@ import Footer from "../footer/Footer";
 import FooterTest from "../footer/FooterTest";
 import Table from "../table/Table";
 import TableTest from "../table/TableCitiesTest";
+import Header from "../header/Header";
 
 export default class Home extends Component{
 
@@ -24,8 +25,7 @@ export default class Home extends Component{
             <div>
                 <Navbar currentPage={0} />
 
-                <h1>Cities</h1>
-                <h2>Header</h2>
+                <Header title={"Cidades"}/>
                 <Table thead={["Nome","",""]}/>
                 <TableTest />
                 <Footer />
