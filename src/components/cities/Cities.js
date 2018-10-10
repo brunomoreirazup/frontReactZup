@@ -30,7 +30,6 @@ export default class Home extends Component{
                 <TableTest />
                 <Footer />
                 <FooterTest />
-
             </div>
 
         )

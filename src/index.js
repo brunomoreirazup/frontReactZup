@@ -7,6 +7,8 @@ import "jquery/dist/jquery.min";
 import "popper.js/dist/popper.min";
 import "./css/header.css";
 import "./css/navbar.css";
+import "./css/footer.css";
+import "./css/copyright.css";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

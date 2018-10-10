@@ -7,6 +7,7 @@ import {createStore,combineReducers} from "redux";
 import reduceFooter from "./components/footer/reduceFooter";
 import reduceTable from "./components/table/reduceTable";
 import {Provider} from 'react-redux';
+import Copyright from "./components/copyright/Copyright";
 
 const reducers = combineReducers({reduceFooter,reduceTable});
 
@@ -15,13 +16,16 @@ const store = createStore(reduceFooter);
 class App extends Component {
     render() {
         return (
-            <Provider store={store}>
-                <Router history={browserHistory}>
-                    <Route path="/" component={home}/>
-                    <Route path="/cidades" component={cities} />
-                    <Route path="/clientes" component={customers}/>
-                </Router>
-            </Provider>
+            <div>
+                <Provider store={store}>
+                    <Router history={browserHistory}>
+                        <Route path="/" component={home}/>
+                        <Route path="/cidades" component={cities} />
+                        <Route path="/clientes" component={customers}/>
+                    </Router>
+                </Provider>
+                <Copyright/>
+            </div>
         )
     }
 }
