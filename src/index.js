@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min";
+import "jquery/dist/jquery.min";
+import "popper.js/dist/popper.min";
+import "./css/header.css";
+import "./css/navbar.css";
 import * as serviceWorker from './serviceWorker';
-import {Router, Route, browserHistory} from 'react-router';
-
 
 ReactDOM.render(
 

@@ -1,0 +1,29 @@
+import React, { Component } from 'react';
+import Navbar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
+import FooterTest from "../footer/FooterTest";
+import Table from "../table/Table";
+import TableCustomersTest from "../table/TableCustomersTest";
+import Header from "../header/Header";
+
+export default class Home extends Component{
+
+
+    render(){
+        return(
+            <div>
+                <Navbar currentPage={1} />
+
+
+                <Header title={"Clientes"}/>
+
+                <Table thead={["Nome","Cidade","",""]}/>
+                <TableCustomersTest/>
+                <Footer />
+                <FooterTest />
+
+            </div>
+
+        )
+    }
+}

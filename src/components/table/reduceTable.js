@@ -1,16 +1,7 @@
 export default function reduce(state={}, action) {
-    console.log("ReduceFoot:");
+    console.log("REDUCE TABLE");
     console.log(state);
     console.log(action);
-    if(action.type ===  "PAGES")
-    {
-
-        let newState = Object.assign({},state);
-        newState.pages = action.pages;
-        console.log(newState);
-        return newState;
-
-    }
     if(action.type === "TABLE_BODY")
     {
         let newState = Object.assign({},state);
@@ -19,7 +10,5 @@ export default function reduce(state={}, action) {
         return newState;
 
     }
-
     return state;
-
 }
