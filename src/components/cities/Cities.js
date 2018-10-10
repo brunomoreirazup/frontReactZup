@@ -14,14 +14,14 @@ export default class Home extends Component{
     {
         this.title = "Cidades";
         this.tHead = ["Nome","",""];
-        this.form = this.Createbody();
-        this.footer = this.Createfooter();
+        this.form = this.CreateFormBody.bind(this);
+        this.cidade_name = "";
     }
     render(){
         return(
             <div>
                 <Navbar currentPage={0} />
-                <Dashboard title={this.title} tHead = {this.tHead} form={this.form} footer={this.footer}/>
+                <Dashboard title={this.title} tHead = {this.tHead} form={this.form} add={this.addCity.bind(this)}/>
                 <TableTest/>
 
             </div>
@@ -29,25 +29,27 @@ export default class Home extends Component{
         )
     }
 
-    Createbody = () =>{
+    CreateFormBody(action,data){
         return(
-            <form className="form-inline form-group">
+            <form onSubmit={(event) => {event.preventDefault(); action(data)}}>
                 <label>Cidade:</label>
-                <input className="form-control" type="text" placeholder="Insira uma cidade"/>
+                <input className="form-control" type="text" placeholder="Insira uma cidade" ref={(input) => this.cidade_name = input}/>
             </form>
         );
     }
 
-    Createfooter = () =>{
-        return(
-            <button type="button" className="btn btn-dark">Salvar</button>
-        );
+    addCity(){
+        let state= this.props.route.store.getState();
+
+        let city=[{
+            id : parseInt(Math.random()*1000),
+            data:[""+this.cidade_name.value],
+        }]
+        if(state!= null && state.table_body != null)
+            city=state.table_body.concat(city);
+        console.log(city);
+        this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:city});
     }
-
-
-
-
-    addCity(){}
     editCity(id){}
     deleteCity(id){}
     searchCity(name){}

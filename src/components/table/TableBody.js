@@ -20,6 +20,7 @@ class TableBody extends Component {
     }
     printTbody()
     {
+        console.log(this.props.table_body)
         console.log("printTbody");
         if(this.props.table_body == undefined)
             return <tbody></tbody>;

@@ -21,9 +21,9 @@ export default class Home extends Component{
             modal:false
         };
         this.modalContent = {
-            title:'Title',
-            body: 'Form',
-            footer: 'Bt'
+            title:'',
+            body: '',
+            footer: ''
 
         };
 
@@ -31,8 +31,8 @@ export default class Home extends Component{
     showModalAdd(){
         this.modalContent = {
             title:"Adicionar " + this.title,
-            body: this.props.form,
-            footer: this.props.footer
+            body: this.props.form(this.props.add),
+            footer: <button type="button" className="btn btn-dark" onClick={this.props.add}>Salvar</button>
         }
         this.setState({
             modal: !this.state.modal
@@ -56,7 +56,7 @@ export default class Home extends Component{
             <div>
 
                 <Header title={this.title} showModalAdd={this.showModalAdd.bind(this)}/>
-    <Table thead={this.tHead}/>
+                <Table thead={this.tHead}/>
                 <Footer />
                 <FooterTest />
                 <MainModal modal={this.state.modal} toggle={this.toggleModal.bind(this)} modalContent={this.modalContent}/>
