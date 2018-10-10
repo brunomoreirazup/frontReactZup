@@ -18,6 +18,10 @@ export default class Home extends Component{
         this.title = this.props.title;
         this.tHead = this.props.tHead;
     }
+    showModalAdd(){}
+    showModalEdit(){}
+    showModalDelete(){}
+
 
 
     render(){

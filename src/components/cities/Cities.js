@@ -27,37 +27,13 @@ export default class Home extends Component{
 
         )
     }
-    addCity()
-    {
-
-    }
-    editCity(id)
-    {
-
-    }
-    deleteCity(id)
-    {
-
-    }
-    searchCity(name)
-    {
-
-    }
-    changeCurrentPage(currentPage)
-    {
-
-    }
-    changePageSize(size)
-    {
-
-    }
-    listCity()
-    {
-
-    }
-    loadForm()
-    {
-
-    }
+    addCity(){}
+    editCity(id){}
+    deleteCity(id){}
+    searchCity(name){}
+    changeCurrentPage(currentPage){}
+    changePageSize(size){}
+    listCity(){}
+    loadForm(){}
 
 }
