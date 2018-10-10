@@ -8,11 +8,12 @@ export default class MainModal extends Component{
 
     }
 
+
     render(){
         return(
             <div>
                 <Modal isOpen={this.props.modal} toggle={this.props.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.props.toggle}>{this.props.modalContent.type} {this.props.modalContent.title}</ModalHeader>
+                    <ModalHeader toggle={this.props.toggle}>{this.props.modalContent.title}</ModalHeader>
                     <ModalBody>
                         {this.props.modalContent.body}
                     </ModalBody>
