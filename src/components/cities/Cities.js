@@ -15,7 +15,7 @@ export default class Home extends Component{
     init()
     {
         this.title = "Cidades";
-        this.tHead = ["Nome","",""];
+        this.tHead = ["Nome","Editar","Remover"];
         this.form = this.CreateFormBody.bind(this);
         this.input_cidade_name = "";
         this.cidade_name = "";

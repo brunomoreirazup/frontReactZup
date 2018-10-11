@@ -30,7 +30,7 @@ class DashBoard extends Component {
         this.modalContent = {
             title: "Adicionar " + this.title,
             body: this.props.form(this.props.add),
-            footer: <button type="button" className="btn btn-dark" onClick={this.props.add}>Salvar</button>
+            footer: <button type="button" className="btn btn-success" onClick={this.props.add}>Adicionar</button>
         }
         this.toggleModal();
 
@@ -43,16 +43,16 @@ class DashBoard extends Component {
         this.modalContent = {
             title: "Editar " + this.title,
             body: this.props.form(this.props.edit, id),
-            footer: <button type="button" className="btn btn-dark" onClick={this.props.edit.bind(this.props.edit, id)}>Salvar</button>
+            footer: <button type="button" className="btn btn-info" onClick={this.props.edit.bind(this.props.edit, id)}>Salvar</button>
         }
         this.toggleModal();
 
     }
     showModalDelete(id) {
         this.modalContent = {
-            title: "Deltar " + this.title,
-            body: "Realmente Deseja Remover City ? ",
-            footer: <button type="button" className="btn btn-dark" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
+            title: "Deletar " + this.title,
+            body: "Deseja realmente remover esta cidade? ",
+            footer: <button type="button" className="btn btn-danger" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
         }
         this.toggleModal();
     }

@@ -1,0 +1,19 @@
+.alinha{
+    text-align: center;
+}
+
+.bt-delete{
+    background-image: url(../img/trash.png);
+}
+
+.bt-edit{
+    background-image: url(../img/edit.png);
+}
+
+.bt-table{
+    background-size: 30px ;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40px;
+    width: 40px;
+}
