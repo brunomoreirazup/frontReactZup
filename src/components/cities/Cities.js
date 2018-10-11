@@ -23,7 +23,7 @@ export default class Home extends Component{
 
     componentDidMount(){
         console.log("MONTOU");
-        this.listCity("https://customers-challenge.herokuapp.com/cities");
+        this.listCity();
     }
 
     render(){
@@ -37,6 +37,7 @@ export default class Home extends Component{
                     add={this.addCity.bind(this)}
                     edit={this.editCity.bind(this)}
                     delete = {this.deleteCity.bind(this)}
+                    search = {this.searchCity.bind(this)}
                 />
                 <TableTest/>
 
@@ -92,11 +93,13 @@ export default class Home extends Component{
         this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:state.table_body});
         this.props.route.store.dispatch({ type: 'TOGGLE_MAIN_MODAL'});
     }
-    searchCity(name){}
+    searchCity(name){
+        console.log(name);
+    }
     changeCurrentPage(currentPage){}
     changePageSize(size){}
-    listCity(url){
-        HttpApi.getAllCities(url)
+    listCity(){
+        HttpApi.getAllCities("https://customers-challenge.herokuapp.com/cities")
             .then(lista => {
               console.log(lista);
               let newLista = lista._embedded.cities.map(city =>{

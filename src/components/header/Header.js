@@ -18,7 +18,7 @@ export default class Header extends Component{
                         <MainTitle title={this.props.title} />
                     </div>
                     <div className='col-md-7 bottomline'>
-                        <SearchBox/>
+                        <SearchBox search={this.props.search}/>
                     </div>
                     <div className='col-md-2 bottomline'>
                         <BtnAdd title={this.props.title} type="Adicionar" click={this.props.showModalAdd}/>

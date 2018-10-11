@@ -63,7 +63,7 @@ class DashBoard extends Component {
         return (
             <div>
 
-                <Header title={this.title} showModalAdd={this.showModalAdd.bind(this)} />
+                <Header title={this.title} showModalAdd={this.showModalAdd.bind(this)} search = {this.props.search}/>
                 <Table thead={this.tHead} edit={this.showModalEdit.bind(this)} delete={this.showModalDelete.bind(this)} />
                 <Footer />
                 <FooterTest />
