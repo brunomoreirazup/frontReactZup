@@ -115,9 +115,17 @@ export default class Home extends Component{
 
     changeCurrentPage(currentPage){}
     listCity(){
-        HttpApi.getAllCities(`https://customers-challenge.herokuapp.com/cities?page=1&size=${this.size}`)
+
+        let store = this.props.route.store.getState();
+        console.log("store listcity");
+        console.log(store);
+        let page = store.pages.currentPage;
+        page=2;
+
+        HttpApi.getAllCities(`https://customers-challenge.herokuapp.com/cities?page=${page}&size=${this.size}`)
             .then(lista => {
               console.log(lista);
+              this.changeStorePages(lista);
               let newLista = lista._embedded.cities.map(city =>{
                   let cityId = city._links.self.href;
                   let cityName = city.name;
@@ -126,11 +134,25 @@ export default class Home extends Component{
               );
               console.log(newLista);
               this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:newLista});
+              
 
                 }
             );
     }
-
+    changeStorePages(json)
+    {
+        console.log(json.page);
+        let page = 
+            {
+                homePage: 1,
+                lastPage: json.page.totalPages,
+                nextPage: 0,
+                prevPage: 0,
+                currentPage: 1
+    
+            };
+        this.props.route.store.dispatch({ type: 'PAGES' ,pages: page });
+    }
     loadForm(id){
         let city="";
         let state= this.props.route.store.getState();

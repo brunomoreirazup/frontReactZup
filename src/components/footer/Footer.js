@@ -26,7 +26,16 @@ class Footer extends Component {
     }
     clearPages()
     {
-        this.props.dispatch({ type: 'PAGES' ,pages: null });
+        let defaultPages = 
+            {
+                homePage: 1,
+                lastPage: 1,
+                nextPage: 0,
+                prevPage: 0,
+                currentPage: 1
+    
+            };
+        this.props.dispatch({ type: 'PAGES' ,pages: defaultPages });
     }
 
     printPagination()

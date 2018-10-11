@@ -58,7 +58,7 @@ class DashBoard extends Component {
     }
 
     changePageSize(size){
-        console.log(size);
+        console.log(size.value);
     }
 
 
