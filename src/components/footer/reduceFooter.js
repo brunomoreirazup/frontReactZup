@@ -17,8 +17,8 @@ export default function reduce(state={}, action) {
         newState.table_body = action.table_body;
         console.log(newState);
         return newState;
-
     }
+
 
     if(action.type === "SEARCH"){
         let newState = Object.assign({},state);

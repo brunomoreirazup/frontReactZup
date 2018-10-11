@@ -15,7 +15,7 @@ class SearchBox extends Component{
 
     render(){
         return(
-            <form className='form-inline SearchBox' onSubmit={this.search.bind(this)}>
+            <form className='form-inline form-group SearchBox' onSubmit={this.search.bind(this)}>
                 <input className='form-control SearchBox-input' type='text' placeholder='Pesquisar...'/>
                 <button className='btn btn-dark SearchIcon' type='submit'></button>
             </form>

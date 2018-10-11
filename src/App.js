@@ -8,10 +8,11 @@ import reduceFooter from "./components/footer/reduceFooter";
 import reduceTable from "./components/table/reduceTable";
 import {Provider} from 'react-redux';
 import Copyright from "./components/copyright/Copyright";
+import devToolsEnhancer from 'remote-redux-devtools';
 
 const reducers = combineReducers({reduceFooter,reduceTable});
 
-const store = createStore(reduceFooter);
+const store = createStore(reduceFooter,devToolsEnhancer());
 
 class App extends Component {
     render() {
@@ -20,7 +21,7 @@ class App extends Component {
                 <Provider store={store}>
                     <Router history={browserHistory}>
                         <Route path="/" component={home}/>
-                        <Route path="/cidades" component={cities} />
+                        <Route path="/cidades" component={cities} store={store}/>
                         <Route path="/clientes" component={customers}/>
                     </Router>
                 </Provider>
