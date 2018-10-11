@@ -57,13 +57,19 @@ class DashBoard extends Component {
         this.toggleModal();
     }
 
+    changePageSize(size){
+        console.log(size);
+    }
 
 
     render() {
         return (
             <div>
 
-                <Header title={this.title} showModalAdd={this.showModalAdd.bind(this)} search = {this.props.search}/>
+                <Header title={this.title}
+                        showModalAdd={this.showModalAdd.bind(this)} search={this.props.search}
+                        changeSize={this.changePageSize.bind(this)}
+                />
                 <Table thead={this.tHead} edit={this.showModalEdit.bind(this)} delete={this.showModalDelete.bind(this)} />
                 <Footer />
                 <FooterTest />

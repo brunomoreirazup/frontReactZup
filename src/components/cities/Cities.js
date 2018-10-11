@@ -3,7 +3,6 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import TableTest from "../table/TableCitiesTest";
 import HttpApi from "../http/HttpApi";
-import MainModal from "../modal/MainModal";
 export default class Home extends Component{
 
 
@@ -54,7 +53,7 @@ export default class Home extends Component{
         return(
             <form onSubmit={(event) => {event.preventDefault(); action(id)}}>
                 <label>Cidade:</label>
-                <input className="form-control" defaultValue={this.cidade_name}type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input}/>
+                <input className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input}/>
             </form>
         );
     }
@@ -66,7 +65,7 @@ export default class Home extends Component{
         let city=[{
             id : parseInt(Math.random()*1000),
             data:[""+this.input_cidade_name.value],
-        }]
+        }];
         if(state!= null && state.table_body != null)
             city=state.table_body.concat(city);
         console.log(city);
@@ -94,12 +93,29 @@ export default class Home extends Component{
         this.props.route.store.dispatch({ type: 'TOGGLE_MAIN_MODAL'});
     }
     searchCity(name){
-        console.log(name);
+        let url = '';
+        if (name) url =`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`;
+        else url =`https://customers-challenge.herokuapp.com/cities?page=1&${this.page}=${this.size}&sort=name,${this.sort}`;
+            HttpApi.getAllCities(url)
+                .then(lista => {
+                        console.log(lista);
+                        let newLista = lista._embedded.cities.map(city => {
+                                let cityId = city._links.self.href;
+                                let cityName = city.name;
+                                return {id: cityId, data: [cityName]};
+                            }
+                        );
+                        console.log(newLista);
+                        this.props.route.store.dispatch({type: 'TABLE_BODY', table_body: newLista});
+
+                    }
+                );
+
     }
+
     changeCurrentPage(currentPage){}
-    changePageSize(size){}
     listCity(){
-        HttpApi.getAllCities("https://customers-challenge.herokuapp.com/cities")
+        HttpApi.getAllCities(`https://customers-challenge.herokuapp.com/cities?page=1&size=${this.size}`)
             .then(lista => {
               console.log(lista);
               let newLista = lista._embedded.cities.map(city =>{
@@ -114,6 +130,7 @@ export default class Home extends Component{
                 }
             );
     }
+
     loadForm(id){
         let city="";
         let state= this.props.route.store.getState();

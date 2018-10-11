@@ -5,7 +5,7 @@ export default class BtnAdd extends Component{
 
     render(){
         return(
-            <button type='button' className='btn btn-dark' onClick={this.props.click}>Adiciona {this.props.title}</button>
+            <button type='button' className='btn btn-dark btn-add' onClick={this.props.click}>Adiciona {this.props.title}</button>
         );
     }
 }

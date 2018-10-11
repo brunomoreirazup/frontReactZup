@@ -10,6 +10,8 @@ export default class Header extends Component{
         super(props);
     }
     render(){
+        console.log("PROPS");
+        console.log(this.props);
         return(
             <div className='container'>
                 <br/>
@@ -26,7 +28,7 @@ export default class Header extends Component{
                 </div>
                 <br/>
                 <div className='row'>
-                    <ContentInfo/>
+                    <ContentInfo changeSize={this.props.changeSize}/>
                 </div>
             </div>
         );
