@@ -20,18 +20,20 @@ class TableBody extends Component {
     }
     printTbody()
     {
-        console.log(this.props.table_body)
+        console.log(this.props.table_body);
         console.log("printTbody");
         if(this.props.table_body == undefined)
             return <tbody></tbody>;
         return(
             <tbody>
             {this.props.table_body.map( (data , i) => {
-                    return (
+
+                        return (
                         <tr key={data.id}>
-                            <td>{i}</td>
+                            <td>{i+1}</td>
                             {data.data.map( (dataItem,i)=> {
-                                return <td key={data.id+i}>{dataItem}</td>
+                                let keyItem =data.id+"|"+i;
+                                return <td key={keyItem}>{dataItem}</td>
                             })}
                             <td><button type='button' className='btn btn-dark' onClick={this.props.edit.bind(this.props.edit,data.id)}>Editar</button></td>
                             <td><button type='button' className='btn btn-dark' onClick={this.props.delete.bind(this.props.delete,data.id)}>Remover</button></td>

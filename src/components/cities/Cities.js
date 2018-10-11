@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import TableTest from "../table/TableCitiesTest";
+import HttpApi from "../http/HttpApi";
+
+
 export default class Home extends Component{
 
 
@@ -18,6 +21,12 @@ export default class Home extends Component{
         this.input_cidade_name = "";
         this.cidade_name = "";
     }
+
+    componentDidMount(){
+        console.log("MONTOU");
+        this.listCity("https://customers-challenge.herokuapp.com/cities");
+    }
+
     render(){
         return(
             <div>
@@ -82,7 +91,22 @@ export default class Home extends Component{
     searchCity(name){}
     changeCurrentPage(currentPage){}
     changePageSize(size){}
-    listCity(){}
+    listCity(url){
+        HttpApi.getAllCities(url)
+            .then(lista => {
+              console.log(lista);
+              let newLista = lista._embedded.cities.map(city =>{
+                  let cityId = city._links.self.href;
+                  let cityName = city.name;
+                  return {id:cityId, data:[cityName]};
+                  }
+              );
+              console.log(newLista);
+              this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:newLista});
+
+                }
+            );
+    }
     loadForm(id){
         let city="";
         let state= this.props.route.store.getState();

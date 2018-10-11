@@ -31,10 +31,12 @@ export default class Home extends Component {
             title: "Adicionar " + this.title,
             body: this.props.form(this.props.add),
             footer: <button type="button" className="btn btn-dark" onClick={this.props.add}>Salvar</button>
-        }
+        };
+        console.log(this.state.modal);
         this.setState({
             modal: !this.state.modal
         });
+        console.log(this.state.modal);
 
 
     }
@@ -48,7 +50,7 @@ export default class Home extends Component {
             title: "Editar " + this.title,
             body: this.props.form(this.props.edit, id),
             footer: <button type="button" className="btn btn-dark" onClick={this.props.edit.bind(this.props.edit, id)}>Salvar</button>
-        }
+        };
         this.setState({
             modal: !this.state.modal
         });
@@ -59,7 +61,7 @@ export default class Home extends Component {
             title: "Deltar " + this.title,
             body: "Realmente Deseja Remover City ? ",
             footer: <button type="button" className="btn btn-dark" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
-        }
+        };
         this.setState({
             modal: !this.state.modal
         });
