@@ -4,8 +4,8 @@ import FooterTest from "../footer/FooterTest";
 import Table from "../table/Table";
 import Header from "../header/Header";
 import MainModal from "../modal/MainModal";
-
-export default class Home extends Component {
+import { connect } from 'react-redux';
+class DashBoard extends Component {
 
 
     constructor(props) {
@@ -32,16 +32,12 @@ export default class Home extends Component {
             body: this.props.form(this.props.add),
             footer: <button type="button" className="btn btn-dark" onClick={this.props.add}>Salvar</button>
         }
-        this.setState({
-            modal: !this.state.modal
-        });
-
+        this.toggleModal();
 
     }
     toggleModal() {
-        this.setState({
-            modal: !this.state.modal
-        })
+        this.props.dispatch({type:"MAIN_MODAL_CONTENT",modalContent:this.modalContent})
+        this.props.dispatch({type:"TOGGLE_MAIN_MODAL"});
     }
     showModalEdit(id) {
         this.modalContent = {
@@ -49,9 +45,7 @@ export default class Home extends Component {
             body: this.props.form(this.props.edit, id),
             footer: <button type="button" className="btn btn-dark" onClick={this.props.edit.bind(this.props.edit, id)}>Salvar</button>
         }
-        this.setState({
-            modal: !this.state.modal
-        });
+        this.toggleModal();
 
     }
     showModalDelete(id) {
@@ -60,9 +54,7 @@ export default class Home extends Component {
             body: "Realmente Deseja Remover City ? ",
             footer: <button type="button" className="btn btn-dark" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
         }
-        this.setState({
-            modal: !this.state.modal
-        });
+        this.toggleModal();
     }
 
 
@@ -75,10 +67,11 @@ export default class Home extends Component {
                 <Table thead={this.tHead} edit={this.showModalEdit.bind(this)} delete={this.showModalDelete.bind(this)} />
                 <Footer />
                 <FooterTest />
-                <MainModal modal={this.state.modal} toggle={this.toggleModal.bind(this)} modalContent={this.modalContent} />
+                <MainModal/>
 
             </div>
 
         )
     }
 }
+export default connect()(DashBoard);

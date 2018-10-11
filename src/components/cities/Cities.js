@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import TableTest from "../table/TableCitiesTest";
+import MainModal from "../modal/MainModal";
 export default class Home extends Component{
 
 
@@ -65,8 +66,12 @@ export default class Home extends Component{
     }
     editCity(id){
         let state= this.props.route.store.getState();
-        state.table_body.forEach(element => {
-            if(element.id == id)element.data[0] = this.input_cidade_name.value;
+        state.table_body = state.table_body.map(element => {
+            if(element.id == id)
+            {
+                element.data[0] = this.input_cidade_name.value;
+            }
+            return element;
         });
         this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:state.table_body});
     }
@@ -78,6 +83,7 @@ export default class Home extends Component{
             return true;
         });
         this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:state.table_body});
+        this.props.route.store.dispatch({ type: 'TOGGLE_MAIN_MODAL'});
     }
     searchCity(name){}
     changeCurrentPage(currentPage){}

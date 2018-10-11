@@ -1,28 +1,48 @@
 import React, {Component} from 'react';
 import {Button,Modal,ModalHeader,ModalBody,ModalFooter} from 'reactstrap';
-
-export default class MainModal extends Component{
+import { connect } from 'react-redux';
+class MainModal extends Component{
 
     constructor(props){
         super(props);
-
+        this.toggleMainModal = this.toggleMainModal.bind(this);
+        this.toggleMainModal();
     }
-
-
-    render(){
+    toggleMainModal()
+    {
+        this.props.dispatch({type:"TOGGLE_MAIN_MODAL",modalOpen:false});
+    }
+    createModal()
+    {
+        if(this.props.modalContent != null)
         return(
-            <div>
-                <Modal isOpen={this.props.modal} toggle={this.props.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.props.toggle}>{this.props.modalContent.title}</ModalHeader>
+            <Modal isOpen={this.props.modalOpen} toggle={this.toggleMainModal}>
+                    <ModalHeader toggle={this.toggleMainModal}>{this.props.modalContent.title}</ModalHeader>
                     <ModalBody>
                         {this.props.modalContent.body}
                     </ModalBody>
                     <ModalFooter>
                         {this.props.modalContent.footer}
-                        <Button color='secondary' onClick={this.props.toggle}>Cancel</Button>
+                        <Button color='secondary' onClick={this.toggleMainModal}>Cancel</Button>
                     </ModalFooter>
-                </Modal>
+            </Modal>
+        )
+        return "";
+    }
+    render(){
+        return(
+            <div>
+                {this.createModal()}
             </div>
         );
     }
 }
+function mapStateToProps(state) {
+    return{
+        modalOpen : state.modalOpen,
+        modalContent:state.modalContent
+    };
+
+}
+export default connect(mapStateToProps)(MainModal);
+    
