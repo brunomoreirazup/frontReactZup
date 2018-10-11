@@ -33,8 +33,8 @@ class TableBody extends Component {
                             {data.data.map( (dataItem,i)=> {
                                 return <td key={data.id+i}>{dataItem}</td>
                             })}
-                            <td><button type='button' className='btn btn-dark'>Editar</button></td>
-                            <td><button type='button' className='btn btn-dark'>Remover</button></td>
+                            <td><button type='button' className='btn btn-dark' onClick={this.props.edit.bind(this.props.edit,data.id)}>Editar</button></td>
+                            <td><button type='button' className='btn btn-dark' onClick={this.props.delete.bind(this.props.delete,data.id)}>Remover</button></td>
                         </tr>
                     )
                 }

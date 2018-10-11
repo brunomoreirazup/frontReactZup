@@ -35,7 +35,7 @@ export default class Table extends Component {
         return(
                 <table className="table table-striped table-bordered">
                     {this.printThead()}
-                    <TableBody />
+                    <TableBody edit={this.props.edit} delete={this.props.delete} />
                 </table>
 
             )
