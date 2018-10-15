@@ -34,7 +34,7 @@ export default class Table extends Component {
         console.log("TableReader");
         return(
 
-                <table className="table table-striped table-bordered table-hover container">
+                <table className="table table-striped table-bordered table-hover alinha container">
                     {this.printThead()}
                     <TableBody edit={this.props.edit} delete={this.props.delete} />
                 </table>

@@ -41,7 +41,8 @@ class Footer extends Component {
         if(this.props.pages != null)
         {
             return (
-            <nav>
+                <div className="container">
+            <nav >
 
 
                 <ul className="pagination">
@@ -56,6 +57,7 @@ class Footer extends Component {
                     {this.printNextPageButton()}
                 </ul>
             </nav>
+            </div>
 
 
         );
