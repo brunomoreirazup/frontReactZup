@@ -60,6 +60,10 @@ class DashBoard extends Component {
     changePageSize(size){
         console.log(size.value);
     }
+    changeCurrentPage(page){
+        this.props.dispatch({type:"PAGES_CURRENT",currentPage:page})
+        this.props.list();
+    }
 
 
     render() {
@@ -71,7 +75,7 @@ class DashBoard extends Component {
                         changeSize={this.changePageSize.bind(this)}
                 />
                 <Table thead={this.tHead} edit={this.showModalEdit.bind(this)} delete={this.showModalDelete.bind(this)} />
-                <Footer />
+                <Footer changeCurrentPage={this.changeCurrentPage.bind(this)}/>
                 <FooterTest />
                 <MainModal/>
 

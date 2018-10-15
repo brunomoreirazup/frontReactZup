@@ -11,6 +11,24 @@ export default function reduce(state={}, action) {
         return newState;
 
     }
+    if(action.type ===  "PAGES")
+    {
+
+        let newState = Object.assign({},state);
+        newState.pages = action.pages;
+        console.log(newState);
+        return newState;
+
+    }
+    if(action.type ===  "PAGES_CURRENT")
+    {
+
+        let newState = Object.assign({},state);
+        newState.pages.currentPage = action.currentPage;
+        console.log(newState);
+        return newState;
+
+    }
     if(action.type === "TABLE_BODY")
     {
         let newState = Object.assign({},state);

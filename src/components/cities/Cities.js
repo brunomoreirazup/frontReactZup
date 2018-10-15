@@ -21,7 +21,6 @@ export default class Home extends Component{
     }
 
     componentDidMount(){
-        console.log("MONTOU");
         this.listCity();
     }
 
@@ -37,6 +36,7 @@ export default class Home extends Component{
                     edit={this.editCity.bind(this)}
                     delete = {this.deleteCity.bind(this)}
                     search = {this.searchCity.bind(this)}
+                    list = {this.listCity.bind(this)}
                 />
                 <TableTest/>
 
@@ -116,13 +116,12 @@ export default class Home extends Component{
     changeCurrentPage(currentPage){}
     listCity(){
 
-        let store = this.props.route.store.getState();
+        let state= this.props.route.store.getState();
         console.log("store listcity");
-        console.log(store);
-        let page = store.pages.currentPage;
-        page=2;
+        console.log(state);
+        let page = state.pages.currentPage;
 
-        HttpApi.getAllCities(`https://customers-challenge.herokuapp.com/cities?page=${page}&size=${this.size}`)
+        HttpApi.getAllCities(`https://customers-challenge.herokuapp.com/cities?page=${page-1}&size=${this.size}`)
             .then(lista => {
               console.log(lista);
               this.changeStorePages(lista);
@@ -146,9 +145,7 @@ export default class Home extends Component{
             {
                 homePage: 1,
                 lastPage: json.page.totalPages,
-                nextPage: 0,
-                prevPage: 0,
-                currentPage: 1
+                currentPage: json.page.number + 1
     
             };
         this.props.route.store.dispatch({ type: 'PAGES' ,pages: page });

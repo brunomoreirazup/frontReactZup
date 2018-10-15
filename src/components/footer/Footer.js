@@ -30,9 +30,7 @@ class Footer extends Component {
             {
                 homePage: 1,
                 lastPage: 1,
-                nextPage: 0,
-                prevPage: 0,
-                currentPage: 1
+                currentPage: 2
     
             };
         this.props.dispatch({ type: 'PAGES' ,pages: defaultPages });
@@ -82,7 +80,7 @@ class Footer extends Component {
     {
         if(this.props.pages.currentPage !== this.props.pages.homePage)
             return (
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.currentPage - 1)}}>
                     <a className="page-link _page-link" href="#" tabIndex="-1">Previous</a>
                 </li>
             );
@@ -116,7 +114,7 @@ class Footer extends Component {
         if(this.props.pages.currentPage !== this.props.pages.homePage)
             return (
                 <li className="page-item">
-                    <a className="page-link _page-link" href="#">{this.props.pages.prevPage}</a>
+                    <a className="page-link _page-link" href="#">{this.props.pages.currentPage - 1}</a>
                 </li>
 
             )
@@ -136,7 +134,7 @@ class Footer extends Component {
         if (this.props.pages.currentPage !== this.props.pages.lastPage)
             return (
                 <li className="page-item">
-                    <a className="page-link _page-link" href="#">{this.props.pages.nextPage}</a>
+                    <a className="page-link _page-link" href="#">{this.props.pages.currentPage + 1}</a>
                 </li>
             )
 
