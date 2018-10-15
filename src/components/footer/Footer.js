@@ -95,7 +95,7 @@ class Footer extends Component {
     {
         if(this.props.pages.currentPage - 1 > this.props.pages.homePage)
             return (
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.homePage)}}>
                     <a className="page-link _page-link" href="#">{this.props.pages.homePage}</a>
                 </li>
 
@@ -113,7 +113,7 @@ class Footer extends Component {
     {
         if(this.props.pages.currentPage !== this.props.pages.homePage)
             return (
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.currentPage - 1)}}>
                     <a className="page-link _page-link" href="#">{this.props.pages.currentPage - 1}</a>
                 </li>
 
@@ -133,7 +133,7 @@ class Footer extends Component {
     printNextPageNumber() {
         if (this.props.pages.currentPage !== this.props.pages.lastPage)
             return (
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.currentPage + 1)}}>
                     <a className="page-link _page-link" href="#">{this.props.pages.currentPage + 1}</a>
                 </li>
             )
@@ -150,7 +150,7 @@ class Footer extends Component {
     {
         if (this.props.pages.currentPage + 1 < this.props.pages.lastPage)
             return (
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.lastPage)}}>
                     <a className="page-link _page-link" href="#">{this.props.pages.lastPage}</a>
                 </li>
             )
@@ -160,7 +160,7 @@ class Footer extends Component {
     {
         if(this.props.pages.currentPage !== this.props.pages.lastPage)
             return(
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.currentPage + 1)}}>
                     <a className="page-link _page-link" href="#">Next</a>
                 </li>
             );
