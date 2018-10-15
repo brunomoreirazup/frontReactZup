@@ -6,3 +6,7 @@
 .page-item ._page-link {
     color:#21252a;
 }
+
+.page-item ._page-link:focus {
+    box-shadow:none;
+}

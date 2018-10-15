@@ -183,7 +183,6 @@ class Footer extends Component {
 function mapStateToProps(state) {
     return{
         reduceFooter : state.reduceFooter
-
     };
 
 }
