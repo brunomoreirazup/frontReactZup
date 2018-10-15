@@ -2,13 +2,13 @@ import 'isomorphic-fetch';
 
 export default class HttpApi {
 
-    static getAllCities(url) {
+    static makeGetRequest(url) {
         console.log(url);
         return fetch(url)
             .then(response => response.json());
     }
 
-    static makeChangeRequest(url, method, payload){
+    static makeChangeRequest(url, method, payload) {
         const requestInfo = {
             method: method,
             body: JSON.stringify(payload),
@@ -18,6 +18,6 @@ export default class HttpApi {
         };
         return fetch(url, requestInfo)
             .then(response => response.json());
-        }
-
+    }
+   
 }

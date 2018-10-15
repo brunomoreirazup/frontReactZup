@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import TableTest from "../table/TableCitiesTest";
 import HttpApi from "../http/HttpApi";
-export default class Home extends Component{
+export default class Cities extends Component{
 
 
     constructor(props)
@@ -101,7 +101,7 @@ export default class Home extends Component{
         let url = '';
         if (name) url =`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`;
         else url =`https://customers-challenge.herokuapp.com/cities?page=1&${this.page}=${this.size}&sort=name,${this.sort}`;
-            HttpApi.getAllCities(url)
+            HttpApi.makeGetRequest(url)
                 .then(lista => {
                         let newLista = lista._embedded.cities.map(city => {
                                 let cityId = city._links.self.href;
@@ -127,7 +127,7 @@ export default class Home extends Component{
         let page = state.pages.currentPage;
         let sizePage = state.page_size;
 
-        HttpApi.getAllCities(`https://customers-challenge.herokuapp.com/cities?page=${page-1}&size=${sizePage}&sort=name,asc`)
+        HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities?page=${page-1}&size=${sizePage}&sort=name,asc`)
             .then(lista => {
               console.log(lista);
               this.changeStorePages(lista);

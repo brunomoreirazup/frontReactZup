@@ -22,7 +22,7 @@ class App extends Component {
                     <Router history={browserHistory}>
                         <Route path="/" component={home}/>
                         <Route path="/cidades" component={cities} store={store}/>
-                        <Route path="/clientes" component={customers}/>
+                        <Route path="/clientes" component={customers} store={store}/>
                     </Router>
                 </Provider>
                 <Copyright/>

@@ -2,57 +2,87 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import TableTest from "../table/TableCustomersTest";
+import HttpApi from "../http/HttpApi";
+export default class Customers extends Component {
 
-export default class Home extends Component{
-
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
         this.title = "Clientes";
-        this.tHead = ["Nome","Cidade","",""];
+        this.tHead = ["Nome", "Cidade", "Editar", "Remover"];
         this.form = "";
     }
-    render(){
-        return(
+
+    componentDidMount() {
+        this.listCustomers();
+    }
+
+    render() {
+        return (
             <div>
                 <Navbar currentPage={1} />
 
-                <Dashboard title={this.title} tHead={this.tHead}/>
-                <TableTest/>
+                <Dashboard title={this.title} tHead={this.tHead} list={this.listCustomers} />
+                <TableTest />
             </div>
 
         )
     }
-    addCustomer()
-    {
+    addCustomer() {
 
     }
-    editCustomer(id)
-    {
+    editCustomer(id) {
 
     }
-    deleteCustomer(id)
-    {
+    deleteCustomer(id) {
 
     }
-    searchCustomer(name)
-    {
+    searchCustomer(name) {
 
     }
-    changeCurrentPage(currentPage)
-    {
+    changeCurrentPage(currentPage) {
 
     }
-    changePageSize(size)
-    {
+    changePageSize(size) {
 
     }
-    listCustomers()
-    {
+    listCustomers() {
+        let state = this.props.route.store.getState();
+        console.log("store listcustomer");
+        console.log(state);
+        let page = state.pages.currentPage;
+        let sizePage = state.page_size;
 
+        HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers?page=${page - 1}&size=${sizePage}&sort=name,asc`)
+            .then(lista => {
+
+                let count = 0;
+                console.log(lista);
+                //   this.changeStorePages(lista);
+                let newLista = [];
+                lista._embedded.customers.forEach((customers,i) => {
+                    let customerId = customers._links.self.href;
+                    let customerName = customers.name;
+                    let cityName;
+                    return HttpApi.makeGetRequest(customers._links.city.href)
+                        .then(city => {
+                            count++;
+                            cityName = city.name;                            
+                            newLista[i] =  { id: customerId, data: [customerName, cityName] };                            
+                            if(count == lista._embedded.customers.length)this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
+
+                        });
+
+                    
+                }
+                );
+                
+               
+
+
+            }
+            );
     }
-    loadForm()
-    {
+    loadForm() {
 
     }
 
