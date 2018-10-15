@@ -120,8 +120,9 @@ export default class Home extends Component{
         console.log("store listcity");
         console.log(state);
         let page = state.pages.currentPage;
+        let sizePage = state.page_size;
 
-        HttpApi.getAllCities(`https://customers-challenge.herokuapp.com/cities?page=${page-1}&size=${this.size}`)
+        HttpApi.getAllCities(`https://customers-challenge.herokuapp.com/cities?page=${page-1}&size=${sizePage}`)
             .then(lista => {
               console.log(lista);
               this.changeStorePages(lista);

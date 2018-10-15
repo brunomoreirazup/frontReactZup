@@ -59,19 +59,8 @@ class DashBoard extends Component {
     }
 
     changePageSize(size) {
-        let url = `https://customers-challenge.herokuapp.com/cities?size=${size}`;
-        HttpApi.getAllCities(url)
-            .then(lista => {
-                console.log(lista);
-                let newLista = lista._embedded.cities.map(city => {
-                    let cityId = city._links.self.href;
-                    let cityName = city.name;
-                    return { id: cityId, data: [cityName] };
-                }
-                );
-                console.log(newLista);
-                this.props.store.dispatch({ type: "PAGE_SIZE", page_size: size });;
-            });
+        this.props.dispatch({type:"PAGE_SIZE",page_size:size.value})
+        this.props.list();
         
     }
     changeCurrentPage(page){
