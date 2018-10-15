@@ -49,8 +49,8 @@ export default class Customers extends Component {
         let state = this.props.route.store.getState();
         console.log("store listcustomer");
         console.log(state);
-        let page = state.pages.currentPage;
-        let sizePage = state.page_size;
+        let page = state.reduceFooter.pages.currentPage;
+        let sizePage = state.reduceContentInfo.page_size;
 
         HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers?page=${page - 1}&size=${sizePage}&sort=name,asc`)
             .then(lista => {
