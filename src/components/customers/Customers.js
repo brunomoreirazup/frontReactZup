@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
-import TableTest from "../table/TableCustomersTest";
 import HttpApi from "../http/HttpApi";
 export default class Customers extends Component {
 
@@ -22,7 +21,6 @@ export default class Customers extends Component {
                 <Navbar currentPage={1} />
 
                 <Dashboard title={this.title} tHead={this.tHead} list={this.listCustomers.bind(this)} />
-                <TableTest />
             </div>
 
         )
@@ -39,12 +37,17 @@ export default class Customers extends Component {
     searchCustomer(name) {
 
     }
-    changeCurrentPage(currentPage) {
+    changeStorePages(json) {
+        let page =
+        {
+            homePage: 1,
+            lastPage: json.page.totalPages,
+            currentPage: json.page.number + 1
 
+        };
+        this.props.route.store.dispatch({ type: 'PAGES', pages: page });
     }
-    // changePageSize(size) {
 
-    // }
     listCustomers() {
         let state = this.props.route.store.getState();
         console.log("store listcustomer");
@@ -57,20 +60,22 @@ export default class Customers extends Component {
 
                 let count = 0;
                 console.log(lista);
-                //   this.changeStorePages(lista);
+                this.changeStorePages(lista);
                 let newLista = [];
-                lista._embedded.customers.forEach((customers, i) => {
-                    let customerId = customers._links.self.href;
-                    let customerName = customers.name;
-                    let cityName;
-                    return HttpApi.makeGetRequest(customers._links.city.href)
-                        .then(city => {
-                            count++;
-                            cityName = city.name;
-                            newLista[i] = { id: customerId, data: [customerName, cityName] };
-                            if (count == lista._embedded.customers.length) this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
-                        });
-                });
+
+                lista._embedded.customers
+                    .forEach((customers, i) => {
+                        let customerId = customers._links.self.href;
+                        let customerName = customers.name;
+                        let cityName;
+                        return HttpApi.makeGetRequest(customers._links.city.href)
+                            .then(city => {
+                                count++;
+                                cityName = city.name;
+                                newLista[i] = { id: customerId, data: [customerName, cityName] };
+                                if (count == lista._embedded.customers.length) this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
+                            });
+                    });
             });
     }
     loadForm() {

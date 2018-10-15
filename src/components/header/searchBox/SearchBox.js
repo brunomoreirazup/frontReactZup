@@ -18,7 +18,7 @@ class SearchBox extends Component{
         return(
             <form className='form-inline form-group SearchBox' onSubmit={(event) => this.search(event)}>
                 <input className='form-control SearchBox-input' type='text' placeholder='Pesquisar...' ref={(input) => this.input_search = input}/>
-                <button className='btn btn-dark form-control SearchIcon' type='submit'> </button>
+                <button className='btn btn-dark SearchIcon' type='submit'> </button>
             </form>
         );
     }
