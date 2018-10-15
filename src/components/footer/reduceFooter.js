@@ -6,6 +6,7 @@ export default function reduce(state = {}, action) {
         return newState;
 
     }
+
     if (action.type === "PAGES_CURRENT") {
 
         let newState = Object.assign({}, state);

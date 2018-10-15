@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
-import TableTest from "../table/TableCitiesTest";
 import HttpApi from "../http/HttpApi";
 export default class cities extends Component{
 
-
+export default class Home extends Component{
     constructor(props)
     {
         super(props);
         this.init();
     }
+
     init()
     {
         this.title = "Cidades";
@@ -64,7 +64,7 @@ export default class cities extends Component{
 
         let payload = {
             "name": this.input_cidade_name.value
-        }
+        };
 
         HttpApi.makeChangeRequest(url,method,payload)
             .then(() => {
@@ -87,14 +87,14 @@ export default class cities extends Component{
     }
 
     deleteCity(id){
-        let state= this.props.route.store.getState();
-        state.table_body = state.table_body.filter(element => {
-            if(element.id == id)
-                return false;
-            return true;
-        });
-        this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:state.table_body});
-        this.props.route.store.dispatch({ type: 'TOGGLE_MAIN_MODAL'});
+        let url = id;
+        console.log(id);
+
+        HttpApi.removeEntry(url)
+            .then(() => {
+                this.listCity();
+            })
+            .catch(alert("Esta cidade não pode ser removida, há clientes nela!"));
     }
 
     searchCity(name){
