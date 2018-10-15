@@ -83,6 +83,7 @@ export default class Cities extends Component{
         HttpApi.makeChangeRequest(url,method,payload)
             .then(() => {
                 this.listCity();
+                this.props.route.store.dispatch({type:"TOGGLE_MAIN_MODAL"})
             });
     }
 
@@ -96,8 +97,14 @@ export default class Cities extends Component{
                 console.log(response);
                 if(response.status == 409)
                 {
-                    console.log("ja tem cliente");
+                    alert("ja tem cliente");
                 }
+                else
+                {
+                    this.listCity();
+                }
+                this.props.route.store.dispatch({type:"TOGGLE_MAIN_MODAL"})
+                    
             })
     }
 

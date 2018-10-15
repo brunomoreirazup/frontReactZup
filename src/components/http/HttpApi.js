@@ -27,8 +27,7 @@ export default class HttpApi {
                 'Content-type': 'application/json'
             })
         };
-        return fetch(url, requestInfo)
-            .then(response => response.json());
+        return fetch(url, requestInfo);
     }
 
 }
