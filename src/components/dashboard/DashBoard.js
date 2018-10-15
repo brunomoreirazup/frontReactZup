@@ -25,6 +25,7 @@ class DashBoard extends Component {
             footer: ''
 
         };
+        this.props.dispatch({type:"PAGE_SIZE",page_size:5})
 
     }
 
