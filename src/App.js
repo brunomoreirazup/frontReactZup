@@ -3,14 +3,11 @@ import home from './components/home/Home';
 import {Router, Route, browserHistory} from 'react-router';
 import cities from "./components/cities/Cities";
 import customers from "./components/customers/Customers";
-import {createStore,combineReducers} from "redux";
+import {createStore} from "redux";
 import reduceFooter from "./components/footer/reduceFooter";
-import reduceTable from "./components/table/reduceTable";
 import {Provider} from 'react-redux';
 import Copyright from "./components/copyright/Copyright";
 import devToolsEnhancer from 'remote-redux-devtools';
-
-const reducers = combineReducers({reduceFooter,reduceTable});
 
 const store = createStore(reduceFooter,devToolsEnhancer());
 

@@ -20,4 +20,14 @@ export default class HttpApi {
             .then(response => response.json());
         }
 
+    static removeEntry(url){
+        const requestInfo = {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-type': 'application/json'
+            })
+        };
+        return fetch(url, requestInfo);
+    }
+
 }

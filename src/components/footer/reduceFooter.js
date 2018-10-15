@@ -2,6 +2,7 @@ export default function reduce(state = {}, action) {
     console.log("ReduceFoot:");
     console.log(state);
     console.log(action);
+
     if (action.type === "PAGES") {
 
         let newState = Object.assign({}, state);
@@ -10,14 +11,7 @@ export default function reduce(state = {}, action) {
         return newState;
 
     }
-    if (action.type === "PAGES") {
 
-        let newState = Object.assign({}, state);
-        newState.pages = action.pages;
-        console.log(newState);
-        return newState;
-
-    }
     if (action.type === "PAGES_CURRENT") {
 
         let newState = Object.assign({}, state);
@@ -59,13 +53,6 @@ export default function reduce(state = {}, action) {
         return newState;
 
 
-    }
-
-
-    if (action.type === "SEARCH") {
-        let newState = Object.assign({}, state);
-        newState.lista = action.pages;
-        return newState;
     }
 
     return state;
