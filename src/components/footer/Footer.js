@@ -30,7 +30,7 @@ class Footer extends Component {
             {
                 homePage: 1,
                 lastPage: 1,
-                currentPage: 2
+                currentPage: 1
     
             };
         this.props.dispatch({ type: 'PAGES' ,pages: defaultPages });
