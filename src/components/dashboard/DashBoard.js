@@ -5,6 +5,7 @@ import Table from "../table/Table";
 import Header from "../header/Header";
 import MainModal from "../modal/MainModal";
 import { connect } from 'react-redux';
+import HttpApi from "../http/HttpApi";
 class DashBoard extends Component {
 
 
@@ -36,8 +37,8 @@ class DashBoard extends Component {
 
     }
     toggleModal() {
-        this.props.dispatch({type:"MAIN_MODAL_CONTENT",modalContent:this.modalContent})
-        this.props.dispatch({type:"TOGGLE_MAIN_MODAL"});
+        this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent })
+        this.props.dispatch({ type: "TOGGLE_MAIN_MODAL" });
     }
     showModalEdit(id) {
         this.modalContent = {
@@ -57,8 +58,21 @@ class DashBoard extends Component {
         this.toggleModal();
     }
 
-    changePageSize(size){
-        console.log(size.value);
+    changePageSize(size) {
+        let url = `https://customers-challenge.herokuapp.com/cities?size=${size}`;
+        HttpApi.getAllCities(url)
+            .then(lista => {
+                console.log(lista);
+                let newLista = lista._embedded.cities.map(city => {
+                    let cityId = city._links.self.href;
+                    let cityName = city.name;
+                    return { id: cityId, data: [cityName] };
+                }
+                );
+                console.log(newLista);
+                this.props.store.dispatch({ type: "PAGE_SIZE", page_size: size });;
+            });
+        
     }
     changeCurrentPage(page){
         this.props.dispatch({type:"PAGES_CURRENT",currentPage:page})
@@ -71,13 +85,13 @@ class DashBoard extends Component {
             <div>
 
                 <Header title={this.title}
-                        showModalAdd={this.showModalAdd.bind(this)} search={this.props.search}
-                        changeSize={this.changePageSize.bind(this)}
+                    showModalAdd={this.showModalAdd.bind(this)} search={this.props.search}
+                    changeSize={this.changePageSize.bind(this)}
                 />
                 <Table thead={this.tHead} edit={this.showModalEdit.bind(this)} delete={this.showModalDelete.bind(this)} />
                 <Footer changeCurrentPage={this.changeCurrentPage.bind(this)}/>
                 <FooterTest />
-                <MainModal/>
+                <MainModal />
 
             </div>
 

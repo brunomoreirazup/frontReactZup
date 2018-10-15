@@ -25,6 +25,12 @@ export default function reduce(state={}, action) {
 
         let newState = Object.assign({},state);
         newState.pages.currentPage = action.currentPage;
+
+    if(action.type ===  "PAGE_SIZE")
+    {
+
+        let newState = Object.assign({},state);
+        newState.page_size = action.page_size;
         console.log(newState);
         return newState;
 
