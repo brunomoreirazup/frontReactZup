@@ -18,6 +18,17 @@ export default class HttpApi {
         };
         return fetch(url, requestInfo)
             .then(response => response.json());
+        }
+
+    static removeEntry(url){
+        const requestInfo = {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-type': 'application/json'
+            })
+        };
+        return fetch(url, requestInfo)
+            .then(response => response.json());
     }
-   
+
 }

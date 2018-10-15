@@ -1,9 +1,11 @@
 export default function reduce(state = {}, action) {
-    if (action.type === "TABLE_BODY") {
+    if (action.type === "PAGE_SIZE") {
+
         let newState = Object.assign({}, state);
-        newState.table_body = action.table_body;
+        newState.page_size = action.page_size;
         return newState;
-    }
+
+    }   
     return state;
 
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MainTitle from "./MainTitle";
 import SearchBox from "./searchBox/SearchBox";
 import BtnAdd from "./BtnAdd";
-import ContentInfo from "./ContentInfo";
+import ContentInfo from "./contentInfo/ContentInfo";
 
 export default class Header extends Component{
 
@@ -10,8 +10,6 @@ export default class Header extends Component{
         super(props);
     }
     render(){
-        console.log("PROPS");
-        console.log(this.props);
         return(
             <div className='container'>
                 <br/>

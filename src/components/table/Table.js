@@ -6,7 +6,6 @@ export default class Table extends Component {
     {
         super(props);
         this.init();
-        console.log("constructor table");
 
     }
 
@@ -33,7 +32,6 @@ export default class Table extends Component {
     }
     render()
     {
-        console.log("TableReader");
         return(
 
                 <table className="table table-striped table-bordered table-hover alinha container">

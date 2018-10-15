@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
-import TableTest from "../table/TableCitiesTest";
 import HttpApi from "../http/HttpApi";
 export default class Cities extends Component{
 
@@ -11,6 +10,7 @@ export default class Cities extends Component{
         super(props);
         this.init();
     }
+
     init()
     {
         this.title = "Cidades";
@@ -64,7 +64,7 @@ export default class Cities extends Component{
 
         let payload = {
             "name": this.input_cidade_name.value
-        }
+        };
 
         HttpApi.makeChangeRequest(url,method,payload)
             .then(() => {
@@ -87,14 +87,18 @@ export default class Cities extends Component{
     }
 
     deleteCity(id){
-        let state= this.props.route.store.getState();
-        state.table_body = state.table_body.filter(element => {
-            if(element.id == id)
-                return false;
-            return true;
-        });
-        this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:state.table_body});
-        this.props.route.store.dispatch({ type: 'TOGGLE_MAIN_MODAL'});
+        let url = id;
+        console.log(id);
+
+        HttpApi.removeEntry(url)
+            .then( (response ) => {
+                console.log("Response");
+                console.log(response);
+                if(response.status == 409)
+                {
+                    console.log("ja tem cliente");
+                }
+            })
     }
 
     searchCity(name){
@@ -109,7 +113,6 @@ export default class Cities extends Component{
                                 return {id: cityId, data: [cityName]};
                             }
                         );
-                        console.log(newLista);
                         this.props.route.store.dispatch({type: 'TABLE_BODY', table_body: newLista});
 
                     }
@@ -122,14 +125,11 @@ export default class Cities extends Component{
     listCity(){
 
         let state= this.props.route.store.getState();
-        console.log("store listcity");
-        console.log(state);
-        let page = state.pages.currentPage;
-        let sizePage = state.page_size;
+        let page = state.reduceFooter.pages.currentPage;
+        let sizePage = state.reduceContentInfo.page_size;
 
         HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities?page=${page-1}&size=${sizePage}&sort=name,asc`)
             .then(lista => {
-              console.log(lista);
               this.changeStorePages(lista);
               let newLista = lista._embedded.cities.map(city =>{
                   let cityId = city._links.self.href;
@@ -137,7 +137,6 @@ export default class Cities extends Component{
                   return {id:cityId, data:[cityName]};
                   }
               );
-              console.log(newLista);
               this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:newLista});
               
 
@@ -147,7 +146,6 @@ export default class Cities extends Component{
 
     changeStorePages(json)
     {
-        console.log(json.page);
         let page = 
             {
                 homePage: 1,
@@ -161,11 +159,10 @@ export default class Cities extends Component{
     loadForm(id){
         let city="";
         let state= this.props.route.store.getState();
-        state.table_body.forEach(element => {
+        state.reduceTable.table_body.forEach(element => {
             if(element.id == id)
                 city = element.data[0];
         });
-        console.log(city);
         this.cidade_name = city;
     }
 

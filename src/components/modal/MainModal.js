@@ -16,15 +16,15 @@ class MainModal extends Component{
 
     createModal()
     {
-        if(this.props.modalContent != null)
+        if(this.props.reduceMainModal != null && this.props.reduceMainModal.modalContent != null)
         return(
-            <Modal isOpen={this.props.modalOpen} toggle={this.toggleMainModal}>
-                    <ModalHeader toggle={this.toggleMainModal}>{this.props.modalContent.title}</ModalHeader>
+            <Modal isOpen={this.props.reduceMainModal.modalOpen} toggle={this.toggleMainModal}>
+                    <ModalHeader toggle={this.toggleMainModal}>{this.props.reduceMainModal.modalContent.title}</ModalHeader>
                     <ModalBody>
-                        {this.props.modalContent.body}
+                        {this.props.reduceMainModal.modalContent.body}
                     </ModalBody>
                     <ModalFooter>
-                        {this.props.modalContent.footer}
+                        {this.props.reduceMainModal.modalContent.footer}
                         <Button color='secondary' onClick={this.toggleMainModal}>Cancel</Button>
                     </ModalFooter>
             </Modal>
@@ -41,8 +41,7 @@ class MainModal extends Component{
 }
 function mapStateToProps(state) {
     return{
-        modalOpen : state.modalOpen,
-        modalContent:state.modalContent
+        reduceMainModal : state.reduceMainModal
     };
 
 }
