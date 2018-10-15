@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
-export default class cities extends Component{
-
-export default class Home extends Component{
+export default class Cities extends Component{
     constructor(props)
     {
         super(props);
@@ -91,10 +89,14 @@ export default class Home extends Component{
         console.log(id);
 
         HttpApi.removeEntry(url)
-            .then(() => {
-                this.listCity();
+            .then( (response ) => {
+                console.log("Response");
+                console.log(response);
+                if(response.status == 409)
+                {
+                    console.log("ja tem cliente");
+                }
             })
-            .catch(alert("Esta cidade não pode ser removida, há clientes nela!"));
     }
 
     searchCity(name){
