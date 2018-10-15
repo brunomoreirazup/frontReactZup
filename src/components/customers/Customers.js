@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import TableTest from "../table/TableCustomersTest";
 
-export default class Home extends Component{
+export default class Customers extends Component{
 
     constructor(props)
     {

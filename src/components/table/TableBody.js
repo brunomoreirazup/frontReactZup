@@ -20,13 +20,11 @@ class TableBody extends Component {
     }
     printTbody()
     {
-        console.log(this.props.table_body);
-        console.log("printTbody");
-        if(this.props.table_body == undefined)
+        if(this.props.reduceTable == undefined || this.props.reduceTable.table_body == undefined)
             return <tbody></tbody>;
         return(
             <tbody>
-            {this.props.table_body.map( (data , i) => {
+            {this.props.reduceTable.table_body.map( (data , i) => {
 
                         return (
                         <tr key={data.id}>
@@ -50,14 +48,14 @@ class TableBody extends Component {
     }
     render()
     {
-        console.log("TableReader");
+        console.log(this.props.store)
         return this.printTbody();
     }
 }
 
 function mapStateToProps(state) {
     return{
-        table_body: state.table_body
+        reduceTable: state.reduceTable
     };
 
 }

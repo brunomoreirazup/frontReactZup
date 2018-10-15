@@ -9,10 +9,12 @@ import reduceTable from "./components/table/reduceTable";
 import {Provider} from 'react-redux';
 import Copyright from "./components/copyright/Copyright";
 import devToolsEnhancer from 'remote-redux-devtools';
+import reduceMainModal from "./components/modal/reduceMainModal";
+import reduceContentInfo from "./components/header/contentInfo/reduceContentInfo";
 
-const reducers = combineReducers({reduceFooter,reduceTable});
+const reducers = combineReducers({reduceFooter,reduceTable,reduceMainModal,reduceContentInfo});
 
-const store = createStore(reduceFooter,devToolsEnhancer());
+const store = createStore(reducers,devToolsEnhancer());
 
 class App extends Component {
     render() {

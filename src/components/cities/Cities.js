@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import TableTest from "../table/TableCitiesTest";
 import HttpApi from "../http/HttpApi";
-export default class Home extends Component{
+export default class cities extends Component{
 
 
     constructor(props)
@@ -109,7 +109,6 @@ export default class Home extends Component{
                                 return {id: cityId, data: [cityName]};
                             }
                         );
-                        console.log(newLista);
                         this.props.route.store.dispatch({type: 'TABLE_BODY', table_body: newLista});
 
                     }
@@ -122,14 +121,11 @@ export default class Home extends Component{
     listCity(){
 
         let state= this.props.route.store.getState();
-        console.log("store listcity");
-        console.log(state);
-        let page = state.pages.currentPage;
-        let sizePage = state.page_size;
+        let page = state.reduceFooter.pages.currentPage;
+        let sizePage = state.reduceContentInfo.page_size;
 
         HttpApi.getAllCities(`https://customers-challenge.herokuapp.com/cities?page=${page-1}&size=${sizePage}&sort=name,asc`)
             .then(lista => {
-              console.log(lista);
               this.changeStorePages(lista);
               let newLista = lista._embedded.cities.map(city =>{
                   let cityId = city._links.self.href;
@@ -137,7 +133,6 @@ export default class Home extends Component{
                   return {id:cityId, data:[cityName]};
                   }
               );
-              console.log(newLista);
               this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:newLista});
               
 
@@ -147,7 +142,6 @@ export default class Home extends Component{
 
     changeStorePages(json)
     {
-        console.log(json.page);
         let page = 
             {
                 homePage: 1,
@@ -161,11 +155,10 @@ export default class Home extends Component{
     loadForm(id){
         let city="";
         let state= this.props.route.store.getState();
-        state.table_body.forEach(element => {
+        state.reduceTable.table_body.forEach(element => {
             if(element.id == id)
                 city = element.data[0];
         });
-        console.log(city);
         this.cidade_name = city;
     }
 

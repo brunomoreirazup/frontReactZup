@@ -7,7 +7,6 @@ class searchBoxApi{
 
         this.props.store.dispatch({type: "SEARCH",pages:this.pages});
 
-        console.log(this.props.store);
 
     }
 
