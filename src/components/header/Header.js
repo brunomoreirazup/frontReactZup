@@ -10,6 +10,8 @@ export default class Header extends Component{
         super(props);
     }
     render(){
+        console.log("PROPS");
+        console.log(this.props);
         return(
             <div className='container'>
                 <br/>
@@ -18,7 +20,7 @@ export default class Header extends Component{
                         <MainTitle title={this.props.title} />
                     </div>
                     <div className='col-md-7 bottomline'>
-                        <SearchBox/>
+                        <SearchBox search={this.props.search}/>
                     </div>
                     <div className='col-md-2 bottomline'>
                         <BtnAdd title={this.props.title} type="Adicionar" click={this.props.showModalAdd}/>
@@ -26,7 +28,7 @@ export default class Header extends Component{
                 </div>
                 <br/>
                 <div className='row'>
-                    <ContentInfo/>
+                    <ContentInfo changeSize={this.props.changeSize}/>
                 </div>
             </div>
         );

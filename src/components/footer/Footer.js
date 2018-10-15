@@ -26,7 +26,14 @@ class Footer extends Component {
     }
     clearPages()
     {
-        this.props.dispatch({ type: 'PAGES' ,pages: null });
+        let defaultPages = 
+            {
+                homePage: 1,
+                lastPage: 1,
+                currentPage: 1
+    
+            };
+        this.props.dispatch({ type: 'PAGES' ,pages: defaultPages });
     }
 
     printPagination()
@@ -34,7 +41,8 @@ class Footer extends Component {
         if(this.props.pages != null)
         {
             return (
-            <nav>
+                <div className="container">
+            <nav >
 
 
                 <ul className="pagination">
@@ -49,6 +57,7 @@ class Footer extends Component {
                     {this.printNextPageButton()}
                 </ul>
             </nav>
+            </div>
 
 
         );
@@ -73,7 +82,7 @@ class Footer extends Component {
     {
         if(this.props.pages.currentPage !== this.props.pages.homePage)
             return (
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.currentPage - 1)}}>
                     <a className="page-link _page-link" href="#" tabIndex="-1">Previous</a>
                 </li>
             );
@@ -88,7 +97,7 @@ class Footer extends Component {
     {
         if(this.props.pages.currentPage - 1 > this.props.pages.homePage)
             return (
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.homePage)}}>
                     <a className="page-link _page-link" href="#">{this.props.pages.homePage}</a>
                 </li>
 
@@ -106,8 +115,8 @@ class Footer extends Component {
     {
         if(this.props.pages.currentPage !== this.props.pages.homePage)
             return (
-                <li className="page-item">
-                    <a className="page-link _page-link" href="#">{this.props.pages.prevPage}</a>
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.currentPage - 1)}}>
+                    <a className="page-link _page-link" href="#">{this.props.pages.currentPage - 1}</a>
                 </li>
 
             )
@@ -126,8 +135,8 @@ class Footer extends Component {
     printNextPageNumber() {
         if (this.props.pages.currentPage !== this.props.pages.lastPage)
             return (
-                <li className="page-item">
-                    <a className="page-link _page-link" href="#">{this.props.pages.nextPage}</a>
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.currentPage + 1)}}>
+                    <a className="page-link _page-link" href="#">{this.props.pages.currentPage + 1}</a>
                 </li>
             )
 
@@ -143,7 +152,7 @@ class Footer extends Component {
     {
         if (this.props.pages.currentPage + 1 < this.props.pages.lastPage)
             return (
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.lastPage)}}>
                     <a className="page-link _page-link" href="#">{this.props.pages.lastPage}</a>
                 </li>
             )
@@ -153,7 +162,7 @@ class Footer extends Component {
     {
         if(this.props.pages.currentPage !== this.props.pages.lastPage)
             return(
-                <li className="page-item">
+                <li className="page-item" onClick={() => {this.props.changeCurrentPage(this.props.pages.currentPage + 1)}}>
                     <a className="page-link _page-link" href="#">Next</a>
                 </li>
             );

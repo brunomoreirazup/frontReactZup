@@ -8,10 +8,12 @@ class MainModal extends Component{
         this.toggleMainModal = this.toggleMainModal.bind(this);
         this.toggleMainModal();
     }
+
     toggleMainModal()
     {
         this.props.dispatch({type:"TOGGLE_MAIN_MODAL",modalOpen:false});
     }
+
     createModal()
     {
         if(this.props.modalContent != null)
