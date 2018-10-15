@@ -59,28 +59,33 @@ export default class Home extends Component{
 
     addCity(){
 
-        let state= this.props.route.store.getState();
+        let url = 'https://customers-challenge.herokuapp.com/cities';
+        let method = 'POST';
 
-        let city=[{
-            id : parseInt(Math.random()*1000),
-            data:[""+this.input_cidade_name.value],
-        }];
-        if(state!= null && state.table_body != null)
-            city=state.table_body.concat(city);
-        console.log(city);
-        this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:city});
+        let payload = {
+            "name": this.input_cidade_name.value
+        }
+
+        HttpApi.makeChangeRequest(url,method,payload)
+            .then(() => {
+                this.listCity();
+            });
     }
+
     editCity(id){
-        let state= this.props.route.store.getState();
-        state.table_body = state.table_body.map(element => {
-            if(element.id == id)
-            {
-                element.data[0] = this.input_cidade_name.value;
-            }
-            return element;
-        });
-        this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:state.table_body});
+
+        let url = id;
+        let method = 'PUT';
+        let payload = {
+            "name": this.input_cidade_name.value
+        };
+
+        HttpApi.makeChangeRequest(url,method,payload)
+            .then(() => {
+                this.listCity();
+            });
     }
+
     deleteCity(id){
         let state= this.props.route.store.getState();
         state.table_body = state.table_body.filter(element => {
@@ -91,13 +96,13 @@ export default class Home extends Component{
         this.props.route.store.dispatch({ type: 'TABLE_BODY' ,table_body:state.table_body});
         this.props.route.store.dispatch({ type: 'TOGGLE_MAIN_MODAL'});
     }
+
     searchCity(name){
         let url = '';
         if (name) url =`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`;
         else url =`https://customers-challenge.herokuapp.com/cities?page=1&${this.page}=${this.size}&sort=name,${this.sort}`;
             HttpApi.getAllCities(url)
                 .then(lista => {
-                        console.log(lista);
                         let newLista = lista._embedded.cities.map(city => {
                                 let cityId = city._links.self.href;
                                 let cityName = city.name;
@@ -113,6 +118,7 @@ export default class Home extends Component{
     }
 
     changeCurrentPage(currentPage){}
+
     listCity(){
 
         let state= this.props.route.store.getState();
@@ -138,6 +144,7 @@ export default class Home extends Component{
                 }
             );
     }
+
     changeStorePages(json)
     {
         console.log(json.page);
@@ -150,6 +157,7 @@ export default class Home extends Component{
             };
         this.props.route.store.dispatch({ type: 'PAGES' ,pages: page });
     }
+
     loadForm(id){
         let city="";
         let state= this.props.route.store.getState();

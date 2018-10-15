@@ -27,6 +27,14 @@ class DashBoard extends Component {
         };
 
     }
+
+
+    toggleModal() {
+        this.props.dispatch({type:"MAIN_MODAL_CONTENT",modalContent:this.modalContent})
+        this.props.dispatch({type:"TOGGLE_MAIN_MODAL"});
+    }
+
+
     showModalAdd() {
         this.modalContent = {
             title: "Adicionar " + this.title,
@@ -35,10 +43,6 @@ class DashBoard extends Component {
         }
         this.toggleModal();
 
-    }
-    toggleModal() {
-        this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent })
-        this.props.dispatch({ type: "TOGGLE_MAIN_MODAL" });
     }
     showModalEdit(id) {
         this.modalContent = {
@@ -52,14 +56,15 @@ class DashBoard extends Component {
     showModalDelete(id) {
         this.modalContent = {
             title: "Deletar " + this.title,
-            body: "Deseja realmente remover esta cidade? ",
-            footer: <button type="button" className="btn btn-danger" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
+            body: "Realmente Deseja Remover City ? ",
+            footer: <button type="button" className="btn btn-dark" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
         }
         this.toggleModal();
     }
 
     changePageSize(size) {
         this.props.dispatch({type:"PAGE_SIZE",page_size:size.value})
+        this.props.dispatch({type:"PAGES_CURRENT",currentPage:1})
         this.props.list();
         
     }

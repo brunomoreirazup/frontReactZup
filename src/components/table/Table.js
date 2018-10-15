@@ -9,10 +9,12 @@ export default class Table extends Component {
         console.log("constructor table");
 
     }
+
     init()
     {
         this.printThead = this.printThead.bind(this);
     }
+
     printThead()
     {
         return (

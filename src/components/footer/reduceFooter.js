@@ -38,9 +38,12 @@ export default function reduce(state = {}, action) {
         console.log(newState);
         return newState;
     }
-    if (action.type === "TOGGLE_MAIN_MODAL") {
-        let newState = Object.assign({}, state);
-        if (action.modalOpen === undefined)
+
+
+    if(action.type === "TOGGLE_MAIN_MODAL")
+    {
+        let newState = Object.assign({},state);
+        if(action.modalOpen === undefined)
             newState.modalOpen = !newState.modalOpen;
         else
             newState.modalOpen = action.modalOpen;
