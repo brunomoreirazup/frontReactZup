@@ -25,7 +25,7 @@ class MainModal extends Component{
                     </ModalBody>
                     <ModalFooter>
                         {this.props.reduceMainModal.modalContent.footer}
-                        <Button color='secondary' onClick={this.toggleMainModal}>Cancel</Button>
+                        <Button id="btClosseModal" color='secondary' onClick={this.toggleMainModal}>Cancel</Button>
                     </ModalFooter>
             </Modal>
         )

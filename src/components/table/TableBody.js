@@ -34,7 +34,7 @@ class TableBody extends Component {
                                 return <td key={keyItem}>{dataItem}</td>
                             })}
                             <td><button type='button' className='btn btn-info bt-table bt-edit' onClick={this.props.edit.bind(this.props.edit,data.id)}></button></td>
-                            <td><button type='button' className='btn btn-danger bt-table bt-delete' onClick={this.props.delete.bind(this.props.delete,data.id)}></button></td>
+                            <td><button type='button' id="btDelete" className='btn btn-danger bt-table bt-delete' onClick={this.props.delete.bind(this.props.delete,data.id)}></button></td>
                         </tr>
                     )
                 }

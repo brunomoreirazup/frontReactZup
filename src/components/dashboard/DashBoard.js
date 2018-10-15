@@ -40,7 +40,7 @@ class DashBoard extends Component {
         this.modalContent = {
             title: "Adicionar " + this.title,
             body: this.props.form(this.props.add),
-            footer: <button type="button" className="btn btn-success" onClick={this.props.add}>Adicionar</button>
+            footer: <button id="btAddModal" type="button" className="btn btn-success" onClick={this.props.add}>Adicionar</button>
         }
         this.toggleModal();
 
@@ -58,7 +58,7 @@ class DashBoard extends Component {
         this.modalContent = {
             title: "Deletar " + this.title,
             body: "Realmente Deseja Remover City ? ",
-            footer: <button type="button" className="btn btn-dark" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
+            footer: <button id="btDeleteModal" type="button" className="btn btn-dark" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
         }
         this.toggleModal();
     }
