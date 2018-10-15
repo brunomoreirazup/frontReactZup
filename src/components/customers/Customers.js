@@ -21,7 +21,7 @@ export default class Customers extends Component {
             <div>
                 <Navbar currentPage={1} />
 
-                <Dashboard title={this.title} tHead={this.tHead} list={this.listCustomers} />
+                <Dashboard title={this.title} tHead={this.tHead} list={this.listCustomers.bind(this)} />
                 <TableTest />
             </div>
 
@@ -42,9 +42,9 @@ export default class Customers extends Component {
     changeCurrentPage(currentPage) {
 
     }
-    changePageSize(size) {
+    // changePageSize(size) {
 
-    }
+    // }
     listCustomers() {
         let state = this.props.route.store.getState();
         console.log("store listcustomer");
@@ -59,28 +59,19 @@ export default class Customers extends Component {
                 console.log(lista);
                 //   this.changeStorePages(lista);
                 let newLista = [];
-                lista._embedded.customers.forEach((customers,i) => {
+                lista._embedded.customers.forEach((customers, i) => {
                     let customerId = customers._links.self.href;
                     let customerName = customers.name;
                     let cityName;
                     return HttpApi.makeGetRequest(customers._links.city.href)
                         .then(city => {
                             count++;
-                            cityName = city.name;                            
-                            newLista[i] =  { id: customerId, data: [customerName, cityName] };                            
-                            if(count == lista._embedded.customers.length)this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
-
+                            cityName = city.name;
+                            newLista[i] = { id: customerId, data: [customerName, cityName] };
+                            if (count == lista._embedded.customers.length) this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
                         });
-
-                    
-                }
-                );
-                
-               
-
-
-            }
-            );
+                });
+            });
     }
     loadForm() {
 
