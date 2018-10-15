@@ -18,6 +18,8 @@ export default function reduce(state={}, action) {
         console.log(newState);
         return newState;
     }
+
+
     if(action.type === "TOGGLE_MAIN_MODAL")
     {
         let newState = Object.assign({},state);

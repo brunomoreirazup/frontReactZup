@@ -26,6 +26,14 @@ class DashBoard extends Component {
         };
 
     }
+
+
+    toggleModal() {
+        this.props.dispatch({type:"MAIN_MODAL_CONTENT",modalContent:this.modalContent})
+        this.props.dispatch({type:"TOGGLE_MAIN_MODAL"});
+    }
+
+
     showModalAdd() {
         this.modalContent = {
             title: "Adicionar " + this.title,
@@ -34,10 +42,6 @@ class DashBoard extends Component {
         }
         this.toggleModal();
 
-    }
-    toggleModal() {
-        this.props.dispatch({type:"MAIN_MODAL_CONTENT",modalContent:this.modalContent})
-        this.props.dispatch({type:"TOGGLE_MAIN_MODAL"});
     }
     showModalEdit(id) {
         this.modalContent = {
@@ -50,7 +54,7 @@ class DashBoard extends Component {
     }
     showModalDelete(id) {
         this.modalContent = {
-            title: "Deltar " + this.title,
+            title: "Deletar " + this.title,
             body: "Realmente Deseja Remover City ? ",
             footer: <button type="button" className="btn btn-dark" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
         }
