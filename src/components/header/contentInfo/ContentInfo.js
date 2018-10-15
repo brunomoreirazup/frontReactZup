@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 export default class ContentInfo extends Component{
 
     render(){
-        console.log("this.props contentInfo");
-        console.log(this.props);
         this.pageSize = "";
         return(
             <div>
