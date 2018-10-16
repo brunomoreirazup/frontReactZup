@@ -15,7 +15,7 @@ import reduceTable from "./components/table/reduceTable";
 import reduceAutoComplete from "./components/form/autocomplete/reduceAutoComplete"
 
 
-const reducers = combineReducers({reduceSearch, reduceFooter,reduceTable,reduceMainModal,reduceContentInfo});
+const reducers = combineReducers({reduceSearch, reduceFooter,reduceTable,reduceMainModal,reduceContentInfo,reduceAutoComplete});
 
 const store = createStore(reducers,devToolsEnhancer());
 

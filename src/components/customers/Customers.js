@@ -59,17 +59,19 @@ class Customers extends Component {
 
     editCustomer(id) {
         let url = id;
-        let method = 'PUT';
+        let method = 'PATCH';
 
         let payload = {
             "name": this.input_customer_name.value,
-            "city": this.input_customer_city.value
+            "city": this.props.autoComplete.customerCity
         };
 
         HttpApi.makeChangeRequest(url, method, payload)
             .then(() => {
                 this.callTable();
+                this.props.route.store.dispatch({type:"TOGGLE_MAIN_MODAL"})
             });
+
     }
     deleteCustomer(id) {
         let url = id;
@@ -143,7 +145,7 @@ class Customers extends Component {
     }
 
     callTable() {
-        if(this.listType='search'){
+        if(this.listType=='search'){
             let keyword=this.props.route.store.getState().reduceSearch.search;
             console.log(keyword);
             this.searchCustomer(keyword);

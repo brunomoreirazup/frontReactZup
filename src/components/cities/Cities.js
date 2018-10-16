@@ -124,7 +124,7 @@ export default class Cities extends Component {
     }
 
     callTable() {
-        if (this.listType = 'search') {
+        if (this.listType == 'search') {
             let keyword = this.props.route.store.getState().reduceSearch.search;
             console.log(keyword);
             this.searchCity(keyword);
