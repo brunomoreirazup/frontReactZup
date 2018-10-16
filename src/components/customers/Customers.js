@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
-import Autocomplete from "react-autocomplete";
-export default class Customers extends Component {
+import {connect} from 'react-redux';
+import AutoCompleteTest from "../header/autocomplete/autocomplete";
+import theme from 'react-toolbox/lib/autocomplete/theme.css';
+
+class Customers extends Component {
 
     constructor(props) {
         super(props);
@@ -24,6 +27,7 @@ export default class Customers extends Component {
         return (
             <div>
                 <Navbar currentPage={1} />
+
                 <Dashboard title={this.title}
                     tHead={this.tHead}
                     form={this.form}
@@ -42,7 +46,7 @@ export default class Customers extends Component {
 
         let payload = {
             "name": this.input_customer_name.value,
-            "city": this.input_customer_city.value
+            "city": this.props.autoComplete.customerCity
         };
 
         HttpApi.makeChangeRequest(url, method, payload)
@@ -190,7 +194,8 @@ export default class Customers extends Component {
                 <label>Cliente:</label>
                 <input id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
                 <label>Cidade:</label>
-                <input id="input_customer_city" className="form-control" defaultValue={this.customer_city} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_customer_city = input} />
+                <AutoCompleteTest theme={theme}/>
+
             </form>
         );
     }
@@ -210,3 +215,12 @@ export default class Customers extends Component {
     }
 
 }
+
+function mapStateToProps(state) {
+    return{
+        autoComplete : state.reduceAutoComplete
+    };
+
+}
+
+export default connect(mapStateToProps)(Customers);
