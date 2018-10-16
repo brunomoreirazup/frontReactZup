@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import AutoCompleteTest from "../header/autocomplete/autocomplete";
 import theme from 'react-toolbox/lib/autocomplete/theme.css';
 
@@ -84,7 +84,18 @@ class Customers extends Component {
 
     }
     searchCustomer(name) {
-        if (!name) this.listCustomers();
+        if (!name) {
+            let defaultPages =
+            {
+                homePage: 1,
+                lastPage: 1,
+                currentPage: 1
+
+            };
+            this.props.dispatch({ type: 'PAGES', pages: defaultPages });
+            this.listCustomers();
+        }
+
         else {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
@@ -96,9 +107,9 @@ class Customers extends Component {
                             type: 'TABLE_BODY',
                             table_body: newLista
                         });
-                        
+
                         this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
-                        this.props.route.store.dispatch({ type: 'PAGES', page_size: null });
+                        this.props.route.store.dispatch({ type: 'PAGES', pages: null });
                     }
                     lista._embedded.customers
                         .forEach((customers, i) => {
@@ -194,7 +205,7 @@ class Customers extends Component {
                 <label>Cliente:</label>
                 <input id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
                 <label>Cidade:</label>
-                <AutoCompleteTest theme={theme}/>
+                <AutoCompleteTest theme={theme} />
 
             </form>
         );
@@ -217,8 +228,8 @@ class Customers extends Component {
 }
 
 function mapStateToProps(state) {
-    return{
-        autoComplete : state.reduceAutoComplete
+    return {
+        autoComplete: state.reduceAutoComplete
     };
 
 }

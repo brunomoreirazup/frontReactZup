@@ -60,11 +60,11 @@ export default class Cities extends Component {
         let url = 'https://customers-challenge.herokuapp.com/cities';
         let method = 'POST';
 
-        if(this.input_cidade_name.value == ""){
+        if (this.input_cidade_name.value == "") {
             alert("Insira uma cidade");
             this.input_cidade_name.focus();
         }
-        else{
+        else {
 
             let payload = {
                 "name": this.input_cidade_name.value
@@ -83,12 +83,12 @@ export default class Cities extends Component {
         let url = id;
         let method = 'PUT';
 
-        if(this.input_cidade_name.value == ""){
+        if (this.input_cidade_name.value == "") {
             alert("Insira uma cidade");
             this.input_cidade_name.focus();
         }
 
-        else{
+        else {
             let payload = {
                 "name": this.input_cidade_name.value
             };
@@ -96,7 +96,7 @@ export default class Cities extends Component {
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
                     this.listCity();
-                    this.props.route.store.dispatch({type:"TOGGLE_MAIN_MODAL"})
+                    this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL" })
                 });
 
         }
@@ -123,7 +123,18 @@ export default class Cities extends Component {
     }
 
     searchCity(name) {
-        if (!name) this.listCity();
+        if (!name) {
+            let defaultPages =
+            {
+                homePage: 1,
+                lastPage: 1,
+                currentPage: 1
+
+            };
+            this.props.dispatch({ type: 'PAGES', pages: defaultPages });
+            this.listCity();
+        }
+
         else {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
@@ -135,6 +146,7 @@ export default class Cities extends Component {
                     });
                     this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
                     this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
+                    this.props.route.store.dispatch({ type: 'PAGES', page: null });
                 });
         }
     }
