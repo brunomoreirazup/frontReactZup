@@ -14,6 +14,7 @@ export default class Table extends Component {
         this.printThead = this.printThead.bind(this);
     }
 
+
     printThead()
     {
         return (
@@ -22,7 +23,9 @@ export default class Table extends Component {
                     <th> # </th>
                     {this.props.thead.map((item,i)=>
                         {
-                            return <th key={i}>{item}</th>;
+                            if (i==0)
+                                return <th className='sortHead' key={i} onClick={this.props.sort}>{item}</th>;
+                                else return <th key={i}>{item}</th>;
                         }
                     )}
                 </tr>

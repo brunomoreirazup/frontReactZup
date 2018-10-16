@@ -14,17 +14,16 @@ export default class Header extends Component{
             <div className='container'>
                 <br/>
                 <div className='row bottomline'>
-                    <div className='col-md-3'>
+                    <div className='col-md-4'>
                         <MainTitle title={this.props.title} />
                     </div>
-                    <div className='col-md-7 bottomline'>
+                    <div className='col-md-6 bottomline'>
                         <SearchBox search={this.props.search}/>
                     </div>
                     <div className='col-md-2 bottomline'>
                         <BtnAdd title={this.props.title} type="Adicionar" click={this.props.showModalAdd}/>
                     </div>
                 </div>
-                <br/>
                 <div className='row'>
                     <ContentInfo changeSize={this.props.changeSize}/>
                 </div>

@@ -9,14 +9,14 @@
 }
 
 .MainTitle {
-    padding-right: 30%;
+    padding-left: 20%;
+
 }
 
 .bottomline {
-    margin-bottom: 5%;
-
+    margin-top: 0.5%;
+    margin-bottom: 1.5%;
     padding-right: 10px;
-    width: fit-content;
 }
 
 .SearchIcon {
@@ -38,4 +38,9 @@
     left: 50px;
 }
 
-
+.sortHead {
+    background-image: url("../img/sort.png");
+    background-size: 5%;
+    background-repeat: no-repeat;
+    background-position: 95% center;
+}

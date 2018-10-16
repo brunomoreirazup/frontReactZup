@@ -129,8 +129,10 @@ export default class Cities extends Component {
         let state = this.props.route.store.getState();
         let page = state.reduceFooter.pages.currentPage;
         let sizePage = state.reduceContentInfo.page_size;
+        let sort = state.reduceTable.sort_order;
 
-        HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities?page=${page - 1}&size=${sizePage}&sort=name,asc`)
+
+        HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities?page=${page - 1}&size=${sizePage}&sort=name,${sort}`)
             .then(lista => {
                 this.changeStorePages(lista);
                 let newLista = lista._embedded.cities.map(city => {
