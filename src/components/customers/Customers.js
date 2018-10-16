@@ -3,6 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import Autocomplete from "react-autocomplete";
+import AutoCompleteTest from "../header/autocomplete/autocomplete";
 export default class Customers extends Component {
 
     constructor(props) {
@@ -20,23 +21,7 @@ export default class Customers extends Component {
         return (
             <div>
                 <Navbar currentPage={1} />
-
-                <Autocomplete
-                    getItemValue={(item) => item.label}
-                    items={[
-                        { label: 'apple' },
-                        { label: 'banana' },
-                        { label: 'pear' }
-                    ]}
-                    renderItem={(item, isHighlighted) =>
-                        <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                            {item.label}
-                        </div>
-                    }
-                    // value={value}
-                    // onChange={(e) => value = e.target.value}
-                    // onSelect={(val) => value = val}
-                />
+                <AutoCompleteTest/>
                 <Dashboard title={this.title} tHead={this.tHead} list={this.listCustomers.bind(this)} />
             </div>
 
