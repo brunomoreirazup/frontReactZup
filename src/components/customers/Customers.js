@@ -35,10 +35,11 @@ export default class Customers extends Component {
     addCustomer() {
         let url = 'https://customers-challenge.herokuapp.com/customers';
         let method = 'POST';
-
+        console.log(this.props.route.store);
+        let store = this.props.route.store.getState();
         let payload = {
             "name": this.input_customer_name.value,
-            "city": this.input_customer_city.value
+            "city": store.reduceAutoComplete.autoCompleteState.menu[0].id
         };
 
         HttpApi.makeChangeRequest(url, method, payload)
@@ -137,9 +138,13 @@ export default class Customers extends Component {
             this.cidade_name = "";
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
-                <label>Cliente:</label>
-                <input id="input_customer_name"className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
-                <Autocomplete search={this.loadCity.bind(this)}/>
+                <div className="form-group">
+                    <label>Cliente:</label>
+                    <input id="input_customer_name"className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
+                </div>
+                <div className="form-group">
+                    <Autocomplete search={this.loadCity.bind(this)}/>
+                </div>
             </form>
         );
     }

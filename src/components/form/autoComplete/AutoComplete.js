@@ -23,9 +23,11 @@ class AutoComplete extends Component {
     {
         return(
             <div>
+                {this.props.reduceAutoComplete && this.props.reduceAutoComplete.autoCompleteState ? (
+                    <div>
              <Autocomplete
                     value={this.props.reduceAutoComplete.autoCompleteState.value}
-                    inputProps={{ id: 'states-autocomplete' }}
+                    inputProps={{ id: 'states-autocomplete', className:"form-control"}}
                     items={this.props.reduceAutoComplete.autoCompleteState.menu}
                     getItemValue={(item) => item.name}
                     onSelect={(value, state) => {
@@ -50,7 +52,7 @@ class AutoComplete extends Component {
                         this.setState({ value, loading: true, unitedStates: [],ok:false })
                         this.props.search(value, (items) => {
                             this.props.dispatch({ type: 'AUTO_COMPLETE_STATE', autoCompleteState:{
-                                value:this.props.reduceAutoComplete.value,
+                                value:this.props.reduceAutoComplete.autoCompleteState.value,
                                 menu:items,
                                 ok:false,
                                 loading:false
@@ -73,10 +75,14 @@ class AutoComplete extends Component {
                                 <div className="item">Nenhum resultado para {value}</div>
                             ) : items}
                         </div>
+                    
                     )}
                 />
-                {this.props.reduceAutoComplete.autoCompleteState.ok ? <span>this.props.reduceAutoComplete.menu[0].id</span> : <span></span>}
-                
+                <div>
+                    {this.props.reduceAutoComplete.autoCompleteState.ok ? <span>{this.props.reduceAutoComplete.autoCompleteState.menu[0].id}</span> : <span></span>}
+                </div>
+                </div>
+            ): <div></div>}
             </div>
         )
     }
