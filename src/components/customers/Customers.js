@@ -33,18 +33,18 @@ export default class Customers extends Component {
                             {item.label}
                         </div>
                     }
-                    // value={value}
-                    // onChange={(e) => value = e.target.value}
-                    // onSelect={(val) => value = val}
+                // value={value}
+                // onChange={(e) => value = e.target.value}
+                // onSelect={(val) => value = val}
                 />
                 <Dashboard title={this.title}
-                           tHead={this.tHead}
-                           form={this.form}
-                           add={this.addCustomer.bind(this)}
-                           edit={this.editCustomer.bind(this)}
-                           delete={this.deleteCustomer.bind(this)}
-                           search={this.searchCustomer.bind(this)}
-                           list={this.listCustomers.bind(this)} />
+                    tHead={this.tHead}
+                    form={this.form}
+                    add={this.addCustomer.bind(this)}
+                    edit={this.editCustomer.bind(this)}
+                    delete={this.deleteCustomer.bind(this)}
+                    search={this.searchCustomer.bind(this)}
+                    list={this.listCustomers.bind(this)} />
             </div>
 
         )
@@ -76,7 +76,7 @@ export default class Customers extends Component {
                 console.log("Response");
                 console.log(response);
                 this.listCustomers();
-                this.props.route.store.dispatch({type:"TOGGLE_MAIN_MODAL"})
+                this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL" })
 
             })
 
@@ -87,8 +87,8 @@ export default class Customers extends Component {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     let count = 0;
+                    this.storeSizeSearch(lista);
                     let newLista = [];
-
                     lista._embedded.customers
                         .forEach((customers, i) => {
                             let customerId = customers._links.self.href;
@@ -98,11 +98,15 @@ export default class Customers extends Component {
                                 .then(city => {
                                     count++;
                                     cityName = city.name;
-                                    newLista[i] = {id: customerId, data: [customerName, cityName]};
-                                    if (count == lista._embedded.customers.length) this.props.route.store.dispatch({
-                                        type: 'TABLE_BODY',
-                                        table_body: newLista
-                                    });
+                                    newLista[i] = { id: customerId, data: [customerName, cityName] };
+                                    if (count == lista._embedded.customers.length) {
+                                        this.props.route.store.dispatch({
+                                            type: 'TABLE_BODY',
+                                            table_body: newLista
+                                        });
+                                        this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
+                                    }
+
                                 });
                         });
                 });
@@ -110,13 +114,31 @@ export default class Customers extends Component {
     }
     changeStorePages(json) {
         let page =
-            {
-                homePage: 1,
-                lastPage: json.page.totalPages,
-                currentPage: json.page.number + 1
+        {
+            homePage: 1,
+            lastPage: json.page.totalPages,
+            currentPage: json.page.number + 1
 
-            };
+        };
         this.props.route.store.dispatch({ type: 'PAGES', pages: page });
+    }
+
+    storeSizePages(json) {
+        let size =
+        {
+            sizePage: json.page.totalElements
+        };
+
+        this.props.route.store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
+    }
+
+    storeSizeSearch(json) {
+        let size =
+        {
+            sizePage: json._embedded.customers.length
+        };
+
+        this.props.route.store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
     }
 
     listCustomers() {
@@ -129,6 +151,7 @@ export default class Customers extends Component {
 
                 let count = 0;
                 this.changeStorePages(lista);
+                this.storeSizePages(lista);
                 let newLista = [];
 
                 lista._embedded.customers
@@ -155,9 +178,9 @@ export default class Customers extends Component {
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cliente:</label>
-                <input id="input_customer_name"className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
+                <input id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
                 <label>Cidade:</label>
-                <input id="input_customer_city"className="form-control" defaultValue={this.customer_city} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_customer_city = input} />
+                <input id="input_customer_city" className="form-control" defaultValue={this.customer_city} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_customer_city = input} />
             </form>
         );
     }
