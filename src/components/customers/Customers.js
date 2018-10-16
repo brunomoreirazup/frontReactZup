@@ -14,10 +14,12 @@ export default class Customers extends Component {
         this.input_customer_name = '';
         this.customer_name = '';
         this.customer_city = '';
+        this.listType = "list";
+
     }
 
     componentDidMount() {
-        this.listCustomers();
+        this.callTable();
     }
 
     render() {
@@ -31,7 +33,7 @@ export default class Customers extends Component {
                            edit={this.editCustomer.bind(this)}
                            delete={this.deleteCustomer.bind(this)}
                            search={this.searchCustomer.bind(this)}
-                           list={this.listCustomers.bind(this)}/>
+                           list={this.callTable.bind(this)}/>
             </div>
 
         )
@@ -47,7 +49,7 @@ export default class Customers extends Component {
 
         HttpApi.makeChangeRequest(url, method, payload)
             .then(() => {
-                this.listCustomers();
+                this.callTable();
             });
     }
 
@@ -62,7 +64,7 @@ export default class Customers extends Component {
 
         HttpApi.makeChangeRequest(url, method, payload)
             .then(() => {
-                this.listCustomers();
+                this.callTable();
             });
     }
     deleteCustomer(id) {
@@ -80,8 +82,10 @@ export default class Customers extends Component {
 
     }
     searchCustomer(name) {
+
         if (!name) this.listCustomers();
         else {
+            this.listType ='search';
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     let count = 0;
@@ -109,6 +113,17 @@ export default class Customers extends Component {
                 });
         }
     }
+
+    callTable() {
+        if(this.listType='search'){
+            let keyword=this.props.route.store.getState().reduceSearch.search;
+            console.log(keyword);
+            this.searchCustomer(keyword);
+        }
+        else this.listCustomers();
+        console.log(this.listType);
+    }
+
     changeStorePages(json) {
         let page =
             {
@@ -121,6 +136,8 @@ export default class Customers extends Component {
     }
 
     listCustomers() {
+        console.log('lista');
+        this.listType='list';
         let state = this.props.route.store.getState();
         console.log(state);
         let page = state.reduceFooter.pages.currentPage;
