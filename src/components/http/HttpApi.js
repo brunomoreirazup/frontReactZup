@@ -3,7 +3,6 @@ import 'isomorphic-fetch';
 export default class HttpApi {
 
     static makeGetRequest(url) {
-        console.log(url);
         return fetch(url)
             .then(response => response.json());
     }

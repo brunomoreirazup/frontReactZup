@@ -48,7 +48,6 @@ class TableBody extends Component {
     }
     render()
     {
-        console.log(this.props.store)
         return this.printTbody();
     }
 }
