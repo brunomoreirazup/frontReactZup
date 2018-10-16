@@ -21,10 +21,41 @@ public class TestCity {
     public void run()
     {
         WebDriver driver = init();
+        TestDashBoard t = new TestDashBoard();
+        t.run(driver);
+        driver.quit();
+        return;
         addCity(driver);
         System.out.println("AddCity:"+verifyAddCity(driver));
+        
+        EditCity(driver);
+        System.out.println("EditCity:"+verifyAddCity(driver));
+        
+        DeleteCity(driver);
+        System.out.println("DeletCity:"+!verifyAddCity(driver));
+        
+        addCity(driver);
         searchCity(driver);
-        System.out.println("SearchCity:"+verifyAddCity(driver));
+        System.out.println("SearchAddCity:"+verifyAddCity(driver));
+        
+        EditCity(driver);
+        searchCity(driver);
+        System.out.println("SearchEditCity:"+verifyAddCity(driver));
+        
+        DeleteCity(driver);
+        System.out.println("SearchDeletCity:"+!verifyAddCity(driver));
+        
+        this.nameCity="";
+        searchCity(driver);
+        
+        this.nameCity = "____"+Math.random()*100000;
+        
+        addCity(driver);
+        System.out.println("AddCity:"+verifyAddCity(driver));
+        
+        EditCity(driver);
+        System.out.println("EditCity:"+verifyAddCity(driver));
+        
         DeleteCity(driver);
         System.out.println("DeletCity:"+!verifyAddCity(driver));
     }
@@ -56,6 +87,7 @@ public class TestCity {
          WebElement element;
          
          element = driver.findElement(By.cssSelector("#input_search_city_name"));
+         element.clear();
          element.sendKeys(this.nameCity);
          
          element = driver.findElement(By.cssSelector("#submit_search_city_name"));
@@ -76,6 +108,31 @@ public class TestCity {
 
          
         element = driver.findElement(By.cssSelector("#btDeleteModal"));
+        element.click();
+         
+         try{
+             Thread.sleep(3*1000);
+         }catch(Exception e)
+         {
+             System.out.println("Erro ao tentar esperar");
+         }
+         
+        
+    }
+    public void EditCity(WebDriver driver)
+    {
+        WebElement element;
+         
+        element = driver.findElement(By.cssSelector("#btEdit"));
+        element.click();
+
+        this.nameCity = "____"+Math.random()*100000;
+        
+        element = driver.findElement(By.cssSelector("#input_cidade_name"));
+        element.clear();
+        element.sendKeys(this.nameCity); 
+        
+        element = driver.findElement(By.cssSelector("#btEditModal"));
         element.click();
          
          try{
@@ -108,6 +165,12 @@ public class TestCity {
         
         ChromeDriver driver = new ChromeDriver();
         driver.get("http://localhost:3000/cidades");
+        try{
+             Thread.sleep(8*1000);
+         }catch(Exception e)
+         {
+             System.out.println("Erro ao tentar esperar");
+         }
         return driver;
         
     }
