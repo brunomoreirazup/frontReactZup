@@ -25,13 +25,13 @@ export default class Customers extends Component {
             <div>
                 <Navbar currentPage={1} />
                 <Dashboard title={this.title}
-                           tHead={this.tHead}
-                           form={this.form}
-                           add={this.addCustomer.bind(this)}
-                           edit={this.editCustomer.bind(this)}
-                           delete={this.deleteCustomer.bind(this)}
-                           search={this.searchCustomer.bind(this)}
-                           list={this.listCustomers.bind(this)}/>
+                    tHead={this.tHead}
+                    form={this.form}
+                    add={this.addCustomer.bind(this)}
+                    edit={this.editCustomer.bind(this)}
+                    delete={this.deleteCustomer.bind(this)}
+                    search={this.searchCustomer.bind(this)}
+                    list={this.listCustomers.bind(this)} />
             </div>
 
         )
@@ -87,10 +87,15 @@ export default class Customers extends Component {
                     let count = 0;
                     this.storeSizeSearch(lista);
                     let newLista = [];
-                    if (!lista._embedded.customers.length) this.props.route.store.dispatch({
-                        type: 'TABLE_BODY',
-                        table_body: newLista
-                    });
+                    if (!lista._embedded.customers.length) {
+                        this.props.route.store.dispatch({
+                            type: 'TABLE_BODY',
+                            table_body: newLista
+                        });
+                        
+                        this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
+                        this.props.route.store.dispatch({ type: 'PAGES', page_size: null });
+                    }
                     lista._embedded.customers
                         .forEach((customers, i) => {
                             let customerId = customers._links.self.href;
@@ -107,6 +112,7 @@ export default class Customers extends Component {
                                             table_body: newLista
                                         });
                                         this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
+                                        this.props.route.store.dispatch({ type: 'PAGES', page_size: null });
                                     }
 
                                 });
