@@ -1,62 +1,11 @@
-import React, { Component } from 'react';
-import Navbar from '../navbar/Navbar';
-import Autocomplete from "react-autocomplete";
-import HttpApi from "../http/HttpApi";
-export default class Home extends Component {
+import React , {Component} from "react";
 
-
-    constructor(props) {
-        super(props);
-        this.state = { value: "", unitedStates: [], loading: false,ok:false };
-        this.requestTimer = null;
-        this.city = "";
-    }
-    fakeRequest(value, cb) {
-
-        if (!value)
-            return cb([]);
-        let url = `https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${value}`;
-        HttpApi.makeGetRequest(url)
-            .then(lista => {
-                let newLista = lista._embedded.cities.map(city => {
-                    let cityName = city.name;
-                    let id = city._links.self.href;
-                    return { name: cityName ,id};
-                }
-                );
-                // this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
-
-                return cb(newLista);
-            }
-            );
-
-    }
-
-    render() {
-        return (
+class AutoComplete extends Component {
+    render()
+    {
+        return(
             <div>
-                <Navbar />
-
-                <h1>Bem Vindo</h1>
-                {/* <Autocomplete
-                    getItemValue={(item) => item.label}
-                    items={[
-                        { label: 'apple' },
-                        { label: 'banana' },
-                        { label: 'pear' }
-                    ]}
-                    renderItem={(item, isHighlighted) =>
-                        <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                            {item.label}
-                        </div>
-                    }
-                    // value={value}
-                    // onChange={(e) => value = e.target.value}
-                    // onSelect={(val) => value = val}
-                /> */}
-                {console.log("unitedStates:")}
-                {console.log(this.state.unitedStates)}
-                <Autocomplete key={"test"}
+            <Autocomplete key={"test"}
                     value={this.state.value}
                     inputProps={{ id: 'states-autocomplete' }}
                     items={this.state.unitedStates}
@@ -101,7 +50,6 @@ export default class Home extends Component {
                 
             <div>{this.city}</div>
             </div>
-
         )
     }
 }
