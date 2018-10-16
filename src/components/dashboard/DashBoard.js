@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import Footer from "../footer/Footer";
-import FooterTest from "../footer/FooterTest";
 import Table from "../table/Table";
 import Header from "../header/Header";
 import MainModal from "../modal/MainModal";
 import { connect } from 'react-redux';
-import HttpApi from "../http/HttpApi";
-class DashBoard extends Component {
 
+class DashBoard extends Component {
 
     constructor(props) {
         super(props);
         this.init();
     }
+
     init() {
         this.title = this.props.title;
         this.tHead = this.props.tHead;
@@ -41,7 +40,7 @@ class DashBoard extends Component {
             title: "Adicionar " + this.title,
             body: this.props.form(this.props.add),
             footer: <button id="btAddModal" type="button" className="btn btn-success" onClick={this.props.add}>Adicionar</button>
-        }
+        };
         this.toggleModal();
 
     }
@@ -50,7 +49,7 @@ class DashBoard extends Component {
             title: "Editar " + this.title,
             body: this.props.form(this.props.edit, id),
             footer: <button type="button" className="btn btn-info" onClick={this.props.edit.bind(this.props.edit, id)}>Salvar</button>
-        }
+        };
         this.toggleModal();
 
     }
@@ -59,18 +58,18 @@ class DashBoard extends Component {
             title: "Deletar " + this.title,
             body: "Realmente Deseja Remover City ? ",
             footer: <button id="btDeleteModal" type="button" className="btn btn-dark" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
-        }
+        };
         this.toggleModal();
     }
 
     changePageSize(size) {
-        this.props.dispatch({type:"PAGE_SIZE",page_size:size.value})
-        this.props.dispatch({type:"PAGES_CURRENT",currentPage:1})
+        this.props.dispatch({type:"PAGE_SIZE",page_size:size.value});
+        this.props.dispatch({type:"PAGES_CURRENT",currentPage:1});
         this.props.list();
         
     }
     changeCurrentPage(page){
-        this.props.dispatch({type:"PAGES_CURRENT",currentPage:page})
+        this.props.dispatch({type:"PAGES_CURRENT",currentPage:page});
         this.props.list();
     }
 
