@@ -125,22 +125,21 @@ export default class Cities extends Component {
     }
 
     searchCity(name) {
-        let url = '';
-        if (name) url = `https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`;
-        else url = `https://customers-challenge.herokuapp.com/cities?page=1&${this.page}=${this.size}&sort=name,${this.sort}`;
-        HttpApi.makeGetRequest(url)
-            .then(lista => {
-                let newLista = lista._embedded.cities.map(city => {
-                    let cityId = city._links.self.href;
-                    let cityName = city.name;
-                    return { id: cityId, data: [cityName] };
-                }
+        if (!name) this.listCity();
+        else {
+            HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
+                .then(lista => {
+                        let newLista = lista._embedded.cities.map(city => {
+                                let cityId = city._links.self.href;
+                                let cityName = city.name;
+                                return {id: cityId, data: [cityName]};
+                            }
+                        );
+                        this.props.route.store.dispatch({type: 'TABLE_BODY', table_body: newLista});
+
+                    }
                 );
-                this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
-
-            }
-            );
-
+        }
     }
 
     listCity() {

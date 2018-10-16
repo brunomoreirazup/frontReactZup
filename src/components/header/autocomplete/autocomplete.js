@@ -5,6 +5,10 @@ import {ThemeProvider} from 'react-css-themr';
 import HttpApi from "../../http/HttpApi";
 import {connect} from 'react-redux';
 
+const contextTheme = {
+    RTAutocomplete: require('react-toolbox/lib/autocomplete/theme.css')
+}
+
 const source = {};
 
 class AutoCompleteTest extends Component{
@@ -29,12 +33,11 @@ class AutoCompleteTest extends Component{
 
     render () {
         return (
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={contextTheme}>
                 <Autocomplete
-                    className="form-group"
+                    className=""
                     direction="auto"
                     selectedPosition="above"
-                    label="Escolha uma cidade"
                     onChange={this.handleChange}
                     source={source}
                     multiple={false}
