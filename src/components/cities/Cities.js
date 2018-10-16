@@ -131,7 +131,9 @@ export default class Cities extends Component {
                 currentPage: 1
 
             };
-            this.props.dispatch({ type: 'PAGES', pages: defaultPages });
+            this.props.route.store.dispatch({ type: 'PAGES', pages: defaultPages });
+
+            this.props.route.store.dispatch({ type: "PAGE_SIZE", page_size: 5 })
             this.listCity();
         }
 
