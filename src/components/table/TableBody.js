@@ -21,30 +21,36 @@ class TableBody extends Component {
     printTbody()
     {
         if(this.props.reduceTable == undefined || this.props.reduceTable.table_body == undefined)
-            return <tbody></tbody>;
-        return(
-            <tbody>
-            {this.props.reduceTable.table_body.map( (data , i) => {
+            return <tbody><tr key='#'><td colSpan={5}>Carregando...</td></tr></tbody>;
+        else { if (this.props.reduceTable.table_body.length > 0) {
+            return (
+                <tbody>
+                {this.props.reduceTable.table_body.map((data, i) => {
 
                         return (
-                        <tr key={data.id}>
-                            <td>{i+1}</td>
-                            {data.data.map( (dataItem,i)=> {
-                                let keyItem =data.id+"|"+i;
-                                return <td key={keyItem}>{dataItem}</td>
-                            })}
-                            <td><button type='button' className='btn btn-info bt-table bt-edit' onClick={this.props.edit.bind(this.props.edit,data.id)}></button></td>
-                            <td><button type='button' id="btDelete" className='btn btn-danger bt-table bt-delete' onClick={this.props.delete.bind(this.props.delete,data.id)}></button></td>
-                        </tr>
-                    )
+                            <tr key={data.id}>
+                                <td>{i + 1}</td>
+                                {data.data.map((dataItem, i) => {
+                                    let keyItem = data.id + "|" + i;
+                                    return <td key={keyItem}>{dataItem}</td>
+                                })}
+                                <td>
+                                    <button type='button' className='btn btn-info bt-table bt-edit'
+                                            onClick={this.props.edit.bind(this.props.edit, data.id)}> </button>
+                                </td>
+                                <td>
+                                    <button type='button' id="btDelete" className='btn btn-danger bt-table bt-delete'
+                                            onClick={this.props.delete.bind(this.props.delete, data.id)}> </button>
+                                </td>
+                            </tr>
+                        )
+                    }
+                )
                 }
-
+                </tbody>
             )
-            }
-            </tbody>
-        )
-
-
+        } else return <tbody><tr key='#'><td colSpan={5}>Nenhum Resultado Encontrado</td></tr></tbody>;
+        }
     }
     render()
     {

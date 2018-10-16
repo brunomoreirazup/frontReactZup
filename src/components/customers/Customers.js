@@ -10,6 +10,10 @@ export default class Customers extends Component {
         this.title = "Clientes";
         this.tHead = ["Nome", "Cidade", "Editar", "Remover"];
         this.form = this.CreateFormBody.bind(this);
+        this.input_customer_city = '';
+        this.input_customer_name = '';
+        this.customer_name = '';
+        this.customer_city = '';
     }
 
     componentDidMount() {
@@ -20,31 +24,14 @@ export default class Customers extends Component {
         return (
             <div>
                 <Navbar currentPage={1} />
-
-                <Autocomplete
-                    getItemValue={(item) => item.label}
-                    items={[
-                        { label: 'apple' },
-                        { label: 'banana' },
-                        { label: 'pear' }
-                    ]}
-                    renderItem={(item, isHighlighted) =>
-                        <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                            {item.label}
-                        </div>
-                    }
-                // value={value}
-                // onChange={(e) => value = e.target.value}
-                // onSelect={(val) => value = val}
-                />
                 <Dashboard title={this.title}
-                    tHead={this.tHead}
-                    form={this.form}
-                    add={this.addCustomer.bind(this)}
-                    edit={this.editCustomer.bind(this)}
-                    delete={this.deleteCustomer.bind(this)}
-                    search={this.searchCustomer.bind(this)}
-                    list={this.listCustomers.bind(this)} />
+                           tHead={this.tHead}
+                           form={this.form}
+                           add={this.addCustomer.bind(this)}
+                           edit={this.editCustomer.bind(this)}
+                           delete={this.deleteCustomer.bind(this)}
+                           search={this.searchCustomer.bind(this)}
+                           list={this.listCustomers.bind(this)}/>
             </div>
 
         )
@@ -65,7 +52,18 @@ export default class Customers extends Component {
     }
 
     editCustomer(id) {
+        let url = id;
+        let method = 'PUT';
 
+        let payload = {
+            "name": this.input_customer_name.value,
+            "city": this.input_customer_city.value
+        };
+
+        HttpApi.makeChangeRequest(url, method, payload)
+            .then(() => {
+                this.listCustomers();
+            });
     }
     deleteCustomer(id) {
         let url = id;
@@ -89,6 +87,10 @@ export default class Customers extends Component {
                     let count = 0;
                     this.storeSizeSearch(lista);
                     let newLista = [];
+                    if (!lista._embedded.customers.length) this.props.route.store.dispatch({
+                        type: 'TABLE_BODY',
+                        table_body: newLista
+                    });
                     lista._embedded.customers
                         .forEach((customers, i) => {
                             let customerId = customers._links.self.href;
@@ -143,10 +145,12 @@ export default class Customers extends Component {
 
     listCustomers() {
         let state = this.props.route.store.getState();
+        console.log(state);
         let page = state.reduceFooter.pages.currentPage;
         let sizePage = state.reduceContentInfo.page_size;
+        let sort = state.reduceTable.sort_order;
 
-        HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers?page=${page - 1}&size=${sizePage}&sort=name,asc`)
+        HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers?page=${page - 1}&size=${sizePage}&sort=name,${sort}`)
             .then(lista => {
 
                 let count = 0;
@@ -186,13 +190,17 @@ export default class Customers extends Component {
     }
 
     loadForm(id) {
-        let city = "";
+        let customer = "";
+        let customer_city = "";
         let state = this.props.route.store.getState();
         state.reduceTable.table_body.forEach(element => {
-            if (element.id == id)
-                city = element.data[0];
+            if (element.id == id) {
+                customer = element.data[0];
+                customer_city = element.data[1];
+            }
         });
-        this.cidade_name = city;
+        this.customer_name = customer;
+        this.customer_city = customer_city;
     }
 
 }

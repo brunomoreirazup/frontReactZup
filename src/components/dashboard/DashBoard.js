@@ -25,7 +25,7 @@ class DashBoard extends Component {
 
         };
         this.props.dispatch({type:"PAGE_SIZE",page_size:5})
-
+        this.props.dispatch({type:"SORT",sort_order: "asc"})
     }
 
 
@@ -62,6 +62,13 @@ class DashBoard extends Component {
         this.toggleModal();
     }
 
+    sort(){
+        this.props.dispatch({type:"SORT"});
+        this.props.list();
+
+
+    }
+
     changePageSize(size) {
         this.props.dispatch({type:"PAGE_SIZE",page_size:size.value});
         this.props.dispatch({type:"PAGES_CURRENT",currentPage:1});
@@ -82,7 +89,7 @@ class DashBoard extends Component {
                     showModalAdd={this.showModalAdd.bind(this)} search={this.props.search}
                     changeSize={this.changePageSize.bind(this)}
                 />
-                <Table thead={this.tHead} edit={this.showModalEdit.bind(this)} delete={this.showModalDelete.bind(this)} />
+                <Table thead={this.tHead} edit={this.showModalEdit.bind(this)} delete={this.showModalDelete.bind(this)} sort={this.sort.bind(this)}/>
                 <Footer changeCurrentPage={this.changeCurrentPage.bind(this)}/>
                 <MainModal />
 
