@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import { connect } from 'react-redux';
-import AutoCompleteTest from "../header/autocomplete/autocomplete";
+import AutoCompleteTest from "../form/autocomplete/autocomplete";
 import theme from 'react-toolbox/lib/autocomplete/theme.css';
 
 class Customers extends Component {
@@ -17,10 +17,12 @@ class Customers extends Component {
         this.input_customer_name = '';
         this.customer_name = '';
         this.customer_city = '';
+        this.listType = "list";
+
     }
 
     componentDidMount() {
-        this.listCustomers();
+        this.callTable();
     }
 
     render() {
@@ -29,13 +31,13 @@ class Customers extends Component {
                 <Navbar currentPage={1} />
 
                 <Dashboard title={this.title}
-                    tHead={this.tHead}
-                    form={this.form}
-                    add={this.addCustomer.bind(this)}
-                    edit={this.editCustomer.bind(this)}
-                    delete={this.deleteCustomer.bind(this)}
-                    search={this.searchCustomer.bind(this)}
-                    list={this.listCustomers.bind(this)} />
+                           tHead={this.tHead}
+                           form={this.form}
+                           add={this.addCustomer.bind(this)}
+                           edit={this.editCustomer.bind(this)}
+                           delete={this.deleteCustomer.bind(this)}
+                           search={this.searchCustomer.bind(this)}
+                           list={this.callTable.bind(this)}/>
             </div>
 
         )
@@ -51,7 +53,7 @@ class Customers extends Component {
 
         HttpApi.makeChangeRequest(url, method, payload)
             .then(() => {
-                this.listCustomers();
+                this.callTable();
             });
     }
 
@@ -66,7 +68,7 @@ class Customers extends Component {
 
         HttpApi.makeChangeRequest(url, method, payload)
             .then(() => {
-                this.listCustomers();
+                this.callTable();
             });
     }
     deleteCustomer(id) {
@@ -77,7 +79,7 @@ class Customers extends Component {
             .then((response) => {
                 console.log("Response");
                 console.log(response);
-                this.listCustomers();
+                this.callTable();
                 this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL" })
 
             })
@@ -100,6 +102,7 @@ class Customers extends Component {
         }
 
         else {
+            this.listType ='search';
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     let count = 0;
@@ -138,6 +141,17 @@ class Customers extends Component {
                 });
         }
     }
+
+    callTable() {
+        if(this.listType='search'){
+            let keyword=this.props.route.store.getState().reduceSearch.search;
+            console.log(keyword);
+            this.searchCustomer(keyword);
+        }
+        else this.listCustomers();
+        console.log(this.listType);
+    }
+
     changeStorePages(json) {
         let page =
         {
@@ -168,6 +182,8 @@ class Customers extends Component {
     }
 
     listCustomers() {
+        console.log('lista');
+        this.listType='list';
         let state = this.props.route.store.getState();
         console.log(state);
         let page = state.reduceFooter.pages.currentPage;

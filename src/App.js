@@ -10,10 +10,12 @@ import Copyright from "./components/copyright/Copyright";
 import devToolsEnhancer from 'remote-redux-devtools';
 import reduceMainModal from "./components/modal/reduceMainModal";
 import reduceContentInfo from "./components/header/contentInfo/reduceContentInfo";
+import reduceSearch from "./components/header/searchBox/reduceSearch";
 import reduceTable from "./components/table/reduceTable";
-import reduceAutoComplete from "./components/header/autocomplete/reduceAutoComplete"
+import reduceAutoComplete from "./components/form/autocomplete/reduceAutoComplete"
 
-const reducers = combineReducers({reduceFooter,reduceTable,reduceMainModal,reduceContentInfo,reduceAutoComplete});
+
+const reducers = combineReducers({reduceSearch, reduceFooter,reduceTable,reduceMainModal,reduceContentInfo});
 
 const store = createStore(reducers,devToolsEnhancer());
 

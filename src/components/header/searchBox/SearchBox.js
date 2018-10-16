@@ -12,6 +12,7 @@ class SearchBox extends Component{
 
         event.preventDefault();
         this.props.search(this.input_search.value);
+        this.props.dispatch({type:"SEARCH", keyword: this.input_search.value});
     }
 
     render(){

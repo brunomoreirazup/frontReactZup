@@ -16,10 +16,11 @@ export default class Cities extends Component {
         this.form = this.CreateFormBody.bind(this);
         this.input_cidade_name = "";
         this.cidade_name = "";
+        this.listType = "list";
     }
 
     componentDidMount() {
-        this.listCity();
+        this.callTable();
     }
 
     render() {
@@ -34,7 +35,7 @@ export default class Cities extends Component {
                     edit={this.editCity.bind(this)}
                     delete={this.deleteCity.bind(this)}
                     search={this.searchCity.bind(this)}
-                    list={this.listCity.bind(this)}
+                    list={this.callTable.bind(this)}
                 />
 
             </div>
@@ -72,9 +73,8 @@ export default class Cities extends Component {
 
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
-                    this.listCity();
+                    this.callTable();
                 });
-
         }
     }
 
@@ -82,6 +82,7 @@ export default class Cities extends Component {
 
         let url = id;
         let method = 'PUT';
+
 
         if (this.input_cidade_name.value == "") {
             alert("Insira uma cidade");
@@ -95,13 +96,13 @@ export default class Cities extends Component {
 
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
-                    this.listCity();
+                    this.callTable();
                     this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL" })
                 });
 
         }
-
     }
+
 
     deleteCity(id) {
         let url = id;
@@ -115,11 +116,21 @@ export default class Cities extends Component {
                     alert("ja tem cliente");
                 }
                 else {
-                    this.listCity();
+                    this.callTable();
                 }
                 this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL" })
 
             })
+    }
+
+    callTable() {
+        if (this.listType = 'search') {
+            let keyword = this.props.route.store.getState().reduceSearch.search;
+            console.log(keyword);
+            this.searchCity(keyword);
+        }
+        else this.listCity();
+        console.log(this.listType);
     }
 
     searchCity(name) {
@@ -138,6 +149,7 @@ export default class Cities extends Component {
         }
 
         else {
+            this.listType = 'search';
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     this.storeSizeSearch(lista);
@@ -172,6 +184,7 @@ export default class Cities extends Component {
     }
 
     listCity() {
+        this.listType = 'list';
 
         let state = this.props.route.store.getState();
         let page = state.reduceFooter.pages.currentPage;

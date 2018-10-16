@@ -19,3 +19,9 @@
     height: 40px;
     width: 40px;
 }
+.sortHead {
+    background-image: url("../img/sort.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 95% center;
+}
