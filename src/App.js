@@ -11,8 +11,9 @@ import devToolsEnhancer from 'remote-redux-devtools';
 import reduceMainModal from "./components/modal/reduceMainModal";
 import reduceContentInfo from "./components/header/contentInfo/reduceContentInfo";
 import reduceTable from "./components/table/reduceTable";
+import reduceAutoComplete from "./components/header/autocomplete/reduceAutoComplete"
 
-const reducers = combineReducers({reduceFooter,reduceTable,reduceMainModal,reduceContentInfo});
+const reducers = combineReducers({reduceFooter,reduceTable,reduceMainModal,reduceContentInfo,reduceAutoComplete});
 
 const store = createStore(reducers,devToolsEnhancer());
 

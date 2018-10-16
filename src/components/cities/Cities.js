@@ -60,29 +60,47 @@ export default class Cities extends Component {
         let url = 'https://customers-challenge.herokuapp.com/cities';
         let method = 'POST';
 
-        let payload = {
-            "name": this.input_cidade_name.value
-        };
+        if(this.input_cidade_name.value == ""){
+            alert("Insira uma cidade");
+            this.input_cidade_name.focus();
+        }
+        else{
 
-        HttpApi.makeChangeRequest(url, method, payload)
-            .then(() => {
-                this.listCity();
-            });
+            let payload = {
+                "name": this.input_cidade_name.value
+            };
+
+            HttpApi.makeChangeRequest(url, method, payload)
+                .then(() => {
+                    this.listCity();
+                });
+
+        }
     }
 
     editCity(id) {
 
         let url = id;
         let method = 'PUT';
-        let payload = {
-            "name": this.input_cidade_name.value
-        };
 
-        HttpApi.makeChangeRequest(url, method, payload)
-            .then(() => {
-                this.listCity();
-                this.props.route.store.dispatch({type:"TOGGLE_MAIN_MODAL"})
-            });
+        if(this.input_cidade_name.value == ""){
+            alert("Insira uma cidade");
+            this.input_cidade_name.focus();
+        }
+
+        else{
+            let payload = {
+                "name": this.input_cidade_name.value
+            };
+
+            HttpApi.makeChangeRequest(url, method, payload)
+                .then(() => {
+                    this.listCity();
+                    this.props.route.store.dispatch({type:"TOGGLE_MAIN_MODAL"})
+                });
+
+        }
+
     }
 
     deleteCity(id) {
