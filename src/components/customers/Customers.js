@@ -220,7 +220,11 @@ class Customers extends Component {
         if (id != undefined)
             this.loadForm(id);
         else
-            this.cidade_name = "";
+        {
+            this.customer_name = "";
+            this.props.route.store.dispatch({type:"AUTOCOMPLETE",customerCity:""})
+        }
+            
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cliente:</label>
@@ -238,12 +242,11 @@ class Customers extends Component {
         let state = this.props.route.store.getState();
         state.reduceTable.table_body.forEach(element => {
             if (element.id == id) {
-                customer = element.data[0];
+                this.customer_name = element.data[0];
                 customer_city = element.data[1];
             }
+            this.props.route.store.dispatch({type:"AUTOCOMPLETE",customerCity:customer_city})
         });
-        this.customer_name = customer;
-        this.customer_city = customer_city;
     }
 
 }
