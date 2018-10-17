@@ -13,7 +13,7 @@ export default class Navbar extends Component{
     {
         if(i==this.props.currentPage)
             return "nav-item active \"";
-        return "\"";
+        return "";
     }
     render(){
         return(
