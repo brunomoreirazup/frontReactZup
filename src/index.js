@@ -10,6 +10,7 @@ import "./css/navbar.css";
 import "./css/footer.css";
 import "./css/copyright.css";
 import "./css/table.css"
+import "./components/form/autoComplete/AutoComplete.css"
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

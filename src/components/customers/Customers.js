@@ -3,8 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import { connect } from 'react-redux';
-import AutoCompleteTest from "../form/autocomplete/autocomplete";
-import theme from 'react-toolbox/lib/autocomplete/theme.css';
+import AutoComplete from "../form/autoComplete/AutoComplete";
 
 class Customers extends Component {
 
@@ -48,7 +47,7 @@ class Customers extends Component {
 
         let payload = {
             "name": this.input_customer_name.value,
-            "city": this.props.autoComplete.customerCity
+            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
         };
 
         HttpApi.makeChangeRequest(url, method, payload)
@@ -56,14 +55,35 @@ class Customers extends Component {
                 this.callTable();
             });
     }
+    loadCity(value, cb) {
+
+        if (!value)
+            return cb([]);
+        let url = `https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${value}`;
+        HttpApi.makeGetRequest(url)
+            .then(lista => {
+                let newLista = lista._embedded.cities.map(city => {
+                    let cityName = city.name;
+                    let id = city._links.self.href;
+                    return { name: cityName ,id};
+                }
+                );
+                // this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
+
+                return cb(newLista);
+            }
+            );
+
+    }
 
     editCustomer(id) {
         let url = id;
         let method = 'PATCH';
-
+        if(!this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok)
+            return;
         let payload = {
             "name": this.input_customer_name.value,
-            "city": this.props.autoComplete.customerCity
+            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
         };
 
         HttpApi.makeChangeRequest(url, method, payload)
@@ -221,6 +241,12 @@ class Customers extends Component {
             this.loadForm(id);
         else
         {
+            this.props.dispatch({ type: 'AUTO_COMPLETE_STATE', autoCompleteState:{
+                value:"",
+                menu:[],
+                ok:false,
+                loading:false
+            }});
             this.customer_name = "";
             this.props.route.store.dispatch({type:"AUTOCOMPLETE",customerCity:""})
         }
@@ -230,7 +256,7 @@ class Customers extends Component {
                 <label>Cliente:</label>
                 <input id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
                 <label>Cidade:</label>
-                <AutoCompleteTest theme={theme} />
+                <AutoComplete search={this.loadCity} />
 
             </form>
         );
@@ -245,7 +271,12 @@ class Customers extends Component {
                 this.customer_name = element.data[0];
                 customer_city = element.data[1];
             }
-            this.props.route.store.dispatch({type:"AUTOCOMPLETE",customerCity:customer_city})
+            this.props.dispatch({ type: 'AUTO_COMPLETE_STATE', autoCompleteState:{
+                value:customer_city,
+                menu:[],
+                ok:false,
+                loading:false
+            }});
         });
     }
 

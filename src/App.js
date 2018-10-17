@@ -12,7 +12,7 @@ import reduceMainModal from "./components/modal/reduceMainModal";
 import reduceContentInfo from "./components/header/contentInfo/reduceContentInfo";
 import reduceSearch from "./components/header/searchBox/reduceSearch";
 import reduceTable from "./components/table/reduceTable";
-import reduceAutoComplete from "./components/form/autocomplete/reduceAutoComplete"
+import reduceAutoComplete from "./components/form/autoComplete/reduceAutoComplete";
 
 
 const reducers = combineReducers({reduceSearch, reduceFooter,reduceTable,reduceMainModal,reduceContentInfo,reduceAutoComplete});
