@@ -3,6 +3,7 @@ import Footer from "../footer/Footer";
 import Table from "../table/Table";
 import Header from "../header/Header";
 import MainModal from "../modal/MainModal";
+import Loading from "../modal/Loading";
 import { connect } from 'react-redux';
 import Copyright from '../copyright/Copyright';
 import BtEdit from '../button/btEdit/BtEdit';
@@ -34,7 +35,7 @@ class DashBoard extends Component {
         this.props.dispatch({ type: "SORT", sort_order: "asc" })
         this.props.dispatch({ type: 'TABLE_BODY', table_body: null });
     }
-
+    
 
     toggleModal() {
         this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent })
@@ -156,7 +157,9 @@ class DashBoard extends Component {
 
                 <Footer changeCurrentPage={this.changeCurrentPage.bind(this)} />
                 <Copyright />
+                <Loading/>
                 <MainModal />
+                
 
             </div>
 

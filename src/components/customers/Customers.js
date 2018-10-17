@@ -17,7 +17,6 @@ class Customers extends Component {
         this.customer_name = '';
         this.customer_city = '';
         this.listType = "list";
-
     }
 
     componentDidMount() {
@@ -37,7 +36,6 @@ class Customers extends Component {
                            delete={this.deleteCustomer.bind(this)}
                            search={this.searchCustomer.bind(this)}
                            list={this.callTable.bind(this)}/>
-                {/* <Copyright /> */}
             </div>
 
         )
@@ -132,13 +130,8 @@ class Customers extends Component {
 
     }
     deleteCustomer(id) {
-        let url = id;
-        console.log(id);
-
-        HttpApi.removeEntry(url)
-            .then((response) => {
-                console.log("Response");
-                console.log(response);
+        HttpApi.removeEntry(id)
+            .then(() => {
                 this.callTable();
                 this.callAlertModal("success","TOGGLE_MAIN_MODAL",1500);
             })
@@ -148,6 +141,7 @@ class Customers extends Component {
 
     }
     searchCustomer(name) {
+        this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
         if (!name) {
             let defaultPages =
             {
@@ -158,7 +152,7 @@ class Customers extends Component {
             };
             this.props.route.store.dispatch({ type: 'PAGES', pages: defaultPages });
 
-            this.props.route.store.dispatch({ type: "PAGE_SIZE", page_size: 5 })
+            this.props.route.store.dispatch({ type: "PAGE_SIZE", page_size: 5 });
 
             this.listCustomers();
         }
@@ -196,6 +190,7 @@ class Customers extends Component {
                                         });
                                         this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
                                         this.props.route.store.dispatch({ type: 'PAGES', page_size: null });
+                                        this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
                                     }
 
                                 });
@@ -207,11 +202,9 @@ class Customers extends Component {
     callTable() {
         if(this.listType=='search'){
             let keyword=this.props.route.store.getState().reduceSearch.search;
-            console.log(keyword);
             this.searchCustomer(keyword);
         }
         else this.listCustomers();
-        console.log(this.listType);
     }
 
     changeStorePages(json) {
@@ -244,10 +237,9 @@ class Customers extends Component {
     }
 
     listCustomers() {
-        console.log('lista');
+        this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
         this.listType='list';
         let state = this.props.route.store.getState();
-        console.log(state);
         let page = state.reduceFooter.pages.currentPage;
         let sizePage = state.reduceContentInfo.page_size;
         let sort = state.reduceTable.sort_order;
@@ -271,8 +263,12 @@ class Customers extends Component {
                                 count++;
                                 cityId = city._links.self.href;
                                 cityName = city.name;
-                                newLista[i] = { id: customerId,cityId: cityId, data: [customerName, cityName] };
-                                if (count == lista._embedded.customers.length) this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
+                                newLista[i] = { id: customerId,cityId: cityId,  data: [customerName, cityName] };
+                                if (count == lista._embedded.customers.length) {
+                                    this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
+                                    console.log("FIM LIST")
+                                    this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
+                                }
                             });
                     });
             });
