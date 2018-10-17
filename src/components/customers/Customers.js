@@ -102,7 +102,7 @@ class Customers extends Component {
 
     }
     searchCustomer(name) {
-        this.props.route.store.dispatch({ type: 'LOADING', loading: true });
+        this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
         if (!name) {
             let defaultPages =
             {
@@ -151,7 +151,7 @@ class Customers extends Component {
                                         });
                                         this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
                                         this.props.route.store.dispatch({ type: 'PAGES', page_size: null });
-                                        this.props.route.store.dispatch({ type: 'LOADING', loading: false });
+                                        this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
                                     }
 
                                 });
@@ -198,7 +198,7 @@ class Customers extends Component {
     }
 
     listCustomers() {
-        this.props.route.store.dispatch({ type: 'LOADING', loading: true });
+        this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
         this.listType='list';
         let state = this.props.route.store.getState();
         let page = state.reduceFooter.pages.currentPage;
@@ -226,7 +226,7 @@ class Customers extends Component {
                                 if (count == lista._embedded.customers.length) {
                                     this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
                                     console.log("FIM LIST")
-                                    this.props.route.store.dispatch({ type: 'LOADING', loading: false });
+                                    this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
                                 }
                             });
                     });

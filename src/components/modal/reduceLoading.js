@@ -3,11 +3,11 @@ export default function reduce(state = {}, action) {
     if(action.type === "LOADING")
     {
         let newState = Object.assign({},state);
-        if(action.loading === undefined)
-            newState.loading = !newState.loading;
+        if(action.showLoading === undefined)
+            newState.showLoading = !newState.showLoading;
         else
-            newState.loading = action.loading;
-        console.log(newState.loading);
+            newState.showLoading = action.showLoading;
+        console.log(newState.showLoading);
         return newState;
     }
 

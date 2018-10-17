@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a8377c3-4bd2-4967-a77b-58e613757f5b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cities/Cities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cities/Cities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/customers/Customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customers/Customers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/DashBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/DashBoard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modal/Loading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/Loading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/loading.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/loading.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/reduceLoading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/reduceLoading.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -102,26 +100,26 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="753" />
-          <entry key="js" value="6078" />
+          <entry key="js" value="6164" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="753" />
-          <entry key="JavaScript" value="6078" />
+          <entry key="JavaScript" value="6164" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="12" />
-          <entry key="js" value="68" />
+          <entry key="js" value="71" />
           <entry key="ts" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="12" />
-          <entry key="JavaScript" value="68" />
+          <entry key="JavaScript" value="71" />
           <entry key="TypeScript" value="1" />
         </counts>
       </usages-collector>
@@ -134,22 +132,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/customers/Customers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-375">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="-488">
+              <caret line="228" column="92" selection-start-line="228" selection-start-column="92" selection-end-line="228" selection-end-column="92" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/modal/Loading.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/cities/Cities.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="14" column="83" selection-start-line="14" selection-start-column="83" selection-end-line="14" selection-end-column="83" />
+            <state relative-caret-position="112">
+              <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,8 +156,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/modal/reduceLoading.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+            <state relative-caret-position="180">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/modal/Loading.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -197,7 +207,13 @@
       <find>consol</find>
       <find>loading.gif</find>
       <find>type: 'LOADING', loadin</find>
+      <find>LOADING</find>
+      <find>loading</find>
     </findStrings>
+    <replaceStrings>
+      <replace>showLoadin</replace>
+      <replace>showLoading</replace>
+    </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components/table</dir>
       <dir>$PROJECT_DIR$/src/components/header</dir>
@@ -233,7 +249,6 @@
         <option value="$PROJECT_DIR$/src/components/header/Header.js" />
         <option value="$PROJECT_DIR$/src/components/header/searchBox/SearchBox.js" />
         <option value="$PROJECT_DIR$/src/components/header/searchBox/reduceSearch.js" />
-        <option value="$PROJECT_DIR$/src/components/cities/Cities.js" />
         <option value="$PROJECT_DIR$/src/components/header/contentInfo/ContentInfo.js" />
         <option value="$PROJECT_DIR$/src/css/header.css" />
         <option value="$PROJECT_DIR$/src/components/http/HttpApi.js" />
@@ -242,13 +257,14 @@
         <option value="$PROJECT_DIR$/src/components/loading.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/modal/MainModal.js" />
-        <option value="$PROJECT_DIR$/src/components/modal/reduceLoading.js" />
         <option value="$PROJECT_DIR$/src/components/table/TableBody.js" />
         <option value="$PROJECT_DIR$/src/css/table.css" />
         <option value="$PROJECT_DIR$/src/components/dashboard/DashBoard.js" />
-        <option value="$PROJECT_DIR$/src/components/customers/Customers.js" />
-        <option value="$PROJECT_DIR$/src/components/modal/Loading.js" />
         <option value="$PROJECT_DIR$/src/css/loading.css" />
+        <option value="$PROJECT_DIR$/src/components/customers/Customers.js" />
+        <option value="$PROJECT_DIR$/src/components/modal/reduceLoading.js" />
+        <option value="$PROJECT_DIR$/src/components/modal/Loading.js" />
+        <option value="$PROJECT_DIR$/src/components/cities/Cities.js" />
       </list>
     </option>
   </component>
@@ -427,12 +443,12 @@
       <workItem from="1539051443391" duration="3093000" />
       <workItem from="1539086935724" duration="14791000" />
       <workItem from="1539174083984" duration="7838000" />
-      <workItem from="1539779742906" duration="14195000" />
+      <workItem from="1539779742906" duration="14910000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100195000" />
+    <option name="totallyTimeSpent" value="100910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
@@ -640,16 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/cities/Cities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="143" column="14" selection-start-line="143" selection-start-column="14" selection-end-line="143" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/header/contentInfo/ContentInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -735,29 +741,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/modal/reduceLoading.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/dashboard/DashBoard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/modal/Loading.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="83" selection-start-line="14" selection-start-column="83" selection-end-line="14" selection-end-column="83" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -771,8 +760,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/customers/Customers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="-488">
+          <caret line="228" column="92" selection-start-line="228" selection-start-column="92" selection-end-line="228" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/modal/reduceLoading.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/modal/Loading.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/cities/Cities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

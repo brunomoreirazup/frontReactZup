@@ -10,7 +10,7 @@ class Loading extends Component{
 
 
     createLoading() {
-        if(this.props.reduceLoading != null && this.props.reduceLoading.loading)
+        if(this.props.reduceLoading != null && this.props.reduceLoading.showLoading)
             return(
                <div className="loading"><img src={loadImage} className="load-image"></img></div>
             );

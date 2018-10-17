@@ -127,6 +127,7 @@ export default class Cities extends Component {
     }
 
     searchCity(name) {
+        this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
         if (!name) {
             let defaultPages =
             {
@@ -154,6 +155,7 @@ export default class Cities extends Component {
                     this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
                     this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
                     this.props.route.store.dispatch({ type: 'PAGES', page: null });
+                    this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
                 });
         }
     }
@@ -177,6 +179,7 @@ export default class Cities extends Component {
     }
 
     listCity() {
+        this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
         this.listType = 'list';
 
         let state = this.props.route.store.getState();
@@ -196,9 +199,8 @@ export default class Cities extends Component {
                 }
                 );
                 this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
-
-
-            }
+                this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
+                }
             );
     }
 
