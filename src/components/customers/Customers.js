@@ -37,6 +37,7 @@ class Customers extends Component {
                            delete={this.deleteCustomer.bind(this)}
                            search={this.searchCustomer.bind(this)}
                            list={this.callTable.bind(this)}/>
+                {/* <Copyright /> */}
             </div>
 
         )
