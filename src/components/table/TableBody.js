@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BtEdit from '../button/btEdit/BtEdit';
-
+import BtDelete from '../button/btDelete/BtDelete';
 class TableBody extends Component {
 
     constructor(props) {
@@ -33,17 +33,16 @@ class TableBody extends Component {
                                         return <td key={keyItem}>{dataItem}</td>
                                     })}
                                     <td>
-                                        <BtEdit 
+                                        <BtEdit
                                             onClick={this.props.edit.bind(this.props.edit, data.id)}> </BtEdit>
                                     </td>
                                     <td>
-                                        <button type='button' id="btDelete" className='btn btn-danger bt-table bt-delete'
-                                            onClick={this.props.delete.bind(this.props.delete, data.id)}> </button>
+                                        <BtDelete
+                                            onClick={this.props.delete.bind(this.props.delete, data.id)}> </BtDelete>
                                     </td>
                                 </tr>
                             )
-                        }
-                        )
+                        })
                         }
                     </tbody>
                 )

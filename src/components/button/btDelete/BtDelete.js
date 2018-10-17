@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./btEdit.css";
+import "./btDelete.css";
 
 export default class BtEdit extends Component {
     render() {
@@ -7,7 +7,7 @@ export default class BtEdit extends Component {
             <React.Fragment>
                 <button
                     type='button'
-                    className='btn btn-info bt-table bt-edit'
+                    className='btn btn-danger bt-table bt-delete'
                     onClick={this.props.onClick}>
                 </button>
             </React.Fragment>

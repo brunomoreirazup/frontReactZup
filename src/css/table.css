@@ -2,10 +2,11 @@
     text-align: center;
 }
 
-.bt-delete{
+/* .bt-delete{
     background-image: url(../img/trash.png);
     background-color: #b52e3b;
-}
+    color: white;
+} */
 
 /* .bt-edit{
     background-image: url(../img/edit.png);
