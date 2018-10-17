@@ -20,7 +20,7 @@ class ContentInfo extends Component {
                         <option value="15">15</option>
                         <option value="20">20</option>                        
                     </select>
-                    Elementos por página de mais de&nbsp;
+                    Elementos por página de&nbsp;
                     </React.Fragment>
                     
         

@@ -6,6 +6,7 @@ import MainModal from "../modal/MainModal";
 import { connect } from 'react-redux';
 import Copyright from '../copyright/Copyright';
 import BtEdit from '../button/btEdit/BtEdit';
+import BtDelete from "../button/btDelete/BtDelete";
 import TableBody from "../table/TableBody";
 import TableHead from "../table/TableHead";
 
@@ -63,7 +64,7 @@ class DashBoard extends Component {
         this.modalContent = {
             title: "Deletar " + this.title,
             body: "Realmente Deseja Remover ? ",
-            footer: <button id="btDeleteModal" type="button" className="btn btn-danger" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
+            footer: <button id="btDeleteModal" type="button" className="btn bt-delete" onClick={this.props.delete.bind(this.props.delete, id)}>Remover</button>
         };
         this.toggleModal();
     }
@@ -122,8 +123,8 @@ class DashBoard extends Component {
                                             onClick={()=>this.showModalEdit(data.id)}> </BtEdit>
                                     </td>
                                     <td>
-                                        <button type='button' id="btDelete" className='btn btn-danger bt-table bt-delete'
-                                            onClick={() => this.showModalDelete(data.id)}> </button>
+                                        <BtDelete
+                                            onClick={() => this.showModalDelete(data.id)}> </BtDelete>
                                     </td>
                                 </tr>
                             )
