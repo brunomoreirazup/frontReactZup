@@ -42,20 +42,40 @@ class Customers extends Component {
 
         )
     }
+
+    callAlertModal(showAlertType, actionType, time){
+        this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: showAlertType});
+        setTimeout(() => this.props.route.store.dispatch({type: actionType}), time);
+
+    }
+
     addCustomer() {
         let url = 'https://customers-challenge.herokuapp.com/customers';
         let method = 'POST';
+        let city = this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0];
+        if (this.input_customer_name.value == "" || city == undefined) {
+            this.callAlertModal("blank","CHANGE_MODAL_CONTENT",2000);
+            this.input_customer_name.focus();
+        }
 
-        let payload = {
-            "name": this.input_customer_name.value,
-            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
-        };
+        else{
+            let payload = {
+                "name": this.input_customer_name.value,
+                "city": city.id
+            };
 
-        HttpApi.makeChangeRequest(url, method, payload)
-            .then(() => {
-                this.callTable();
-            });
+            HttpApi.makeChangeRequest(url, method, payload)
+                .then(() => {
+                    this.callTable();
+                    this.callAlertModal("success","CHANGE_MODAL_CONTENT",2000);
+                })
+                .catch(() => {
+                    this.callAlertModal("fail","CHANGE_MODAL_CONTENT",2000);
+                });
+        }
+
     }
+
     loadCity(value, cb) {
 
         if (!value)
@@ -80,18 +100,35 @@ class Customers extends Component {
     editCustomer(id) {
         let url = id;
         let method = 'PATCH';
-        if(!this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok)
-            return;
-        let payload = {
-            "name": this.input_customer_name.value,
-            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
-        };
 
-        HttpApi.makeChangeRequest(url, method, payload)
-            .then(() => {
-                this.callTable();
-                this.props.route.store.dispatch({type:"TOGGLE_MAIN_MODAL"})
-            });
+        if(!this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok){
+            this.callAlertModal("success","TOGGLE_MAIN_MODAL",1000);
+            return;
+        }
+
+        let city = this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0];
+
+        if (this.input_customer_name.value == "" || city == undefined) {
+            this.callAlertModal("blank","CHANGE_MODAL_CONTENT",2000);
+            this.input_customer_name.focus();
+        }
+
+        else{
+            let payload = {
+                "name": this.input_customer_name.value,
+                "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
+            };
+
+            HttpApi.makeChangeRequest(url, method, payload)
+                .then(() => {
+                    this.callTable();
+                    this.callAlertModal("success","TOGGLE_MAIN_MODAL",1000);
+                })
+                .catch(() => {
+                    this.callAlertModal("fail","CHANGE_MODAL_CONTENT",2000);
+                });
+        }
+
 
     }
     deleteCustomer(id) {
@@ -103,9 +140,11 @@ class Customers extends Component {
                 console.log("Response");
                 console.log(response);
                 this.callTable();
-                this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL" })
-
+                this.callAlertModal("success","TOGGLE_MAIN_MODAL",1500);
             })
+            .catch(() => {
+                this.callAlertModal("fail","CHANGE_MODAL_CONTENT",2000);
+            });
 
     }
     searchCustomer(name) {
@@ -225,12 +264,14 @@ class Customers extends Component {
                     .forEach((customers, i) => {
                         let customerId = customers._links.self.href;
                         let customerName = customers.name;
+                        let cityId;
                         let cityName;
                         return HttpApi.makeGetRequest(customers._links.city.href)
                             .then(city => {
                                 count++;
+                                cityId = city._links.self.href;
                                 cityName = city.name;
-                                newLista[i] = { id: customerId, data: [customerName, cityName] };
+                                newLista[i] = { id: customerId,cityId: cityId, data: [customerName, cityName] };
                                 if (count == lista._embedded.customers.length) this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
                             });
                     });
@@ -266,16 +307,18 @@ class Customers extends Component {
     loadForm(id) {
         let customer = "";
         let customer_city = "";
+        let cityId;
         let state = this.props.route.store.getState();
         state.reduceTable.table_body.forEach(element => {
             if (element.id == id) {
                 this.customer_name = element.data[0];
                 customer_city = element.data[1];
+                cityId = element.cityId;
             }
             this.props.dispatch({ type: 'AUTO_COMPLETE_STATE', autoCompleteState:{
                 value:customer_city,
-                menu:[],
-                ok:false,
+                menu:[{name:customer_city,id:cityId}],
+                ok:true,
                 loading:false
             }});
         });

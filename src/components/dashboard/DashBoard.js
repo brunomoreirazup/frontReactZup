@@ -25,7 +25,8 @@ class DashBoard extends Component {
         this.modalContent = {
             title: '',
             body: '',
-            footer: ''
+            footer: '',
+            alerts:''
 
         };
         this.props.dispatch({ type: "PAGE_SIZE", page_size: 5 })
@@ -118,11 +119,11 @@ class DashBoard extends Component {
                                     })}
                                     <td>
                                         <BtEdit 
-                                            onClick={this.props.edit.bind(this.props.edit, data.id)}> </BtEdit>
+                                            onClick={()=>this.showModalEdit(data.id)}> </BtEdit>
                                     </td>
                                     <td>
                                         <button type='button' id="btDelete" className='btn btn-danger bt-table bt-delete'
-                                            onClick={this.props.delete.bind(this.props.delete, data.id)}> </button>
+                                            onClick={() => this.showModalDelete(data.id)}> </button>
                                     </td>
                                 </tr>
                             )
