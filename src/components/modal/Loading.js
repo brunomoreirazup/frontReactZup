@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import '../../css/loading.css'
+import loadImage from '../../img/loading.gif';
 
 class Loading extends Component{
     constructor(props) {
@@ -11,7 +12,7 @@ class Loading extends Component{
     createLoading() {
         if(this.props.reduceLoading != null && this.props.reduceLoading.loading)
             return(
-               <div className="loading"></div>
+               <div className="loading"><img src={loadImage} className="load-image"></img></div>
             );
         else return "";
     }

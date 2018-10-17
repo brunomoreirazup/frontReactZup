@@ -17,13 +17,10 @@ class Customers extends Component {
         this.customer_name = '';
         this.customer_city = '';
         this.listType = "list";
-
     }
 
     componentDidMount() {
         this.callTable();
-        this.props.route.store.dispatch({ type: 'LOADING', loading: false });
-
     }
 
     render() {
@@ -155,7 +152,6 @@ class Customers extends Component {
                                         this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
                                         this.props.route.store.dispatch({ type: 'PAGES', page_size: null });
                                         this.props.route.store.dispatch({ type: 'LOADING', loading: false });
-
                                     }
 
                                 });
@@ -229,6 +225,7 @@ class Customers extends Component {
                                 newLista[i] = { id: customerId, data: [customerName, cityName] };
                                 if (count == lista._embedded.customers.length) {
                                     this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
+                                    console.log("FIM LIST")
                                     this.props.route.store.dispatch({ type: 'LOADING', loading: false });
                                 }
                             });

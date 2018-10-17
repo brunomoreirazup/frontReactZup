@@ -25,10 +25,3 @@
     background-repeat: no-repeat;
     background-position: 95% center;
 }
-
-.loading {
-    background-image: url("../img/loading.gif");
-    height: 395px;
-    background-repeat: no-repeat;
-    background-position: center center;
-}

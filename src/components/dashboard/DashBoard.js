@@ -25,8 +25,8 @@ class DashBoard extends Component {
             footer: ''
 
         };
-        this.props.dispatch({type:"PAGE_SIZE",page_size:5})
-        this.props.dispatch({type:"SORT",sort_order: "asc"})
+        this.props.dispatch({type:"PAGE_SIZE",page_size:5});
+        this.props.dispatch({type:"SORT",sort_order: "asc"});
     }
 
     toggleModal() {
