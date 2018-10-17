@@ -1,0 +1,27 @@
+._border-green:focus
+{
+    border-color: green;
+    box-shadow: none;
+}
+._border-green
+{
+    border-color: green;
+    box-shadow: none;
+}
+._form-control{
+   position: absolute;
+   top: 0;
+}
+._remove_inline
+{
+    position: relative;
+    padding-bottom: 10%;
+
+}
+.menu{
+    margin-top: 2.4em;
+    border-radius: 10px;
+    padding: 5px;
+    
+    
+}
