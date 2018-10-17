@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BtEdit from '../button/btEdit/BtEdit';
 
-class TableBody extends Component {
+export default class TableBody extends Component {
 
     constructor(props) {
         super(props);
-        this.init();
+        // this.init();
 
     }
     init() {
@@ -51,15 +51,11 @@ class TableBody extends Component {
         }
     }
     render() {
-        return this.printTbody();
+        // return this.printTbody();
+        return(
+            <tbody>
+                {this.props.children}
+            </tbody>
+        )
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        reduceTable: state.reduceTable
-    };
-
-}
-
-export default connect(mapStateToProps)(TableBody);
