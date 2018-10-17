@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./btEdit.css";
+import "../buttonCss/button.css";
 
 export default class BtEdit extends Component {
     render() {
