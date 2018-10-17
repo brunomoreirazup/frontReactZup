@@ -135,8 +135,8 @@ export default class Cities extends Component {
                     this.callAlertModal("fail","TOGGLE_MAIN_MODAL",1500);
                 }
                 else {
-                    this.callAlertModal("success","TOGGLE_MAIN_MODAL",1500);
                     this.callTable();
+                    this.callAlertModal("success","TOGGLE_MAIN_MODAL",1500);
                 }
             })
             .catch(() => {

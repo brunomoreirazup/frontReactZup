@@ -56,22 +56,59 @@ class Footer extends Component {
 
                             {currentPage - 1 > homePage ? (
 
-                            <li className="page-item" onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.homePage) }}>
-                                <a className="page-link _page-link" href="#">{this.props.reduceFooter.pages.homePage}</a>
+                                <li className="page-item" onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.homePage) }}>
+                                    <a className="page-link _page-link" href="#">{this.props.reduceFooter.pages.homePage}</a>
+                                </li>
+
+                            ) : ""}
+
+                            {currentPage - 2 > homePage ? "..." : ""}
+
+                            {currentPage !== homePage ? (
+                                <li className="page-item" onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage - 1) }}>
+                                    <a className="page-link _page-link" href="#">{this.props.reduceFooter.pages.currentPage - 1}</a>
+                                </li>
+
+                            ) : ""}
+
+                            <li className="page-item active ">
+                                <a className="_pagination-active page-link" href="#">
+                                    {this.props.reduceFooter.pages.currentPage} <span className="sr-only">(current)</span>
+                                </a>
                             </li>
 
-                            ): ""}
+                            {currentPage !== lastPage ? (
+                                <li className="page-item" onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage + 1) }}>
+                                    <a className="page-link _page-link" href="#">{this.props.reduceFooter.pages.currentPage + 1}</a>
+                                </li>
 
-                                
-                            {this.printPrevPageButton()}
-                            {this.printHomePageNumber()}
-                            {this.printPrevPageNumberSpace()}
-                            {this.printPrevPageNumber()}
-                            {this.printCurrentPage()}
-                            {this.printNextPageNumber()}
-                            {this.printNextPageNumberSpace()}
-                            {this.printLastPageNumber()}
-                            {this.printNextPageButton()}
+                            ) : ""}
+
+                            {currentPage + 2 < lastPage ? "..." : ""}
+
+                            {currentPage + 1 < lastPage ? (
+
+                                <li className="page-item" onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.lastPage) }}>
+                                    <a className="page-link _page-link" href="#">{this.props.reduceFooter.pages.lastPage}</a>
+                                </li>
+
+                            ) : ""}
+
+                            <li className={currentPage !== lastPage ? "page-item" : "page-item disabled"}
+                                onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage + 1) }}>
+                                <a className="page-link _page-link" href="#">Next</a>
+
+                            </li>
+
+                            {/* {this.printPrevPageButton()} */}
+                            {/* {this.printHomePageNumber()} */}
+                            {/* {this.printPrevPageNumberSpace()} */}
+                            {/* {this.printPrevPageNumber()} */}
+                            {/* {this.printCurrentPage()} */}
+                            {/* {this.printNextPageNumber()} */}
+                            {/* {this.printNextPageNumberSpace()} */}
+                            {/* {this.printLastPageNumber()} */}
+                            {/* {this.printNextPageButton()} */}
                         </ul>
                     </nav>
                 </div >
