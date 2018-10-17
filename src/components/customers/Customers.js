@@ -263,12 +263,14 @@ class Customers extends Component {
                     .forEach((customers, i) => {
                         let customerId = customers._links.self.href;
                         let customerName = customers.name;
+                        let cityId;
                         let cityName;
                         return HttpApi.makeGetRequest(customers._links.city.href)
                             .then(city => {
                                 count++;
+                                cityId = city._links.self.href;
                                 cityName = city.name;
-                                newLista[i] = { id: customerId, data: [customerName, cityName] };
+                                newLista[i] = { id: customerId,cityId: cityId, data: [customerName, cityName] };
                                 if (count == lista._embedded.customers.length) this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
                             });
                     });
@@ -304,16 +306,18 @@ class Customers extends Component {
     loadForm(id) {
         let customer = "";
         let customer_city = "";
+        let cityId;
         let state = this.props.route.store.getState();
         state.reduceTable.table_body.forEach(element => {
             if (element.id == id) {
                 this.customer_name = element.data[0];
                 customer_city = element.data[1];
+                cityId = element.cityId;
             }
             this.props.dispatch({ type: 'AUTO_COMPLETE_STATE', autoCompleteState:{
                 value:customer_city,
-                menu:[],
-                ok:false,
+                menu:[{name:customer_city,id:cityId}],
+                ok:true,
                 loading:false
             }});
         });
