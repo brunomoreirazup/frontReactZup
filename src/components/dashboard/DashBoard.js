@@ -21,7 +21,8 @@ class DashBoard extends Component {
         this.modalContent = {
             title: '',
             body: '',
-            footer: ''
+            footer: '',
+            alerts:''
 
         };
         this.props.dispatch({type:"PAGE_SIZE",page_size:5})

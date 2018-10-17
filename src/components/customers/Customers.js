@@ -44,17 +44,35 @@ class Customers extends Component {
     addCustomer() {
         let url = 'https://customers-challenge.herokuapp.com/customers';
         let method = 'POST';
+        let city = this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0];
+        if (this.input_customer_name.value == "" || city == undefined) {
+            this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "blank"});
+            setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+            this.input_customer_name.focus();
+        }
 
-        let payload = {
-            "name": this.input_customer_name.value,
-            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
-        };
+        else{
+            let payload = {
+                "name": this.input_customer_name.value,
+                "city": city.id
+            };
 
-        HttpApi.makeChangeRequest(url, method, payload)
-            .then(() => {
-                this.callTable();
-            });
+            HttpApi.makeChangeRequest(url, method, payload)
+                .then(() => {
+                    this.callTable();
+                })
+                .then(() => {
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
+                    setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+                })
+                .catch(() => {
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
+                    setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+                });
+        }
+
     }
+
     loadCity(value, cb) {
 
         if (!value)
@@ -79,18 +97,41 @@ class Customers extends Component {
     editCustomer(id) {
         let url = id;
         let method = 'PATCH';
-        if(!this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok)
-            return;
-        let payload = {
-            "name": this.input_customer_name.value,
-            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
-        };
 
-        HttpApi.makeChangeRequest(url, method, payload)
-            .then(() => {
-                this.callTable();
-                this.props.route.store.dispatch({type:"TOGGLE_MAIN_MODAL"})
-            });
+        if(!this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok){
+            this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
+            setTimeout(() => this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL",modalOpen: false }), 1000);
+            return;
+        }
+
+        let city = this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0];
+
+        if (this.input_customer_name.value == "" || city == undefined) {
+            this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "blank"});
+            setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+            this.input_customer_name.focus();
+        }
+
+        else{
+            let payload = {
+                "name": this.input_customer_name.value,
+                "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
+            };
+
+            HttpApi.makeChangeRequest(url, method, payload)
+                .then(() => {
+                    this.callTable();
+                })
+                .then(() => {
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
+                    setTimeout(() => this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL",modalOpen: false }), 1000);
+                })
+                .catch(() => {
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
+                    setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+                });
+        }
+
 
     }
     deleteCustomer(id) {
@@ -102,9 +143,14 @@ class Customers extends Component {
                 console.log("Response");
                 console.log(response);
                 this.callTable();
-                this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL" })
+                this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
+                setTimeout(() => this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL",modalOpen: false }), 1500);
 
             })
+            .catch(() => {
+                this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
+                setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+            });
 
     }
     searchCustomer(name) {

@@ -62,7 +62,8 @@ export default class Cities extends Component {
         let method = 'POST';
 
         if (this.input_cidade_name.value == "") {
-            alert("Insira uma cidade");
+            this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "blank"});
+            setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
             this.input_cidade_name.focus();
         }
         else {
@@ -74,6 +75,14 @@ export default class Cities extends Component {
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
                     this.callTable();
+                })
+                .then(() => {
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
+                    setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+                })
+                .catch(() => {
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
+                    setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
                 });
         }
     }
@@ -85,7 +94,8 @@ export default class Cities extends Component {
 
 
         if (this.input_cidade_name.value == "") {
-            alert("Insira uma cidade");
+            this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "blank"});
+            setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
             this.input_cidade_name.focus();
         }
 
@@ -97,7 +107,14 @@ export default class Cities extends Component {
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
                     this.callTable();
-                    this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL" })
+                })
+                .then(() => {
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
+                    setTimeout(() => this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL",modalOpen: false }), 1000);
+                })
+                .catch(() => {
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
+                    setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
                 });
 
         }
@@ -113,14 +130,19 @@ export default class Cities extends Component {
                 console.log("Response");
                 console.log(response);
                 if (response.status == 409) {
-                    alert("ja tem cliente");
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
+                    setTimeout(() => this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL",modalOpen: false }), 1500);
                 }
                 else {
+                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
+                    setTimeout(() => this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL",modalOpen: false }), 1500);
                     this.callTable();
                 }
-                this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL" })
-
             })
+            .catch(() => {
+                this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
+                setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+            });
     }
 
     callTable() {
