@@ -7,11 +7,10 @@ class ContentInfo extends Component {
 
         let selectPageSize = "";
 
-        console.log(this.props.reduceContentInfo.totalElements)
         if (this.props.reduceContentInfo.page_size) {
 
             selectPageSize = (
-                    <React.Fragment>
+                    <React.Fragment> Exibindo
                     <select className='form-control custom-select' defaultValue={this.props.reduceContentInfo.page_size}
                         ref={(input) => this.pageSize = input}
                         onChange={() => this.props.changeSize(this.pageSize)}>
@@ -20,7 +19,7 @@ class ContentInfo extends Component {
                         <option value="15">15</option>
                         <option value="20">20</option>                        
                     </select>
-                    Elementos por página de mais de&nbsp;
+                    de &nbsp;
                     </React.Fragment>
                     
         
@@ -28,9 +27,9 @@ class ContentInfo extends Component {
         }
         return (
             <div>
-                <span className='form-inline'>
+                <span className='form-inline content-info'>
                 {selectPageSize}                
-                {this.props.reduceContentInfo.totalElements ? this.props.reduceContentInfo.totalElements.sizePage : 0} resultados
+                {this.props.reduceContentInfo.totalElements ? this.props.reduceContentInfo.totalElements.sizePage : 0} resultados encontrados.
                 </span> 
             </div>
         );

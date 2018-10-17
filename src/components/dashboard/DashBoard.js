@@ -3,6 +3,7 @@ import Footer from "../footer/Footer";
 import Table from "../table/Table";
 import Header from "../header/Header";
 import MainModal from "../modal/MainModal";
+import Loading from "../modal/Loading";
 import { connect } from 'react-redux';
 
 class DashBoard extends Component {
@@ -27,7 +28,6 @@ class DashBoard extends Component {
         this.props.dispatch({type:"PAGE_SIZE",page_size:5})
         this.props.dispatch({type:"SORT",sort_order: "asc"})
     }
-
 
     toggleModal() {
         this.props.dispatch({type:"MAIN_MODAL_CONTENT",modalContent:this.modalContent})
@@ -92,6 +92,7 @@ class DashBoard extends Component {
                 <Table thead={this.tHead} edit={this.showModalEdit.bind(this)} delete={this.showModalDelete.bind(this)} sort={this.sort.bind(this)}/>
                 <Footer changeCurrentPage={this.changeCurrentPage.bind(this)}/>
                 <MainModal />
+                <Loading/>
 
             </div>
 

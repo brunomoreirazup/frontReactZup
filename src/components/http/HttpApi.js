@@ -8,6 +8,7 @@ export default class HttpApi {
     }
 
     static makeChangeRequest(url, method, payload) {
+
         const requestInfo = {
             method: method,
             body: JSON.stringify(payload),

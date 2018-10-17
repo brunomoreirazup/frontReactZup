@@ -105,13 +105,8 @@ export default class Cities extends Component {
 
 
     deleteCity(id) {
-        let url = id;
-        console.log(id);
-
-        HttpApi.removeEntry(url)
+        HttpApi.removeEntry(id)
             .then((response) => {
-                console.log("Response");
-                console.log(response);
                 if (response.status == 409) {
                     alert("ja tem cliente");
                 }
@@ -126,11 +121,9 @@ export default class Cities extends Component {
     callTable() {
         if (this.listType == 'search') {
             let keyword = this.props.route.store.getState().reduceSearch.search;
-            console.log(keyword);
             this.searchCity(keyword);
         }
         else this.listCity();
-        console.log(this.listType);
     }
 
     searchCity(name) {
@@ -144,7 +137,7 @@ export default class Cities extends Component {
             };
             this.props.route.store.dispatch({ type: 'PAGES', pages: defaultPages });
 
-            this.props.route.store.dispatch({ type: "PAGE_SIZE", page_size: 5 })
+            this.props.route.store.dispatch({ type: "PAGE_SIZE", page_size: 5 });
             this.listCity();
         }
 
