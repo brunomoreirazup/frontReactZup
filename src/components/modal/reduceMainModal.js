@@ -24,11 +24,11 @@ export default function reduce(state = {}, action) {
 
     if(action.type === "CHANGE_MODAL_CONTENT"){
         let alertContent = "";
-        if(action.showAlert == "success")
+        if(action.showAlert === "success")
             alertContent = <div className="alert alert-info" role="alert">Operação realizada com sucesso</div>;
-        if(action.showAlert == "fail")
+        if(action.showAlert === "fail")
             alertContent = <div className="alert alert-danger" role="alert">Não foi possível realizar a operação!</div>;
-        if(action.showAlert == "blank")
+        if(action.showAlert === "blank")
             alertContent = <div className="alert alert-warning" role="alert">Preencha todos os campos</div>;
         let newState = Object.assign({}, state);
         newState.modalContent.alerts = alertContent ;

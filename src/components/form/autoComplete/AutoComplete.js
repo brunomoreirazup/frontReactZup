@@ -3,9 +3,6 @@ import Autocomplete from "react-autocomplete";
 import { connect } from "react-redux";
 class AutoComplete extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         let i = 0;

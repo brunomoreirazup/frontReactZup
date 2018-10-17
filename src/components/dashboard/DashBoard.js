@@ -21,21 +21,18 @@ class DashBoard extends Component {
     init() {
         this.title = this.props.title;
         this.tHead = this.props.tHead;
-        this.state = {
-            modal: false
-        };
         this.modalContent = {
             title: '',
             body: '',
             footer: '',
-            alerts:''
+            alerts: ''
 
         };
         this.props.dispatch({ type: "PAGE_SIZE", page_size: 5 })
         this.props.dispatch({ type: "SORT", sort_order: "asc" })
         this.props.dispatch({ type: 'TABLE_BODY', table_body: null });
     }
-    
+
 
     toggleModal() {
         this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent })
@@ -89,21 +86,31 @@ class DashBoard extends Component {
     }
     loadThead() {
         return (
-            
-                <tr>
-                    <th> # </th>
-                    {this.props.tHead.map((item,i)=>
-                        {
-                            if (i==0)
-                                return <th className='sortHead' key={i} onClick={this.sort.bind(this)}>{item}</th>;
-                                else return <th key={i}>{item}</th>;
-                        }
-                    )}
-                </tr>
+
+            <tr>
+                <th> # </th>
+                {this.props.tHead.map((item, i) => {
+                    if (i === 0)
+                        return <th className='sortHead' key={i} onClick={this.sort.bind(this)}>{item}</th>;
+                    else return <th key={i}>{item}</th>;
+                }
+                )}
+            </tr>
         )
 
     }
     loadTBody() {
+
+        let currentPossition = 0;
+        console.log(this.props);
+        try {
+            currentPossition = this.props.reduceContentInfo.page_size * (this.props.reduceFooter.pages.currentPage - 1);
+        } catch (e) {
+
+        }
+        console.log("I:" + currentPossition);
+        console.log(this.props.reduceTable.table_body);
+
         if (this.props.reduceTable == undefined || this.props.reduceTable.table_body == undefined)
             return <tr key='#'><td colSpan={5}>Carregando...</td></tr>;
         else {
@@ -114,14 +121,14 @@ class DashBoard extends Component {
 
                             return (
                                 <tr key={data.id}>
-                                    <td>{i + 1}</td>
+                                    <td>{i + 1 + currentPossition}</td>
                                     {data.data.map((dataItem, i) => {
                                         let keyItem = data.id + "|" + i;
                                         return <td key={keyItem}>{dataItem}</td>
                                     })}
                                     <td>
-                                        <BtEdit 
-                                            onClick={()=>this.showModalEdit(data.id)}> </BtEdit>
+                                        <BtEdit
+                                            onClick={() => this.showModalEdit(data.id)}> </BtEdit>
                                     </td>
                                     <td>
                                         <BtDelete
@@ -132,7 +139,7 @@ class DashBoard extends Component {
                         }
                         )
                         }
-                        </React.Fragment>
+                    </React.Fragment>
                 )
             } else return <tr key='#'><td colSpan={5}>Nenhum Resultado Encontrado</td></tr>;
         }
@@ -157,9 +164,9 @@ class DashBoard extends Component {
 
                 <Footer changeCurrentPage={this.changeCurrentPage.bind(this)} />
                 <Copyright />
-                <Loading/>
+                <Loading />
                 <MainModal />
-                
+
 
             </div>
 
@@ -169,7 +176,9 @@ class DashBoard extends Component {
 
 function mapStateToProps(state) {
     return {
-        reduceTable: state.reduceTable
+        reduceTable: state.reduceTable,
+        reduceFooter: state.reduceFooter,
+        reduceContentInfo: state.reduceContentInfo
     };
 
 }

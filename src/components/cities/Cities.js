@@ -3,15 +3,11 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 
-export default class Cities extends Component {
 
+export default class Cities extends Component {
 
     constructor(props) {
         super(props);
-        this.init();
-    }
-
-    init() {
         this.title = "Cidades";
         this.tHead = ["Nome", "Editar", "Remover"];
         this.form = this.CreateFormBody.bind(this);
@@ -28,6 +24,7 @@ export default class Cities extends Component {
         return (
             <div>
                 <Navbar currentPage={0} />
+
                 <Dashboard
                     title={this.title}
                     tHead={this.tHead}
@@ -38,56 +35,76 @@ export default class Cities extends Component {
                     search={this.searchCity.bind(this)}
                     list={this.callTable.bind(this)}
                 />
-                
             </div>
-
 
         )
     }
 
-    CreateFormBody(action, id) {
-        if (id != undefined)
-            this.loadForm(id);
-        else
-            this.cidade_name = "";
-        return (
-            <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
-                <label>Cidade:</label>
-                <input id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
-            </form>
-        );
-    }
-
-    callAlertModal(showAlertType, actionType, time){
-        this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: showAlertType});
-        setTimeout(() => this.props.route.store.dispatch({type: actionType}), time);
+    callAlertModal(showAlertType, actionType, time) {
+        this.props.route.store.dispatch({ type: "CHANGE_MODAL_CONTENT", showAlert: showAlertType });
+        setTimeout(() => this.props.route.store.dispatch({ type: actionType }), time);
 
     }
 
+    callTable() {
+        if (this.listType === 'search') {
+            let keyword = this.props.route.store.getState().reduceSearch.search;
+            this.searchCity(keyword);
+        }
+        else this.listCity();
+    }
+
+    changeStorePages(json) {
+        let page =
+        {
+            homePage: 1,
+            lastPage: json.page.totalPages,
+            currentPage: json.page.number + 1
+
+        };
+        this.props.route.store.dispatch({ type: 'PAGES', pages: page });
+    }
+
+    storeSizeSearch(json) {
+        let size =
+        {
+            sizePage: json._embedded.cities.length
+        };
+
+        this.props.route.store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
+    }
+
+    storeSizePages(json) {
+        let size =
+        {
+            sizePage: json.page.totalElements
+        };
+
+        this.props.route.store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
+    }
+    
     addCity() {
-
         let url = 'https://customers-challenge.herokuapp.com/cities';
         let method = 'POST';
 
-        if (this.input_cidade_name.value == "") {
-            this.callAlertModal("blank","CHANGE_MODAL_CONTENT",2000);
+        if (this.input_cidade_name.value === "") {
+            this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
             this.input_cidade_name.focus();
         }
+
         else {
 
             let payload = {
-                "name": this.input_cidade_name.value
+                "name": this.input_cidade_name.value                
             };
 
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
                     this.callTable();
-                })
-                .then(() => {
-                    this.callAlertModal("success","CHANGE_MODAL_CONTENT",2000);
+                    this.callAlertModal("success", "CHANGE_MODAL_CONTENT", 2000);
                 })
                 .catch(() => {
-                    this.callAlertModal("fail","CHANGE_MODAL_CONTENT",2000);
+                    this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
                 });
         }
     }
@@ -97,9 +114,8 @@ export default class Cities extends Component {
         let url = id;
         let method = 'PUT';
 
-
-        if (this.input_cidade_name.value == "") {
-            this.callAlertModal("blank","CHANGE_MODAL_CONTENT",2000);
+        if (this.input_cidade_name.value === "") {
+            this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
             this.input_cidade_name.focus();
         }
 
@@ -111,12 +127,10 @@ export default class Cities extends Component {
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
                     this.callTable();
-                })
-                .then(() => {
-                    this.callAlertModal("success","TOGGLE_MAIN_MODAL",1000);
+                    this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1000);
                 })
                 .catch(() => {
-                    this.callAlertModal("fail","CHANGE_MODAL_CONTENT",2000);
+                    this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
                 });
 
         }
@@ -126,26 +140,19 @@ export default class Cities extends Component {
     deleteCity(id) {
         HttpApi.removeEntry(id)
             .then((response) => {
-                if (response.status == 409) {
-                    this.callAlertModal("fail","TOGGLE_MAIN_MODAL",1500);
+                if (response.status === 409) {
+                    this.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 1500);
                 }
                 else {
                     this.callTable();
-                    this.callAlertModal("success","TOGGLE_MAIN_MODAL",1500);
+                    this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
                 }
             })
             .catch(() => {
-                this.callAlertModal("fail","CHANGE_MODAL_CONTENT",2000);
+                this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
             });
     }
 
-    callTable() {
-        if (this.listType == 'search') {
-            let keyword = this.props.route.store.getState().reduceSearch.search;
-            this.searchCity(keyword);
-        }
-        else this.listCity();
-    }
 
     searchCity(name) {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
@@ -160,6 +167,7 @@ export default class Cities extends Component {
             this.props.route.store.dispatch({ type: 'PAGES', pages: defaultPages });
 
             this.props.route.store.dispatch({ type: "PAGE_SIZE", page_size: 5 });
+            
             this.listCity();
         }
 
@@ -181,23 +189,7 @@ export default class Cities extends Component {
         }
     }
 
-    storeSizeSearch(json) {
-        let size =
-        {
-            sizePage: json._embedded.cities.length
-        };
-
-        this.props.route.store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
-    }
-
-    storeSizePages(json) {
-        let size =
-        {
-            sizePage: json.page.totalElements
-        };
-
-        this.props.route.store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
-    }
+    
 
     listCity() {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
@@ -221,26 +213,29 @@ export default class Cities extends Component {
                 );
                 this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
                 this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
-                }
+            }
             );
     }
 
-    changeStorePages(json) {
-        let page =
-        {
-            homePage: 1,
-            lastPage: json.page.totalPages,
-            currentPage: json.page.number + 1
-
-        };
-        this.props.route.store.dispatch({ type: 'PAGES', pages: page });
+    
+    CreateFormBody(action, id) {
+        if (id !== undefined)
+            this.loadForm(id);
+        else
+            this.cidade_name = "";
+        return (
+            <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
+                <label>Cidade:</label>
+                <input id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
+            </form>
+        );
     }
 
     loadForm(id) {
         let city = "";
         let state = this.props.route.store.getState();
         state.reduceTable.table_body.forEach(element => {
-            if (element.id == id)
+            if (element.id === id)
                 city = element.data[0];
         });
         this.cidade_name = city;

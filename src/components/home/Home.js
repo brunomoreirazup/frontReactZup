@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Navbar from '../navbar/Navbar';
-import Autocomplete from "react-autocomplete";
-import HttpApi from "../http/HttpApi";
 import Copyright from "../copyright/Copyright";
 export default class Home extends Component {
 

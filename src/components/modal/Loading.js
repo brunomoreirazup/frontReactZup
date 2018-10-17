@@ -4,15 +4,11 @@ import '../../css/loading.css'
 import loadImage from '../../img/loading.gif';
 
 class Loading extends Component{
-    constructor(props) {
-        super(props);
-    }
-
 
     createLoading() {
         if(this.props.reduceLoading != null && this.props.reduceLoading.showLoading)
             return(
-               <div className="loading"><img src={loadImage} className="load-image"></img></div>
+               <div className="loading"><img src={loadImage} className="load-image" alt="loadingImage   "></img></div>
             );
         else return "";
     }

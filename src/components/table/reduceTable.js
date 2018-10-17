@@ -10,7 +10,7 @@ export default function reduce(state = {}, action) {
         let newState = Object.assign({}, state);
         if(action.sort_order) {
             newState.sort_order= action.sort_order;
-        } else  if (newState.sort_order == 'asc') {
+        } else  if (newState.sort_order === 'asc') {
             newState.sort_order = 'desc';
         } else newState.sort_order = 'asc';
         return newState;

@@ -11,7 +11,7 @@ export default class Navbar extends Component{
 
     isActivated(i)
     {
-        if(i==this.props.currentPage)
+        if(i===this.props.currentPage)
             return "nav-item active \"";
         return "";
     }
