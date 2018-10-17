@@ -56,14 +56,19 @@ export default class Cities extends Component {
         );
     }
 
+    callAlertModal(showAlertType, actionType, time){
+        this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: showAlertType});
+        setTimeout(() => this.props.route.store.dispatch({type: actionType}), time);
+
+    }
+
     addCity() {
 
         let url = 'https://customers-challenge.herokuapp.com/cities';
         let method = 'POST';
 
         if (this.input_cidade_name.value == "") {
-            this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "blank"});
-            setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+            this.callAlertModal("blank","CHANGE_MODAL_CONTENT",2000);
             this.input_cidade_name.focus();
         }
         else {
@@ -77,12 +82,10 @@ export default class Cities extends Component {
                     this.callTable();
                 })
                 .then(() => {
-                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
-                    setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+                    this.callAlertModal("success","CHANGE_MODAL_CONTENT",2000);
                 })
                 .catch(() => {
-                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
-                    setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+                    this.callAlertModal("fail","CHANGE_MODAL_CONTENT",2000);
                 });
         }
     }
@@ -94,8 +97,7 @@ export default class Cities extends Component {
 
 
         if (this.input_cidade_name.value == "") {
-            this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "blank"});
-            setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+            this.callAlertModal("blank","CHANGE_MODAL_CONTENT",2000);
             this.input_cidade_name.focus();
         }
 
@@ -109,12 +111,10 @@ export default class Cities extends Component {
                     this.callTable();
                 })
                 .then(() => {
-                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
-                    setTimeout(() => this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL",modalOpen: false }), 1000);
+                    this.callAlertModal("success","TOGGLE_MAIN_MODAL",1000);
                 })
                 .catch(() => {
-                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
-                    setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+                    this.callAlertModal("fail","CHANGE_MODAL_CONTENT",2000);
                 });
 
         }
@@ -130,18 +130,15 @@ export default class Cities extends Component {
                 console.log("Response");
                 console.log(response);
                 if (response.status == 409) {
-                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
-                    setTimeout(() => this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL",modalOpen: false }), 1500);
+                    this.callAlertModal("fail","TOGGLE_MAIN_MODAL",1500);
                 }
                 else {
-                    this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "success"});
-                    setTimeout(() => this.props.route.store.dispatch({ type: "TOGGLE_MAIN_MODAL",modalOpen: false }), 1500);
+                    this.callAlertModal("success","TOGGLE_MAIN_MODAL",1500);
                     this.callTable();
                 }
             })
             .catch(() => {
-                this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT", showAlert: "fail"});
-                setTimeout(() => this.props.route.store.dispatch({type: "CHANGE_MODAL_CONTENT"}), 2000);
+                this.callAlertModal("fail","CHANGE_MODAL_CONTENT",2000);
             });
     }
 
