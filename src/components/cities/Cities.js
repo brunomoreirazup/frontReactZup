@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
+
 export default class Cities extends Component {
 
 
@@ -37,8 +38,9 @@ export default class Cities extends Component {
                     search={this.searchCity.bind(this)}
                     list={this.callTable.bind(this)}
                 />
-
+                
             </div>
+
 
         )
     }

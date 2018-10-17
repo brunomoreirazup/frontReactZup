@@ -4,6 +4,7 @@ import Table from "../table/Table";
 import Header from "../header/Header";
 import MainModal from "../modal/MainModal";
 import { connect } from 'react-redux';
+import Copyright from '../copyright/Copyright';
 
 class DashBoard extends Component {
 
@@ -91,6 +92,7 @@ class DashBoard extends Component {
                 />
                 <Table thead={this.tHead} edit={this.showModalEdit.bind(this)} delete={this.showModalDelete.bind(this)} sort={this.sort.bind(this)}/>
                 <Footer changeCurrentPage={this.changeCurrentPage.bind(this)}/>
+                <Copyright />
                 <MainModal />
 
             </div>
