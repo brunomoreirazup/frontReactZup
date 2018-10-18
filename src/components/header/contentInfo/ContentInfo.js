@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 class ContentInfo extends Component {
 
     render() {
+
         this.pageSize = "";
 
         let selectPageSize = "";
+
 
         if (this.props.reduceContentInfo.page_size) {
 
@@ -17,20 +19,20 @@ class ContentInfo extends Component {
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
-                        <option value="20">20</option>                        
+                        <option value="20">20</option>
                     </select>
                     de &nbsp;
                     </React.Fragment>
-                    
-        
+
+
             )
         }
         return (
             <div>
                 <span className='form-inline content-info'>
-                {selectPageSize}                
+                {selectPageSize}
                 {this.props.reduceContentInfo.totalElements ? this.props.reduceContentInfo.totalElements.sizePage : 0} resultados encontrados.
-                </span> 
+                </span>
             </div>
         );
     }
@@ -38,7 +40,8 @@ class ContentInfo extends Component {
 }
 function mapStateToProps(state) {
     return {
-        reduceContentInfo: state.reduceContentInfo
+        reduceContentInfo: state.reduceContentInfo,
+        reduceLoading: state.reduceLoading
 
     };
 

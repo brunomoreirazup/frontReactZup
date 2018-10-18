@@ -8,3 +8,19 @@
     background-repeat: no-repeat;
     background-position: 95% center;
 }
+
+.headerCommon {
+    width: 10%;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+.customer {
+    width: 35%;
+}
+
+.city {
+    width: 71%;
+}

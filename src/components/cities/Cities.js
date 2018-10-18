@@ -3,15 +3,16 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import CommonServices from "../../CommonServices/CommonServices";
-import {store} from "../../App";
-
 
 export default class Cities extends Component {
 
     constructor(props) {
         super(props);
         this.title = "Cidades";
-        this.tHead = ["Nome", "Editar", "Remover"];
+        this.tHead = [
+            {text:"Nome", className:'city sortHead'},
+            {text:"Editar", className:'headerCommon'},
+            {text:"Remover", className:'headerCommon'}];
         this.form = this.CreateFormBody.bind(this);
         this.input_cidade_name = "";
         this.cidade_name = "";
@@ -19,7 +20,7 @@ export default class Cities extends Component {
     }
 
     componentDidMount() {
-        this.callTable();
+        CommonServices.callTable(this.listCity.bind(this));
     }
 
     render() {
@@ -35,7 +36,7 @@ export default class Cities extends Component {
                     edit={this.editCity.bind(this)}
                     delete={this.deleteCity.bind(this)}
                     search={this.searchCity.bind(this)}
-                    list={this.callTable.bind(this)}
+                    list={CommonServices.callTable}
                 />
             </div>
 
@@ -47,15 +48,6 @@ export default class Cities extends Component {
         setTimeout(() => this.props.route.store.dispatch({ type: actionType }), time);
 
     }
-
-    callTable() {
-        if (this.listType === 'search') {
-            let keyword = this.props.route.store.getState().reduceSearch.search;
-            this.searchCity(keyword);
-        }
-        else this.listCity();
-    }
-
     
     addCity() {
         let url = 'https://customers-challenge.herokuapp.com/cities';
@@ -88,7 +80,7 @@ export default class Cities extends Component {
 
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
-                    this.callTable();
+                    CommonServices.callTable(this.listCity.bind(this));
                     CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1000);
                 })
                 .catch(() => {
@@ -106,7 +98,7 @@ export default class Cities extends Component {
                     CommonServices.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 1500);
                 }
                 else {
-                    this.callTable();
+                    CommonServices.callTable(this.listCity.bind(this));
                     CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
                 }
             })

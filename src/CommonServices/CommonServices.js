@@ -109,12 +109,12 @@ export default class CommonServices {
     }
      //-------------------------------------------------------------------------------------------------------------
 
-    static callTable() {
+    static callTable(list) {
         if (this.listType === 'search') {
             let keyword = store.getState().reduceSearch.search;
             this.searchCustomer(keyword);
         }
-        else this.listCustomers();
+        else list();
     }
 
     static sendData(url, method,payload) {
