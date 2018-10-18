@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
-import CommonServices from "../../CommonServices/CommonServices";
-import {store} from "../../App";
+import CommonServices, {list,setFunction} from "../../CommonServices/CommonServices";
+
 
 
 export default class Cities extends Component {
@@ -16,6 +16,7 @@ export default class Cities extends Component {
         this.input_cidade_name = "";
         this.cidade_name = "";
         this.listType = "list";
+        setFunction(this.listCity.bind(this),this.searchCity.bind(this));
     }
 
     componentDidMount() {
@@ -76,25 +77,13 @@ export default class Cities extends Component {
         let url = id;
         let method = 'PUT';
 
-        if (this.input_cidade_name.value === "") {
-            CommonServices.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
-            this.input_cidade_name.focus();
-        }
+        if(!CommonServices.validateFields(this.input_cidade_name)) {
 
-        else {
             let payload = {
                 "name": this.input_cidade_name.value
             };
 
-            HttpApi.makeChangeRequest(url, method, payload)
-                .then(() => {
-                    this.callTable();
-                    CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1000);
-                })
-                .catch(() => {
-                    CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-                });
-
+            CommonServices.sendData(url,method,payload);
         }
     }
 
@@ -119,8 +108,7 @@ export default class Cities extends Component {
     searchCity(name) {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
 
-        if(!CommonServices.emptySearch(name, this.listCity.bind(this))) {
-            this.listType = 'search';
+        if(!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     CommonServices.storeSizeSearch(lista._embedded.cities);

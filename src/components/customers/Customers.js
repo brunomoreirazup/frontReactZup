@@ -3,6 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import AutoComplete from "../form/autoComplete/AutoComplete";
+import CommonServices from "../../CommonServices/CommonServices";
 
 export default class Customers extends Component {
 
@@ -38,43 +39,6 @@ export default class Customers extends Component {
             </div>
 
         )
-    }
-
-    callTable() {
-        if (this.listType === 'search') {
-            let keyword = this.props.route.store.getState().reduceSearch.search;
-            this.searchCustomer(keyword);
-        }
-        else this.listCustomers();
-    }
-
-    changeStorePages(json) {
-        let page =
-        {
-            homePage: 1,
-            lastPage: json.page.totalPages,
-            currentPage: json.page.number + 1
-
-        };
-        this.props.route.store.dispatch({ type: 'PAGES', pages: page });
-    }
-
-    storeSizePages(json) {
-        let size =
-        {
-            sizePage: json.page.totalElements
-        };
-
-        this.props.route.store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
-    }
-
-    storeSizeSearch(json) {
-        let size =
-        {
-            sizePage: json._embedded.customers.length
-        };
-
-        this.props.route.store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
     }
 
     addCustomer() {
@@ -172,7 +136,7 @@ export default class Customers extends Component {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     let count = 0;
-                    this.storeSizeSearch(lista);
+                    CommonServices.storeSizeSearch(lista._embedded.customers);
                     let newLista = [];
                     if (!lista._embedded.customers.length) {
                         this.props.route.store.dispatch({
@@ -223,8 +187,8 @@ export default class Customers extends Component {
             .then(lista => {
 
                 let count = 0;
-                this.changeStorePages(lista);
-                this.storeSizePages(lista);
+                CommonServices.changeStorePages(lista);
+                CommonServices.storeSizePages(lista);
                 let newLista = [];
 
                 lista._embedded.customers

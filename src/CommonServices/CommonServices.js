@@ -1,7 +1,20 @@
 import {store} from "../App";
 import HttpApi from "../components/http/HttpApi";
 
+var listFunction;
+var searchFunction;
+
+export function setFunction(list,search){
+    listFunction = list;
+    searchFunction = search;
+}
+
+
+
+var listType = 'list';
+
 export default class CommonServices {
+
 
 
     static validateFields(input){
@@ -50,8 +63,6 @@ export default class CommonServices {
     }
 
     static mountUrl(tableType){
-        this.listType = 'list';
-
         let state = store.getState();
         let page = state.reduceFooter.pages.currentPage;
         let sizePage = state.reduceContentInfo.page_size;
@@ -65,6 +76,7 @@ export default class CommonServices {
 
     static list(tableType) {
         store.dispatch({ type: 'LOADING', showLoading: true });
+        listType = 'list';
         const url = this.mountUrl(tableType);
         return HttpApi.makeGetRequest(url)
             .then(lista => {
@@ -81,13 +93,14 @@ export default class CommonServices {
     }
 
     static removePageInfo(newLista){
+        listType = 'search';
         store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
         store.dispatch({ type: 'PAGE_SIZE', page_size: null });
         store.dispatch({ type: 'PAGES', page: null });
         store.dispatch({ type: 'LOADING', showLoading: false });
     }
 
-    static emptySearch(name, list){
+    static emptySearch(name){
         if (!name) {
             let defaultPages =
                 {
@@ -100,21 +113,20 @@ export default class CommonServices {
             store.dispatch({ type: 'PAGES', pages: defaultPages });
             store.dispatch({ type: "PAGE_SIZE", page_size: 5 });
 
-            list();
+            listFunction();
 
             return true;
         }
         return false
 
     }
-     //-------------------------------------------------------------------------------------------------------------
 
     static callTable() {
-        if (this.listType === 'search') {
+        if (listType === 'search') {
             let keyword = store.getState().reduceSearch.search;
-            this.searchCustomer(keyword);
+            searchFunction(keyword);
         }
-        else this.listCustomers();
+        else listFunction();
     }
 
     static sendData(url, method,payload) {
