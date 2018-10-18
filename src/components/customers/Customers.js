@@ -40,12 +40,6 @@ export default class Customers extends Component {
         )
     }
 
-    callAlertModal(showAlertType, actionType, time) {
-        this.props.route.store.dispatch({ type: "CHANGE_MODAL_CONTENT", showAlert: showAlertType });
-        setTimeout(() => this.props.route.store.dispatch({ type: actionType }), time);
-
-    }
-
     callTable() {
         if (this.listType === 'search') {
             let keyword = this.props.route.store.getState().reduceSearch.search;

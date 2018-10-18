@@ -102,14 +102,11 @@ class DashBoard extends Component {
     loadTBody() {
 
         let currentPossition = 0;
-        console.log(this.props);
         try {
             currentPossition = this.props.reduceContentInfo.page_size * (this.props.reduceFooter.pages.currentPage - 1);
         } catch (e) {
 
         }
-        console.log("I:" + currentPossition);
-        console.log(this.props.reduceTable.table_body);
 
         if (this.props.reduceTable == undefined || this.props.reduceTable.table_body == undefined)
             return <tr key='#'><td colSpan={5}>Carregando...</td></tr>;

@@ -17,7 +17,6 @@ export default function reduce(state = {}, action) {
     if (action.type === "MAIN_MODAL_CONTENT") {
         let newState = Object.assign({}, state);
         newState.modalContent = action.modalContent;
-        console.log(newState);
         return newState;
 
     }

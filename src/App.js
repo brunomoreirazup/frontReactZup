@@ -17,7 +17,7 @@ import reduceAutoComplete from "./components/form/autoComplete/reduceAutoComplet
 
 const reducers = combineReducers({reduceSearch, reduceFooter,reduceTable,reduceMainModal,reduceContentInfo,reduceAutoComplete,reduceLoading});
 
-const store = createStore(reducers, devToolsEnhancer());
+export const store = createStore(reducers, devToolsEnhancer());
 
 class App extends Component {
     render() {
