@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import AutoComplete from "../form/autoComplete/AutoComplete";
-import CommonServices, { list, setFunction } from "../../CommonServices/CommonServices";
+import CommonServices, { setFunction } from "../../CommonServices/CommonServices";
 
 export default class Customers extends Component {
 

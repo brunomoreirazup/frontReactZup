@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
-import CommonServices, {list,setFunction} from "../../CommonServices/CommonServices";
+import CommonServices, { setFunction } from "../../CommonServices/CommonServices";
 
 
 
@@ -12,14 +12,14 @@ export default class Cities extends Component {
         super(props);
         this.title = "Cidades";
         this.tHead = [
-            {text:"Nome", className:'city sortHead'},
-            {text:"Editar", className:'headerCommon'},
-            {text:"Remover", className:'headerCommon'}];
+            { text: "Nome", className: 'city sortHead' },
+            { text: "Editar", className: 'headerCommon' },
+            { text: "Remover", className: 'headerCommon' }];
         this.form = this.CreateFormBody.bind(this);
         this.input_cidade_name = "";
         this.cidade_name = "";
         this.listType = "list";
-        setFunction(this.listCity.bind(this),this.searchCity.bind(this));
+        setFunction(this.listCity.bind(this), this.searchCity.bind(this));
     }
 
     componentDidMount() {
@@ -46,20 +46,20 @@ export default class Cities extends Component {
         )
     }
 
-    
 
-    
+
+
     addCity() {
         let url = 'https://customers-challenge.herokuapp.com/cities';
         let method = 'POST';
 
-        if(!CommonServices.validateFields(this.input_cidade_name)) {
+        if (!CommonServices.validateFields(this.input_cidade_name)) {
 
             let payload = {
-                "name": this.input_cidade_name.value                
+                "name": this.input_cidade_name.value
             };
-            
-            CommonServices.sendData(url,method,payload);
+
+            CommonServices.sendData(url, method, payload);
         }
     }
 
@@ -68,13 +68,13 @@ export default class Cities extends Component {
         let url = id;
         let method = 'PUT';
 
-        if(!CommonServices.validateFields(this.input_cidade_name)) {
+        if (!CommonServices.validateFields(this.input_cidade_name)) {
 
             let payload = {
                 "name": this.input_cidade_name.value
             };
 
-            CommonServices.sendData(url,method,payload);
+            CommonServices.sendData(url, method, payload);
         }
     }
 
@@ -99,7 +99,7 @@ export default class Cities extends Component {
     searchCity(name) {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
 
-        if(!CommonServices.emptySearch(name)) {
+        if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     CommonServices.storeSizeSearch(lista._embedded.cities);
@@ -127,7 +127,7 @@ export default class Cities extends Component {
             });
     }
 
-    
+
     CreateFormBody(action, id) {
         if (id !== undefined)
             this.loadForm(id);
