@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import AutoComplete from "../form/autoComplete/AutoComplete";
-import CommonServices from "../../CommonServices/CommonServices";
+import CommonServices, {setFunction} from "../../CommonServices/CommonServices";
 
 export default class Customers extends Component {
 
@@ -15,10 +15,11 @@ export default class Customers extends Component {
         this.input_customer_name = '';
         this.customer_name = '';
         this.listType = "list";
+        setFunction(this.listCustomers.bind(this),this.searchCustomer.bind(this));
     }
 
     componentDidMount() {
-        this.callTable();
+        CommonServices.callTable();
     }
 
     render() {
@@ -34,36 +35,33 @@ export default class Customers extends Component {
                     edit={this.editCustomer.bind(this)}
                     delete={this.deleteCustomer.bind(this)}
                     search={this.searchCustomer.bind(this)}
-                    list={this.callTable.bind(this)}
+                    list={CommonServices.callTable.bind(this)}
                 />
             </div>
 
         )
     }
 
+    validateCityInput(){
+        let checkStatus =this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok
+        if(!checkStatus){
+            CommonServices.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
+        }
+        return checkStatus;
+
+    }
+
     addCustomer() {
         let url = 'https://customers-challenge.herokuapp.com/customers';
         let method = 'POST';
-        let city = this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0];
-        if (this.input_customer_name.value === "" || city === undefined) {
-            this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
-            this.input_customer_name.focus();
-        }
 
-        else {
+        if(!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()){
             let payload = {
                 "name": this.input_customer_name.value,
-                "city": city.id
+                "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
             };
 
-            HttpApi.makeChangeRequest(url, method, payload)
-                .then(() => {
-                    this.callTable();
-                    this.callAlertModal("success", "CHANGE_MODAL_CONTENT", 2000);
-                })
-                .catch(() => {
-                    this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-                });
+            CommonServices.sendData(url,method,payload);
         }
     }
 
@@ -71,34 +69,14 @@ export default class Customers extends Component {
 
         let url = id;
         let method = 'PATCH';
-
-        if (!this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok) {
-            this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 1000);
-            return;
-        }
-
-        let city = this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0];
-
-        if (this.input_customer_name.value === "" || city === undefined) {
-            this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
-            this.input_customer_name.focus();
-        }
-
-
-        else {
+        
+        if(!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()){
             let payload = {
                 "name": this.input_customer_name.value,
                 "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
             };
 
-            HttpApi.makeChangeRequest(url, method, payload)
-                .then(() => {
-                    this.callTable();
-                    this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1000);
-                })
-                .catch(() => {
-                    this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-                });
+            CommonServices.sendData(url,method,payload);
         }
 
 
