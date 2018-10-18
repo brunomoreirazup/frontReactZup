@@ -10,7 +10,11 @@ export default class Customers extends Component {
     constructor(props) {
         super(props);
         this.title = "Clientes";
-        this.tHead = ["Nome", "Cidade", "Editar", "Remover"];
+        this.tHead = [
+            {text:"Nome", className:'SortHead customer'},
+            {text:"Cidade", className:'customer'},
+            {text:"Editar", className:'headerCommon'},
+            {text:"Remover", className:'headerCommon'}];
         this.form = this.CreateFormBody.bind(this);
         this.input_customer_name = '';
         this.customer_name = '';

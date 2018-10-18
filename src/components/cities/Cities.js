@@ -11,7 +11,10 @@ export default class Cities extends Component {
     constructor(props) {
         super(props);
         this.title = "Cidades";
-        this.tHead = ["Nome", "Editar", "Remover"];
+        this.tHead = [
+            {text:"Nome", className:'city sortHead'},
+            {text:"Editar", className:'headerCommon'},
+            {text:"Remover", className:'headerCommon'}];
         this.form = this.CreateFormBody.bind(this);
         this.input_cidade_name = "";
         this.cidade_name = "";
