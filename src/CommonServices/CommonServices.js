@@ -15,8 +15,6 @@ var listType = 'list';
 
 export default class CommonServices {
 
-
-
     static validateFields(input) {
         if (input.value === "") {
             this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
@@ -71,7 +69,6 @@ export default class CommonServices {
         let url = `https://customers-challenge.herokuapp.com/${tableType}?page=${page - 1}&size=${sizePage}&sort=name,${sort}`;
 
         return url;
-
     }
 
     static list(tableType) {
@@ -84,7 +81,6 @@ export default class CommonServices {
                 this.storeSizePages(lista);
                 return lista;
             });
-
     }
 
     static reloadList(newLista) {
@@ -107,7 +103,6 @@ export default class CommonServices {
                 homePage: 1,
                 lastPage: 1,
                 currentPage: 1
-
             };
 
             store.dispatch({ type: 'PAGES', pages: defaultPages });
@@ -118,7 +113,6 @@ export default class CommonServices {
             return true;
         }
         return false
-
     }
 
     static callTable() {
@@ -139,8 +133,6 @@ export default class CommonServices {
                 this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
             });
     }
-
-
 
 }
 

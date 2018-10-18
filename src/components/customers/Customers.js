@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import AutoComplete from "../form/autoComplete/AutoComplete";
-import CommonServices from "../../CommonServices/CommonServices";
+import CommonServices, { list, setFunction } from "../../CommonServices/CommonServices";
 
 export default class Customers extends Component {
 
@@ -15,10 +15,11 @@ export default class Customers extends Component {
         this.input_customer_name = '';
         this.customer_name = '';
         this.listType = "list";
+        setFunction(this.listCustomers.bind(this), this.searchCustomer.bind(this));
     }
 
     componentDidMount() {
-        this.callTable();
+        CommonServices.callTable();
     }
 
     render() {
@@ -34,7 +35,7 @@ export default class Customers extends Component {
                     edit={this.editCustomer.bind(this)}
                     delete={this.deleteCustomer.bind(this)}
                     search={this.searchCustomer.bind(this)}
-                    list={this.callTable.bind(this)}
+                    list={CommonServices.callTable.bind(this)}
                 />
             </div>
 
@@ -58,7 +59,7 @@ export default class Customers extends Component {
 
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
-                    this.callTable();
+                    CommonServices.callTable();
                     this.callAlertModal("success", "CHANGE_MODAL_CONTENT", 2000);
                 })
                 .catch(() => {
@@ -93,11 +94,11 @@ export default class Customers extends Component {
 
             HttpApi.makeChangeRequest(url, method, payload)
                 .then(() => {
-                    this.callTable();
-                    this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1000);
+                    CommonServices.callTable();
+                    CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1000);
                 })
                 .catch(() => {
-                    this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
+                    CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
                 });
         }
 
@@ -106,33 +107,18 @@ export default class Customers extends Component {
     deleteCustomer(id) {
         HttpApi.removeEntry(id)
             .then(() => {
-                this.callTable();
-                this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
+                CommonServices.callTable();
+                CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
             })
             .catch(() => {
-                this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
+                CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
             });
 
     }
     searchCustomer(name) {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
-        if (!name) {
-            let defaultPages =
-            {
-                homePage: 1,
-                lastPage: 1,
-                currentPage: 1
 
-            };
-            this.props.route.store.dispatch({ type: 'PAGES', pages: defaultPages });
-
-            this.props.route.store.dispatch({ type: "PAGE_SIZE", page_size: 5 });
-
-            this.listCustomers();
-        }
-
-        else {
-            this.listType = 'search';
+        if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     let count = 0;
@@ -158,11 +144,7 @@ export default class Customers extends Component {
                                     cityName = city.name;
                                     newLista[i] = { id: customerId, data: [customerName, cityName] };
                                     if (count === lista._embedded.customers.length) {
-
-                                        this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
-                                        this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
-                                        this.props.route.store.dispatch({ type: 'PAGES', page_size: null });
-                                        this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
+                                        CommonServices.removePageInfo(newLista);
                                     }
 
                                 });
@@ -171,24 +153,11 @@ export default class Customers extends Component {
         }
     }
 
-
-
-
-
     listCustomers() {
-        this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
-        this.listType = 'list';
-        let state = this.props.route.store.getState();
-        let page = state.reduceFooter.pages.currentPage;
-        let sizePage = state.reduceContentInfo.page_size;
-        let sort = state.reduceTable.sort_order;
 
-        HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers?page=${page - 1}&size=${sizePage}&sort=name,${sort}`)
+        CommonServices.list("customers")
             .then(lista => {
-
                 let count = 0;
-                CommonServices.changeStorePages(lista);
-                CommonServices.storeSizePages(lista);
                 let newLista = [];
 
                 lista._embedded.customers
@@ -204,8 +173,7 @@ export default class Customers extends Component {
                                 cityName = city.name;
                                 newLista[i] = { id: customerId, cityId: cityId, data: [customerName, cityName] };
                                 if (count === lista._embedded.customers.length) {
-                                    this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
-                                    this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
+                                    CommonServices.reloadList(newLista);
                                 }
                             });
                     });
@@ -277,8 +245,7 @@ export default class Customers extends Component {
                 // this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
 
                 return cb(newLista);
-            }
-            );
+            });
 
     }
 
