@@ -9,8 +9,6 @@ export function setFunction(list, search) {
     searchFunction = search;
 }
 
-
-
 var listType = 'list';
 
 export default class CommonServices {

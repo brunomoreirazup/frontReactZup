@@ -90,8 +90,8 @@ export default class Customers extends Component {
             .catch(() => {
                 CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
             });
-
     }
+
     searchCustomer(name) {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
 
@@ -223,8 +223,6 @@ export default class Customers extends Component {
 
                 return cb(newLista);
             });
-
     }
-
 }
 
