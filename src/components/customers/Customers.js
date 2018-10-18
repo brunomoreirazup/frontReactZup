@@ -42,29 +42,26 @@ export default class Customers extends Component {
         )
     }
 
+    validateCityInput(){
+        let checkStatus =this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok
+        if(!checkStatus){
+            CommonServices.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
+        }
+        return checkStatus;
+
+    }
+
     addCustomer() {
         let url = 'https://customers-challenge.herokuapp.com/customers';
         let method = 'POST';
-        let city = this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0];
-        if (this.input_customer_name.value === "" || city === undefined) {
-            this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
-            this.input_customer_name.focus();
-        }
 
-        else {
+        if(!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()){
             let payload = {
                 "name": this.input_customer_name.value,
-                "city": city.id
+                "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
             };
 
-            HttpApi.makeChangeRequest(url, method, payload)
-                .then(() => {
-                    CommonServices.callTable();
-                    this.callAlertModal("success", "CHANGE_MODAL_CONTENT", 2000);
-                })
-                .catch(() => {
-                    this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-                });
+            CommonServices.sendData(url,method,payload);
         }
     }
 
@@ -72,34 +69,14 @@ export default class Customers extends Component {
 
         let url = id;
         let method = 'PATCH';
-
-        if (!this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok) {
-            this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 1000);
-            return;
-        }
-
-        let city = this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0];
-
-        if (this.input_customer_name.value === "" || city === undefined) {
-            this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
-            this.input_customer_name.focus();
-        }
-
-
-        else {
+        
+        if(!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()){
             let payload = {
                 "name": this.input_customer_name.value,
                 "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
             };
 
-            HttpApi.makeChangeRequest(url, method, payload)
-                .then(() => {
-                    CommonServices.callTable();
-                    CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1000);
-                })
-                .catch(() => {
-                    CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-                });
+            CommonServices.sendData(url,method,payload);
         }
 
 
