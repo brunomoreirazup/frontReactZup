@@ -1,10 +1,10 @@
-import {store} from "../App";
+import { store } from "../App";
 import HttpApi from "../components/http/HttpApi";
 
 var listFunction;
 var searchFunction;
 
-export function setFunction(list,search){
+export function setFunction(list, search) {
     listFunction = list;
     searchFunction = search;
 }
@@ -17,7 +17,7 @@ export default class CommonServices {
 
 
 
-    static validateFields(input){
+    static validateFields(input) {
         if (input.value === "") {
             this.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
             input.focus();
@@ -26,43 +26,43 @@ export default class CommonServices {
         return false;
     }
 
-     static callAlertModal(showAlertType, actionType, time) {
-         store.dispatch({ type: "CHANGE_MODAL_CONTENT", showAlert: showAlertType });
-         setTimeout(() => store.dispatch({ type: actionType }), time);
+    static callAlertModal(showAlertType, actionType, time) {
+        store.dispatch({ type: "CHANGE_MODAL_CONTENT", showAlert: showAlertType });
+        setTimeout(() => store.dispatch({ type: actionType }), time);
 
-     }
+    }
 
     static storeSizeSearch(json) {
         let size =
-            {
-                sizePage: json.length
-            };
+        {
+            sizePage: json.length
+        };
 
-       store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
+        store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
     }
 
 
     static changeStorePages(json) {
         let page =
-            {
-                homePage: 1,
-                lastPage: json.page.totalPages,
-                currentPage: json.page.number + 1
+        {
+            homePage: 1,
+            lastPage: json.page.totalPages,
+            currentPage: json.page.number + 1
 
-            };
+        };
         store.dispatch({ type: 'PAGES', pages: page });
     }
 
     static storeSizePages(json) {
         let size =
-            {
-                sizePage: json.page.totalElements
-            };
+        {
+            sizePage: json.page.totalElements
+        };
 
         store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
     }
 
-    static mountUrl(tableType){
+    static mountUrl(tableType) {
         let state = store.getState();
         let page = state.reduceFooter.pages.currentPage;
         let sizePage = state.reduceContentInfo.page_size;
@@ -92,7 +92,7 @@ export default class CommonServices {
         store.dispatch({ type: 'LOADING', showLoading: false });
     }
 
-    static removePageInfo(newLista){
+    static removePageInfo(newLista) {
         listType = 'search';
         store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
         store.dispatch({ type: 'PAGE_SIZE', page_size: null });
@@ -100,15 +100,15 @@ export default class CommonServices {
         store.dispatch({ type: 'LOADING', showLoading: false });
     }
 
-    static emptySearch(name){
+    static emptySearch(name) {
         if (!name) {
             let defaultPages =
-                {
-                    homePage: 1,
-                    lastPage: 1,
-                    currentPage: 1
+            {
+                homePage: 1,
+                lastPage: 1,
+                currentPage: 1
 
-                };
+            };
 
             store.dispatch({ type: 'PAGES', pages: defaultPages });
             store.dispatch({ type: "PAGE_SIZE", page_size: 5 });
@@ -129,15 +129,15 @@ export default class CommonServices {
         else listFunction();
     }
 
-    static sendData(url, method,payload) {
-            HttpApi.makeChangeRequest(url, method, payload)
-                .then(() => {
-                    this.callTable();
-                    this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
-                })
-                .catch(() => {
-                    this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-                });
+    static sendData(url, method, payload) {
+        HttpApi.makeChangeRequest(url, method, payload)
+            .then(() => {
+                this.callTable();
+                this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
+            })
+            .catch(() => {
+                this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
+            });
     }
 
 

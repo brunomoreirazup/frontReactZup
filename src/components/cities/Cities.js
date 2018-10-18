@@ -20,7 +20,7 @@ export default class Cities extends Component {
     }
 
     componentDidMount() {
-        this.callTable();
+        CommonServices.callTable();
     }
 
     render() {
@@ -36,26 +36,14 @@ export default class Cities extends Component {
                     edit={this.editCity.bind(this)}
                     delete={this.deleteCity.bind(this)}
                     search={this.searchCity.bind(this)}
-                    list={this.callTable.bind(this)}
+                    list={CommonServices.callTable.bind(this)}
                 />
             </div>
 
         )
     }
 
-    callAlertModal(showAlertType, actionType, time) {
-        this.props.route.store.dispatch({ type: "CHANGE_MODAL_CONTENT", showAlert: showAlertType });
-        setTimeout(() => this.props.route.store.dispatch({ type: actionType }), time);
-
-    }
-
-    callTable() {
-        if (this.listType === 'search') {
-            let keyword = this.props.route.store.getState().reduceSearch.search;
-            this.searchCity(keyword);
-        }
-        else this.listCity();
-    }
+    
 
     
     addCity() {
@@ -91,11 +79,11 @@ export default class Cities extends Component {
     deleteCity(id) {
         HttpApi.removeEntry(id)
             .then((response) => {
-                if (response.status === 409) {
+                if ((response.status >= 400)) {
                     CommonServices.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 1500);
                 }
                 else {
-                    this.callTable();
+                    CommonServices.callTable();
                     CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
                 }
             })
