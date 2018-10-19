@@ -132,24 +132,9 @@ export default class CommonServices {
                 this.callTable();
                 this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
             })
-            .catch(() => {
+            .catch((e) => {
+                console.log(e);
                 this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-            });
-    }
-
-    static removeData(id){
-        HttpApi.removeEntry(id)
-            .then((response) => {
-                if(response.status >= 400){
-                    CommonServices.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 1500);
-                }
-                else{
-                    CommonServices.callTable();
-                    CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
-                }
-            })
-            .catch(() => {
-                CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
             });
     }
 

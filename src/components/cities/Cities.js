@@ -77,7 +77,7 @@ export default class Cities extends Component {
 
 
     deleteCity(id) {
-        CommonServices.removeData(id);
+        CommonServices.sendData(id,"DELETE");
     }
 
 
