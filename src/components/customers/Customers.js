@@ -54,6 +54,16 @@ export default class Customers extends Component {
         return checkStatus;
 
     }
+    
+    loadPayloadCustomer() {
+
+        let payload = {
+            "name": this.input_customer_name.value,
+            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
+        };
+
+        return payload;
+    }
 
     addCustomer() {
 
@@ -65,16 +75,6 @@ export default class Customers extends Component {
         }
     }
 
-
-    loadPayloadCustomer() {
-
-        let payload = {
-            "name": this.input_customer_name.value,
-            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
-        };
-
-        return payload;
-    }
 
     editCustomer(id) {
 
@@ -176,7 +176,7 @@ export default class Customers extends Component {
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cliente:</label>
-                <input id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
+                <input autocomplete ="off" id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
                 <label>Cidade:</label>
                 <AutoComplete search={this.loadCity} />
 

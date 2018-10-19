@@ -18,7 +18,7 @@ class SearchBox extends Component{
     render(){
         return(
             <form className='form-inline form-group SearchBox' onSubmit={(event) => this.search(event)}>
-                <input id="input_search_city_name" className='form-control SearchBox-input' type='text' placeholder='Pesquisar...' ref={(input) => this.input_search = input}/>
+                <input autocomplete ="off" id="input_search_city_name" className='form-control SearchBox-input' type='text' placeholder='Pesquisar...' ref={(input) => this.input_search = input}/>
                 <button id="submit_search_city_name"className='btn btn-dark SearchIcon' type='submit'> </button>
             </form>
         );
