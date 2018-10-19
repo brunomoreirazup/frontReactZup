@@ -64,7 +64,22 @@ public class City {
         dashboard.search(name);
     }
     
-
+    public void chanceSize(int size)
+    {
+        dashboard.changePageSize(size);
+    }
+    public int getTableSize()
+    {
+        return dashboard.getTableSize();
+    }
+    public boolean testPagination()
+    {
+        System.out.println("hash:"+dashboard.getTableHash());
+        dashboard.nextPage(1);
+        Helper.sleepForSeconds(2);
+        System.out.println("hash:"+dashboard.getTableHash());
+        return true;
+    }
     
     
 }

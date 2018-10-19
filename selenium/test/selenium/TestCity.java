@@ -31,21 +31,18 @@ public class TestCity {
     public TestCity() {
     }    
     
-    @Test
     public void addEditRemove() throws Exception
     {
         addCity();
         editCity();
         removeCity();
     }
-    @Test
     public void addSearchRemove() throws Exception
     {
         addCity();
         searchCity();
         removeCity();
     }
-    @Test
     public void addSearchRemoveGoBackAddEditRemove() throws Exception
     {
         addSearchRemove();
@@ -60,7 +57,26 @@ public class TestCity {
         city.adiciona("");
         assertTrue(!city.exist(""));
     }
-    
+    @Test
+    public void addEditRemoveChangePageSize() throws Exception
+    {
+        addEditRemove();
+        changepageSize(10);
+        changepageSize(5);
+    }
+    @Test
+    public void addSearchRemoveGoBackAddEditRemoveChangePage() throws Exception
+    {
+        addSearchRemoveGoBackAddEditRemove();
+        changepageSize(10);
+        changepageSize(5);
+    }
+    public void changepageSize(int size)
+    {
+        city.chanceSize(size);
+        Helper.sleepForSeconds(2);
+        assertTrue(size == city.getTableSize());
+    }
     public void addCity() throws Exception
     {
         city.adiciona(nameCity);
@@ -73,6 +89,12 @@ public class TestCity {
         city.edit(nameCity,0);
         Helper.sleepForSeconds(2);
         assertTrue(city.exist(nameCity));
+    }
+    
+    @Test
+    public void testPagination()
+    {
+        city.testPagination();
     }
     
     public void removeCity() throws Exception

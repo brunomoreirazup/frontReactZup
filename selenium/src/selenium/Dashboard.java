@@ -93,6 +93,69 @@ public class Dashboard {
         }
         return false;
     }
-    
+    public void changePageSize(int size)
+    {
+        
+        Helper.sleepForSeconds(2);
+        WebElement element;
+        element = driver.findElement(By.cssSelector(".form-control.custom-select"));
+        element.sendKeys(String.valueOf(size));
+        
+    }
+    public int getTableSize()
+    {
+        WebElement element;
+        element = driver.findElement(By.tagName("tbody"));
+        return element.findElements(By.tagName("tr")).size();
+    }
+    public int getTableHash()
+    {
+        int hash = 0;
+        WebElement element = driver.findElement(By.cssSelector("tbody"));
+        List<WebElement> tableRows = element.findElements(By.cssSelector("tr"));
+        for(WebElement row : tableRows)
+        {
+            List<WebElement> colums  = row.findElements(By.cssSelector("td"));
+            for(WebElement colum : colums)
+            {
+                hash += colum.getText().hashCode();
+            }
+        }
+        return hash;
+        
+    }
+    public void nextPage(int i)
+    {
+        
+        WebElement element;
+        
+        if(i==0)
+        {
+            element = driver.findElement(By.id("nextPage"));
+            element.click();
+        }
+        if(i==1)
+        {
+            element = driver.findElement(By.id("nextPageBt"));
+            element.click();
+        }
+    }
+    public void prevPage(int i)
+    {
+        
+        WebElement element;
+        
+        if(i==0)
+        {
+            element = driver.findElement(By.id("prevPage"));
+            element.click();
+        }
+        if(i==1)
+        {
+            element = driver.findElement(By.id("prevPageBt"));
+            element.click();
+        }
+    }
+   
             
 }

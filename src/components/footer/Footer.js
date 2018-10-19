@@ -33,14 +33,14 @@ class Footer extends Component {
                             <li className={currentPage !== homePage ? "page-item" : "page-item disabled"}
                                 onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage - 1) }}
                             >
-                                <a className="page-link _page-link" href="#" tabIndex="-1">Previous</a>
+                                <a className="page-link _page-link" id="prevPageBt" href="#" tabIndex="-1">Previous</a>
 
                             </li>
 
                             {currentPage - 1 > homePage ? (
 
                                 <li className="page-item" onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.homePage) }}>
-                                    <a className="page-link _page-link" href="#">{this.props.reduceFooter.pages.homePage}</a>
+                                    <a className="page-link _page-link" id="homePage" href="#">{this.props.reduceFooter.pages.homePage}</a>
                                 </li>
 
                             ) : ""}
@@ -49,7 +49,7 @@ class Footer extends Component {
 
                             {currentPage !== homePage ? (
                                 <li className="page-item" onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage - 1) }}>
-                                    <a className="page-link _page-link" href="#">{this.props.reduceFooter.pages.currentPage - 1}</a>
+                                    <a className="page-link _page-link" id="prevPage" href="#">{this.props.reduceFooter.pages.currentPage - 1}</a>
                                 </li>
 
                             ) : ""}
@@ -62,7 +62,7 @@ class Footer extends Component {
 
                             {currentPage !== lastPage ? (
                                 <li className="page-item" onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage + 1) }}>
-                                    <a className="page-link _page-link" href="#">{this.props.reduceFooter.pages.currentPage + 1}</a>
+                                    <a className="page-link _page-link" id="nextPage" href="#">{this.props.reduceFooter.pages.currentPage + 1}</a>
                                 </li>
 
                             ) : ""}
@@ -72,14 +72,14 @@ class Footer extends Component {
                             {currentPage + 1 < lastPage ? (
 
                                 <li className="page-item" onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.lastPage) }}>
-                                    <a className="page-link _page-link" href="#">{this.props.reduceFooter.pages.lastPage}</a>
+                                    <a className="page-link _page-link" id="lastPage" href="#">{this.props.reduceFooter.pages.lastPage}</a>
                                 </li>
 
                             ) : ""}
 
                             <li className={currentPage !== lastPage ? "page-item" : "page-item disabled"}
                                 onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage + 1) }}>
-                                <a className="page-link _page-link" href="#">Next</a>
+                                <a className="page-link _page-link" id="nextPageBt" href="#">Next</a>
 
                             </li>
                         </ul>
