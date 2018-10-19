@@ -82,8 +82,6 @@ export default class Customers extends Component {
         CommonServices.sendData(url, method, this.loadPayload());
     }
 
-
-
     deleteCustomer(id) {
         CommonServices.removeData(id);
     }
