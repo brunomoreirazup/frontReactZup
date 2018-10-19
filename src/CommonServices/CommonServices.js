@@ -1,15 +1,15 @@
 import { store } from "../App";
 import HttpApi from "../components/http/HttpApi";
 
-var listFunction;
-var searchFunction;
+let listFunction;
+let searchFunction;
 
 export function setFunction(list, search) {
     listFunction = list;
     searchFunction = search;
 }
 
-var listType = 'list';
+let listType = 'list';
 
 export default class CommonServices {
 

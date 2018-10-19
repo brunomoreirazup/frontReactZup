@@ -46,18 +46,24 @@ export default class Cities extends Component {
         )
     }
 
-    addCity() {
-        let url = 'https://customers-challenge.herokuapp.com/cities';
-        let method = 'POST';
-
+    loadPayloadCity() {
+        
         if (!CommonServices.validateFields(this.input_cidade_name)) {
 
             let payload = {
                 "name": this.input_cidade_name.value
             };
 
-            CommonServices.sendData(url, method, payload);
+            return payload;
         }
+    }
+
+    addCity() {
+
+        let url = 'https://customers-challenge.herokuapp.com/cities';
+        let method = 'POST';
+
+        CommonServices.sendData(url, method, this.loadPayloadCity());
     }
 
     editCity(id) {
@@ -65,14 +71,7 @@ export default class Cities extends Component {
         let url = id;
         let method = 'PUT';
 
-        if (!CommonServices.validateFields(this.input_cidade_name)) {
-
-            let payload = {
-                "name": this.input_cidade_name.value
-            };
-
-            CommonServices.sendData(url, method, payload);
-        }
+        CommonServices.sendData(url, method, this.loadPayloadCity());
     }
 
 
@@ -111,7 +110,7 @@ export default class Cities extends Component {
                 CommonServices.reloadList(newLista);
             });
     }
-    
+
     CreateFormBody(action, id) {
         if (id !== undefined)
             this.loadForm(id);

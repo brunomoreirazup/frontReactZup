@@ -63,7 +63,7 @@ export default class Customers extends Component {
     }
 
 
-    loadPayload() {
+    loadPayloadCustomer() {
         if (!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()) {
             let payload = {
                 "name": this.input_customer_name.value,
@@ -79,7 +79,7 @@ export default class Customers extends Component {
         let url = id;
         let method = 'PATCH';
 
-        CommonServices.sendData(url, method, this.loadPayload());
+        CommonServices.sendData(url, method, this.loadPayloadCustomer());
     }
 
     deleteCustomer(id) {
@@ -103,6 +103,7 @@ export default class Customers extends Component {
 
                         this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
                         this.props.route.store.dispatch({ type: 'PAGES', pages: null });
+                        this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
                     }
                     lista._embedded.customers
                         .forEach((customers, i) => {
