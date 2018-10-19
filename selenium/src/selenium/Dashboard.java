@@ -34,6 +34,11 @@ public class Dashboard {
         element.click();
         
     }
+    public boolean existMsgModal(String msg)
+    {
+        WebElement element = driver.findElement(By.className("alert"));
+        return element.getText().contains(msg);
+    }
     public void showModalEdit(int index)
     {
         Helper.sleepForSeconds(2);

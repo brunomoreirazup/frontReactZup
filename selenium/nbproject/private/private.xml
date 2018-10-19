@@ -4,11 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/vinicius/Documentos/frontReactZup/selenium/test/selenium/TestCity.java</file>
-            <file>file:/home/vinicius/Documentos/frontReactZup/selenium/src/selenium/Selenium.java</file>
-            <file>file:/home/vinicius/Documentos/frontReactZup/selenium/test/selenium/TestCityIT.java</file>
             <file>file:/home/vinicius/Documentos/frontReactZup/selenium/src/selenium/City.java</file>
-            <file>file:/home/vinicius/Documentos/frontReactZup/selenium/src/selenium/TestCity.java</file>
-            <file>file:/home/vinicius/Documentos/frontReactZup/selenium/src/selenium/Helper.java</file>
+            <file>file:/home/vinicius/Documentos/frontReactZup/selenium/test/selenium/TestCustomer.java</file>
+            <file>file:/home/vinicius/Documentos/frontReactZup/selenium/src/selenium/Customer.java</file>
             <file>file:/home/vinicius/Documentos/frontReactZup/selenium/src/selenium/Dashboard.java</file>
         </group>
     </open-files>
