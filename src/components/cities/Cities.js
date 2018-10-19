@@ -88,12 +88,7 @@ export default class Cities extends Component {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     CommonServices.storeSizeSearch(lista._embedded.cities);
-                    let newLista = lista._embedded.cities.map(city => {
-                        let cityId = city._links.self.href;
-                        let cityName = city.name;
-                        return { id: cityId, data: [cityName] };
-                    });
-                    CommonServices.removePageInfo(newLista);
+                    CommonServices.removePageInfo(this.createNewLista(lista));
                 });
         }
     }
@@ -102,16 +97,18 @@ export default class Cities extends Component {
     listCity() {
         CommonServices.list("cities")
             .then(lista => {
-                let newLista = lista._embedded.cities.map(city => {
-                    let cityId = city._links.self.href;
-                    let cityName = city.name;
-                    return { id: cityId, data: [cityName] };
-                }
-                );
-                CommonServices.reloadList(newLista);
+                CommonServices.reloadList(this.createNewLista(lista));
             });
     }
-
+    createNewLista(lista)
+    {
+        let newLista = lista._embedded.cities.map(city => {
+            let cityId = city._links.self.href;
+            let cityName = city.name;
+            return { id: cityId, data: [cityName] };
+        });
+        return newLista;
+    }
     CreateFormBody(action, id) {
         if (id !== undefined)
             this.loadForm(id);
