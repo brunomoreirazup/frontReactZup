@@ -31,7 +31,7 @@ class Footer extends Component {
 
                         <ul className="pagination">
                             <li className={currentPage !== homePage ? "page-item" : "page-item disabled"}
-                                onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage - 1) }}
+                                onClick={currentPage !== homePage ? () => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage - 1) } : ""}
                             >
                                 <a className="page-link _page-link" id="prevPageBt" href="#" tabIndex="-1">Previous</a>
 
@@ -78,7 +78,7 @@ class Footer extends Component {
                             ) : ""}
 
                             <li className={currentPage !== lastPage ? "page-item" : "page-item disabled"}
-                                onClick={() => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage + 1) }}>
+                                onClick={ currentPage !== lastPage ? () => { this.props.changeCurrentPage(this.props.reduceFooter.pages.currentPage + 1) } : ""}>
                                 <a className="page-link _page-link" id="nextPageBt" href="#">Next</a>
 
                             </li>
