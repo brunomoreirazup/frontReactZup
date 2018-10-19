@@ -74,11 +74,23 @@ public class City {
     }
     public boolean testPagination()
     {
-        System.out.println("hash:"+dashboard.getTableHash());
+        int homePageHash=dashboard.getTableHash();
+        int nextPageHash;
+        int currentPageHash;
+        System.out.println("hash:"+homePageHash);
+        
         dashboard.nextPage(1);
         Helper.sleepForSeconds(2);
-        System.out.println("hash:"+dashboard.getTableHash());
-        return true;
+        nextPageHash=dashboard.getTableHash();
+        System.out.println("hash:"+nextPageHash);
+        
+        dashboard.prevPage(1);
+        Helper.sleepForSeconds(2);        
+        currentPageHash=dashboard.getTableHash();
+        System.out.println("hash>:"+currentPageHash);
+        
+        return homePageHash == currentPageHash;
+          
     }
     
     

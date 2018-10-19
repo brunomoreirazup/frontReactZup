@@ -58,18 +58,20 @@ public class TestCity {
         assertTrue(!city.exist(""));
     }
     @Test
-    public void addEditRemoveChangePageSize() throws Exception
+    public void addEditRemoveChangePageSizeChangePagination() throws Exception
     {
         addEditRemove();
         changepageSize(10);
         changepageSize(5);
+        testPagination();
     }
     @Test
-    public void addSearchRemoveGoBackAddEditRemoveChangePage() throws Exception
+    public void addSearchRemoveGoBackAddEditRemoveChangePageSizeChangePagination() throws Exception
     {
         addSearchRemoveGoBackAddEditRemove();
         changepageSize(10);
         changepageSize(5);
+        testPagination();
     }
     public void changepageSize(int size)
     {
@@ -91,10 +93,9 @@ public class TestCity {
         assertTrue(city.exist(nameCity));
     }
     
-    @Test
     public void testPagination()
     {
-        city.testPagination();
+        assertTrue(city.testPagination());
     }
     
     public void removeCity() throws Exception
