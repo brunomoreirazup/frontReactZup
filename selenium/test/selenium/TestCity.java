@@ -32,28 +32,26 @@ public class TestCity {
     }    
     
     @Test
-    public void addEditRemoveCity() throws Exception
+    public void addEditRemove() throws Exception
     {
         addCity();
         editCity();
         removeCity();
     }
     @Test
-    public void addSearchRemoveCity() throws Exception
+    public void addSearchRemove() throws Exception
     {
         addCity();
         searchCity();
         removeCity();
     }
     @Test
-    public void addSearchRemoveCityGoBackAddEditRemoveCity() throws Exception
+    public void addSearchRemoveGoBackAddEditRemove() throws Exception
     {
-        addCity();
-        searchCity();
-        removeCity();
+        addSearchRemove();
         city.search("");
         Helper.sleepForSeconds(2);
-        addEditRemoveCity();
+        addEditRemove();
         
     }
     @Test

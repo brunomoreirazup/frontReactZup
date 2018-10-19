@@ -33,8 +33,7 @@ public class City {
         element = driver.findElement(By.cssSelector("#input_cidade_name"));
         element.sendKeys(cityName);
         element.submit();
-                
-        dashboard.hideModal();
+
         
     }
     public void remove(int index) throws Exception
