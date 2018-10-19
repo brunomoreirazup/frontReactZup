@@ -24,8 +24,6 @@ class Footer extends Component {
             let currentPage = this.props.reduceFooter.pages.currentPage;
             let homePage = this.props.reduceFooter.pages.homePage;
             let lastPage = this.props.reduceFooter.pages.lastPage;
-            console.log("CurrentPage:" + currentPage);
-            console.log("HomePage:" + homePage);
             return (
                 <div className="container">
                     <nav >

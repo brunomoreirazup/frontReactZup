@@ -28,8 +28,8 @@ class DashBoard extends Component {
             alerts: ''
 
         };
-        this.props.dispatch({ type: "PAGE_SIZE", page_size: 5 })
-        this.props.dispatch({ type: "SORT", sort_order: "asc" })
+        this.props.dispatch({ type: "PAGE_SIZE", page_size: 5 });
+        this.props.dispatch({ type: "SORT", sort_order: "asc" });
         this.props.dispatch({ type: 'TABLE_BODY', table_body: null });
     }
 
@@ -88,12 +88,15 @@ class DashBoard extends Component {
         return (
 
             <tr>
-                <th> # </th>
+                <th className='headerCommon'> # </th>
                 {this.props.tHead.map((item, i) => {
-                    if (i === 0)
-                        return <th className='sortHead' key={i} onClick={this.sort.bind(this)}>{item}</th>;
-                    else return <th key={i}>{item}</th>;
-                }
+                        if (i === 0)
+                            return <th className={item.className} key={i} onClick={this.sort.bind(this)}>{item.text}</th>;
+                        else {
+                            return <th key={i} className={item.className}>{item.text} </th>;
+
+                        }
+                    }
                 )}
             </tr>
         )
@@ -102,14 +105,11 @@ class DashBoard extends Component {
     loadTBody() {
 
         let currentPossition = 0;
-        console.log(this.props);
         try {
             currentPossition = this.props.reduceContentInfo.page_size * (this.props.reduceFooter.pages.currentPage - 1);
         } catch (e) {
 
         }
-        console.log("I:" + currentPossition);
-        console.log(this.props.reduceTable.table_body);
 
         if (this.props.reduceTable == undefined || this.props.reduceTable.table_body == undefined)
             return <tr key='#'><td colSpan={5}>Carregando...</td></tr>;
@@ -119,24 +119,24 @@ class DashBoard extends Component {
                     <React.Fragment>
                         {this.props.reduceTable.table_body.map((data, i) => {
 
-                            return (
-                                <tr key={data.id}>
-                                    <td>{i + 1 + currentPossition}</td>
-                                    {data.data.map((dataItem, i) => {
-                                        let keyItem = data.id + "|" + i;
-                                        return <td key={keyItem}>{dataItem}</td>
-                                    })}
-                                    <td>
-                                        <BtEdit
-                                            onClick={() => this.showModalEdit(data.id)}> </BtEdit>
-                                    </td>
-                                    <td>
-                                        <BtDelete
-                                            onClick={() => this.showModalDelete(data.id)}> </BtDelete>
-                                    </td>
-                                </tr>
-                            )
-                        }
+                                return (
+                                    <tr key={data.id}>
+                                        <td>{i + 1 + currentPossition}</td>
+                                        {data.data.map((dataItem, i) => {
+                                            let keyItem = data.id + "|" + i;
+                                            return <td key={keyItem}>{dataItem}</td>
+                                        })}
+                                        <td>
+                                            <BtEdit
+                                                onClick={() => this.showModalEdit(data.id)}> </BtEdit>
+                                        </td>
+                                        <td>
+                                            <BtDelete
+                                                onClick={() => this.showModalDelete(data.id)}> </BtDelete>
+                                        </td>
+                                    </tr>
+                                )
+                            }
                         )
                         }
                     </React.Fragment>
@@ -145,26 +145,38 @@ class DashBoard extends Component {
         }
 
     }
+
+    switchLoading(){
+        if(this.props.reduceLoading != null && this.props.reduceLoading.showLoading){
+            return (
+                <Loading />
+            );
+        } else {
+            return (
+                <TableBody>
+                    {this.loadTBody()}
+                </TableBody>
+            );
+        }
+
+    }
+
     render() {
         return (
             <div>
 
                 <Header title={this.title}
-                    showModalAdd={this.showModalAdd.bind(this)} search={this.props.search}
-                    changeSize={this.changePageSize.bind(this)}
+                        showModalAdd={this.showModalAdd.bind(this)} search={this.props.search}
+                        changeSize={this.changePageSize.bind(this)}
                 />
                 <Table>
                     <TableHead>
                         {this.loadThead()}
                     </TableHead>
-                    <TableBody>
-                        {this.loadTBody()}
-                    </TableBody>
+                    {this.switchLoading()}
                 </Table>
-
                 <Footer changeCurrentPage={this.changeCurrentPage.bind(this)} />
                 <Copyright />
-                <Loading />
                 <MainModal />
 
 
@@ -178,7 +190,8 @@ function mapStateToProps(state) {
     return {
         reduceTable: state.reduceTable,
         reduceFooter: state.reduceFooter,
-        reduceContentInfo: state.reduceContentInfo
+        reduceContentInfo: state.reduceContentInfo,
+        reduceLoading: state.reduceLoading
     };
 
 }
