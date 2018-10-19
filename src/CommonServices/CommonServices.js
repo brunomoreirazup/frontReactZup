@@ -24,7 +24,7 @@ export default class CommonServices {
 
     static callAlertModal(showAlertType, actionType, time) {
         store.dispatch({ type: "CHANGE_MODAL_CONTENT", showAlert: showAlertType });
-        setTimeout(() => store.dispatch({ type: actionType }), time);
+        setTimeout(() => store.dispatch({ type: actionType, modalOpen: false }), time);
 
     }
 
@@ -129,6 +129,22 @@ export default class CommonServices {
             })
             .catch(() => {
                 this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
+            });
+    }
+
+    static removeData(id){
+        HttpApi.removeEntry(id)
+            .then((response) => {
+                if(response.status >= 400){
+                    CommonServices.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 1500);
+                }
+                else{
+                    CommonServices.callTable();
+                    CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
+                }
+            })
+            .catch(() => {
+                CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
             });
     }
 
