@@ -11,6 +11,11 @@ export function setFunction(list, search) {
 
 let listType = 'list';
 
+export function setListType(list){
+    listType = list;
+}
+
+
 export default class CommonServices {
 
     static validateFields(input) {

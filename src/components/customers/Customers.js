@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import AutoComplete from "../form/autoComplete/AutoComplete";
-import CommonServices, { setFunction } from "../../CommonServices/CommonServices";
+import CommonServices, {setListType, setFunction } from "../../CommonServices/CommonServices";
 
 export default class Customers extends Component {
 
@@ -18,7 +18,7 @@ export default class Customers extends Component {
         this.form = this.CreateFormBody.bind(this);
         this.input_customer_name = '';
         this.customer_name = '';
-        this.listType = "list";
+        setListType("list");
         setFunction(this.listCustomers.bind(this), this.searchCustomer.bind(this));
     }
 

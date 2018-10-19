@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
-import CommonServices, { setFunction } from "../../CommonServices/CommonServices";
+import CommonServices, {setFunction, setListType} from "../../CommonServices/CommonServices";
 
 
 
@@ -18,7 +18,7 @@ export default class Cities extends Component {
         this.form = this.CreateFormBody.bind(this);
         this.input_cidade_name = "";
         this.cidade_name = "";
-        this.listType = "list";
+        setListType("list");
         setFunction(this.listCity.bind(this), this.searchCity.bind(this));
     }
 
