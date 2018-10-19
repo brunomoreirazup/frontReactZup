@@ -5,7 +5,6 @@ import Header from "../header/Header";
 import MainModal from "../modal/MainModal";
 import Loading from "../modal/Loading";
 import { connect } from 'react-redux';
-import Copyright from '../copyright/Copyright';
 import BtEdit from '../button/btEdit/BtEdit';
 import BtDelete from "../button/btDelete/BtDelete";
 import TableBody from "../table/TableBody";
@@ -90,13 +89,13 @@ class DashBoard extends Component {
             <tr>
                 <th className='headerCommon'> # </th>
                 {this.props.tHead.map((item, i) => {
-                        if (i === 0)
-                            return <th className={item.className} key={i} onClick={this.sort.bind(this)}>{item.text}</th>;
-                        else {
-                            return <th key={i} className={item.className}>{item.text} </th>;
+                    if (i === 0)
+                        return <th className={item.className} key={i} onClick={this.sort.bind(this)}>{item.text}</th>;
+                    else {
+                        return <th key={i} className={item.className}>{item.text} </th>;
 
-                        }
                     }
+                }
                 )}
             </tr>
         )
@@ -119,24 +118,24 @@ class DashBoard extends Component {
                     <React.Fragment>
                         {this.props.reduceTable.table_body.map((data, i) => {
 
-                                return (
-                                    <tr key={data.id}>
-                                        <td>{i + 1 + currentPossition}</td>
-                                        {data.data.map((dataItem, i) => {
-                                            let keyItem = data.id + "|" + i;
-                                            return <td key={keyItem}>{dataItem}</td>
-                                        })}
-                                        <td>
-                                            <BtEdit
-                                                onClick={() => this.showModalEdit(data.id)}> </BtEdit>
-                                        </td>
-                                        <td>
-                                            <BtDelete
-                                                onClick={() => this.showModalDelete(data.id)}> </BtDelete>
-                                        </td>
-                                    </tr>
-                                )
-                            }
+                            return (
+                                <tr key={data.id}>
+                                    <td>{i + 1 + currentPossition}</td>
+                                    {data.data.map((dataItem, i) => {
+                                        let keyItem = data.id + "|" + i;
+                                        return <td key={keyItem}>{dataItem}</td>
+                                    })}
+                                    <td>
+                                        <BtEdit
+                                            onClick={() => this.showModalEdit(data.id)}> </BtEdit>
+                                    </td>
+                                    <td>
+                                        <BtDelete
+                                            onClick={() => this.showModalDelete(data.id)}> </BtDelete>
+                                    </td>
+                                </tr>
+                            )
+                        }
                         )
                         }
                     </React.Fragment>
@@ -146,8 +145,8 @@ class DashBoard extends Component {
 
     }
 
-    switchLoading(){
-        if(this.props.reduceLoading != null && this.props.reduceLoading.showLoading){
+    switchLoading() {
+        if (this.props.reduceLoading != null && this.props.reduceLoading.showLoading) {
             return (
                 <Loading />
             );
@@ -166,8 +165,8 @@ class DashBoard extends Component {
             <div>
 
                 <Header title={this.title}
-                        showModalAdd={this.showModalAdd.bind(this)} search={this.props.search}
-                        changeSize={this.changePageSize.bind(this)}
+                    showModalAdd={this.showModalAdd.bind(this)} search={this.props.search}
+                    changeSize={this.changePageSize.bind(this)}
                 />
                 <Table>
                     <TableHead>
@@ -176,7 +175,7 @@ class DashBoard extends Component {
                     {this.switchLoading()}
                 </Table>
                 <Footer changeCurrentPage={this.changeCurrentPage.bind(this)} />
-                <Copyright />
+
                 <MainModal />
 
 

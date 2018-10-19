@@ -13,6 +13,7 @@ import reduceContentInfo from "./components/header/contentInfo/reduceContentInfo
 import reduceSearch from "./components/header/searchBox/reduceSearch";
 import reduceTable from "./components/table/reduceTable";
 import reduceAutoComplete from "./components/form/autoComplete/reduceAutoComplete";
+import Copyright from './components/copyright/Copyright';
 
 
 const reducers = combineReducers({reduceSearch, reduceFooter,reduceTable,reduceMainModal,reduceContentInfo,reduceAutoComplete,reduceLoading});
@@ -22,14 +23,17 @@ export const store = createStore(reducers, devToolsEnhancer());
 class App extends Component {
     render() {
         return (
-            <div>
+            <div className="Site">
+            <div className="Site-content">
                 <Provider store={store}>
                     <Router history={browserHistory}>
                         <Route path="/" component={home} />
                         <Route path="/cidades" component={cities} store={store} />
                         <Route path="/clientes" component={customers} store={store} />
                     </Router>
-                </Provider>               
+                </Provider>
+                </div>
+                <Copyright />       
             </div>
         )
     }
