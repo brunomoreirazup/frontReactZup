@@ -87,7 +87,7 @@ export default class Customers extends Component {
     }
 
     deleteCustomer(id) {
-        CommonServices.makeGetRequest(id, "DELETE");
+        CommonServices.sendData(id, "DELETE");
     }
 
     searchCustomer(name) {
