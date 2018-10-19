@@ -88,12 +88,7 @@ export default class Cities extends Component {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     CommonServices.storeSizeSearch(lista._embedded.cities);
-                    let newLista = lista._embedded.cities.map(city => {
-                        let cityId = city._links.self.href;
-                        let cityName = city.name;
-                        return { id: cityId, data: [cityName] };
-                    });
-                    CommonServices.removePageInfo(newLista);
+                    CommonServices.removePageInfo(this.createNewLista(lista));
                 });
         }
     }
@@ -102,16 +97,18 @@ export default class Cities extends Component {
     listCity() {
         CommonServices.list("cities")
             .then(lista => {
-                let newLista = lista._embedded.cities.map(city => {
-                    let cityId = city._links.self.href;
-                    let cityName = city.name;
-                    return { id: cityId, data: [cityName] };
-                }
-                );
-                CommonServices.reloadList(newLista);
+                CommonServices.reloadList(this.createNewLista(lista));
             });
     }
-
+    createNewLista(lista)
+    {
+        let newLista = lista._embedded.cities.map(city => {
+            let cityId = city._links.self.href;
+            let cityName = city.name;
+            return { id: cityId, data: [cityName] };
+        });
+        return newLista;
+    }
     CreateFormBody(action, id) {
         if (id !== undefined)
             this.loadForm(id);
@@ -120,7 +117,7 @@ export default class Cities extends Component {
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cidade:</label>
-                <input id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
+                <input autocomplete ="off" id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
             </form>
         );
     }

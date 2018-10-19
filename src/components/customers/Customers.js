@@ -55,6 +55,16 @@ export default class Customers extends Component {
 
     }
 
+    loadPayloadCustomer() {
+
+        let payload = {
+            "name": this.input_customer_name.value,
+            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
+        };
+
+        return payload;
+    }
+
     addCustomer() {
 
         let url = 'https://customers-challenge.herokuapp.com/customers';
@@ -65,16 +75,6 @@ export default class Customers extends Component {
         }
     }
 
-
-    loadPayloadCustomer() {
-
-        let payload = {
-            "name": this.input_customer_name.value,
-            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
-        };
-
-        return payload;
-    }
 
     editCustomer(id) {
 
@@ -96,35 +96,8 @@ export default class Customers extends Component {
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
-                    let count = 0;
                     CommonServices.storeSizeSearch(lista._embedded.customers);
-                    let newLista = [];
-                    if (!lista._embedded.customers.length) {
-                        this.props.route.store.dispatch({
-                            type: 'TABLE_BODY',
-                            table_body: newLista
-                        });
-
-                        this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
-                        this.props.route.store.dispatch({ type: 'PAGES', pages: null });
-                        this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
-                    }
-                    lista._embedded.customers
-                        .forEach((customers, i) => {
-                            let customerId = customers._links.self.href;
-                            let customerName = customers.name;
-                            let cityName;
-                            return HttpApi.makeGetRequest(customers._links.city.href)
-                                .then(city => {
-                                    count++;
-                                    cityName = city.name;
-                                    newLista[i] = { id: customerId, data: [customerName, cityName] };
-                                    if (count === lista._embedded.customers.length) {
-                                        CommonServices.removePageInfo(newLista);
-                                    }
-
-                                });
-                        });
+                    this.reloadNewLista(lista);
                 });
         }
     }
@@ -133,27 +106,34 @@ export default class Customers extends Component {
 
         CommonServices.list("customers")
             .then(lista => {
-                let count = 0;
-                let newLista = [];
+                this.reloadNewLista(lista);
+            });
+    }
 
-                lista._embedded.customers
-                    .forEach((customers, i) => {
-                        let customerId = customers._links.self.href;
-                        let customerName = customers.name;
-                        let cityId;
-                        let cityName;
-                        return HttpApi.makeGetRequest(customers._links.city.href)
-                            .then(city => {
-                                count++;
-                                cityId = city._links.self.href;
-                                cityName = city.name;
-                                newLista[i] = { id: customerId, cityId: cityId, data: [customerName, cityName] };
-                                if (count === lista._embedded.customers.length) {
-                                    CommonServices.reloadList(newLista);
-                                }
-                            });
+    reloadNewLista(lista) {
+        let count = 0;
+        let newLista = [];
+        if (!lista._embedded.customers.length) {
+            CommonServices.removePageInfo(newLista);
+        }
+        lista._embedded.customers
+            .forEach((customers, i) => {
+                let customerId = customers._links.self.href;
+                let customerName = customers.name;
+                let cityId;
+                let cityName;
+                return HttpApi.makeGetRequest(customers._links.city.href)
+                    .then(city => {
+                        count++;
+                        cityId = city._links.self.href;
+                        cityName = city.name;
+                        newLista[i] = { id: customerId, cityId: cityId, data: [customerName, cityName] };
+                        if (count === lista._embedded.customers.length) {
+                            CommonServices.reloadList(newLista);
+                        }
                     });
             });
+
     }
 
     CreateFormBody(action, id) {
@@ -176,7 +156,7 @@ export default class Customers extends Component {
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cliente:</label>
-                <input id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
+                <input autocomplete="off" id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
                 <label>Cidade:</label>
                 <AutoComplete search={this.loadCity} />
 
@@ -218,8 +198,6 @@ export default class Customers extends Component {
                     return { name: cityName, id };
                 }
                 );
-                // this.props.route.store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
-
                 return cb(newLista);
             });
     }
