@@ -59,7 +59,7 @@ export default class Customers extends Component {
         let url = 'https://customers-challenge.herokuapp.com/customers';
         let method = 'POST';
 
-        CommonServices.sendData(url, method, this.loadPayload());
+        CommonServices.sendData(url, method, this.loadPayloadCustomer());
     }
 
 
