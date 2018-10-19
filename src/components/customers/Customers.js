@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import AutoComplete from "../form/autoComplete/AutoComplete";
-import CommonServices, { setFunction } from "../../CommonServices/CommonServices";
+import CommonServices, {setListType, setFunction } from "../../CommonServices/CommonServices";
 
 export default class Customers extends Component {
 
@@ -11,14 +11,14 @@ export default class Customers extends Component {
         super(props);
         this.title = "Clientes";
         this.tHead = [
-            {text:"Nome", className:'SortHead customer'},
-            {text:"Cidade", className:'customer'},
-            {text:"Editar", className:'headerCommon'},
-            {text:"Remover", className:'headerCommon'}];
+            { text: "Nome", className: 'SortHead customer' },
+            { text: "Cidade", className: 'customer' },
+            { text: "Editar", className: 'headerCommon' },
+            { text: "Remover", className: 'headerCommon' }];
         this.form = this.CreateFormBody.bind(this);
         this.input_customer_name = '';
         this.customer_name = '';
-        this.listType = "list";
+        setListType("list");
         setFunction(this.listCustomers.bind(this), this.searchCustomer.bind(this));
     }
 
@@ -46,9 +46,9 @@ export default class Customers extends Component {
         )
     }
 
-    validateCityInput(){
-        let checkStatus =this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok
-        if(!checkStatus){
+    validateCityInput() {
+        let checkStatus = this.props.route.store.getState().reduceAutoComplete.autoCompleteState.ok
+        if (!checkStatus) {
             CommonServices.callAlertModal("blank", "CHANGE_MODAL_CONTENT", 2000);
         }
         return checkStatus;
@@ -59,13 +59,18 @@ export default class Customers extends Component {
         let url = 'https://customers-challenge.herokuapp.com/customers';
         let method = 'POST';
 
-        if(!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()){
+        CommonServices.sendData(url, method, this.loadPayloadCustomer());
+    }
+
+
+    loadPayloadCustomer() {
+        if (!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()) {
             let payload = {
                 "name": this.input_customer_name.value,
                 "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
             };
 
-            CommonServices.sendData(url,method,payload);
+            return payload;
         }
     }
 
@@ -73,27 +78,12 @@ export default class Customers extends Component {
 
         let url = id;
         let method = 'PATCH';
-        
-        if(!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()){
-            let payload = {
-                "name": this.input_customer_name.value,
-                "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
-            };
 
-            CommonServices.sendData(url,method,payload);
-        }
-
-
+        CommonServices.sendData(url, method, this.loadPayloadCustomer());
     }
+
     deleteCustomer(id) {
-        HttpApi.removeEntry(id)
-            .then(() => {
-                CommonServices.callTable();
-                CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
-            })
-            .catch(() => {
-                CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-            });
+        CommonServices.removeData(id);
     }
 
     searchCustomer(name) {
@@ -113,6 +103,7 @@ export default class Customers extends Component {
 
                         this.props.route.store.dispatch({ type: 'PAGE_SIZE', page_size: null });
                         this.props.route.store.dispatch({ type: 'PAGES', pages: null });
+                        this.props.route.store.dispatch({ type: 'LOADING', showLoading: false });
                     }
                     lista._embedded.customers
                         .forEach((customers, i) => {

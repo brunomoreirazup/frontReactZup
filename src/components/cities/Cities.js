@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
-import CommonServices, { setFunction } from "../../CommonServices/CommonServices";
+import CommonServices, {setFunction, setListType} from "../../CommonServices/CommonServices";
 
 
 
@@ -18,7 +18,7 @@ export default class Cities extends Component {
         this.form = this.CreateFormBody.bind(this);
         this.input_cidade_name = "";
         this.cidade_name = "";
-        this.listType = "list";
+        setListType("list");
         setFunction(this.listCity.bind(this), this.searchCity.bind(this));
     }
 
@@ -46,21 +46,24 @@ export default class Cities extends Component {
         )
     }
 
-
-
-
-    addCity() {
-        let url = 'https://customers-challenge.herokuapp.com/cities';
-        let method = 'POST';
-
+    loadPayloadCity() {
+        
         if (!CommonServices.validateFields(this.input_cidade_name)) {
 
             let payload = {
                 "name": this.input_cidade_name.value
             };
 
-            CommonServices.sendData(url, method, payload);
+            return payload;
         }
+    }
+
+    addCity() {
+
+        let url = 'https://customers-challenge.herokuapp.com/cities';
+        let method = 'POST';
+
+        CommonServices.sendData(url, method, this.loadPayloadCity());
     }
 
     editCity(id) {
@@ -68,31 +71,12 @@ export default class Cities extends Component {
         let url = id;
         let method = 'PUT';
 
-        if (!CommonServices.validateFields(this.input_cidade_name)) {
-
-            let payload = {
-                "name": this.input_cidade_name.value
-            };
-
-            CommonServices.sendData(url, method, payload);
-        }
+        CommonServices.sendData(url, method, this.loadPayloadCity());
     }
 
 
     deleteCity(id) {
-        HttpApi.removeEntry(id)
-            .then((response) => {
-                if ((response.status >= 400)) {
-                    CommonServices.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 1500);
-                }
-                else {
-                    CommonServices.callTable();
-                    CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
-                }
-            })
-            .catch(() => {
-                CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-            });
+        CommonServices.removeData(id);
     }
 
 
@@ -126,7 +110,6 @@ export default class Cities extends Component {
                 CommonServices.reloadList(newLista);
             });
     }
-
 
     CreateFormBody(action, id) {
         if (id !== undefined)
