@@ -85,14 +85,7 @@ export default class Customers extends Component {
 
 
     deleteCustomer(id) {
-        HttpApi.removeEntry(id)
-            .then(() => {
-                CommonServices.callTable();
-                CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
-            })
-            .catch(() => {
-                CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-            });
+        CommonServices.removeData(id);
     }
 
     searchCustomer(name) {

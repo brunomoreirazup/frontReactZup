@@ -46,9 +46,6 @@ export default class Cities extends Component {
         )
     }
 
-
-
-
     addCity() {
         let url = 'https://customers-challenge.herokuapp.com/cities';
         let method = 'POST';
@@ -80,19 +77,7 @@ export default class Cities extends Component {
 
 
     deleteCity(id) {
-        HttpApi.removeEntry(id)
-            .then((response) => {
-                if ((response.status >= 400)) {
-                    CommonServices.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 1500);
-                }
-                else {
-                    CommonServices.callTable();
-                    CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
-                }
-            })
-            .catch(() => {
-                CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-            });
+        CommonServices.removeData(id);
     }
 
 
@@ -126,8 +111,7 @@ export default class Cities extends Component {
                 CommonServices.reloadList(newLista);
             });
     }
-
-
+    
     CreateFormBody(action, id) {
         if (id !== undefined)
             this.loadForm(id);
