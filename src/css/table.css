@@ -14,13 +14,16 @@
 }
 
 .table {
-    table-layout: fixed;
+    table-layout: fixed;    
+    display: block;
+    padding: 0;
+    border: 0;
 }
 
 .customer {
-    width: 35%;
+    width: 50%;
 }
 
 .city {
-    width: 71%;
+    width: 100%;
 }

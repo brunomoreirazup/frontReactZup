@@ -3,7 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
 import AutoComplete from "../form/autoComplete/AutoComplete";
-import CommonServices, {setListType, setFunction } from "../../CommonServices/CommonServices";
+import CommonServices, { setListType, setFunction } from "../../CommonServices/CommonServices";
 
 export default class Customers extends Component {
 
@@ -56,22 +56,24 @@ export default class Customers extends Component {
     }
 
     addCustomer() {
+
         let url = 'https://customers-challenge.herokuapp.com/customers';
         let method = 'POST';
 
-        CommonServices.sendData(url, method, this.loadPayloadCustomer());
+        if (!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()) {
+            CommonServices.sendData(url, method, this.loadPayloadCustomer());
+        }
     }
 
 
     loadPayloadCustomer() {
-        if (!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()) {
-            let payload = {
-                "name": this.input_customer_name.value,
-                "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
-            };
 
-            return payload;
-        }
+        let payload = {
+            "name": this.input_customer_name.value,
+            "city": this.props.route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id
+        };
+
+        return payload;
     }
 
     editCustomer(id) {
@@ -79,7 +81,9 @@ export default class Customers extends Component {
         let url = id;
         let method = 'PATCH';
 
-        CommonServices.sendData(url, method, this.loadPayloadCustomer());
+        if (!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()) {
+            CommonServices.sendData(url, method, this.loadPayloadCustomer());
+        }
     }
 
     deleteCustomer(id) {

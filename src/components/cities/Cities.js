@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
-import CommonServices, {setFunction, setListType} from "../../CommonServices/CommonServices";
+import CommonServices, { setFunction, setListType } from "../../CommonServices/CommonServices";
 
 
 
@@ -47,15 +47,12 @@ export default class Cities extends Component {
     }
 
     loadPayloadCity() {
-        
-        if (!CommonServices.validateFields(this.input_cidade_name)) {
 
-            let payload = {
-                "name": this.input_cidade_name.value
-            };
+        let payload = {
+            "name": this.input_cidade_name.value
+        };
 
-            return payload;
-        }
+        return payload;
     }
 
     addCity() {
@@ -63,7 +60,9 @@ export default class Cities extends Component {
         let url = 'https://customers-challenge.herokuapp.com/cities';
         let method = 'POST';
 
-        CommonServices.sendData(url, method, this.loadPayloadCity());
+        if (!CommonServices.validateFields(this.input_cidade_name)) {
+            CommonServices.sendData(url, method, this.loadPayloadCity());
+        }
     }
 
     editCity(id) {
@@ -71,7 +70,9 @@ export default class Cities extends Component {
         let url = id;
         let method = 'PUT';
 
-        CommonServices.sendData(url, method, this.loadPayloadCity());
+        if (!CommonServices.validateFields(this.input_cidade_name)) {
+            CommonServices.sendData(url, method, this.loadPayloadCity());
+        }
     }
 
 
