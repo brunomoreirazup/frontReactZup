@@ -87,8 +87,11 @@ export default class Cities extends Component {
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
-                    CommonServices.storeSizeSearch(lista._embedded.cities);
                     CommonServices.removePageInfo(this.createNewLista(lista));
+                    CommonServices.storeSizeSearch(lista._embedded.cities);
+                    CommonServices.reloadList(this.createNewLista(lista));
+
+
                 });
         }
     }

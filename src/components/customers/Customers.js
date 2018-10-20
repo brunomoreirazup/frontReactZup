@@ -96,6 +96,7 @@ export default class Customers extends Component {
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
+                    CommonServices.removePageInfo();
                     CommonServices.storeSizeSearch(lista._embedded.customers);
                     this.reloadNewLista(lista);
                 });
@@ -113,9 +114,6 @@ export default class Customers extends Component {
     reloadNewLista(lista) {
         let count = 0;
         let newLista = [];
-        if (!lista._embedded.customers.length) {
-            CommonServices.removePageInfo(newLista);
-        }
         lista._embedded.customers
             .forEach((customers, i) => {
                 let customerId = customers._links.self.href;
