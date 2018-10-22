@@ -130,13 +130,15 @@ export default class CommonServices {
     static sendData(url, method, payload) {
         HttpApi.makeChangeRequest(url, method, payload)
             .then((result) => {
-                if(result.status >= 400) throw new Error("status >= 400");
+                if(result.status >= 400){
+                    throw new Error("status >= 400");
+                }
                 this.callTable();
                 this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
             })
             .catch((e) => {
                 console.log(e);
-                this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
+                this.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 2000);
             });
     }
 
