@@ -33,6 +33,13 @@ class DashBoard extends Component {
         this.props.dispatch({ type: 'TABLE_BODY', table_body: null });
     }
 
+    componentDidMount(){
+        this.focusSearch();
+    }
+
+    focusSearch(){
+        document.querySelector('input').focus();
+    }
 
     toggleModal() {
         this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent });
@@ -47,6 +54,7 @@ class DashBoard extends Component {
             footer: <button id="btAddModal" type="button" className="btn btn-success" onClick={this.props.add}>Adicionar</button>
         };
         this.toggleModal();
+
 
     }
     showModalEdit(id) {
@@ -77,7 +85,7 @@ class DashBoard extends Component {
     changePageSize(size) {
         this.props.dispatch({ type: "PAGE_SIZE", page_size: size.value });
         this.props.dispatch({ type: "PAGES_CURRENT", currentPage: 1 });
-        this.props.dispatch({type: "SET_USER_PREFERENCES", userPrefs: size.value})
+        this.props.dispatch({type: "SET_USER_PREFERENCES", userPrefs: size.value});
         this.props.list();
 
     }
