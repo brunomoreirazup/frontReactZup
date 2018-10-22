@@ -87,16 +87,18 @@ export default class Cities extends Component {
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
-                    if(lista.status >= 400) throw new Error("status >= 400");
+                    if(lista.status >= 400){
+                        throw new Error("status >= 400");
+                    }
                     CommonServices.storeSizeSearch(lista._embedded.cities);
-                    CommonServices.removePageInfo();
                     CommonServices.reloadList(this.createNewLista(lista));
+                    CommonServices.removePageInfo();
                 }).
                 catch(error => {
                     console.log(error);
                     CommonServices.storeSizeSearch([]);
-                    CommonServices.removePageInfo();
                     CommonServices.reloadList([]);
+                    CommonServices.removePageInfo();
             });
         }
     }
@@ -126,7 +128,7 @@ export default class Cities extends Component {
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cidade:</label>
-                <input autocomplete ="off" id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
+                <input autoComplete ="off" id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
             </form>
         );
     }

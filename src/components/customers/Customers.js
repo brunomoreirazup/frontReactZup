@@ -96,21 +96,23 @@ export default class Customers extends Component {
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
-                    if(lista.status >= 400) throw new Error("status >= 400");
+                    if(lista.status >= 400){
+                        throw new Error("status >= 400");
+                    }
                     CommonServices.storeSizeSearch(lista._embedded.customers);
                     this.reloadNewLista(lista);
+                    CommonServices.removePageInfo();
                 })
                 .catch(error => {
                     console.log(error);
                     CommonServices.storeSizeSearch([]);
-                    CommonServices.removePageInfo();
                     CommonServices.reloadList([]);
+                    CommonServices.removePageInfo();
                 });
         }
     }
 
     listCustomers() {
-
         CommonServices.list("customers")
             .then(lista => {
                 this.reloadNewLista(lista);
@@ -121,7 +123,8 @@ export default class Customers extends Component {
         let count = 0;
         let newLista = [];
         if (!lista._embedded.customers.length) {
-            CommonServices.removePageInfo(newLista);
+            CommonServices.reloadList(newLista);
+            CommonServices.removePageInfo();
         }
         lista._embedded.customers
             .forEach((customers, i) => {
@@ -163,7 +166,7 @@ export default class Customers extends Component {
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cliente:</label>
-                <input autocomplete="off" id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
+                <input autoComplete="off" id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
                 <label>Cidade:</label>
                 <AutoComplete search={this.loadCity} />
 
