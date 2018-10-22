@@ -11,8 +11,8 @@ class MainModal extends Component{
 
     componentDidUpdate(){
         let input = document.querySelector('.modal-dialog input');
-        if(input) {
-            input.focus();
+        if(input) {            
+            input.select();
         }
     }
 
