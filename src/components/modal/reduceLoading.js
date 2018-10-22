@@ -7,7 +7,6 @@ export default function reduce(state = {}, action) {
             newState.showLoading = !newState.showLoading;
         else
             newState.showLoading = action.showLoading;
-        console.log(newState.showLoading);
         return newState;
     }
 

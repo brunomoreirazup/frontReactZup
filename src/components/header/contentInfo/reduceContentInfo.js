@@ -13,6 +13,12 @@ export default function reduce(state = {}, action) {
         return newState;
 
     }
+
+    if(action.type === "SET_USER_PREFERENCES"){
+        let newState = Object.assign({}, state);
+        newState.userPrefs = action.userPrefs;
+        return newState;
+    }
     return state;
 
 }

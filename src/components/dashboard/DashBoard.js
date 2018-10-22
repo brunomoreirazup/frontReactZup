@@ -5,7 +5,6 @@ import Header from "../header/Header";
 import MainModal from "../modal/MainModal";
 import Loading from "../modal/Loading";
 import { connect } from 'react-redux';
-import Copyright from '../copyright/Copyright';
 import BtEdit from '../button/btEdit/BtEdit';
 import BtDelete from "../button/btDelete/BtDelete";
 import TableBody from "../table/TableBody";
@@ -28,14 +27,22 @@ class DashBoard extends Component {
             alerts: ''
 
         };
-        this.props.dispatch({ type: "PAGE_SIZE", page_size: 5 })
-        this.props.dispatch({ type: "SORT", sort_order: "asc" })
+        this.props.dispatch({ type: "PAGE_SIZE", page_size: 5 });
+        this.props.dispatch({ type: "SET_USER_PREFERENCES", userPrefs: 5 });
+        this.props.dispatch({ type: "SORT", sort_order: "asc" });
         this.props.dispatch({ type: 'TABLE_BODY', table_body: null });
     }
 
+    componentDidMount(){
+        this.focusSearch();
+    }
+
+    focusSearch(){
+        document.querySelector('input').focus();
+    }
 
     toggleModal() {
-        this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent })
+        this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent });
         this.props.dispatch({ type: "TOGGLE_MAIN_MODAL" });
     }
 
@@ -47,6 +54,7 @@ class DashBoard extends Component {
             footer: <button id="btAddModal" type="button" className="btn btn-success" onClick={this.props.add}>Adicionar</button>
         };
         this.toggleModal();
+
 
     }
     showModalEdit(id) {
@@ -77,6 +85,7 @@ class DashBoard extends Component {
     changePageSize(size) {
         this.props.dispatch({ type: "PAGE_SIZE", page_size: size.value });
         this.props.dispatch({ type: "PAGES_CURRENT", currentPage: 1 });
+        this.props.dispatch({type: "SET_USER_PREFERENCES", userPrefs: size.value});
         this.props.list();
 
     }
@@ -88,11 +97,14 @@ class DashBoard extends Component {
         return (
 
             <tr>
-                <th> # </th>
+                <th className='headerCommon'> # </th>
                 {this.props.tHead.map((item, i) => {
                     if (i === 0)
-                        return <th className='sortHead' key={i} onClick={this.sort.bind(this)}>{item}</th>;
-                    else return <th key={i}>{item}</th>;
+                        return <th className={item.className} key={i} onClick={this.sort.bind(this)}>{item.text}</th>;
+                    else {
+                        return <th key={i} className={item.className}>{item.text} </th>;
+
+                    }
                 }
                 )}
             </tr>
@@ -102,16 +114,13 @@ class DashBoard extends Component {
     loadTBody() {
 
         let currentPossition = 0;
-        console.log(this.props);
         try {
             currentPossition = this.props.reduceContentInfo.page_size * (this.props.reduceFooter.pages.currentPage - 1);
         } catch (e) {
 
         }
-        console.log("I:" + currentPossition);
-        console.log(this.props.reduceTable.table_body);
 
-        if (this.props.reduceTable == undefined || this.props.reduceTable.table_body == undefined)
+        if (this.props.reduceTable === undefined || this.props.reduceTable.table_body === undefined)
             return <tr key='#'><td colSpan={5}>Carregando...</td></tr>;
         else {
             if (this.props.reduceTable.table_body.length > 0) {
@@ -145,6 +154,22 @@ class DashBoard extends Component {
         }
 
     }
+
+    switchLoading() {
+        if (this.props.reduceLoading != null && this.props.reduceLoading.showLoading) {
+            return (
+                <Loading />
+            );
+        } else {
+            return (
+                <TableBody>
+                    {this.loadTBody()}
+                </TableBody>
+            );
+        }
+
+    }
+
     render() {
         return (
             <div>
@@ -157,14 +182,10 @@ class DashBoard extends Component {
                     <TableHead>
                         {this.loadThead()}
                     </TableHead>
-                    <TableBody>
-                        {this.loadTBody()}
-                    </TableBody>
+                    {this.switchLoading()}
                 </Table>
-
                 <Footer changeCurrentPage={this.changeCurrentPage.bind(this)} />
-                <Copyright />
-                <Loading />
+
                 <MainModal />
 
 
@@ -178,7 +199,8 @@ function mapStateToProps(state) {
     return {
         reduceTable: state.reduceTable,
         reduceFooter: state.reduceFooter,
-        reduceContentInfo: state.reduceContentInfo
+        reduceContentInfo: state.reduceContentInfo,
+        reduceLoading: state.reduceLoading
     };
 
 }

@@ -9,6 +9,13 @@ class MainModal extends Component{
         this.toggleMainModal();
     }
 
+    componentDidUpdate(){
+        let input = document.querySelector('.modal-dialog input');
+        if(input) {
+            input.focus();
+        }
+    }
+
     toggleMainModal()
     {
         this.props.dispatch({type:"TOGGLE_MAIN_MODAL",modalOpen:false});

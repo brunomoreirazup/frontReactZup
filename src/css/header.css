@@ -15,7 +15,7 @@
 
 .bottomline {
     margin-top: 0.5%;
-    margin-bottom: 1.5%;
+    margin-bottom: 5px;
     padding-right: 10px;
 }
 
@@ -30,6 +30,7 @@
 .custom-select {
     margin-left: 5px;
     margin-right: 5px;
+    max-width: 20%;
 }
 
 .button-add {
@@ -38,5 +39,8 @@
 }
 
 .content-info {
+    margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: 10px;
+    height: 10%;
 }
