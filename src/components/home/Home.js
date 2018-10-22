@@ -9,7 +9,7 @@ export default class Home extends Component {
             <div>
                 <div className="full-size">
                     <Navbar />
-                    <h1>Bem Vindo</h1>
+                    <h1 className='welcome'>Bem-vindo!</h1>
                 </div>                
             </div>
 

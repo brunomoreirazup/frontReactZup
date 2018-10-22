@@ -1,3 +1,19 @@
-.full-size {
-    height: 92vh;
+.welcome {
+    font-size: 70px;
+    font-weight: bolder;
+    color: dimgrey;
+    text-shadow: darkgray 0em 0em 0.3em;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-56px);
+
+}
+
+body {
+    background-color: whitesmoke;
 }
