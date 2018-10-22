@@ -97,7 +97,8 @@ export default class CommonServices {
     }
 
     static emptySearch(name) {
-        if (!name) {
+        let block = false;
+        if (!name || block) {
             let defaultPages =
             {
                 homePage: 1,
@@ -126,7 +127,8 @@ export default class CommonServices {
 
     static sendData(url, method, payload) {
         HttpApi.makeChangeRequest(url, method, payload)
-            .then(() => {
+            .then((result) => {
+                if(result.status >= 300) throw new Error("status >= 300");
                 this.callTable();
                 this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
             })

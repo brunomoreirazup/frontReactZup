@@ -114,6 +114,11 @@ export default class Customers extends Component {
     reloadNewLista(lista) {
         let count = 0;
         let newLista = [];
+        if(!lista._embedded.customers.length)
+        {
+            CommonServices.reloadList(newLista);
+
+        }
         lista._embedded.customers
             .forEach((customers, i) => {
                 let customerId = customers._links.self.href;
@@ -154,7 +159,7 @@ export default class Customers extends Component {
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cliente:</label>
-                <input autocomplete="off" id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
+                <input autoComplete="off" id="input_customer_name" className="form-control" defaultValue={this.customer_name} type="text" placeholder="Insira um cliente" ref={(input) => this.input_customer_name = input} />
                 <label>Cidade:</label>
                 <AutoComplete search={this.loadCity} />
 
