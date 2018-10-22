@@ -92,7 +92,6 @@ export default class CommonServices {
     }
 
     static removePageInfo(newLista) {
-        listType = 'search';
         store.dispatch({ type: 'PAGE_SIZE', page_size: null });
         store.dispatch({ type: 'PAGES', page: null });
     }
@@ -113,6 +112,7 @@ export default class CommonServices {
 
             return true;
         }
+        listType = 'search';
         return false
     }
 

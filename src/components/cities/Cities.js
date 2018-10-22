@@ -83,12 +83,18 @@ export default class Cities extends Component {
 
     searchCity(name) {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
+        let state = this.props.route.store.getState();
+        let page = state.reduceFooter.pages.currentPage;
+        let sizePage = state.reduceContentInfo.page_size;
+        let sort = state.reduceTable.sort_order;
+
+        let url = `http://localhost:3001/cities/search/findByNameIgnoreCaseContaining?name=${name}&page=${page - 1}&size=${sizePage}&sort=name,${sort}`;
 
         if (!CommonServices.emptySearch(name)) {
-            HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
+            HttpApi.makeGetRequest(url)
                 .then(lista => {
-                    CommonServices.removePageInfo(this.createNewLista(lista));
-                    CommonServices.storeSizeSearch(lista._embedded.cities);
+                    CommonServices.storeSizePages(lista);
+                    CommonServices.changeStorePages(lista);
                     CommonServices.reloadList(this.createNewLista(lista));
 
 
