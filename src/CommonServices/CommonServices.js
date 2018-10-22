@@ -78,7 +78,7 @@ export default class CommonServices {
         store.dispatch({ type: 'LOADING', showLoading: true });
         listType = 'list';
         const url = this.mountUrl(tableType);
-        return HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/${tableType}?s`+url)
+        return HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/${tableType}?`+url)
             .then(lista => {
                 this.changeStorePages(lista);
                 this.storeSizePages(lista);

@@ -88,20 +88,22 @@ export default class Cities extends Component {
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(url)
                 .then(lista => {
+
+                    console.log("then");
                     CommonServices.storeSizePages(lista);
                     CommonServices.changeStorePages(lista);
                     CommonServices.reloadList(this.createNewLista(lista));
 
 
                 })
-                .catch()
-                {
+                .catch(e => {
+                    
+                    console.log("catch");
                     let lista=CommonServices.defaultEmptySearch("cities");
                     CommonServices.storeSizePages(lista);
                     CommonServices.changeStorePages(lista);
                     CommonServices.reloadList(this.createNewLista(lista));
-
-                }
+                });
         }
     }
 
