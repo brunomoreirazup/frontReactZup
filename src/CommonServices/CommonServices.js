@@ -152,7 +152,7 @@ export default class CommonServices {
             })
             .catch((e) => {
                 console.log(e);
-                this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
+                this.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 2000);
             });
     }
 

@@ -40,6 +40,7 @@ export default class Customers extends Component {
                     delete={this.deleteCustomer.bind(this)}
                     search={this.searchCustomer.bind(this)}
                     list={CommonServices.callTable.bind(this)}
+                    focus={this.focusInput.bind(this)}
                 />
             </div>
 
@@ -171,7 +172,15 @@ export default class Customers extends Component {
             </form>
         );
     }
+    focusInput()
+    {
+        try{
+            this.input_customer_name.focus();
+        }catch(e){
+            setTimeout(this.focusInput,50);
+        };    
 
+    }
     loadForm(id) {
         let customer_city = "";
         let cityId;

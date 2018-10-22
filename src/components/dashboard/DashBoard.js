@@ -37,6 +37,7 @@ class DashBoard extends Component {
     toggleModal() {
         this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent });
         this.props.dispatch({ type: "TOGGLE_MAIN_MODAL" });
+        this.props.focus();
     }
 
 
