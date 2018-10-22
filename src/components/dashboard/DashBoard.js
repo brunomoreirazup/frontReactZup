@@ -35,7 +35,7 @@ class DashBoard extends Component {
 
 
     toggleModal() {
-        this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent })
+        this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent });
         this.props.dispatch({ type: "TOGGLE_MAIN_MODAL" });
     }
 
@@ -112,7 +112,7 @@ class DashBoard extends Component {
 
         }
 
-        if (this.props.reduceTable == undefined || this.props.reduceTable.table_body == undefined)
+        if (this.props.reduceTable === undefined || this.props.reduceTable.table_body === undefined)
             return <tr key='#'><td colSpan={5}>Carregando...</td></tr>;
         else {
             if (this.props.reduceTable.table_body.length > 0) {
