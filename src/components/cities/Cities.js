@@ -126,6 +126,7 @@ export default class Cities extends Component {
         });
         return newLista;
     }
+
     CreateFormBody(action, id) {
         if (id !== undefined)
             this.loadForm(id);

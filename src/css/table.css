@@ -17,6 +17,7 @@
     table-layout: fixed;  
     background-color: white;  
     display: block;
+    background-color: white;
     padding: 0;
     border: 0;
 }
