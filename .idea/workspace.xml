@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a8377c3-4bd2-4967-a77b-58e613757f5b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/DashBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/DashBoard.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -145,7 +146,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/dashboard/DashBoard.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+              <caret line="32" column="70" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -450,12 +451,12 @@
       <workItem from="1539174083984" duration="7838000" />
       <workItem from="1539802565006" duration="293000" />
       <workItem from="1539951141309" duration="1183000" />
-      <workItem from="1540209888334" duration="11440000" />
+      <workItem from="1540209888334" duration="12655000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123956000" />
+    <option name="totallyTimeSpent" value="125171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="25" width="1366" height="743" extended-state="6" />
@@ -771,7 +772,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/dashboard/DashBoard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+          <caret line="32" column="70" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

@@ -31,7 +31,6 @@ class DashBoard extends Component {
         this.props.dispatch({ type: "SET_USER_PREFERENCES", userPrefs: 5 });
         this.props.dispatch({ type: "SORT", sort_order: "asc" });
         this.props.dispatch({ type: 'TABLE_BODY', table_body: null });
-        this.props.dispatch({type: 'SET_USER_PREFERENCES', userPrefs: 5})
     }
 
 
