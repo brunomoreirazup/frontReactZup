@@ -93,8 +93,8 @@ export default class Cities extends Component {
                     CommonServices.storeSizeSearch(lista._embedded.cities);
                     CommonServices.reloadList(this.createNewLista(lista));
                     CommonServices.removePageInfo();
-                }).
-                catch(error => {
+                })
+                .catch(error => {
                     console.log(error);
                     CommonServices.storeSizeSearch([]);
                     CommonServices.reloadList([]);

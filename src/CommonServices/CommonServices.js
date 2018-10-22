@@ -100,6 +100,7 @@ export default class CommonServices {
     }
 
     static emptySearch(name) {
+        let userPrefs = store.getState().reduceContentInfo.userPrefs;
         if (!name) {
             let defaultPages =
                 {
@@ -109,7 +110,7 @@ export default class CommonServices {
                 };
 
             store.dispatch({ type: 'PAGES', pages: defaultPages });
-            store.dispatch({ type: "PAGE_SIZE", page_size: 5 });
+            store.dispatch({ type: "PAGE_SIZE", page_size: userPrefs });
 
             listFunction();
 
