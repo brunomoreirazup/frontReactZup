@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../navbar/Navbar';
-import Copyright from "../copyright/Copyright";
+import image from '../../img/homepage.gif'
+
 export default class Home extends Component {
 
 
@@ -9,9 +10,9 @@ export default class Home extends Component {
             <div>
                 <div className="full-size">
                     <Navbar />
-                    <h1>Bem Vindo</h1>
-                </div>
-                <Copyright />
+                    <h1 className='welcome'>Bem-vindo!</h1>
+                    <img src={image} className='home-image' alt='home'></img>
+                </div>                
             </div>
 
         )

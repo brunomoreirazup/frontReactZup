@@ -30,6 +30,7 @@
 .custom-select {
     margin-left: 5px;
     margin-right: 5px;
+    max-width: 20%;
 }
 
 .button-add {
@@ -38,6 +39,8 @@
 }
 
 .content-info {
+    margin-top: 10px;
     margin-bottom: 10px;
-    height: 30px;
+    margin-left: 10px;
+    height: 10%;
 }

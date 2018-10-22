@@ -3,11 +3,11 @@
 # dependencies
 /node_modules
 /server/node_modules
-/selenium/build
 
 # testing
 /coverage
-
+/selenium/build
+/server/node_modules
 # production
 /build
 /.idea

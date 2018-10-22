@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "../navbar/Navbar";
 import Dashboard from "../dashboard/DashBoard";
 import HttpApi from "../http/HttpApi";
-import CommonServices, {setFunction, setListType} from "../../CommonServices/CommonServices";
+import CommonServices, { setFunction, setListType } from "../../CommonServices/CommonServices";
 
 
 
@@ -47,15 +47,12 @@ export default class Cities extends Component {
     }
 
     loadPayloadCity() {
-        
-        if (!CommonServices.validateFields(this.input_cidade_name)) {
 
-            let payload = {
-                "name": this.input_cidade_name.value
-            };
+        let payload = {
+            "name": this.input_cidade_name.value
+        };
 
-            return payload;
-        }
+        return payload;
     }
 
     addCity() {
@@ -63,7 +60,9 @@ export default class Cities extends Component {
         let url = 'https://customers-challenge.herokuapp.com/cities';
         let method = 'POST';
 
-        CommonServices.sendData(url, method, this.loadPayloadCity());
+        if (!CommonServices.validateFields(this.input_cidade_name)) {
+            CommonServices.sendData(url, method, this.loadPayloadCity());
+        }
     }
 
     editCity(id) {
@@ -71,12 +70,14 @@ export default class Cities extends Component {
         let url = id;
         let method = 'PUT';
 
-        CommonServices.sendData(url, method, this.loadPayloadCity());
+        if (!CommonServices.validateFields(this.input_cidade_name)) {
+            CommonServices.sendData(url, method, this.loadPayloadCity());
+        }
     }
 
 
     deleteCity(id) {
-        CommonServices.removeData(id);
+        CommonServices.sendData(id,"DELETE");
     }
 
 
@@ -86,14 +87,19 @@ export default class Cities extends Component {
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
+                    if(lista.status >= 400){
+                        throw new Error("status >= 400");
+                    }
                     CommonServices.storeSizeSearch(lista._embedded.cities);
-                    let newLista = lista._embedded.cities.map(city => {
-                        let cityId = city._links.self.href;
-                        let cityName = city.name;
-                        return { id: cityId, data: [cityName] };
-                    });
-                    CommonServices.removePageInfo(newLista);
-                });
+                    CommonServices.reloadList(this.createNewLista(lista));
+                    CommonServices.removePageInfo();
+                })
+                .catch(error => {
+                    console.log(error);
+                    CommonServices.storeSizeSearch([]);
+                    CommonServices.reloadList([]);
+                    CommonServices.removePageInfo();
+            });
         }
     }
 
@@ -101,14 +107,18 @@ export default class Cities extends Component {
     listCity() {
         CommonServices.list("cities")
             .then(lista => {
-                let newLista = lista._embedded.cities.map(city => {
-                    let cityId = city._links.self.href;
-                    let cityName = city.name;
-                    return { id: cityId, data: [cityName] };
-                }
-                );
-                CommonServices.reloadList(newLista);
+                CommonServices.reloadList(this.createNewLista(lista));
             });
+    }
+
+    createNewLista(lista)
+    {
+        let newLista = lista._embedded.cities.map(city => {
+            let cityId = city._links.self.href;
+            let cityName = city.name;
+            return { id: cityId, data: [cityName] };
+        });
+        return newLista;
     }
 
     CreateFormBody(action, id) {
@@ -119,7 +129,7 @@ export default class Cities extends Component {
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cidade:</label>
-                <input id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
+                <input autoComplete ="off" id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
             </form>
         );
     }

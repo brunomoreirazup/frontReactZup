@@ -1,3 +1,32 @@
-.full-size {
-    height: 92vh;
+.welcome {
+    top: 40%;
+    font-size: 10vw;
+    font-weight: bolder;
+    color: dimgrey;
+    text-shadow: darkgray 0 0 0.3em;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100px);
+
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.home-image {
+    position: fixed;
+    top: 46.5%;
+    left: 10%;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+
+
 }

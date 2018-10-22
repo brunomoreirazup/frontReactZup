@@ -35,9 +35,9 @@ export default class CommonServices {
 
     static storeSizeSearch(json) {
         let size =
-        {
-            sizePage: json.length
-        };
+            {
+                sizePage: json.length
+            };
 
         store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
     }
@@ -45,20 +45,20 @@ export default class CommonServices {
 
     static changeStorePages(json) {
         let page =
-        {
-            homePage: 1,
-            lastPage: json.page.totalPages,
-            currentPage: json.page.number + 1
+            {
+                homePage: 1,
+                lastPage: json.page.totalPages,
+                currentPage: json.page.number + 1
 
-        };
+            };
         store.dispatch({ type: 'PAGES', pages: page });
     }
 
     static storeSizePages(json) {
         let size =
-        {
-            sizePage: json.page.totalElements
-        };
+            {
+                sizePage: json.page.totalElements
+            };
 
         store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
     }
@@ -91,25 +91,26 @@ export default class CommonServices {
         store.dispatch({ type: 'LOADING', showLoading: false });
     }
 
-    static removePageInfo(newLista) {
+    static removePageInfo() {
         listType = 'search';
-        store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
+        // store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
         store.dispatch({ type: 'PAGE_SIZE', page_size: null });
         store.dispatch({ type: 'PAGES', page: null });
-        store.dispatch({ type: 'LOADING', showLoading: false });
+        // store.dispatch({ type: 'LOADING', showLoading: false });
     }
 
     static emptySearch(name) {
+        let userPrefs = store.getState().reduceContentInfo.userPrefs;
         if (!name) {
             let defaultPages =
-            {
-                homePage: 1,
-                lastPage: 1,
-                currentPage: 1
-            };
+                {
+                    homePage: 1,
+                    lastPage: 1,
+                    currentPage: 1
+                };
 
             store.dispatch({ type: 'PAGES', pages: defaultPages });
-            store.dispatch({ type: "PAGE_SIZE", page_size: 5 });
+            store.dispatch({ type: "PAGE_SIZE", page_size: userPrefs });
 
             listFunction();
 
@@ -128,28 +129,16 @@ export default class CommonServices {
 
     static sendData(url, method, payload) {
         HttpApi.makeChangeRequest(url, method, payload)
-            .then(() => {
+            .then((result) => {
+                if(result.status >= 400){
+                    throw new Error("status >= 400");
+                }
                 this.callTable();
                 this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
             })
-            .catch(() => {
-                this.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
-            });
-    }
-
-    static removeData(id){
-        HttpApi.removeEntry(id)
-            .then((response) => {
-                if(response.status >= 400){
-                    CommonServices.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 1500);
-                }
-                else{
-                    CommonServices.callTable();
-                    CommonServices.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
-                }
-            })
-            .catch(() => {
-                CommonServices.callAlertModal("fail", "CHANGE_MODAL_CONTENT", 2000);
+            .catch((e) => {
+                console.log(e);
+                this.callAlertModal("fail", "TOGGLE_MAIN_MODAL", 2000);
             });
     }
 
