@@ -11,7 +11,7 @@ export default class Customers extends Component {
         super(props);
         this.title = "Clientes";
         this.tHead = [
-            { text: "Nome", className: 'SortHead customer' },
+            { text: "Nome", className: 'sortHead customer' },
             { text: "Cidade", className: 'customer' },
             { text: "Editar", className: 'headerCommon' },
             { text: "Remover", className: 'headerCommon' }];
