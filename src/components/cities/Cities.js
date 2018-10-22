@@ -84,12 +84,20 @@ export default class Cities extends Component {
     searchCity(name) {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
 
-        if (!CommonServices.emptySearch(name) && CommonServices.isCharValid(name)) {
+        if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
+                    if(lista.status >= 400) throw new Error("status >= 400");
                     CommonServices.storeSizeSearch(lista._embedded.cities);
-                    CommonServices.removePageInfo(this.createNewLista(lista));
-                });
+                    CommonServices.removePageInfo();
+                    CommonServices.reloadList(this.createNewLista(lista));
+                }).
+                catch(error => {
+                    console.log(error);
+                    CommonServices.storeSizeSearch([]);
+                    CommonServices.removePageInfo();
+                    CommonServices.reloadList([]);
+            });
         }
     }
 
@@ -100,6 +108,7 @@ export default class Cities extends Component {
                 CommonServices.reloadList(this.createNewLista(lista));
             });
     }
+
     createNewLista(lista)
     {
         let newLista = lista._embedded.cities.map(city => {

@@ -91,12 +91,12 @@ export default class CommonServices {
         store.dispatch({ type: 'LOADING', showLoading: false });
     }
 
-    static removePageInfo(newLista) {
+    static removePageInfo() {
         listType = 'search';
-        store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
+        // store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
         store.dispatch({ type: 'PAGE_SIZE', page_size: null });
         store.dispatch({ type: 'PAGES', page: null });
-        store.dispatch({ type: 'LOADING', showLoading: false });
+        // store.dispatch({ type: 'LOADING', showLoading: false });
     }
 
     static emptySearch(name) {
@@ -118,25 +118,6 @@ export default class CommonServices {
         return false
     }
 
-    static isSearchEmpty(name){
-        if(!name){
-            return true;
-        }
-        return false;
-    }
-
-    static isCharValid(name){
-        for(let i = 0; i<name.length;i++){
-            let asciiChar = name[i].charCodeAt(0);
-            console.log(asciiChar);
-            if((asciiChar >= 33 && asciiChar <= 64) ||( asciiChar >= 91 && asciiChar <= 96 )||( asciiChar >= 123 && asciiChar <= 126) ){
-                this.removePageInfo([]);
-                return false;
-            }
-        }
-        return true;
-    }
-
     static callTable() {
         if (listType === 'search') {
             let keyword = store.getState().reduceSearch.search;
@@ -147,7 +128,8 @@ export default class CommonServices {
 
     static sendData(url, method, payload) {
         HttpApi.makeChangeRequest(url, method, payload)
-            .then(() => {
+            .then((result) => {
+                if(result.status >= 400) throw new Error("status >= 400");
                 this.callTable();
                 this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
             })

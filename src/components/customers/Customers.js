@@ -96,8 +96,15 @@ export default class Customers extends Component {
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
+                    if(lista.status >= 400) throw new Error("status >= 400");
                     CommonServices.storeSizeSearch(lista._embedded.customers);
                     this.reloadNewLista(lista);
+                })
+                .catch(error => {
+                    console.log(error);
+                    CommonServices.storeSizeSearch([]);
+                    CommonServices.removePageInfo();
+                    CommonServices.reloadList([]);
                 });
         }
     }
