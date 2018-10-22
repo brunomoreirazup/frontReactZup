@@ -96,9 +96,8 @@ export default class CommonServices {
         store.dispatch({ type: 'PAGES', page: null });
     }
 
-    static emptySearch(name) {
-        let block = false;
-        if (!name || block) {
+    static isSearchValid(name) {
+        if (this.isSearchEmpty(name) || !this.isCharValid(name)) {
             let defaultPages =
             {
                 homePage: 1,
@@ -115,6 +114,24 @@ export default class CommonServices {
         }
         listType = 'search';
         return false
+    }
+
+    static isSearchEmpty(name){
+        if(!name){
+            return true;
+        }
+        return false;
+    }
+
+    static isCharValid(name){
+        for(let i = 0; i<name.length;i++){
+            let asciiChar = name.charCodeAt(i);
+            console.log(asciiChar);
+            if((asciiChar >= 33 && asciiChar <= 64) ||( asciiChar >= 91 && asciiChar <= 96 )||( asciiChar >= 123 && asciiChar <= 126) ){
+                return false;
+            }
+        }
+        return true;
     }
 
     static callTable() {
