@@ -99,7 +99,14 @@ export default class Customers extends Component {
                     CommonServices.removePageInfo();
                     CommonServices.storeSizeSearch(lista._embedded.customers);
                     this.reloadNewLista(lista);
-                });
+                })
+                .catch()
+                {
+                    let lista=CommonServices.defaultEmptySearch("customers");
+                    CommonServices.removePageInfo();
+                    CommonServices.storeSizeSearch(lista._embedded.customers);
+                    this.reloadNewLista(lista);
+                }
         }
     }
 

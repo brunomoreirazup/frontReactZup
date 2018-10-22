@@ -77,18 +77,13 @@ export default class Cities extends Component {
 
 
     deleteCity(id) {
-        CommonServices.sendData(id,"DELETE");
+        CommonServices.sendData(id, "DELETE");
     }
 
 
     searchCity(name) {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
-        let state = this.props.route.store.getState();
-        let page = state.reduceFooter.pages.currentPage;
-        let sizePage = state.reduceContentInfo.page_size;
-        let sort = state.reduceTable.sort_order;
-
-        let url = `http://localhost:3001/cities/search/findByNameIgnoreCaseContaining?name=${name}&page=${page - 1}&size=${sizePage}&sort=name,${sort}`;
+        let url = `http://localhost:3001/cities/search/findByNameIgnoreCaseContaining?name=${name}&${CommonServices.mountUrl()}`;
 
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(url)
@@ -98,7 +93,15 @@ export default class Cities extends Component {
                     CommonServices.reloadList(this.createNewLista(lista));
 
 
-                });
+                })
+                .catch()
+                {
+                    let lista=CommonServices.defaultEmptySearch("cities");
+                    CommonServices.storeSizePages(lista);
+                    CommonServices.changeStorePages(lista);
+                    CommonServices.reloadList(this.createNewLista(lista));
+
+                }
         }
     }
 
@@ -109,8 +112,7 @@ export default class Cities extends Component {
                 CommonServices.reloadList(this.createNewLista(lista));
             });
     }
-    createNewLista(lista)
-    {
+    createNewLista(lista) {
         let newLista = lista._embedded.cities.map(city => {
             let cityId = city._links.self.href;
             let cityName = city.name;
@@ -126,7 +128,7 @@ export default class Cities extends Component {
         return (
             <form onSubmit={(event) => { event.preventDefault(); action(id) }}>
                 <label>Cidade:</label>
-                <input autoComplete ="off" id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
+                <input autoComplete="off" id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
             </form>
         );
     }

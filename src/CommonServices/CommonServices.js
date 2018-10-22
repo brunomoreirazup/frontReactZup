@@ -63,13 +63,13 @@ export default class CommonServices {
         store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
     }
 
-    static mountUrl(tableType) {
+    static mountUrl() {
         let state = store.getState();
         let page = state.reduceFooter.pages.currentPage;
         let sizePage = state.reduceContentInfo.page_size;
         let sort = state.reduceTable.sort_order;
 
-        let url = `https://customers-challenge.herokuapp.com/${tableType}?page=${page - 1}&size=${sizePage}&sort=name,${sort}`;
+        let url = `page=${page - 1}&size=${sizePage}&sort=name,${sort}`;
 
         return url;
     }
@@ -78,7 +78,7 @@ export default class CommonServices {
         store.dispatch({ type: 'LOADING', showLoading: true });
         listType = 'list';
         const url = this.mountUrl(tableType);
-        return HttpApi.makeGetRequest(url)
+        return HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/${tableType}?s`+url)
             .then(lista => {
                 this.changeStorePages(lista);
                 this.storeSizePages(lista);
@@ -96,8 +96,8 @@ export default class CommonServices {
         store.dispatch({ type: 'PAGES', page: null });
     }
 
-    static isSearchValid(name) {
-        if (this.isSearchEmpty(name) || !this.isCharValid(name)) {
+    static emptySearch(name) {
+        if (!name) {
             let defaultPages =
             {
                 homePage: 1,
@@ -116,22 +116,22 @@ export default class CommonServices {
         return false
     }
 
-    static isSearchEmpty(name){
-        if(!name){
-            return true;
-        }
-        return false;
-    }
 
-    static isCharValid(name){
-        for(let i = 0; i<name.length;i++){
-            let asciiChar = name.charCodeAt(i);
-            console.log(asciiChar);
-            if((asciiChar >= 33 && asciiChar <= 64) ||( asciiChar >= 91 && asciiChar <= 96 )||( asciiChar >= 123 && asciiChar <= 126) ){
-                return false;
+    static defaultEmptySearch(tableType){
+        let state = store.getState();
+        let sizePage = state.reduceContentInfo.page_size;
+        
+        let newResponse = {
+            _embedded: { [tableType]: [] },
+            page: {
+                "size": sizePage,
+                "totalElements": 0,
+                "totalPages": 1,
+                "number": 0
             }
         }
-        return true;
+        return newResponse;
+        
     }
 
     static callTable() {
@@ -145,7 +145,7 @@ export default class CommonServices {
     static sendData(url, method, payload) {
         HttpApi.makeChangeRequest(url, method, payload)
             .then((result) => {
-                if(result.status >= 300) throw new Error("status >= 300");
+                if(result.status >= 400) throw new Error("status >= 400");
                 this.callTable();
                 this.callAlertModal("success", "TOGGLE_MAIN_MODAL", 1500);
             })
