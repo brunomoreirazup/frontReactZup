@@ -1,9 +1,9 @@
 .welcome {
+    top: 50%;
     font-size: 70px;
     font-weight: bolder;
     color: dimgrey;
     text-shadow: darkgray 0em 0em 0.3em;
-    height: 100%;
     width: 100%;
     display: flex;
     position: fixed;
