@@ -1,0 +1,40 @@
+_Dashboard =>
+    Corrigidos:
+
+    -Ordem das importações corrigida.
+    -Trocado '' por "" nas importações.
+    -Identação de 2 espaços no início de cada linha.
+    -Retirada linha em branco após definição da classe.
+    -método "init()" movido para depois do "ComponentDidMount".
+    -Espaço entre o nome dos metodos e a chave de abertura '{'.
+    -Adicionado virgula após o atributo 'alerts' no método init() //WTF, PODE ISSO ARNALDO?!
+    -"this.props" retirados, a variavel deve chamar o props diretamente.
+        props em init() agora é um parametro  //IMPORTANTE (Verificar se aparacem BUGS).
+    -Alterado a variavel "title" no metodo "showModalAdd/Edit/Delete" para Template String.
+    -Extensão do arquivo alterada de ".js" para ".jsx"
+        (Elementos em HTML só devem ser escritos em ".jsx")
+    -Adicionada linha em branco entre um metodo e outro.
+    -Retirada linha em branco antes do fechamento de metodos '}';
+    -Sempre usar aspas duplas em elementos HTML "".
+    -Linhas devem ter no máx 100 caracteres.
+        "return" do "if" dentro do metodo "loadThead" quebrado em varias linhas entre parentes.
+    -Não é necessário "else" no método "loadThead" após o retorno do "if".
+    - "}" e ")" devem estar na mesma linha ao fechar a arrow function do metodo "loadThead".
+    - ";" ao retornar o metodo "loadThead"
+    - Não é necessário "else" no método "loadTbody" após o retorno do "if".
+    -Altarada variavel "keyItem" do metodo "loadTbody" para Template String
+    -As tags BtEdit e BtDelete se fecham sozinhas "<Exemplo />, e seu conteudo dever estar na mesma linha.
+    - Não é necessário "else" no método "switchLoading" após o retorno do "if".
+    -No metodo "render()" os atributos da tag Header devem estar separados por linha.
+    -";" no "return" do "render()"
+    -"," ao final da linha 196
+    
+    
+
+    Não corrigidos:
+
+    -metodos de classe devem usar "this", caso contrário devem ser considerados "static" (exemplo: "focusSearch()").
+    -"this.props" de todos os metodos da classe devem ser desestruturados, assim como foi feita em "init()"
+    - Não usar array index como Keys na tag HTML (i)
+    -linha 118 muito grande.
+    -Não se deve usar bind no conteudo em JSX(tag HTML).
