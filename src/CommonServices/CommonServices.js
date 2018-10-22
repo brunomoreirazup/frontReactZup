@@ -35,9 +35,9 @@ export default class CommonServices {
 
     static storeSizeSearch(json) {
         let size =
-        {
-            sizePage: json.length
-        };
+            {
+                sizePage: json.length
+            };
 
         store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
     }
@@ -45,20 +45,20 @@ export default class CommonServices {
 
     static changeStorePages(json) {
         let page =
-        {
-            homePage: 1,
-            lastPage: json.page.totalPages,
-            currentPage: json.page.number + 1
+            {
+                homePage: 1,
+                lastPage: json.page.totalPages,
+                currentPage: json.page.number + 1
 
-        };
+            };
         store.dispatch({ type: 'PAGES', pages: page });
     }
 
     static storeSizePages(json) {
         let size =
-        {
-            sizePage: json.page.totalElements
-        };
+            {
+                sizePage: json.page.totalElements
+            };
 
         store.dispatch({ type: "TOTAL_ELEMENTS", totalElements: size });
     }
@@ -99,14 +99,14 @@ export default class CommonServices {
         store.dispatch({ type: 'LOADING', showLoading: false });
     }
 
-    static emptySearch(name) {
-        if (!name) {
+    static isSearchValid(name) {
+        if (this.isSearchEmpty(name) || !this.isCharValid(name)) {
             let defaultPages =
-            {
-                homePage: 1,
-                lastPage: 1,
-                currentPage: 1
-            };
+                {
+                    homePage: 1,
+                    lastPage: 1,
+                    currentPage: 1
+                };
 
             store.dispatch({ type: 'PAGES', pages: defaultPages });
             store.dispatch({ type: "PAGE_SIZE", page_size: 5 });
@@ -116,6 +116,24 @@ export default class CommonServices {
             return true;
         }
         return false
+    }
+
+    static isSearchEmpty(name){
+        if(!name){
+            return true;
+        }
+        return false;
+    }
+
+    static isCharValid(name){
+        for(let i = 0; i<name.length;i++){
+            let asciiChar = name[i].charCodeAt(0);
+            console.log(asciiChar);
+            if((asciiChar >= 33 && asciiChar <= 64) ||( asciiChar >= 91 && asciiChar <= 96 )||( asciiChar >= 123 && asciiChar <= 126) ){
+                return false;
+            }
+        }
+        return true;
     }
 
     static callTable() {

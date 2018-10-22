@@ -84,7 +84,7 @@ export default class Cities extends Component {
     searchCity(name) {
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
 
-        if (!CommonServices.emptySearch(name)) {
+        if (!CommonServices.isSearchValid(name)) {
             HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
                 .then(lista => {
                     CommonServices.storeSizeSearch(lista._embedded.cities);
