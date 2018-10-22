@@ -90,7 +90,7 @@ export default class Cities extends Component {
             HttpApi.makeGetRequest(url)
                 .then(lista => {
 
-                    console.log("then");
+                    
                     CommonServices.storeSizePages(lista);
                     CommonServices.changeStorePages(lista);
                     CommonServices.reloadList(this.createNewLista(lista));
@@ -99,7 +99,7 @@ export default class Cities extends Component {
                 })
                 .catch(e => {
                     
-                    console.log("catch");
+                    
                     let lista=CommonServices.defaultEmptySearch("cities");
                     CommonServices.storeSizePages(lista);
                     CommonServices.changeStorePages(lista);
@@ -115,7 +115,9 @@ export default class Cities extends Component {
                 CommonServices.reloadList(this.createNewLista(lista));
             });
     }
-    createNewLista(lista) {
+
+    createNewLista(lista)
+    {
         let newLista = lista._embedded.cities.map(city => {
             let cityId = city._links.self.href;
             let cityName = city.name;

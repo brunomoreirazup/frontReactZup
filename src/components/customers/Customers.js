@@ -100,18 +100,16 @@ export default class Customers extends Component {
                     CommonServices.storeSizeSearch(lista._embedded.customers);
                     this.reloadNewLista(lista);
                 })
-                .catch( e => {
-                    console.log(e)
-                    let lista=CommonServices.defaultEmptySearch("customers");
+                .catch(error => {
+                    console.log(error);
+                    CommonServices.storeSizeSearch([]);
+                    CommonServices.reloadList([]);
                     CommonServices.removePageInfo();
-                    CommonServices.storeSizeSearch(lista._embedded.customers);
-                    this.reloadNewLista(lista);
                 });
         }
     }
 
     listCustomers() {
-
         CommonServices.list("customers")
             .then(lista => {
                 this.reloadNewLista(lista);

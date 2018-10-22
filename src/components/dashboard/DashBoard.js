@@ -28,6 +28,7 @@ class DashBoard extends Component {
 
         };
         this.props.dispatch({ type: "PAGE_SIZE", page_size: 5 });
+        this.props.dispatch({type: "SET_USER_PREFERENCES", userPrefs: 5})
         this.props.dispatch({ type: "SORT", sort_order: "asc" });
         this.props.dispatch({ type: 'TABLE_BODY', table_body: null });
     }
@@ -76,6 +77,7 @@ class DashBoard extends Component {
     changePageSize(size) {
         this.props.dispatch({ type: "PAGE_SIZE", page_size: size.value });
         this.props.dispatch({ type: "PAGES_CURRENT", currentPage: 1 });
+        this.props.dispatch({type: "SET_USER_PREFERENCES", userPrefs: size.value})
         this.props.list();
 
     }
