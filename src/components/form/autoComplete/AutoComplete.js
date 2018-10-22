@@ -47,7 +47,7 @@ class AutoComplete extends Component {
         });
         if (!value)
             return;
-        this.setState({ value, loading: true, unitedStates: [], ok: false })
+        this.setState({ value, loading: true, unitedStates: [], ok: false });
         this.props.search(value, (items) => {
             this.props.dispatch({
                 type: 'AUTO_COMPLETE_STATE', autoCompleteState: {
@@ -75,7 +75,6 @@ class AutoComplete extends Component {
     }
 
     render() {
-        let i = 0;
         return (
             <div>
                 {this.props.reduceAutoComplete && this.props.reduceAutoComplete.autoCompleteState ? (
@@ -101,7 +100,7 @@ class AutoComplete extends Component {
                             }}
                         />
                     </div>
-                ) : <div></div>}
+                ) : <div> </div>}
             </div>
         )
     }

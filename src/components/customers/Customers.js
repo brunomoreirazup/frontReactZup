@@ -100,6 +100,7 @@ export default class Customers extends Component {
                         throw new Error("status >= 400");
                     }
                     CommonServices.storeSizeSearch(lista._embedded.customers);
+                    CommonServices.removePageInfo();
                     this.reloadNewLista(lista);
                     CommonServices.removePageInfo();
                 })

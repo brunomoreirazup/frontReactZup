@@ -28,13 +28,14 @@ class DashBoard extends Component {
 
         };
         this.props.dispatch({ type: "PAGE_SIZE", page_size: 5 });
+        this.props.dispatch({ type: "SET_USER_PREFERENCES", userPrefs: 5 });
         this.props.dispatch({ type: "SORT", sort_order: "asc" });
         this.props.dispatch({ type: 'TABLE_BODY', table_body: null });
     }
 
 
     toggleModal() {
-        this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent })
+        this.props.dispatch({ type: "MAIN_MODAL_CONTENT", modalContent: this.modalContent });
         this.props.dispatch({ type: "TOGGLE_MAIN_MODAL" });
     }
 
@@ -111,7 +112,7 @@ class DashBoard extends Component {
 
         }
 
-        if (this.props.reduceTable == undefined || this.props.reduceTable.table_body == undefined)
+        if (this.props.reduceTable === undefined || this.props.reduceTable.table_body === undefined)
             return <tr key='#'><td colSpan={5}>Carregando...</td></tr>;
         else {
             if (this.props.reduceTable.table_body.length > 0) {
