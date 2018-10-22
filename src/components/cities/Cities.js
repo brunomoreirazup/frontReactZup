@@ -82,6 +82,7 @@ export default class Cities extends Component {
 
 
     searchCity(name) {
+
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
         let url = `http://localhost:3001/cities/search/findByNameIgnoreCaseContaining?name=${name}&${CommonServices.mountUrl()}`;
 
