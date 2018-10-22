@@ -1,5 +1,5 @@
 .welcome {
-    top: 50%;
+    top: 40%;
     font-size: 10vw;
     font-weight: bolder;
     color: dimgrey;
@@ -16,4 +16,17 @@
 
 body {
     background-color: whitesmoke;
+}
+
+.home-image {
+    position: fixed;
+    top: 46.5%;
+    left: 10%;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+
+
 }
