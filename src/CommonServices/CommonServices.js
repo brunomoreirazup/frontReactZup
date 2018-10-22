@@ -99,8 +99,8 @@ export default class CommonServices {
         store.dispatch({ type: 'LOADING', showLoading: false });
     }
 
-    static isSearchValid(name) {
-        if (this.isSearchEmpty(name) || !this.isCharValid(name)) {
+    static emptySearch(name) {
+        if (!name) {
             let defaultPages =
                 {
                     homePage: 1,
@@ -130,6 +130,7 @@ export default class CommonServices {
             let asciiChar = name[i].charCodeAt(0);
             console.log(asciiChar);
             if((asciiChar >= 33 && asciiChar <= 64) ||( asciiChar >= 91 && asciiChar <= 96 )||( asciiChar >= 123 && asciiChar <= 126) ){
+                this.removePageInfo([]);
                 return false;
             }
         }
