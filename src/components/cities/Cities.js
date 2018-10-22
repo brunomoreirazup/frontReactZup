@@ -40,6 +40,7 @@ export default class Cities extends Component {
                     delete={this.deleteCity.bind(this)}
                     search={this.searchCity.bind(this)}
                     list={CommonServices.callTable.bind(this)}
+                    focus={this.focusInput.bind(this)}
                 />
             </div>
 
@@ -84,7 +85,7 @@ export default class Cities extends Component {
     searchCity(name) {
 
         this.props.route.store.dispatch({ type: 'LOADING', showLoading: true });
-        let url = `http://localhost:3001/cities/search/findByNameIgnoreCaseContaining?name=${name}&${CommonServices.mountUrl()}`;
+        let url = `http://10.0.2.79:3001/cities/search/findByNameIgnoreCaseContaining?name=${name}&${CommonServices.mountUrl()}`;
 
         if (!CommonServices.emptySearch(name)) {
             HttpApi.makeGetRequest(url)
@@ -136,6 +137,18 @@ export default class Cities extends Component {
                 <input autoComplete="off" id="input_cidade_name" className="form-control" defaultValue={this.cidade_name} type="text" placeholder="Insira uma cidade" ref={(input) => this.input_cidade_name = input} />
             </form>
         );
+    }
+
+    focusInput()
+    {
+        console.log("focus");
+        console.log(this.input_cidade_name);
+        try{
+            this.input_cidade_name.focus();
+        }catch(e){
+            setTimeout(this.focusInput,50);
+        };    
+
     }
 
     loadForm(id) {
