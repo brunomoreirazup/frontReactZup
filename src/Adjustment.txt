@@ -39,3 +39,14 @@ _Dashboard =>
 
     - Não usar array index como Keys na tag HTML (i)
     - is missing in props validation
+
+
+    _CommonServices =>
+    Corrigidos:
+    -Identação corrigida
+    -String agora usam aspas simples ''.
+    -Variavel "size" dos metodos storeSizerSearch/storeSizePages foi alterada de "let" para "const".
+    -Variavel "size" dos metodo storeSizerSearch/storeSizePages em apenas uma linha. 
+    -Variavel "page" do metodo changeStorePages foi alterada de "let" para "const".
+    -Todas as variaveis do metodo "mountUrl" agora são "const".
+    -Parametro da Arrow Function deve estar entre parenteses(linha 70).
