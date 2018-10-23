@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../../css/loading.css'
+import '../../css/loading.css';
 import loadImage from '../../img/loading.gif';
 
 export default class Loading extends Component{
