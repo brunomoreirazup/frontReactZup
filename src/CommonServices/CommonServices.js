@@ -79,10 +79,8 @@ export default class CommonServices {
 
   static removePageInfo() {
     listType = 'search';
-    // store.dispatch({ type: 'TABLE_BODY', table_body: newLista });
     store.dispatch({ type: 'PAGE_SIZE', page_size: null });
     store.dispatch({ type: 'PAGES', page: null });
-    // store.dispatch({ type: 'LOADING', showLoading: false });
   }
 
   static emptySearch(name) {
