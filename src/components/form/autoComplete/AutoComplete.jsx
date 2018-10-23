@@ -77,18 +77,36 @@ class AutoComplete extends Component {
   }
 
   renderMenu(items, value) {
+    const { reduceAutoComplete } = this.props;
+    if (value === '') {
+      return (
+
+        <div className="menu">
+          <span className="item">Digite o nome da cidade</span>
+        </div>
+      );
+    } if (reduceAutoComplete.autoCompleteState.loading) {
+      return (
+        <div className="menu">
+          <span className="item">Carregando...</span>
+        </div>
+
+      );
+    } if (items.length === 0) {
+      return (
+        <div className="menu">
+          <span className="item">
+            Nenhum resultado para
+            {value}
+          </span>
+        </div>
+      );
+    }
     return (
       <div className="menu">
-        {value === '' ? (
-          <span className="item">Digite o nome da cidade</span>
-        ) : this.props.reduceAutoComplete.autoCompleteState.loading ? (
-          <span className="item">Carregando...</span>
-        ) : items.length === 0 ? (
-          <span className="item">Nenhum resultado para {value}</span>
-        ) : items}
+        {items}
       </div>
-    )
-
+    );
   }
 
   render() {
@@ -108,8 +126,8 @@ class AutoComplete extends Component {
               onChange={(event, value) => {
                 this.onChange(event, value);
               }}
-              renderItem={(item, isHighlighted) => {return this.renderItem(item, isHighlighted); }}
-              renderMenu={(items, value) => { return this.renderMenu(items, value); }}
+              renderItem={(item, isHighlighted) => this.renderItem(item, isHighlighted)}
+              renderMenu={(items, value) => this.renderMenu(items, value)}
             />
           </div>
         ) : <div />}
