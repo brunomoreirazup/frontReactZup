@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../navbar/Navbar';
-import image from '../../img/homepage.gif'
+import image from '../../img/homepage.gif';
 
 export default class Home extends Component {
 
