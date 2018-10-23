@@ -1,7 +1,10 @@
-_reduceMainModal.jsx
-_reduceLoading.js
-_MainModal.jsx
 _CommonServices.js
 _reduceFooter.js
 _Cities.jsx
 _Dashboard.jsx
+
+Pasta modal:
+  _reduceMainModal.jsx
+  _reduceLoading.js
+  _MainModal.jsx
+  _Loading.jsx
