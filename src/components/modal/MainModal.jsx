@@ -61,10 +61,10 @@ function mapStateToProps(state) {
   return {
     reduceMainModal: state.reduceMainModal,
   };
-
 }
 MainModal.propTypes = {
   dispatch: PropTypes.func.isRequired,
   reduceMainModal: PropTypes.func.isRequired,
-}
+};
+
 export default connect(mapStateToProps)(MainModal);

@@ -1,9 +1,8 @@
-import { store } from '../App';
 import HttpApi from '../components/http/HttpApi';
 
 let listFunction;
 let searchFunction;
-
+let store;
 export function setFunction(list, search) {
   listFunction = list;
   searchFunction = search;
@@ -14,7 +13,9 @@ let listType = 'list';
 export function setListType(list) {
   listType = list;
 }
-
+export function setStore(storeValue) {
+  store = storeValue;
+}
 export default class CommonServices {
   static validateFields(input) {
     if (input.value === '') {
