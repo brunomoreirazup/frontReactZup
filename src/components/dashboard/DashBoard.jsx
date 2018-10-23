@@ -203,7 +203,9 @@ class DashBoard extends Component {
   }
 }
 
-function mapStateToProps({ reduceTable, reduceFooter, reduceContentInfo, reduceLoading }) {
+function mapStateToProps({
+  reduceTable, reduceFooter, reduceContentInfo, reduceLoading,
+}) {
   return {
     reduceTable,
     reduceFooter,
