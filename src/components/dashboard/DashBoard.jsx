@@ -109,15 +109,16 @@ class DashBoard extends Component {
       <tr>
         <th className="headerCommon"> # </th>
         {tHead.map((item, i) => {
+          const key = `th${i}`;
           if (i === 0) {
             return (
-              <th className={item.className} key={i} onClick={this.sort.bind(this)}>
+              <th className={item.className} key={key} onClick={this.sort.bind(this)}>
                 {item.text}
               </th>
             );
           }
           return (
-            <th key={i} className={item.className}>
+            <th className={item.className} key={key}>
               {item.text}
             </th>
           );
@@ -132,9 +133,8 @@ class DashBoard extends Component {
     try {
       currentPossition = reduceContentInfo.page_size * (reduceFooter.pages.currentPage - 1);
     } catch (e) {
-      console.log(e);
+      console.log();
     }
-
     if (reduceTable === undefined || reduceTable.table_body === undefined) {
       return <tr key="#"><td colSpan={5}>Carregando...</td></tr>;
     }
