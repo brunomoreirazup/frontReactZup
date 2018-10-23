@@ -86,7 +86,8 @@ export default class CommonServices {
   }
 
   static emptySearch(name) {
-    let userPrefs = store.getState().reduceContentInfo.userPrefs;
+    const storeState = store.getState();
+    const { userPrefs } = storeState.reduceContentInfo;
     if (!name) {
       const defaultPages = {
         homePage: 1,
