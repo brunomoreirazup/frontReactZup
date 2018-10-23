@@ -118,8 +118,7 @@ export default class CommonServices {
         this.callTable();
         this.callAlertModal('success', 'TOGGLE_MAIN_MODAL', 1500);
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
         this.callAlertModal('fail', 'TOGGLE_MAIN_MODAL', 2000);
       });
   }

@@ -76,7 +76,7 @@ class DashBoard extends Component {
     const { deleteCb } = this.props;
     this.modalContent = {
       title: `Deletar ${this.title}`,
-      body: 'Realmente Deseja Remover ? ',
+      body: 'Realmente deseja remover ? ',
       footer: <button id="btDeleteModal" type="button" className="btn bt-delete" onClick={() => deleteCb(id)}>Remover</button>,
     };
     this.toggleModal();
