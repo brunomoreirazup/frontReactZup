@@ -203,14 +203,15 @@ class DashBoard extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ reduceTable, reduceFooter, reduceContentInfo, reduceLoading }) {
   return {
-    reduceTable: state.reduceTable,
-    reduceFooter: state.reduceFooter,
-    reduceContentInfo: state.reduceContentInfo,
-    reduceLoading: state.reduceLoading,
+    reduceTable,
+    reduceFooter,
+    reduceContentInfo,
+    reduceLoading,
   };
 }
+
 DashBoard.propTypes = {
   dispatch: PropTypes.func.isRequired,
   reduceLoading: PropTypes.shape.isRequired,
@@ -226,4 +227,5 @@ DashBoard.propTypes = {
   tHead: PropTypes.func.isRequired,
   title: PropTypes.func.isRequired,
 };
+
 export default connect(mapStateToProps)(DashBoard);
