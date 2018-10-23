@@ -73,7 +73,7 @@ class DashBoard extends Component {
   }
 
   showModalDelete(id) {
-    const { deleteCb } = this.props;
+    const { delete:deleteCb } = this.props;
     this.modalContent = {
       title: `Deletar ${this.title}`,
       body: 'Realmente deseja remover ? ',
