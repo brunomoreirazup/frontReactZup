@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Autocomplete from 'react-autocomplete';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class AutoComplete extends Component {
-
   constructor(props) {
     super(props);
     this.index = 0;
@@ -117,7 +117,8 @@ class AutoComplete extends Component {
           <div className="_remove_inline">
             <Autocomplete
               value={reduceAutoComplete.autoCompleteState.value}
-              inputProps={reduceAutoComplete.autoCompleteState.ok ? this.okInputProps : this.defaultInputProps}
+              inputProps={reduceAutoComplete.autoCompleteState.ok
+                ? this.okInputProps : this.defaultInputProps}
               items={reduceAutoComplete.autoCompleteState.menu}
               getItemValue={item => item.name}
               onSelect={(value, state) => {
@@ -141,4 +142,10 @@ function mapStateToProps(state) {
   };
 }
 
+
+AutoComplete.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
+  reduceAutoComplete: PropTypes.shape.isRequired,
+};
 export default connect(mapStateToProps)(AutoComplete);
