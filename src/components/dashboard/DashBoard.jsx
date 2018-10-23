@@ -1,6 +1,7 @@
 /* global document */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Footer from '../footer/Footer';
 import Table from '../table/Table';
 import Header from '../header/Header';
@@ -73,7 +74,7 @@ class DashBoard extends Component {
   }
 
   showModalDelete(id) {
-    const { delete:deleteCb } = this.props;
+    const { delete: deleteCb } = this.props;
     this.modalContent = {
       title: `Deletar ${this.title}`,
       body: 'Realmente deseja remover ? ',
@@ -210,5 +211,19 @@ function mapStateToProps(state) {
     reduceLoading: state.reduceLoading,
   };
 }
-
+DashBoard.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  reduceLoading: PropTypes.shape.isRequired,
+  reduceContentInfo: PropTypes.shape.isRequired,
+  reduceTable: PropTypes.shape.isRequired,
+  reduceFooter: PropTypes.shape.isRequired,
+  search: PropTypes.func.isRequired,
+  list: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
+  form: PropTypes.func.isRequired,
+  add: PropTypes.func.isRequired,
+  tHead: PropTypes.func.isRequired,
+  title: PropTypes.func.isRequired,
+};
 export default connect(mapStateToProps)(DashBoard);

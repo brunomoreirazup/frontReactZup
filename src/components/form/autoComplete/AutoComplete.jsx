@@ -108,8 +108,8 @@ class AutoComplete extends Component {
               onChange={(event, value) => {
                 this.onChange(event, value);
               }}
-              renderItem={(item, isHighlighted) => { this.renderItem(item, isHighlighted); }}
-              renderMenu={(items, value) => { this.renderMenu(items, value); }}
+              renderItem={(item, isHighlighted) => {return this.renderItem(item, isHighlighted); }}
+              renderMenu={(items, value) => { return this.renderMenu(items, value); }}
             />
           </div>
         ) : <div />}
