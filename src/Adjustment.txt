@@ -28,18 +28,20 @@ _Dashboard =>
     -No metodo "render()" os atributos da tag Header devem estar separados por linha.
     -";" no "return" do "render()"
     -"," ao final da linha 196
+    -metodos de classe devem usar "this", caso contrário devem ser considerados "static" (exemplo: "focusSearch()").
+    -linha 118 muito grande.
+    -Não se deve usar bind no conteudo em JSX(tag HTML).
+    -"this.props" de todos os metodos da classe devem ser desestruturados
     
     
 
     Não corrigidos:
 
-    -metodos de classe devem usar "this", caso contrário devem ser considerados "static" (exemplo: "focusSearch()").
-    -"this.props" de todos os metodos da classe devem ser desestruturados, assim como foi feita em "init()"
     - Não usar array index como Keys na tag HTML (i)
-    -linha 118 muito grande.
-    -Não se deve usar bind no conteudo em JSX(tag HTML).
+    - is missing in props validation
 
-_CommonServices =>
+
+    _CommonServices =>
     Corrigidos:
     -Identação corrigida
     -String agora usam aspas simples ''.
