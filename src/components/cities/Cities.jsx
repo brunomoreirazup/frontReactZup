@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Navbar from '../navbar/Navbar';
 import Dashboard from '../dashboard/DashBoard';
 import HttpApi from '../http/HttpApi';
-import CommonServices, { setFunction, setListType } from '../../CommonServices/CommonServices';
+import CommonServices, { setFunction, setListType, setStore } from '../../CommonServices/CommonServices';
 
 
 export default class Cities extends Component {
@@ -30,6 +30,7 @@ export default class Cities extends Component {
 
   constructor(props) {
     super(props);
+    const { route } = this.props;
     this.title = 'Cidades';
     this.tHead = [
       { text: 'Nome', className: 'city sortHead' },
@@ -40,7 +41,7 @@ export default class Cities extends Component {
     this.cidade_name = '';
     setListType('list');
     setFunction(Cities.listCity, this.searchCity.bind(this));
-
+    setStore(route.store);
     this.addCity = this.addCity.bind(this);
     this.editCity = this.editCity.bind(this);
     this.searchCity = this.searchCity.bind(this);

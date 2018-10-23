@@ -5,7 +5,7 @@ import Navbar from '../navbar/Navbar';
 import Dashboard from '../dashboard/DashBoard';
 import HttpApi from '../http/HttpApi';
 import AutoComplete from '../form/autoComplete/AutoComplete';
-import CommonServices, { setListType, setFunction } from '../../CommonServices/CommonServices';
+import CommonServices, { setListType, setFunction, setStore } from '../../CommonServices/CommonServices';
 
 export default class Customers extends Component {
   static reloadNewLista(lista) {
@@ -61,9 +61,9 @@ export default class Customers extends Component {
       });
   }
 
-
   constructor(props) {
     super(props);
+    const { route } = this.props;
     this.title = 'Clientes';
     this.tHead = [
       { text: 'Nome', className: 'sortHead customer' },
@@ -75,11 +75,13 @@ export default class Customers extends Component {
     this.customer_name = '';
     setListType('list');
     setFunction(Customers.listCustomers, this.searchCustomer.bind(this));
+    setStore(route.store);
     this.addCustomer = this.addCustomer.bind(this);
     this.editCustomer = this.editCustomer.bind(this);
     this.searchCustomer = this.searchCustomer.bind(this);
     CommonServices.callTable = CommonServices.callTable.bind(this);
   }
+
 
   componentDidMount() {
     CommonServices.callTable();
