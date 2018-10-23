@@ -1,0 +1,17 @@
+_CommonServices.js
+_Cities.jsx
+_Dashboard.jsx
+_Home.jsx
+
+Pasta modal:
+  _reduceMainModal.jsx
+  _reduceLoading.js
+  _MainModal.jsx
+  _Loading.jsx
+
+Pasta footer:
+  _Footer.jsx
+  _reduceFooter.js
+
+Pasta http:
+  _HttpApi.js
