@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Autocomplete from 'react-autocomplete';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class AutoComplete extends Component {
-
   constructor(props) {
     super(props);
     this.index = 0;
@@ -99,7 +99,8 @@ class AutoComplete extends Component {
           <div className="_remove_inline">
             <Autocomplete
               value={reduceAutoComplete.autoCompleteState.value}
-              inputProps={reduceAutoComplete.autoCompleteState.ok ? this.okInputProps : this.defaultInputProps}
+              inputProps={reduceAutoComplete.autoCompleteState.ok
+                ? this.okInputProps : this.defaultInputProps}
               items={reduceAutoComplete.autoCompleteState.menu}
               getItemValue={item => item.name}
               onSelect={(value, state) => {
@@ -108,8 +109,8 @@ class AutoComplete extends Component {
               onChange={(event, value) => {
                 this.onChange(event, value);
               }}
-              renderItem={(item, isHighlighted) => {return this.renderItem(item, isHighlighted); }}
-              renderMenu={(items, value) => { return this.renderMenu(items, value); }}
+              renderItem={(item, isHighlighted) => this.renderItem(item, isHighlighted)}
+              renderMenu={(items, value) => this.renderMenu(items, value)}
             />
           </div>
         ) : <div />}
@@ -123,4 +124,10 @@ function mapStateToProps(state) {
   };
 }
 
+
+AutoComplete.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
+  reduceAutoComplete: PropTypes.shape.isRequired,
+};
 export default connect(mapStateToProps)(AutoComplete);
