@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
 
 export default function Table(props) {
   const { children } = props;
@@ -12,5 +12,5 @@ export default function Table(props) {
   );
 }
 Table.propTypes = {
-  children: PropTypes.shape.isRequired,
+  children: PropTypes.arrayOf(element).isRequired,
 };
