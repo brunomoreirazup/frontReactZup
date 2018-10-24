@@ -34,7 +34,7 @@ export default function Header(props) {
 }
 
 Header.propTypes = {
-  title: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   showModalAdd: PropTypes.func.isRequired,
   changeSize: PropTypes.func.isRequired,
