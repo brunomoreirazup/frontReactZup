@@ -65,6 +65,14 @@ function mapStateToProps(state) {
 }
 MainModal.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  reduceMainModal: PropTypes.func.isRequired,
-}
+  reduceMainModal: PropTypes.shape({
+    modalOpen: PropTypes.bool,
+    modalContent: PropTypes.shape({
+      title: PropTypes.string,
+      body: PropTypes.oneOfType([PropTypes.string, PropTypes.element,
+      ]),
+    }),
+  }).isRequired,
+};
+
 export default connect(mapStateToProps)(MainModal);
