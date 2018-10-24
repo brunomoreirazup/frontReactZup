@@ -1,6 +1,6 @@
 /* global fetch */
 /* global Headers */
-export default class HttpApi {
+export default class HttpServices {
   static makeGetRequest(url) {
     return fetch(url)
       .then(response => response.json());

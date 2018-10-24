@@ -6,11 +6,11 @@ import Footer from '../footer/Footer';
 import Table from '../table/Table';
 import Header from '../header/Header';
 import MainModal from '../modal/MainModal';
-import Loading from '../modal/Loading';
-import BtEdit from '../button/btEdit/BtEdit';
-import BtDelete from '../button/btDelete/BtDelete';
-import TableBody from '../table/TableBody';
-import TableHead from '../table/TableHead';
+import Loading from '../table/loading/Loading';
+import BtEdit from '../button/BtEdit';
+import BtDelete from '../button/BtDelete';
+import TableBody from '../table/tableBody/TableBody';
+import TableHead from '../table/tableHead/TableHead';
 
 class DashBoard extends Component {
   static focusSearch() {

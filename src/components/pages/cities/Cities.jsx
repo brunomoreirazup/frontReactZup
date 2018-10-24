@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../navbar/Navbar';
-import Dashboard from '../dashboard/DashBoard';
-import HttpApi from '../http/HttpApi';
-import CommonServices, { setFunction, setListType, setStore } from '../../CommonServices/CommonServices';
+import Navbar from '../../navbar/Navbar';
+import Dashboard from '../../dashboard/DashBoard';
+import HttpServices from '../../../Helpers/HttpServices/HttpServices';
+import CommonServices, { setFunction, setListType, setStore } from '../../../Helpers/CommonServices/CommonServices';
 
 
 export default class Cities extends Component {
@@ -82,7 +82,7 @@ export default class Cities extends Component {
     route.store.dispatch({ type: 'LOADING', showLoading: true });
 
     if (!CommonServices.emptySearch(name)) {
-      HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
+      HttpServices.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
         .then((lista) => {
           if (lista.status >= 400) {
             throw new Error('status >= 400');
