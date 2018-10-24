@@ -1,0 +1,30 @@
+cities:
+  adiciona: ""
+  adiciona: __0NomeCity
+  pesquisa: __0NomeCity
+  edita: ""
+  edita: __0NomeCity2
+  pesquisa: ""
+  ordena: desc
+  SizePage: 10
+  page: lastPage
+  remove: __0NomeCity2
+  size: 15
+
+Clientes:
+  adiciona: "" ""
+  adiciona: "__0NomeCustomer" ""
+  adiciona: "" "Uberlândia"
+  adiciona: "__0NomeCustomer" "Uberlândia"
+  pesquisa: "__0NomeCustomer"
+  edita: "__0NomeCustomer2" ""
+  edita: "" "Uberlândia"
+  edita: "" ""
+  edita: "__0NomeCustomer2" "Uberlândia"
+  pesquisa: ""
+  ordena: desc
+  SizePage: 10
+  page: lastPage
+  remove: __0NomeCustomer2
+  size: 15
+  
