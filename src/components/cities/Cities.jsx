@@ -118,8 +118,6 @@ export default class Cities extends Component {
 
   loadForm(id) {
     const { route } = this.props;
-    console.log(route);
-    console.log(typeof route);
     let city = '';
     const state = route.store.getState();
     state.reduceTable.table_body.forEach((element) => {
