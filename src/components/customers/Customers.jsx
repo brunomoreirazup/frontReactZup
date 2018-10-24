@@ -6,6 +6,7 @@ import Dashboard from '../dashboard/DashBoard';
 import HttpApi from '../http/HttpApi';
 import AutoComplete from '../form/autoComplete/AutoComplete';
 import CommonServices, { setListType, setFunction, setStore } from '../../CommonServices/CommonServices';
+import Cities from "../cities/Cities";
 
 export default class Customers extends Component {
   static reloadNewLista(lista) {
@@ -224,5 +225,16 @@ export default class Customers extends Component {
 }
 
 Customers.propTypes = {
-  route: PropTypes.shape.isRequired,
+  route: PropTypes.shape({
+    component: PropTypes.func,
+    path: PropTypes.string,
+    store: PropTypes.shape({
+      dispatch: PropTypes.func,
+      getState: PropTypes.func,
+      liftedStore: PropTypes.objectOf(PropTypes.func),
+      replaceReducer: PropTypes.func,
+      subscribe: PropTypes.func,
+      Symbol: PropTypes.func,
+    }),
+  }).isRequired,
 };

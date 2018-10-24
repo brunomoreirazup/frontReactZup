@@ -118,6 +118,8 @@ export default class Cities extends Component {
 
   loadForm(id) {
     const { route } = this.props;
+    console.log(route);
+    console.log(typeof route);
     let city = '';
     const state = route.store.getState();
     state.reduceTable.table_body.forEach((element) => {
@@ -150,5 +152,16 @@ export default class Cities extends Component {
 }
 
 Cities.propTypes = {
-  route: PropTypes.shape.isRequired,
+  route: PropTypes.shape({
+    component: PropTypes.func,
+    path: PropTypes.string,
+    store: PropTypes.shape({
+      dispatch: PropTypes.func,
+      getState: PropTypes.func,
+      liftedStore: PropTypes.objectOf(PropTypes.func),
+      replaceReducer: PropTypes.func,
+      subscribe: PropTypes.func,
+      Symbol: PropTypes.func,
+    }),
+  }).isRequired,
 };
