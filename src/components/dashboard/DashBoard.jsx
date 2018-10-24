@@ -130,8 +130,6 @@ class DashBoard extends Component {
 
   loadTBody() {
     const { reduceContentInfo, reduceFooter, reduceTable } = this.props;
-    console.log(reduceContentInfo);
-    console.log(typeof reduceContentInfo);
     let currentPossition = 0;
     try {
       currentPossition = reduceContentInfo.page_size * (reduceFooter.pages.currentPage - 1);
