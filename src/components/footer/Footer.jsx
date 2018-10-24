@@ -164,4 +164,5 @@ Footer.propTypes = {
   }),
   changeCurrentPage: PropTypes.func.isRequired,
 };
+
 export default connect(mapStateToProps)(Footer);
