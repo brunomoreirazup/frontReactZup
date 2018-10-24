@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */]
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 import { createStore, combineReducers } from 'redux';
