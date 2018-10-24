@@ -1,8 +1,8 @@
+/* eslint-disable no-underscore-dangle */]
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import devToolsEnhancer from 'remote-redux-devtools';
 import home from './components/home/Home';
 import cities from './components/cities/Cities';
 import customers from './components/customers/Customers';
@@ -26,7 +26,10 @@ const reducers = combineReducers({
   reduceLoading,
 });
 
-const store = createStore(reducers, devToolsEnhancer());
+const store = createStore(
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 export { store };
 function App() {
   return (

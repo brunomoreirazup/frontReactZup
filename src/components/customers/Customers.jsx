@@ -6,7 +6,6 @@ import Dashboard from '../dashboard/DashBoard';
 import HttpApi from '../http/HttpApi';
 import AutoComplete from '../form/autoComplete/AutoComplete';
 import CommonServices, { setListType, setFunction, setStore } from '../../CommonServices/CommonServices';
-import Cities from "../cities/Cities";
 
 export default class Customers extends Component {
   static reloadNewLista(lista) {
