@@ -1,3 +1,4 @@
+/* global window */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
