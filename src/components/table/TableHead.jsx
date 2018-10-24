@@ -12,5 +12,5 @@ export default function TableHead(props) {
   );
 }
 TableHead.propTypes = {
-  children: PropTypes.shape.isRequired,
+  children: PropTypes.element.isRequired,
 };

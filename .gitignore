@@ -6,14 +6,12 @@
 
 # testing
 /coverage
-/selenium/build
-/server/node_modules
+
 # production
 /build
-/.idea
-/.vscode
-.idea
-.vscode
+/selenium/build
+.idea/
+.vscode/
 
 # misc
 .DS_Store

@@ -130,6 +130,8 @@ class DashBoard extends Component {
 
   loadTBody() {
     const { reduceContentInfo, reduceFooter, reduceTable } = this.props;
+    console.log(reduceTable);
+    console.log(typeof reduceTable);
     let currentPossition = 0;
     try {
       currentPossition = reduceContentInfo.page_size * (reduceFooter.pages.currentPage - 1);
@@ -214,20 +216,45 @@ function mapStateToProps({
   };
 }
 
+DashBoard.defaultProps = {
+  dispatch: PropTypes.func,
+  reduceLoading: false,
+  reduceContentInfo: {},
+  reduceTable: {},
+  reduceFooter: {},
+};
+
 DashBoard.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  reduceLoading: PropTypes.shape.isRequired,
-  reduceContentInfo: PropTypes.shape.isRequired,
-  reduceTable: PropTypes.shape.isRequired,
-  reduceFooter: PropTypes.shape.isRequired,
-  search: PropTypes.func.isRequired,
-  list: PropTypes.func.isRequired,
-  delete: PropTypes.func.isRequired,
-  edit: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
+  reduceLoading: PropTypes.shape({
+    showLoading: PropTypes.bool,
+  }),
+  reduceContentInfo: PropTypes.shape({
+    page_size: PropTypes.number,
+    totalElements: PropTypes.objectOf(PropTypes.number),
+    userPrefs: PropTypes.number,
+  }),
+  reduceTable: PropTypes.shape({
+    sort_order: PropTypes.string,
+    table_body: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      data: PropTypes.array,
+    })),
+  }),
+  reduceFooter: PropTypes.shape({
+    pages: PropTypes.objectOf(PropTypes.number),
+  }),
+  title: PropTypes.string.isRequired,
+  tHead: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string,
+    className: PropTypes.string,
+  })).isRequired,
   form: PropTypes.func.isRequired,
   add: PropTypes.func.isRequired,
-  tHead: PropTypes.func.isRequired,
-  title: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
+  list: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(DashBoard);
