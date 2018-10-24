@@ -32,8 +32,6 @@ class DashBoard extends Component {
   init() {
     const { dispatch, title, tHead } = this.props;
     this.title = title;
-    console.log(this.title);
-    console.log(typeof this.title);
     this.tHead = tHead;
     this.modalContent = {
       title: '',
@@ -132,6 +130,8 @@ class DashBoard extends Component {
 
   loadTBody() {
     const { reduceContentInfo, reduceFooter, reduceTable } = this.props;
+    console.log(reduceTable);
+    console.log(typeof reduceTable);
     let currentPossition = 0;
     try {
       currentPossition = reduceContentInfo.page_size * (reduceFooter.pages.currentPage - 1);
@@ -218,18 +218,32 @@ function mapStateToProps({
 
 DashBoard.defaultProps = {
   dispatch: PropTypes.func,
-  reduceLoading: PropTypes.func,
-  reduceContentInfo: PropTypes.func,
-  reduceTable: PropTypes.func,
-  reduceFooter: PropTypes.func,
+  reduceLoading: false,
+  reduceContentInfo: {},
+  reduceTable: {},
+  reduceFooter: {},
 };
 
 DashBoard.propTypes = {
   dispatch: PropTypes.func,
-  reduceLoading: PropTypes.func,
-  reduceContentInfo: PropTypes.func,
-  reduceTable: PropTypes.func,
-  reduceFooter: PropTypes.func,
+  reduceLoading: PropTypes.shape({
+    showLoading: PropTypes.bool,
+  }),
+  reduceContentInfo: PropTypes.shape({
+    page_size: PropTypes.number,
+    totalElements: PropTypes.objectOf(PropTypes.number),
+    userPrefs: PropTypes.number,
+  }),
+  reduceTable: PropTypes.shape({
+    sort_order: PropTypes.string,
+    table_body: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      data: PropTypes.array,
+    })),
+  }),
+  reduceFooter: PropTypes.shape({
+    pages: PropTypes.objectOf(PropTypes.number),
+  }),
   title: PropTypes.string.isRequired,
   tHead: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string,

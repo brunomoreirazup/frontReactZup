@@ -11,5 +11,5 @@ export default function MainTitle(props) {
 }
 
 MainTitle.propTypes = {
-  title: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };

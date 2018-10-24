@@ -151,9 +151,17 @@ function mapStateToProps(state) {
     reduceFooter: state.reduceFooter,
   };
 }
+
+Footer.defaultProps = {
+  reduceFooter: {},
+};
+
+
 Footer.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  reduceFooter: PropTypes.func.isRequired,
+  reduceFooter: PropTypes.shape({
+    pages: PropTypes.objectOf(PropTypes.number),
+  }),
   changeCurrentPage: PropTypes.func.isRequired,
 };
 export default connect(mapStateToProps)(Footer);
