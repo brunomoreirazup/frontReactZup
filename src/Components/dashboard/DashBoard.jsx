@@ -13,9 +13,6 @@ import TableBody from '../table/tableBody/TableBody';
 import TableHead from '../table/tableHead/TableHead';
 
 class DashBoard extends Component {
-  static focusSearch() {
-    document.querySelector('input').focus();
-  }
 
   constructor(props) {
     super(props);
@@ -25,9 +22,6 @@ class DashBoard extends Component {
     this.changeCurrentPage = this.changeCurrentPage.bind(this);
   }
 
-  componentDidMount() {
-    DashBoard.focusSearch();
-  }
 
   init() {
     const { dispatch, title, tHead } = this.props;
