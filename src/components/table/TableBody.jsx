@@ -5,11 +5,11 @@ export default function TableBody(props) {
   const { children } = props;
   return (
     <tbody>
-      { children }
+      {children}
     </tbody>
   );
 }
 
 TableBody.propTypes = {
-  children: PropTypes.shape.isRequired,
+  children: PropTypes.element.isRequired,
 };
