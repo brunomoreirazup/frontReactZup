@@ -39,8 +39,8 @@ class DashBoard extends Component {
       footer: '',
       alerts: '',
     };
-    dispatch({ type: 'PAGE_SIZE', page_size: 5 });
-    dispatch({ type: 'SET_USER_PREFERENCES', userPrefs: 5 });
+    dispatch({ type: 'PAGE_SIZE', page_size: '5' });
+    dispatch({ type: 'SET_USER_PREFERENCES', userPrefs: '5' });
     dispatch({ type: 'SORT', sort_order: 'asc' });
     dispatch({ type: 'TABLE_BODY', table_body: null });
   }
@@ -130,6 +130,8 @@ class DashBoard extends Component {
 
   loadTBody() {
     const { reduceContentInfo, reduceFooter, reduceTable } = this.props;
+    console.log(reduceContentInfo);
+    console.log(typeof reduceContentInfo);
     let currentPossition = 0;
     try {
       currentPossition = reduceContentInfo.page_size * (reduceFooter.pages.currentPage - 1);
@@ -228,9 +230,9 @@ DashBoard.propTypes = {
     showLoading: PropTypes.bool,
   }),
   reduceContentInfo: PropTypes.shape({
-    page_size: PropTypes.number,
+    page_size: PropTypes.string,
     totalElements: PropTypes.objectOf(PropTypes.number),
-    userPrefs: PropTypes.number,
+    userPrefs: PropTypes.string,
   }),
   reduceTable: PropTypes.shape({
     sort_order: PropTypes.string,
