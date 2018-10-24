@@ -16,5 +16,5 @@ export default function BtDelete(props) {
 }
 
 BtDelete.propTypes = {
-  onClick: PropTypes.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

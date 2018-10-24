@@ -13,5 +13,5 @@ export default function BtnAdd(props) {
 
 BtnAdd.propTypes = {
   click: PropTypes.func.isRequired,
-  title: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };

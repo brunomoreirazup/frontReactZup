@@ -17,5 +17,5 @@ export default function BtEdit(props) {
 
 
 BtEdit.propTypes = {
-  onClick: PropTypes.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
