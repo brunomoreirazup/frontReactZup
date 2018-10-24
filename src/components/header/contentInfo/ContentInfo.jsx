@@ -57,9 +57,9 @@ ContentInfo.defaultProps = {
 ContentInfo.propTypes = {
   changeSize: PropTypes.func.isRequired,
   reduceContentInfo: PropTypes.shape({
-    page_size: PropTypes.number,
+    page_size: PropTypes.string,
     totalElements: PropTypes.objectOf(PropTypes.number),
-    userPrefs: PropTypes.number,
+    userPrefs: PropTypes.string,
   }),
 };
 
