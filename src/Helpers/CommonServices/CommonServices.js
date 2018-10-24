@@ -1,4 +1,4 @@
-import HttpApi from '../components/http/HttpApi';
+import HttpServices from '../HttpServices/HttpServices';
 
 let listFunction;
 let searchFunction;
@@ -65,7 +65,7 @@ export default class CommonServices {
     store.dispatch({ type: 'LOADING', showLoading: true });
     listType = 'list';
     const url = this.mountUrl(tableType);
-    return HttpApi.makeGetRequest(url)
+    return HttpServices.makeGetRequest(url)
       .then((lista) => {
         this.changeStorePages(lista);
         this.storeSizePages(lista);
@@ -111,7 +111,7 @@ export default class CommonServices {
   }
 
   static sendData(url, method, payload) {
-    HttpApi.makeChangeRequest(url, method, payload)
+    HttpServices.makeChangeRequest(url, method, payload)
       .then((result) => {
         if (result.status >= 400) {
           throw new Error('status >= 400');

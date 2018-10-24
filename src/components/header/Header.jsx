@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MainTitle from './MainTitle';
+import MainTitle from './mainTitle/MainTitle';
 import SearchBox from './searchBox/SearchBox';
-import BtnAdd from './BtnAdd';
+import BtnAdd from '../button/BtnAdd';
 import ContentInfo from './contentInfo/ContentInfo';
 
 export default function Header(props) {
@@ -34,7 +34,7 @@ export default function Header(props) {
 }
 
 Header.propTypes = {
-  title: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   showModalAdd: PropTypes.func.isRequired,
   changeSize: PropTypes.func.isRequired,

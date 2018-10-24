@@ -50,9 +50,17 @@ function mapStateToProps(state) {
   };
 }
 
+ContentInfo.defaultProps = {
+  reduceContentInfo: {},
+};
+
 ContentInfo.propTypes = {
   changeSize: PropTypes.func.isRequired,
-  reduceContentInfo: PropTypes.func.isRequired,
+  reduceContentInfo: PropTypes.shape({
+    page_size: PropTypes.string,
+    totalElements: PropTypes.objectOf(PropTypes.number),
+    userPrefs: PropTypes.string,
+  }),
 };
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../buttonCss/button.css';
+import './buttonCss/button.css';
 import PropTypes from 'prop-types';
 
 export default function BtDelete(props) {
@@ -16,5 +16,5 @@ export default function BtDelete(props) {
 }
 
 BtDelete.propTypes = {
-  onClick: PropTypes.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

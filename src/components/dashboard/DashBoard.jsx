@@ -6,11 +6,11 @@ import Footer from '../footer/Footer';
 import Table from '../table/Table';
 import Header from '../header/Header';
 import MainModal from '../modal/MainModal';
-import Loading from '../modal/Loading';
-import BtEdit from '../button/btEdit/BtEdit';
-import BtDelete from '../button/btDelete/BtDelete';
-import TableBody from '../table/TableBody';
-import TableHead from '../table/TableHead';
+import Loading from '../table/loading/Loading';
+import BtEdit from '../button/BtEdit';
+import BtDelete from '../button/BtDelete';
+import TableBody from '../table/tableBody/TableBody';
+import TableHead from '../table/tableHead/TableHead';
 
 class DashBoard extends Component {
   static focusSearch() {
@@ -39,8 +39,8 @@ class DashBoard extends Component {
       footer: '',
       alerts: '',
     };
-    dispatch({ type: 'PAGE_SIZE', page_size: 5 });
-    dispatch({ type: 'SET_USER_PREFERENCES', userPrefs: 5 });
+    dispatch({ type: 'PAGE_SIZE', page_size: '5' });
+    dispatch({ type: 'SET_USER_PREFERENCES', userPrefs: '5' });
     dispatch({ type: 'SORT', sort_order: 'asc' });
     dispatch({ type: 'TABLE_BODY', table_body: null });
   }
@@ -136,7 +136,9 @@ class DashBoard extends Component {
     } catch (e) {
       console.log();
     }
-    if (reduceTable === undefined || reduceTable.table_body === undefined) {
+    console.log(reduceTable);
+    console.log(reduceTable.table_body);
+    if (reduceTable === undefined || !reduceTable.table_body) {
       return <tr key="#"><td colSpan={5}>Carregando...</td></tr>;
     }
     if (reduceTable.table_body.length > 0) {
@@ -160,7 +162,8 @@ class DashBoard extends Component {
           }
         </React.Fragment>
       );
-    } return <tr key="#"><td colSpan={5}>Nenhum Resultado Encontrado</td></tr>;
+    }
+    return <tr key="#"><td colSpan={5}>Nenhum Resultado Encontrado</td></tr>;
   }
 
   switchLoading() {
@@ -214,20 +217,45 @@ function mapStateToProps({
   };
 }
 
+DashBoard.defaultProps = {
+  dispatch: PropTypes.func,
+  reduceLoading: false,
+  reduceContentInfo: {},
+  reduceTable: {},
+  reduceFooter: {},
+};
+
 DashBoard.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  reduceLoading: PropTypes.shape.isRequired,
-  reduceContentInfo: PropTypes.shape.isRequired,
-  reduceTable: PropTypes.shape.isRequired,
-  reduceFooter: PropTypes.shape.isRequired,
-  search: PropTypes.func.isRequired,
-  list: PropTypes.func.isRequired,
-  delete: PropTypes.func.isRequired,
-  edit: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
+  reduceLoading: PropTypes.shape({
+    showLoading: PropTypes.bool,
+  }),
+  reduceContentInfo: PropTypes.shape({
+    page_size: PropTypes.string,
+    totalElements: PropTypes.objectOf(PropTypes.number),
+    userPrefs: PropTypes.string,
+  }),
+  reduceTable: PropTypes.shape({
+    sort_order: PropTypes.string,
+    table_body: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      data: PropTypes.array,
+    })),
+  }),
+  reduceFooter: PropTypes.shape({
+    pages: PropTypes.objectOf(PropTypes.number),
+  }),
+  title: PropTypes.string.isRequired,
+  tHead: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string,
+    className: PropTypes.string,
+  })).isRequired,
   form: PropTypes.func.isRequired,
   add: PropTypes.func.isRequired,
-  tHead: PropTypes.func.isRequired,
-  title: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
+  list: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(DashBoard);

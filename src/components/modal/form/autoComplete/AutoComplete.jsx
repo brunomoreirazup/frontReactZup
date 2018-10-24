@@ -146,6 +146,13 @@ function mapStateToProps(state) {
 AutoComplete.propTypes = {
   dispatch: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
-  reduceAutoComplete: PropTypes.shape.isRequired,
+  reduceAutoComplete: PropTypes.shape({
+    autoCompleteState: PropTypes.shape({
+      value: PropTypes.string,
+      menu: PropTypes.array,
+      ok: PropTypes.bool,
+      loading: PropTypes.bool,
+    }),
+  }).isRequired,
 };
 export default connect(mapStateToProps)(AutoComplete);

@@ -1,20 +1,20 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import devToolsEnhancer from 'remote-redux-devtools';
-import home from './components/home/Home';
-import cities from './components/cities/Cities';
-import customers from './components/customers/Customers';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import home from './components/pages/home/Home';
+import cities from './components/pages/cities/Cities';
+import customers from './components/pages/customers/Customers';
 import reduceFooter from './components/footer/reduceFooter';
 import reduceMainModal from './components/modal/reduceMainModal';
-import reduceLoading from './components/modal/reduceLoading';
+import reduceLoading from './components/table/loading/reduceLoading';
 import reduceContentInfo from './components/header/contentInfo/reduceContentInfo';
 import reduceSearch from './components/header/searchBox/reduceSearch';
 import reduceTable from './components/table/reduceTable';
-import reduceAutoComplete from './components/form/autoComplete/reduceAutoComplete';
+import reduceAutoComplete from './components/modal/form/autoComplete/reduceAutoComplete';
 import Copyright from './components/copyright/Copyright';
-
 
 const reducers = combineReducers({
   reduceSearch,
@@ -26,7 +26,10 @@ const reducers = combineReducers({
   reduceLoading,
 });
 
-const store = createStore(reducers, devToolsEnhancer());
+const store = createStore(
+  reducers,
+  composeWithDevTools(),
+);
 export { store };
 function App() {
   return (

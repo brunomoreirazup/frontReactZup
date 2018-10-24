@@ -1,11 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../navbar/Navbar';
-import Dashboard from '../dashboard/DashBoard';
-import HttpApi from '../http/HttpApi';
-import AutoComplete from '../form/autoComplete/AutoComplete';
-import CommonServices, { setListType, setFunction, setStore } from '../../CommonServices/CommonServices';
+import Navbar from '../../navbar/Navbar';
+import Dashboard from '../../dashboard/DashBoard';
+import HttpServices from '../../../Helpers/HttpServices/HttpServices';
+import AutoComplete from '../../modal/form/autoComplete/AutoComplete';
+import CommonServices, { setListType, setFunction, setStore } from '../../../Helpers/CommonServices/CommonServices';
 
 export default class Customers extends Component {
   static reloadNewLista(lista) {
@@ -21,7 +21,7 @@ export default class Customers extends Component {
         const customerName = customers.name;
         let cityId;
         let cityName;
-        return HttpApi.makeGetRequest(customers._links.city.href)
+        return HttpServices.makeGetRequest(customers._links.city.href)
           .then((city) => {
             count += 1;
             cityId = city._links.self.href;
@@ -50,7 +50,7 @@ export default class Customers extends Component {
       return cb([]);
     }
     const url = `https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${value}`;
-    return HttpApi.makeGetRequest(url)
+    return HttpServices.makeGetRequest(url)
       .then((lista) => {
         const newLista = lista._embedded.cities.map((city) => {
           const cityName = city.name;
@@ -124,7 +124,7 @@ export default class Customers extends Component {
     route.store.dispatch({ type: 'LOADING', showLoading: true });
 
     if (!CommonServices.emptySearch(name)) {
-      HttpApi.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
+      HttpServices.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
         .then((lista) => {
           if (lista.status >= 400) {
             throw new Error('status >= 400');
@@ -224,5 +224,16 @@ export default class Customers extends Component {
 }
 
 Customers.propTypes = {
-  route: PropTypes.shape.isRequired,
+  route: PropTypes.shape({
+    component: PropTypes.func,
+    path: PropTypes.string,
+    store: PropTypes.shape({
+      dispatch: PropTypes.func,
+      getState: PropTypes.func,
+      liftedStore: PropTypes.objectOf(PropTypes.func),
+      replaceReducer: PropTypes.func,
+      subscribe: PropTypes.func,
+      Symbol: PropTypes.func,
+    }),
+  }).isRequired,
 };

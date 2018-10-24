@@ -1,5 +1,5 @@
 import React from 'react';
-import '../buttonCss/button.css';
+import './buttonCss/button.css';
 import PropTypes from 'prop-types';
 
 export default function BtEdit(props) {
@@ -17,5 +17,5 @@ export default function BtEdit(props) {
 
 
 BtEdit.propTypes = {
-  onClick: PropTypes.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
