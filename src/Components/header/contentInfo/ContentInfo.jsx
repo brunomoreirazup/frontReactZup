@@ -31,7 +31,7 @@ class ContentInfo extends Component {
       );
     }
     return (
-      <div>
+      <div className="row">
         <span className="form-inline content-info">
           {selectPageSize}
           {reduceContentInfo.totalElements ? reduceContentInfo.totalElements.sizePage : 0 }

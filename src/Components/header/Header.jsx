@@ -26,9 +26,7 @@ export default function Header(props) {
           <BtnAdd title={title} type="Adicionar" click={showModalAdd} />
         </div>
       </div>
-      <div className="row">
         <ContentInfo changeSize={changeSize} />
-      </div>
     </div>
   );
 }

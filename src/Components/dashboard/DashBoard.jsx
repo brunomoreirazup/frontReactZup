@@ -130,8 +130,6 @@ class DashBoard extends Component {
     } catch (e) {
       console.log();
     }
-    console.log(reduceTable);
-    console.log(reduceTable.table_body);
     if (reduceTable === undefined || !reduceTable.table_body) {
       return <tr key="#"><td colSpan={5}>Carregando...</td></tr>;
     }

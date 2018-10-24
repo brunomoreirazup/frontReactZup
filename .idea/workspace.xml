@@ -3,45 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6a8377c3-4bd2-4967-a77b-58e613757f5b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/BtDelete.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/button/BtDelete.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/BtEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/button/BtEdit.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/BtnAdd.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/button/BtnAdd.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/buttonCss/button.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/button/buttonCss/button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/copyright/Copyright.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/copyright/Copyright.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/copyright/copyright.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/copyright/copyright.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/DashBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/dashboard/DashBoard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/footer/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/footer/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer/reduceFooter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/footer/reduceFooter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/contentInfo/ContentInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/contentInfo/reduceContentInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/contentInfo/reduceContentInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/mainTitle/MainTitle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/mainTitle/MainTitle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/searchBox/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/searchBox/SearchBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/searchBox/reduceSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/searchBox/reduceSearch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/MainModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/MainModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/form/autoComplete/AutoComplete.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/form/autoComplete/AutoComplete.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/form/autoComplete/AutoComplete.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/form/autoComplete/AutoComplete.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/form/autoComplete/reduceAutoComplete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/form/autoComplete/reduceAutoComplete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/reduceMainModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/reduceMainModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbar/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/navbar/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbar/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/navbar/navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/cities/Cities.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/cities/Cities.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/customers/Customers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/customers/Customers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/table/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/loading/Loading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/table/loading/Loading.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/loading/loading.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/table/loading/loading.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/loading/reduceLoading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/table/loading/reduceLoading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/reduceTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/table/reduceTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/table/table.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/tableBody/TableBody.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/table/tableBody/TableBody.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/tableHead/TableHead.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/table/tableHead/TableHead.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/dashboard/DashBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/dashboard/DashBoard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/modal/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/modal/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/pages/customers/Customers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/pages/customers/Customers.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -149,26 +116,30 @@
     <session id="-2071526040">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="178" />
+          <entry key="css" value="229" />
           <entry key="js" value="5485" />
+          <entry key="jsx" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="178" />
+          <entry key="CSS" value="229" />
+          <entry key="JSX Harmony" value="35" />
           <entry key="JavaScript" value="5485" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="7" />
+          <entry key="css" value="9" />
           <entry key="js" value="51" />
+          <entry key="jsx" value="4" />
           <entry key="ts" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="7" />
+          <entry key="CSS" value="9" />
+          <entry key="JSX Harmony" value="4" />
           <entry key="JavaScript" value="51" />
           <entry key="TypeScript" value="1" />
         </counts>
@@ -188,12 +159,12 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/dashboard/DashBoard.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+            <state relative-caret-position="147">
+              <caret line="131" column="5" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#22#63#0" expanded="true" />
@@ -203,17 +174,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app.css">
+        <entry file="file://$PROJECT_DIR$/src/Components/modal/modal.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+            <state relative-caret-position="150">
+              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Components/header/header.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/footer/reduceFooter.js">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/Components/header/Header.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/pages/customers/Customers.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="176" column="28" selection-start-line="176" selection-start-column="28" selection-end-line="176" selection-end-column="28" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#42#83#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -228,7 +240,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>reduceFooter</find>
       <find>state</find>
       <find>state.</find>
       <find>reduce</find>
@@ -241,7 +252,6 @@
       <find>loadForm</find>
       <find>menu</find>
       <find>dispatch</find>
-      <find>console</find>
       <find>this.callAlertModal</find>
       <find>console.log</find>
       <find>this.props.route.</find>
@@ -258,6 +268,8 @@
       <find>Cities</find>
       <find>totalElements</find>
       <find>SET_USER</find>
+      <find>console</find>
+      <find>&lt;p</find>
     </findStrings>
     <replaceStrings>
       <replace>CommonServices.callAlertModal</replace>
@@ -265,6 +277,7 @@
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components/table</dir>
       <dir>$PROJECT_DIR$/src/components/header</dir>
+      <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -273,11 +286,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/modal/Modal.js" />
-        <option value="$PROJECT_DIR$/src/components/HttpApi.js" />
-        <option value="$PROJECT_DIR$/src/components/form/Form.js" />
-        <option value="$PROJECT_DIR$/src/components/Button/Button.js" />
-        <option value="$PROJECT_DIR$/src/components/table/TableHead.js" />
         <option value="$PROJECT_DIR$/src/components/header/searchBox/searchBoxReducer.js" />
         <option value="$PROJECT_DIR$/src/components/footer/reduceFooter.js" />
         <option value="$PROJECT_DIR$/src/components/header/ContentInfo.js" />
@@ -324,6 +332,11 @@
         <option value="$PROJECT_DIR$/src/app.css" />
         <option value="$PROJECT_DIR$/src/Components/button/BtnAdd.jsx" />
         <option value="$PROJECT_DIR$/src/Components/dashboard/DashBoard.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/pages/customers/Customers.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/modal/modal.css" />
+        <option value="$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/header/Header.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/header/header.css" />
       </list>
     </option>
   </component>
@@ -398,14 +411,22 @@
               <item name="frontReactZup" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="button" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="frontReactZup" type="b2602c69:ProjectViewProjectNode" />
               <item name="frontReactZup" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
+              <item name="contentInfo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frontReactZup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frontReactZup" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="modal" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -427,15 +448,15 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/table" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/table/tableHead" />
       <recent name="$PROJECT_DIR$/src/components/table/tableBody" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components/table" />
       <recent name="$PROJECT_DIR$/src/components/modal" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/table" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -472,10 +493,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136461000" />
+    <option name="totallyTimeSpent" value="137001000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1600" y="25" width="1366" height="743" extended-state="6" />
+    <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24869695" />
@@ -498,6 +519,26 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24869695" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -506,13 +547,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Components/header/searchBox/reduceSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/form/autocomplete/autocomplete.js" />
     <entry file="file://$PROJECT_DIR$/src/components/header/searchBox/SearchBox.js" />
     <entry file="file://$PROJECT_DIR$/src/components/button/Button.js" />
@@ -520,13 +554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/modal/modal.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -618,39 +645,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/button/BtDelete.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/table/reduceTable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/pages/customers/Customers.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3487">
-          <caret line="238" column="2" lean-forward="true" selection-start-line="238" selection-start-column="2" selection-end-line="238" selection-end-column="2" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#42#83#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="2" lean-forward="true" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -692,9 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -715,16 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/header/Header.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/footer/reduceFooter.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -732,9 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2355">
           <caret line="157" selection-start-line="157" selection-end-line="157" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -764,12 +748,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/dashboard/DashBoard.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+        <state relative-caret-position="147">
+          <caret line="131" column="5" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#22#63#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/pages/customers/Customers.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="176" column="28" selection-start-line="176" selection-start-column="28" selection-end-line="176" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#42#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/modal/modal.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/header/Header.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/header/header.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
         </state>
       </provider>
     </entry>
