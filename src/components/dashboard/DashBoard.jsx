@@ -32,6 +32,8 @@ class DashBoard extends Component {
   init() {
     const { dispatch, title, tHead } = this.props;
     this.title = title;
+    console.log(this.title);
+    console.log(typeof this.title);
     this.tHead = tHead;
     this.modalContent = {
       title: '',
@@ -203,7 +205,9 @@ class DashBoard extends Component {
   }
 }
 
-function mapStateToProps({ reduceTable, reduceFooter, reduceContentInfo, reduceLoading }) {
+function mapStateToProps({
+  reduceTable, reduceFooter, reduceContentInfo, reduceLoading,
+}) {
   return {
     reduceTable,
     reduceFooter,
@@ -212,20 +216,31 @@ function mapStateToProps({ reduceTable, reduceFooter, reduceContentInfo, reduceL
   };
 }
 
+DashBoard.defaultProps = {
+  dispatch: PropTypes.func,
+  reduceLoading: PropTypes.func,
+  reduceContentInfo: PropTypes.func,
+  reduceTable: PropTypes.func,
+  reduceFooter: PropTypes.func,
+};
+
 DashBoard.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  reduceLoading: PropTypes.shape.isRequired,
-  reduceContentInfo: PropTypes.shape.isRequired,
-  reduceTable: PropTypes.shape.isRequired,
-  reduceFooter: PropTypes.shape.isRequired,
-  search: PropTypes.func.isRequired,
-  list: PropTypes.func.isRequired,
-  delete: PropTypes.func.isRequired,
-  edit: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
+  reduceLoading: PropTypes.func,
+  reduceContentInfo: PropTypes.func,
+  reduceTable: PropTypes.func,
+  reduceFooter: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  tHead: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string,
+    className: PropTypes.string,
+  })).isRequired,
   form: PropTypes.func.isRequired,
   add: PropTypes.func.isRequired,
-  tHead: PropTypes.func.isRequired,
-  title: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
+  list: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(DashBoard);
