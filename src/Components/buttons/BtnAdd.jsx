@@ -8,7 +8,7 @@ export default function BtnAdd(props) {
   const { click, title } = props;
   return (
     <Button
-      buttonClass="btn btn-success"
+      buttonClass="btn btn-success headerItem"
       onClick={click}
       title={'Adicionar '.concat(title)}
     />
