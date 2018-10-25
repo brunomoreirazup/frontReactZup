@@ -3,32 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6a8377c3-4bd2-4967-a77b-58e613757f5b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CommonServices/CommonServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/CommonServices/CommonServices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/btDelete/BtDelete.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/BtDelete.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/btEdit/BtEdit.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/BtEdit.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cities/Cities.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/cities/Cities.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/customers/Customers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/customers/Customers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/DashBoard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/DashBoard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/autoComplete/AutoComplete.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/form/autoComplete/AutoComplete.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/autoComplete/AutoComplete.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/form/autoComplete/AutoComplete.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/autoComplete/reduceAutoComplete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/form/autoComplete/reduceAutoComplete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/BtnAdd.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/BtnAdd.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/MainTitle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/mainTitle/MainTitle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/http/HttpApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/HttpServices/HttpServices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/Loading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/loading/Loading.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/reduceLoading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/loading/reduceLoading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/content.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/copyright.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/copyright/copyright.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/loading.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/loading/loading.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/table.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/header/mainTitle/MainTitle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/mainTitle/MainTitle.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/header/searchBox/SearchBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/header/searchBox/SearchBox.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,47 +21,49 @@
     <session id="-1391929057">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.61" value="1" />
           <entry key="project.open.time.70" value="1" />
           <entry key="project.open.time.88" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="207" />
-          <entry key="js" value="4214" />
+          <entry key="css" value="456" />
+          <entry key="js" value="4230" />
           <entry key="json" value="9" />
-          <entry key="jsx" value="1408" />
+          <entry key="jsx" value="2018" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="207" />
+          <entry key="CSS" value="456" />
           <entry key="JSON" value="9" />
-          <entry key="JSX Harmony" value="1408" />
-          <entry key="JavaScript" value="4214" />
+          <entry key="JSX Harmony" value="2018" />
+          <entry key="JavaScript" value="4230" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="3" />
+          <entry key="ESLintLanguageService" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="13" />
-          <entry key="js" value="65" />
+          <entry key="css" value="17" />
+          <entry key="js" value="67" />
           <entry key="json" value="2" />
-          <entry key="jsx" value="34" />
+          <entry key="jsx" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="13" />
+          <entry key="CSS" value="17" />
           <entry key="JSON" value="2" />
-          <entry key="JSX Harmony" value="34" />
-          <entry key="JavaScript" value="65" />
+          <entry key="JSX Harmony" value="54" />
+          <entry key="JavaScript" value="67" />
         </counts>
       </usages-collector>
     </session>
@@ -136,26 +116,30 @@
     <session id="-2071526040">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="178" />
+          <entry key="css" value="601" />
           <entry key="js" value="5485" />
+          <entry key="jsx" value="105" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="178" />
+          <entry key="CSS" value="601" />
+          <entry key="JSX Harmony" value="105" />
           <entry key="JavaScript" value="5485" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="7" />
+          <entry key="css" value="12" />
           <entry key="js" value="51" />
+          <entry key="jsx" value="12" />
           <entry key="ts" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="7" />
+          <entry key="CSS" value="12" />
+          <entry key="JSX Harmony" value="12" />
           <entry key="JavaScript" value="51" />
           <entry key="TypeScript" value="1" />
         </counts>
@@ -177,15 +161,94 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app.css">
-          <provider selected="true" editor-type-id="text-editor" />
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/src/Components/footer/footer.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/copyright/copyright.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtDelete.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/Components/header/header.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+>>>>>>> HeaderStyling
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtEdit.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtnAdd.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+>>>>>>> HeaderStyling
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtnAdd.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#114#140#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/table/loading/Loading.jsx">
+        <entry file="file://$PROJECT_DIR$/src/Components/buttons/Button.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+            <state relative-caret-position="240">
+              <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/Components/header/Header.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+>>>>>>> HeaderStyling
+              </folding>
             </state>
           </provider>
         </entry>
@@ -202,8 +265,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>reduceFooter</find>
-      <find>state</find>
       <find>state.</find>
       <find>reduce</find>
       <find>connect</find>
@@ -232,6 +293,8 @@
       <find>Cities</find>
       <find>totalElements</find>
       <find>SET_USER</find>
+      <find>.site</find>
+      <find>row</find>
     </findStrings>
     <replaceStrings>
       <replace>CommonServices.callAlertModal</replace>
@@ -247,18 +310,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/css/navbar.css" />
-        <option value="$PROJECT_DIR$/src/dashboard/DashBoard.js" />
-        <option value="$PROJECT_DIR$/src/modal.js" />
-        <option value="$PROJECT_DIR$/src/components/modal/Modal.js" />
-        <option value="$PROJECT_DIR$/src/components/HttpApi.js" />
-        <option value="$PROJECT_DIR$/src/components/form/Form.js" />
-        <option value="$PROJECT_DIR$/src/components/Button/Button.js" />
-        <option value="$PROJECT_DIR$/src/components/table/TableHead.js" />
-        <option value="$PROJECT_DIR$/src/components/header/searchBox/searchBoxReducer.js" />
-        <option value="$PROJECT_DIR$/src/components/footer/reduceFooter.js" />
-        <option value="$PROJECT_DIR$/src/components/header/ContentInfo.js" />
-        <option value="$PROJECT_DIR$/src/components/http/HttpApi.js" />
         <option value="$PROJECT_DIR$/src/components/table/TableBody.js" />
         <option value="$PROJECT_DIR$/src/components/header/Header.js" />
         <option value="$PROJECT_DIR$/src/css/header.css" />
@@ -298,6 +349,28 @@
         <option value="$PROJECT_DIR$/src/components/dashboard/DashBoard.jsx" />
         <option value="$PROJECT_DIR$/src/HttpServices/HttpServices.js" />
         <option value="$PROJECT_DIR$/src/components/table/loading/Loading.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/button/BtnAdd.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/footer/Footer.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/footer/footer.css" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/src/Components/copyright/Copyright.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/buttons/Button.jsx.js" />
+        <option value="$PROJECT_DIR$/src/Components/buttons/GeralButton.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/buttons/BtEdit.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/buttons/BtDelete.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/buttons/BtnAdd.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/buttons/Button.jsx" />
+=======
+        <option value="$PROJECT_DIR$/src/Components/copyright/copyright.css" />
+        <option value="$PROJECT_DIR$/src/Components/dashboard/DashBoard.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/header/mainTitle/MainTitle.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/header/searchBox/SearchBox.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/header/Header.jsx" />
+        <option value="$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx" />
+        <option value="$PROJECT_DIR$/src/app.css" />
+        <option value="$PROJECT_DIR$/src/Components/header/header.css" />
+        <option value="$PROJECT_DIR$/src/Components/buttons/BtnAdd.jsx" />
+>>>>>>> HeaderStyling
       </list>
     </option>
   </component>
@@ -318,10 +391,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1600" />
-    <option name="y" value="-2" />
-    <option name="width" value="1366" />
-    <option name="height" value="770" />
+    <option name="x" value="1488" />
+    <option name="y" value="78" />
+    <option name="width" value="1356" />
+    <option name="height" value="555" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -348,7 +421,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -365,27 +437,53 @@
               <item name="frontReactZup" type="b2602c69:ProjectViewProjectNode" />
               <item name="frontReactZup" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="frontReactZup" type="b2602c69:ProjectViewProjectNode" />
               <item name="frontReactZup" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="table" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="buttons" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
             </path>
             <path>
               <item name="frontReactZup" type="b2602c69:ProjectViewProjectNode" />
               <item name="frontReactZup" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="table" type="462c0819:PsiDirectoryNode" />
-              <item name="loading" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frontReactZup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frontReactZup" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frontReactZup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frontReactZup" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
+              <item name="mainTitle" type="462c0819:PsiDirectoryNode" />
+>>>>>>> HeaderStyling
+            </path>
+            <path>
+              <item name="frontReactZup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frontReactZup" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
+              <item name="searchBox" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -402,15 +500,16 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/img" />
+      <recent name="$PROJECT_DIR$/src/components/table" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/table/tableHead" />
+      <recent name="$PROJECT_DIR$/src/components/table/tableBody" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components/table" />
       <recent name="$PROJECT_DIR$/src/components/modal" />
-      <recent name="$PROJECT_DIR$/src/components/navbar" />
-      <recent name="$PROJECT_DIR$/src/components/table/loading" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/table" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -443,14 +542,22 @@
       <workItem from="1539802565006" duration="293000" />
       <workItem from="1539951141309" duration="1183000" />
       <workItem from="1540382711751" duration="2369000" />
+      <workItem from="1540469450102" duration="7928000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134835000" />
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="145431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="25" width="1366" height="743" extended-state="6" />
+=======
+    <option name="totallyTimeSpent" value="146432000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="25" width="1366" height="743" extended-state="6" />
+>>>>>>> HeaderStyling
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24869695" />
@@ -473,6 +580,26 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24869695" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -481,24 +608,14 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/header/searchBox/reduceSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/form/autocomplete/autocomplete.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/header/searchBox/SearchBox.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/button/Button.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/navbar/navbar.css">
+    <entry file="file://$PROJECT_DIR$/src/Components/navbar/navbar.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/modal/modal.css">
+    <entry file="file://$PROJECT_DIR$/src/Components/modal/modal.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
@@ -517,7 +634,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/modal/MainModal.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/table/loading/loading.css">
+    <entry file="file://$PROJECT_DIR$/src/Components/table/loading/loading.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
@@ -530,7 +647,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/table/TableHead.js" />
     <entry file="file://$PROJECT_DIR$/src/components/cities/Cities.js" />
     <entry file="file://$PROJECT_DIR$/src/components/customers/Customers.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/modal/form/autoComplete/AutoComplete.css">
+    <entry file="file://$PROJECT_DIR$/src/Components/modal/form/autoComplete/AutoComplete.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
@@ -538,19 +655,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/footer/footer.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/button/btEdit/BtEdit.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/button/buttonCss/button.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/table/Table.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/table/table.css">
+    <entry file="file://$PROJECT_DIR$/src/Components/table/table.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
@@ -575,105 +682,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/header/contentInfo/reduceContentInfo.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/header/contentInfo/reduceContentInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/table/loading/reduceLoading.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/table/loading/reduceLoading.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/navbar/Navbar.jsx">
+    <entry file="file://$PROJECT_DIR$/src/Components/navbar/Navbar.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/button/BtDelete.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/button/BtnAdd.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/footer/reduceFooter.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/footer/Footer.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/table/reduceTable.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/table/reduceTable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/customers/Customers.jsx">
+    <entry file="file://$PROJECT_DIR$/src/Components/pages/customers/Customers.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3487">
           <caret line="238" column="2" lean-forward="true" selection-start-line="238" selection-start-column="2" selection-end-line="238" selection-end-column="2" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#42#83#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/header/contentInfo/ContentInfo.jsx">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="54" column="2" lean-forward="true" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/dashboard/DashBoard.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-354">
-          <caret line="140" column="38" selection-start-line="140" selection-start-column="38" selection-end-line="140" selection-end-column="38" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#22#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/copyright/Copyright.jsx">
+=======
+    <entry file="file://$PROJECT_DIR$/src/Components/copyright/Copyright.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/copyright/copyright.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+>>>>>>> HeaderStyling
         </state>
       </provider>
     </entry>
@@ -681,29 +731,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="83" lean-forward="true" selection-start-line="15" selection-start-column="83" selection-end-line="15" selection-end-column="83" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/cities/Cities.jsx">
+    <entry file="file://$PROJECT_DIR$/src/Components/pages/cities/Cities.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1710">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/home/Home.jsx">
+    <entry file="file://$PROJECT_DIR$/src/Components/pages/home/Home.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -714,33 +755,207 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/header/mainTitle/MainTitle.jsx">
+    <entry file="file://$PROJECT_DIR$/src/Components/table/loading/Loading.jsx">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="225">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/header/Header.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/table/loading/Loading.jsx">
-      <provider selected="true" editor-type-id="text-editor">
+=======
         <state relative-caret-position="30">
           <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+>>>>>>> HeaderStyling
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/footer/reduceFooter.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtDelete.jsx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/footer/footer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/copyright/copyright.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/dashboard/DashBoard.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="176" column="10" selection-start-line="176" selection-start-column="10" selection-end-line="176" selection-end-column="10" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#22#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/footer/Footer.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/Components/footer/reduceFooter.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/header/searchBox/SearchBox.jsx">
+=======
+    <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtEdit.jsx">
+>>>>>>> HeaderStyling
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/Components/footer/footer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/header/header.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-219" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/copyright/Copyright.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/copyright/copyright.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/footer/Footer.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Components/header/mainTitle/MainTitle.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="39" />
+>>>>>>> HeaderStyling
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/Components/buttons/buttonCss/button.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtDelete.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Components/header/searchBox/SearchBox.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+>>>>>>> HeaderStyling
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtEdit.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Components/header/contentInfo/ContentInfo.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="26" />
+>>>>>>> HeaderStyling
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtnAdd.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#114#140#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Components/header/Header.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+>>>>>>> HeaderStyling
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/Components/buttons/Button.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/header/header.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/buttons/BtnAdd.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+>>>>>>> HeaderStyling
+          </folding>
         </state>
       </provider>
     </entry>

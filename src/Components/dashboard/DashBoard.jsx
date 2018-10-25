@@ -1,5 +1,4 @@
-/* global document */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Footer from '../footer/Footer';
@@ -7,16 +6,12 @@ import Table from '../table/Table';
 import Header from '../header/Header';
 import MainModal from '../modal/MainModal';
 import Loading from '../table/loading/Loading';
-import BtEdit from '../button/BtEdit';
-import BtDelete from '../button/BtDelete';
+import BtEdit from '../buttons/BtEdit';
+import BtDelete from '../buttons/BtDelete';
 import TableBody from '../table/tableBody/TableBody';
 import TableHead from '../table/tableHead/TableHead';
 
 class DashBoard extends Component {
-  static focusSearch() {
-    document.querySelector('input').focus();
-  }
-
   constructor(props) {
     super(props);
     this.init();
@@ -25,9 +20,6 @@ class DashBoard extends Component {
     this.changeCurrentPage = this.changeCurrentPage.bind(this);
   }
 
-  componentDidMount() {
-    DashBoard.focusSearch();
-  }
 
   init() {
     const { dispatch, title, tHead } = this.props;
@@ -136,14 +128,12 @@ class DashBoard extends Component {
     } catch (e) {
       console.log();
     }
-    console.log(reduceTable);
-    console.log(reduceTable.table_body);
     if (reduceTable === undefined || !reduceTable.table_body) {
       return <tr key="#"><td colSpan={5}>Carregando...</td></tr>;
     }
     if (reduceTable.table_body.length > 0) {
       return (
-        <React.Fragment>
+        <Fragment>
           {reduceTable.table_body.map((data, i) => (
             <tr key={data.id}>
               <td>{i + 1 + currentPossition}</td>
@@ -160,7 +150,7 @@ class DashBoard extends Component {
             </tr>
           ))
           }
-        </React.Fragment>
+        </Fragment>
       );
     }
     return <tr key="#"><td colSpan={5}>Nenhum Resultado Encontrado</td></tr>;

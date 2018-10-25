@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import previousArrow from '../../img/back.png';
+import nextArrow from '../../img/next.png';
 
 class Footer extends Component {
   constructor(props) {
@@ -28,8 +30,8 @@ class Footer extends Component {
         lastPage,
       } = reduceFooter.pages;
       return (
-        <div className="container">
-          <nav>
+        <div className="footer">
+          <nav className="footer">
             <ul className="pagination">
               <li className={currentPage !== homePage ? 'page-item' : 'page-item disabled'}>
                 <button
@@ -41,7 +43,7 @@ class Footer extends Component {
                   id="prevPageBt"
                   tabIndex="-1"
                 >
-                    Anterior
+                  <img className="arrows" src={previousArrow} alt="Previous arrow" />
                 </button>
 
               </li>
@@ -124,7 +126,7 @@ class Footer extends Component {
                   className="page-link _page-link"
                   id="nextPageBt"
                 >
-                  Próximo
+                  <img className="arrows" src={nextArrow} alt="Next arrow" />
                 </button>
 
               </li>

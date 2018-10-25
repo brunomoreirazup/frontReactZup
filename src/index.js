@@ -7,14 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
 import 'jquery/dist/jquery.min';
 import 'popper.js/dist/popper.min';
-import './components/header/header.css';
-import './components/navbar/navbar.css';
-import './components/footer/footer.css';
-import './components/copyright/copyright.css';
-import './components/table/table.css';
-import './components/modal/modal.css';
+import './Components/header/header.css';
+import './Components/navbar/navbar.css';
+import './Components/footer/footer.css';
+import './Components/copyright/copyright.css';
+import './Components/table/table.css';
+import './Components/modal/modal.css';
 import './app.css';
-import './components/modal/form/autoComplete/AutoComplete.css';
+import './Components/modal/form/autoComplete/AutoComplete.css';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

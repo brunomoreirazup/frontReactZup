@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MainTitle from './mainTitle/MainTitle';
 import SearchBox from './searchBox/SearchBox';
-import BtnAdd from '../button/BtnAdd';
+import BtnAdd from '../buttons/BtnAdd';
 import ContentInfo from './contentInfo/ContentInfo';
 
 export default function Header(props) {
@@ -16,19 +16,11 @@ export default function Header(props) {
     <div className="container">
       <br />
       <div className="row bottomline">
-        <div className="col-md-4">
-          <MainTitle title={title} />
-        </div>
-        <div className="col-md-6 bottomline">
-          <SearchBox search={search} />
-        </div>
-        <div className="col-md-2 bottomline">
-          <BtnAdd title={title} type="Adicionar" click={showModalAdd} />
-        </div>
+        <MainTitle title={title} />
+        <SearchBox search={search} />
+        <BtnAdd title={title} type="Adicionar" click={showModalAdd} />
       </div>
-      <div className="row">
-        <ContentInfo changeSize={changeSize} />
-      </div>
+      <ContentInfo changeSize={changeSize} />
     </div>
   );
 }

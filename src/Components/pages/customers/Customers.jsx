@@ -174,7 +174,7 @@ export default class Customers extends Component {
             ref={(input) => { this.input_customer_name = input; return null; }}
           />
         </label>
-        <p>Cidade:</p>
+        <p className="modal-label">Cidade:</p>
         <AutoComplete search={Customers.loadCity} />
       </form>
     );

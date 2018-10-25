@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -11,7 +11,7 @@ class ContentInfo extends Component {
 
     if (reduceContentInfo.page_size) {
       selectPageSize = (
-        <React.Fragment>
+        <Fragment>
           Exibindo
           <select
             className="form-control custom-select"
@@ -25,13 +25,13 @@ class ContentInfo extends Component {
             <option value="20">20</option>
           </select>
           de &nbsp;
-        </React.Fragment>
+        </Fragment>
 
 
       );
     }
     return (
-      <div>
+      <div className="row">
         <span className="form-inline content-info">
           {selectPageSize}
           {reduceContentInfo.totalElements ? reduceContentInfo.totalElements.sizePage : 0 }
