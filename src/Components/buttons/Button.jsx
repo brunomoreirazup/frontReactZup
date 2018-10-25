@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './buttonCss/button.css';
 import PropTypes from 'prop-types';
 
 export default function Button(props) {
   const { onClick, buttonClass, title } = props;
   return (
-    <React.Fragment>
+    <Fragment>
       <button
         type="button"
         className={buttonClass}
@@ -13,7 +13,7 @@ export default function Button(props) {
       >
         {title}
       </button>
-    </React.Fragment>
+    </Fragment>
   );
 }
 
