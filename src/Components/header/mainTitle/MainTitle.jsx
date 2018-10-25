@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 export default function MainTitle(props) {
   const { title } = props;
   return (
-    <div className="MainTitle">
-      <h1>{title}</h1>
-    </div>
+    <h1 className="MainTitle headerItem">{title}</h1>
   );
 }
 
