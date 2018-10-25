@@ -1,5 +1,4 @@
-/* global document */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Footer from '../footer/Footer';
@@ -13,7 +12,6 @@ import TableBody from '../table/tableBody/TableBody';
 import TableHead from '../table/tableHead/TableHead';
 
 class DashBoard extends Component {
-
   constructor(props) {
     super(props);
     this.init();
@@ -135,7 +133,7 @@ class DashBoard extends Component {
     }
     if (reduceTable.table_body.length > 0) {
       return (
-        <React.Fragment>
+        <Fragment>
           {reduceTable.table_body.map((data, i) => (
             <tr key={data.id}>
               <td>{i + 1 + currentPossition}</td>
@@ -152,7 +150,7 @@ class DashBoard extends Component {
             </tr>
           ))
           }
-        </React.Fragment>
+        </Fragment>
       );
     }
     return <tr key="#"><td colSpan={5}>Nenhum Resultado Encontrado</td></tr>;
