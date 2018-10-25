@@ -20,6 +20,6 @@ Este  projeto segue o modelo de formatação [Airbnb](https://github.com/airbnb/
 
 ## Hospedagem
 
-O projeto foi hospedado através do [Netlify](https://www.netlify.com/).
+O projeto foi hospedado através do [Netlify](https://www.netlify.com/). <br />
 Link para acesso: [Front React Zup](https://frontreactzup.netlify.com/).
   
