@@ -2,18 +2,16 @@
 /* eslint-flexdisable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from './Button';
 
 export default function BtnAdd(props) {
   const { click, title } = props;
   return (
-    <button
-      type="button"
-      id="btAdd"
-      className="btn btn-success"
+    <Button
+      buttonClass="btn btn-success"
       onClick={click}
-    >
-      Adicionar { title }
-    </button>
+      title={'Adicionar '.concat(title)}
+    />
   );
 }
 

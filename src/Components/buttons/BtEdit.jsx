@@ -1,17 +1,16 @@
 import React from 'react';
 import './buttonCss/button.css';
 import PropTypes from 'prop-types';
+import Button from './Button';
 
 export default function BtEdit(props) {
   const { onClick } = props;
   return (
-    <React.Fragment>
-      <button
-        type="button"
-        className="btn btn-info bt-table bt-edit"
-        onClick={onClick}
-      />
-    </React.Fragment>
+    <Button
+      onClick={onClick}
+      buttonClass="btn btn-info bt-table bt-edit"
+      title=""
+    />
   );
 }
 
