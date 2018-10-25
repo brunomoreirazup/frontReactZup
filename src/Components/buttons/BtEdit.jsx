@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './buttonCss/button.css';
 import PropTypes from 'prop-types';
 
 export default function BtEdit(props) {
   const { onClick } = props;
   return (
-    <React.Fragment>
+    <Fragment>
       <button
         type="button"
         className="btn btn-info bt-table bt-edit"
         onClick={onClick}
       />
-    </React.Fragment>
+    </Fragment>
   );
 }
 
