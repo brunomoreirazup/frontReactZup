@@ -16,15 +16,9 @@ export default function Header(props) {
     <div className="container">
       <br />
       <div className="row bottomline">
-        <div className="col-md-4">
-          <MainTitle title={title} />
-        </div>
-        <div className="col-md-6 bottomline">
-          <SearchBox search={search} />
-        </div>
-        <div className="col-md-2 bottomline">
-          <BtnAdd title={title} type="Adicionar" click={showModalAdd} />
-        </div>
+        <MainTitle title={title} />
+        <SearchBox search={search} />
+        <BtnAdd title={title} type="Adicionar" click={showModalAdd} />
       </div>
       <ContentInfo changeSize={changeSize} />
     </div>
