@@ -7,10 +7,11 @@
     width: 100%;
     display: flex;
     position: relative;
-    margin: 12% auto auto 0;
+    margin: 15vh 0 0 0;
     align-content: center;
     align-items: center;
     justify-content: center;
+    height: 11vh;
 }
 
 body {
