@@ -1,17 +1,16 @@
 .welcome {
-    top: 50%;
+    transition: 0.3s;
     font-size: 10vw;
     font-weight: bolder;
     color: dimgrey;
     text-shadow: darkgray 0 0 0.3em;
     width: 100%;
     display: flex;
-    position: fixed;
+    position: relative;
+    margin: 12% auto auto 0;
     align-content: center;
     align-items: center;
     justify-content: center;
-    transform: translateY(-100px);
-
 }
 
 body {
