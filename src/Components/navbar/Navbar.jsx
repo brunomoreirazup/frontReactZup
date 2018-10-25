@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link className="navbar-brand" to="/">Front-End</Link>
+      <Link className="navbar-brand" to="/">Front React Zup</Link>
       <button
         className="navbar-toggler"
         type="button"
