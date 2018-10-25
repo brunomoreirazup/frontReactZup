@@ -30,8 +30,8 @@ class Footer extends Component {
         lastPage,
       } = reduceFooter.pages;
       return (
-        <div className="container">
-          <nav>
+        <div className="footer">
+          <nav className="footer">
             <ul className="pagination">
               <li className={currentPage !== homePage ? 'page-item' : 'page-item disabled'}>
                 <button
@@ -142,7 +142,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <div className="footer">
+      <div>
         {this.printPagination()}
       </div>
     );
