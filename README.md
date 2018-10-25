@@ -7,11 +7,11 @@ Projeto de front-end desenvolvido no programa de estágio Real Wave da Zup IT.
 ```
   $ npm install
 ```
-- Para todar em ambiente de desenvolvimento: <br />
+- Para rodar em ambiente de desenvolvimento: <br />
 ```
   $ npm start 
 ```
-- Para todar em ambiente de produção: <br />
+- Para rodar em ambiente de produção: <br />
 ```
   $ npm run build 
 ```
