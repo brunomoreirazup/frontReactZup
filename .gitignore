@@ -9,7 +9,6 @@
 
 # production
 /build
-# /selenium/build
 .idea/
 .vscode/
 
