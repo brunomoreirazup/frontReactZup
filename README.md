@@ -23,3 +23,20 @@ Este  projeto segue o modelo de formatação [Airbnb](https://github.com/airbnb/
 O projeto foi hospedado através do [Netlify](https://www.netlify.com/). <br />
 Link para acesso: [Front React Zup](https://frontreactzup.netlify.com/).
   
+## Autores
+
+**Bruno Melo**
+  + [GitHub](https://github.com/brunomoreirazup)
+  + [LinkedIn](https://www.linkedin.com/in/brunomelomoreira)
+  
+**Gabriel Leite**
+  + [GitHub](https://github.com/gabrielleitezup)
+  + [LinkedIn](https://www.linkedin.com/in/gabrielsleite)
+  
+**Murilo Andrade**
+  + [GitHub](https://github.com/muriloandradezup)
+  + [LinkedIn](https://www.linkedin.com/in/murilogandrade)
+  
+**Vinícius Clemente**
+  + [GitHub](https://github.com/viniciussousazup)
+  + [LinkedIn](https://www.linkedin.com/in/viniciuscsreis)
