@@ -7,8 +7,8 @@ import Table from '../table/Table';
 import Header from '../header/Header';
 import MainModal from '../modal/MainModal';
 import Loading from '../table/loading/Loading';
-import BtEdit from '../button/BtEdit';
-import BtDelete from '../button/BtDelete';
+import BtEdit from '../buttons/BtEdit';
+import BtDelete from '../buttons/BtDelete';
 import TableBody from '../table/tableBody/TableBody';
 import TableHead from '../table/tableHead/TableHead';
 

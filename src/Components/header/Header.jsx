@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MainTitle from './mainTitle/MainTitle';
 import SearchBox from './searchBox/SearchBox';
-import BtnAdd from '../button/BtnAdd';
+import BtnAdd from '../buttons/BtnAdd';
 import ContentInfo from './contentInfo/ContentInfo';
 
 export default function Header(props) {

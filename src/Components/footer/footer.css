@@ -10,3 +10,14 @@
 .page-item ._page-link:focus {
     box-shadow:none;
 }
+
+.arrows {
+    height: 20px;
+    width: 20px;
+}
+
+.footer {
+    display: flex;
+    align-content: center;
+    margin: 0 auto;
+}
