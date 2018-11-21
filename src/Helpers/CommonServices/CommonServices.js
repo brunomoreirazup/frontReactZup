@@ -3,6 +3,8 @@ import HttpServices from '../HttpServices/HttpServices';
 let listFunction;
 let searchFunction;
 let store;
+export const urlApi = 'http://localhost:8080';
+
 export function setFunction(list, search) {
   listFunction = list;
   searchFunction = search;
@@ -50,13 +52,13 @@ export default class CommonServices {
     store.dispatch({ type: 'TOTAL_ELEMENTS', totalElements: size });
   }
 
-  static mountUrl(tableType) {
+  static mountUrl() {
     const state = store.getState();
     const page = state.reduceFooter.pages.currentPage;
     const sizePage = state.reduceContentInfo.page_size;
     const sort = state.reduceTable.sort_order;
 
-    const url = `https://customers-challenge.herokuapp.com/${tableType}?page=${page - 1}&size=${sizePage}&sort=name,${sort}`;
+    const url = `page=${page - 1}&size=${sizePage}&sort=name,${sort}`;
 
     return url;
   }
@@ -64,7 +66,7 @@ export default class CommonServices {
   static list(tableType) {
     store.dispatch({ type: 'LOADING', showLoading: true });
     listType = 'list';
-    const url = this.mountUrl(tableType);
+    const url = `${urlApi}/${tableType}?${this.mountUrl(tableType)}`;
     return HttpServices.makeGetRequest(url)
       .then((lista) => {
         this.changeStorePages(lista);

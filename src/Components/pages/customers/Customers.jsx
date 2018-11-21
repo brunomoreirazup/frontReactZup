@@ -5,11 +5,12 @@ import Navbar from '../../navbar/Navbar';
 import Dashboard from '../../dashboard/DashBoard';
 import HttpServices from '../../../Helpers/HttpServices/HttpServices';
 import AutoComplete from '../../modal/form/autoComplete/AutoComplete';
-import CommonServices, { setListType, setFunction, setStore } from '../../../Helpers/CommonServices/CommonServices';
+import CommonServices, {
+  setListType, setFunction, setStore, urlApi,
+} from '../../../Helpers/CommonServices/CommonServices';
 
 export default class Customers extends Component {
   static reloadNewLista(lista) {
-    let count = 0;
     const newLista = [];
     if (!lista._embedded.customers.length) {
       CommonServices.reloadList(newLista);
@@ -17,21 +18,13 @@ export default class Customers extends Component {
     }
     lista._embedded.customers
       .forEach((customers, i) => {
-        const customerId = customers._links.self.href;
+        const customerId = `${urlApi}/customers/${customers.id}`;
         const customerName = customers.name;
-        let cityId;
-        let cityName;
-        return HttpServices.makeGetRequest(customers._links.city.href)
-          .then((city) => {
-            count += 1;
-            cityId = city._links.self.href;
-            cityName = city.name;
-            newLista[i] = { id: customerId, cityId, data: [customerName, cityName] };
-            if (count === lista._embedded.customers.length) {
-              CommonServices.reloadList(newLista);
-            }
-          });
+        const cityId = customers.city.id;
+        const cityName = customers.city.name;
+        newLista[i] = { id: customerId, cityId, data: [customerName, cityName] };
       });
+    CommonServices.reloadList(newLista);
   }
 
   static listCustomers() {
@@ -49,13 +42,13 @@ export default class Customers extends Component {
     if (!value) {
       return cb([]);
     }
-    const url = `https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${value}`;
+    const url = `${urlApi}/cities/search/findByNameIgnoreCaseContaining?name=${value}`;
     return HttpServices.makeGetRequest(url)
       .then((lista) => {
         const newLista = lista._embedded.cities.map((city) => {
           const cityName = city.name;
-          const id = city._links.self.href;
-          return { name: cityName, id };
+          const cityId = city.id;
+          return { name: cityName, id: cityId };
         });
         return cb(newLista);
       });
@@ -100,12 +93,12 @@ export default class Customers extends Component {
     const { route } = this.props;
     return {
       name: this.input_customer_name.value,
-      city: route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id,
+      city: { id: route.store.getState().reduceAutoComplete.autoCompleteState.menu[0].id },
     };
   }
 
   addCustomer() {
-    const url = 'https://customers-challenge.herokuapp.com/customers';
+    const url = `${urlApi}/customers`;
     const method = 'POST';
     if (!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()) {
       CommonServices.sendData(url, method, this.loadPayloadCustomer());
@@ -113,7 +106,7 @@ export default class Customers extends Component {
   }
 
   editCustomer(id) {
-    const method = 'PATCH';
+    const method = 'PUT';
     if (!CommonServices.validateFields(this.input_customer_name) && this.validateCityInput()) {
       CommonServices.sendData(id, method, this.loadPayloadCustomer());
     }
@@ -124,20 +117,28 @@ export default class Customers extends Component {
     route.store.dispatch({ type: 'LOADING', showLoading: true });
 
     if (!CommonServices.emptySearch(name)) {
-      HttpServices.makeGetRequest(`https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=${name}`)
+      setListType('search');
+      HttpServices.makeGetRequest(`${urlApi}/customers/search/findByNameIgnoreCaseContaining?name=${name}&${CommonServices.mountUrl()}`)
         .then((lista) => {
-          if (lista.status >= 400) {
+          if (lista._embedded.customers.length === 0) {
             throw new Error('status >= 400');
           }
-          CommonServices.storeSizeSearch(lista._embedded.customers);
-          CommonServices.removePageInfo();
+          CommonServices.storeSizePages(lista);
           Customers.reloadNewLista(lista);
-          CommonServices.removePageInfo();
+          CommonServices.changeStorePages(lista);
         })
         .catch(() => {
+          const pageEmptyJson = {
+            page: {
+              number: 0,
+              size: 5,
+              totalPages: 1,
+              totalElements: 0,
+            },
+          };
           CommonServices.storeSizeSearch([]);
+          CommonServices.changeStorePages(pageEmptyJson);
           CommonServices.reloadList([]);
-          CommonServices.removePageInfo();
         });
     }
   }

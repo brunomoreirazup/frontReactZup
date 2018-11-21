@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import Navbar from '../../navbar/Navbar';
 import Dashboard from '../../dashboard/DashBoard';
 import HttpServices from '../../../Helpers/HttpServices/HttpServices';
-import CommonServices, { setFunction, setListType, setStore } from '../../../Helpers/CommonServices/CommonServices';
+import CommonServices, {
+  setFunction, setListType, setStore, urlApi,
+} from '../../../Helpers/CommonServices/CommonServices';
 
 
 export default class Cities extends Component {
@@ -14,7 +16,7 @@ export default class Cities extends Component {
 
   static createNewLista(lista) {
     const newLista = lista._embedded.cities.map((city) => {
-      const cityId = city._links.self.href;
+      const cityId = `${urlApi}/cities/${city.id}`;
       const cityName = city.name;
       return { id: cityId, data: [cityName] };
     });
@@ -60,7 +62,7 @@ export default class Cities extends Component {
   }
 
   addCity() {
-    const url = 'https://customers-challenge.herokuapp.com/cities';
+    const url = `${urlApi}/cities`;
     const method = 'POST';
 
     if (!CommonServices.validateFields(this.input_cidade_name)) {
@@ -82,20 +84,29 @@ export default class Cities extends Component {
     route.store.dispatch({ type: 'LOADING', showLoading: true });
 
     if (!CommonServices.emptySearch(name)) {
-      HttpServices.makeGetRequest(`https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=${name}`)
+      setListType('search');
+      HttpServices.makeGetRequest(`${urlApi}/cities/search/findByNameIgnoreCaseContaining?name=${name}&${CommonServices.mountUrl()}`)
         .then((lista) => {
-          if (lista.status >= 400) {
+          if (lista._embedded.cities.length === 0) {
             throw new Error('status >= 400');
           }
-          CommonServices.storeSizeSearch(lista._embedded.cities);
+          CommonServices.storeSizePages(lista);
+          CommonServices.changeStorePages(lista);
           CommonServices.reloadList(Cities.createNewLista(lista));
-          CommonServices.removePageInfo();
         })
         .catch((error) => {
+          const pageEmptyJson = {
+            page: {
+              number: 0,
+              size: 5,
+              totalPages: 1,
+              totalElements: 0,
+            },
+          };
           console.log(error);
           CommonServices.storeSizeSearch([]);
+          CommonServices.changeStorePages(pageEmptyJson);
           CommonServices.reloadList([]);
-          CommonServices.removePageInfo();
         });
     }
   }
