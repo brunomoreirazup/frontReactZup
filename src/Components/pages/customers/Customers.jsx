@@ -72,6 +72,7 @@ export default class Customers extends Component {
     this.addCustomer = this.addCustomer.bind(this);
     this.editCustomer = this.editCustomer.bind(this);
     this.searchCustomer = this.searchCustomer.bind(this);
+    this.loadMsgDelete = this.loadMsgDelete.bind(this);
     CommonServices.callTable = CommonServices.callTable.bind(this);
   }
 
@@ -203,6 +204,11 @@ export default class Customers extends Component {
     });
   }
 
+  loadMsgDelete(id, callBack) {
+    callBack('Você Realmente quer deletar este cliente ? ');
+  }
+
+
   render() {
     return (
       <div>
@@ -217,6 +223,7 @@ export default class Customers extends Component {
           delete={Customers.deleteCustomer}
           search={this.searchCustomer}
           list={CommonServices.callTable}
+          loadMsgDelete={this.loadMsgDelete}
         />
       </div>
 

@@ -47,6 +47,7 @@ export default class Cities extends Component {
     this.addCity = this.addCity.bind(this);
     this.editCity = this.editCity.bind(this);
     this.searchCity = this.searchCity.bind(this);
+    this.loadMsgDelete = this.loadMsgDelete.bind(this);
     CommonServices.callTable = CommonServices.callTable.bind(this);
   }
 
@@ -139,6 +140,26 @@ export default class Cities extends Component {
     this.cidade_name = city;
   }
 
+  loadMsgDelete(id, callBack) {
+    let realId = '';
+    for (let i = id.length - 1; i >= 0; i -= 1) {
+      if (id.charAt(i) !== '/') realId = id.charAt(i) + realId;
+      else break;
+    }
+    HttpServices.makeGetRequest(`${urlApi}/customers/search/city/${realId}?page=0&size=20&sort=name,asc`)
+      .then((lista) => {
+        console.log(lista);
+        if (lista._embedded.customers.length === 0) {
+          callBack('Realmente quer deleter essa City ? ');
+          return;
+        }
+        let msg = 'Caso você deletar está Cidade os seguintes clientes vão ser deletado:';
+        lista._embedded.customers.forEach((customer,index) => msg += index === 0 ? `${customer.name}` : `, ${customer.name}`);
+        console.log(msg);
+        callBack(msg);
+      });
+  }
+
   render() {
     return (
       <div>
@@ -153,6 +174,7 @@ export default class Cities extends Component {
           delete={Cities.deleteCity}
           search={this.searchCity}
           list={CommonServices.callTable}
+          loadMsgDelete={this.loadMsgDelete}
         />
       </div>
 

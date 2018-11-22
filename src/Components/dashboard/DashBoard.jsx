@@ -66,13 +66,16 @@ class DashBoard extends Component {
   }
 
   showModalDelete(id) {
-    const { delete: deleteCb } = this.props;
-    this.modalContent = {
-      title: `Deletar ${this.title}`,
-      body: 'Realmente deseja remover ? ',
-      footer: <button id="btDeleteModal" type="button" className="btn bt-delete" onClick={() => deleteCb(id)}>Remover</button>,
-    };
-    this.toggleModal();
+    const { delete: deleteCb, loadMsgDelete } = this.props;
+    loadMsgDelete(id, msg => {
+      this.modalContent = {
+        title: `Deletar ${this.title}`,
+        body: msg,
+        footer: <button id="btDeleteModal" type="button" className="btn bt-delete" onClick={() => deleteCb(id)}>Remover</button>,
+      };
+      this.toggleModal();
+    });
+
   }
 
   sort() {
@@ -246,6 +249,7 @@ DashBoard.propTypes = {
   delete: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
   list: PropTypes.func.isRequired,
+  loadMsgDelete: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(DashBoard);

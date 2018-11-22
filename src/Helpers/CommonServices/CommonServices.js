@@ -3,7 +3,7 @@ import HttpServices from '../HttpServices/HttpServices';
 let listFunction;
 let searchFunction;
 let store;
-export const urlApi = 'http://localhost:8080';
+export const urlApi = 'https://customers-challenge-vinicius.herokuapp.com';
 
 export function setFunction(list, search) {
   listFunction = list;
