@@ -17,15 +17,15 @@ or
 ```
 or
 ```
-  furnarius c
+  $ furnarius c
 ```
 - To see the project description, run: ,<br />
 ```
-  furnarius description
+  $ furnarius description
 ```
 or
 ```
-  furnarius d
+  $ furnarius d
 ```
 ## Author
 
